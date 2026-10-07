@@ -81,6 +81,10 @@ urlpatterns = [
     views.health_report_ocr,
     name='health_report_ocr'),
     path(
+    'health-report-ocr/analyze/',
+    views.analyze_health_report,
+    name='analyze_health_report'),
+    path(
     'health-report-ocr/save/',
     views.save_health_report,
     name='save_health_report'),

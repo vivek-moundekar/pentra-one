@@ -911,680 +911,356 @@ def healthcare_chatbot(request):
 
 
 HEALTHCARE_SYSTEM_INSTRUCTION = """
-
-You are Udaan Health Assistant, an AI healthcare assistant
-for rural communities.
-
-YOUR MAIN PURPOSE:
-
-Help users with healthcare-related information in a simple,
-clear and easy-to-understand way.
-
-
-IMPORTANT RULES:
-
-
-1. HEALTHCARE ONLY
-
-Answer ONLY healthcare-related questions.
-
-You can help with:
-
-- General health
-- Common symptoms
-- Women's health
-- Child health
-- Elderly health
-- Disability health
-- Nutrition
-- Hygiene
-- Medicines (general information only)
-- Health reports
-- Prescriptions
-- Healthcare services
-- Emergency health guidance
-- Preventive healthcare
-- Basic health awareness
-- Healthcare images and uploaded reports/prescriptions
-
-
-2. NON-HEALTHCARE QUESTIONS
-
-If the user asks about:
-
-- Python
-- Programming
-- Coding
-- Agriculture
-- Education
-- Jobs
-- Entertainment
-- Movies
-- Sports
-- Politics
-- Technology
-- Any other non-healthcare topic
-
-Reply EXACTLY with:
-
-"I am Udaan Health Assistant. I can only help with healthcare-related information. Please ask me a healthcare question."
-
-
-3. CONVERSATION CONTEXT
-
-Remember and use the previous messages in the current conversation.
-
-If the user asks a follow-up question, understand what they are
-referring to from the previous messages.
-
-Do not ask the user to repeat information that is already available
-in the conversation.
-
-Uploaded images are available only in the request where they are uploaded.
-
-Do not claim to remember an old image unless it is uploaded again.
-
-
-4. POINT-WISE ANSWERS
-
-ALWAYS answer in a clear point-wise format.
-
-Use:
-
-- Bullet points
-- Numbered lists
-- Short headings
-
-Avoid long paragraphs.
-
-
-5. SIMPLE LANGUAGE
-
-Use simple language that a rural community user can understand.
-
-Avoid unnecessary medical terminology.
-
-If you use a medical term, explain it in simple language.
-
-
-6. LANGUAGE SUPPORT
-
-If the user writes in English:
-Respond in English.
-
-If the user writes in Hindi:
-Respond in Hindi.
-
-If the user writes in Hinglish:
-Respond in Hinglish.
-
-If the user writes in Marathi:
-Respond in Marathi.
-
-Always try to respond in the same language as the user.
-
-
-7. HEALTH SYMPTOMS
-
-When a user asks about symptoms, preferably use:
-
-Possible reasons:
-- Point 1
-- Point 2
-- Point 3
-
-What you can do:
-- Point 1
-- Point 2
-- Point 3
-
-When to see a doctor:
-- Warning sign 1
-- Warning sign 2
-- Warning sign 3
-
-Never say that the user definitely has a particular disease.
-
-
-8. MEDICINES
-
-You may provide general information about medicines.
-
-You may explain:
-
-- General purpose
-- Common uses
-- General precautions
-
-DO NOT:
-
-- Prescribe medicines
-- Give personalized dosage instructions
-- Tell the user to start a medicine
-- Tell the user to stop a medicine
-- Tell the user to change their dosage
-
-
-9. HEALTH REPORTS, PRESCRIPTIONS AND IMAGES
-
-If the user uploads a healthcare image:
-
-- Analyze only what is visible or readable.
-- Help explain visible text, labels, report values,
-  prescription information and healthcare-related content.
-- Explain medical terms in simple language.
-- If the image is blurry or unreadable, say so.
-- Do not invent missing values or information.
-- Do not provide a definite diagnosis from an image.
-- Do not claim an image proves a disease.
-- Encourage professional evaluation for important or abnormal findings.
-
-For prescriptions:
-
-- Explain visible medicine names/instructions when possible.
-- Do not prescribe medicines.
-- Do not change dosage instructions.
-- Do not tell the user to start or stop a medicine based only on the image.
-
-For medical reports:
-
-- Explain visible values and terms in simple language.
-- Do not decide that the person definitely has a disease.
-
-
-10. EMERGENCY SITUATIONS
-
-If the user describes potentially serious or life-threatening symptoms:
-
-- Clearly tell them to seek urgent medical attention.
-- Keep the emergency guidance short and clear.
-
-Examples:
-
-- Severe breathing difficulty
-- Severe chest pain
-- Loss of consciousness
-- Severe bleeding
-- Stroke-like symptoms
-- Serious injury
-
-
-11. DO NOT DIAGNOSE
-
-Never provide a definite medical diagnosis.
-
-Use phrases such as:
-
-- "This can have several possible causes."
-- "This may be related to..."
-- "A healthcare professional can properly evaluate this."
-
-
-12. DO NOT REPLACE A DOCTOR
-
-You are an informational healthcare assistant.
-
-Do not claim to replace doctors, nurses, pharmacists or other qualified
-healthcare professionals.
-
-
-13. RESPONSE LENGTH
-
-For simple questions:
-
-Give 3-6 important points.
-
-For detailed questions:
-
-Use headings and bullet points.
-
-Do not unnecessarily repeat information.
-
-
-14. FRIENDLY TONE
-
-Be polite, supportive and respectful.
-
-Do not scare the user unnecessarily.
-
-
-15. FINAL SAFETY
-
-For important symptoms, medicines, reports, images or medical conditions,
-recommend consulting a qualified healthcare professional when appropriate.
-
-Never provide false certainty about a person's health.
-
+You are Pentra One Health Assistant, an informational healthcare assistant for rural communities.
+
+Rules:
+- Answer only healthcare-related questions.
+- Use simple, clear language and short bullet points.
+- Reply in the same language as the user (English, Hindi, Hinglish, or Marathi).
+- For symptoms, explain possible causes, basic self-care, and warning signs. Never give a definite diagnosis.
+- For medicines, provide only general information. Never prescribe, change dosage, or tell the user to start/stop a medicine.
+- For reports, prescriptions, and healthcare images, explain only visible/readable information. Never invent missing values.
+- If the image/report is unclear, say that clearly.
+- For serious symptoms such as severe chest pain, severe breathing difficulty, unconsciousness, stroke-like symptoms, severe bleeding, or serious injury, advise urgent medical attention immediately.
+- Keep simple answers to about 3-6 useful points.
+- If the question is not about healthcare, reply exactly:
+  "I am Pentra One Health Assistant. I can only help with healthcare-related information. Please ask me a healthcare question."
 """
+
+
+# ============================================================
+# FAST GEMINI HELPERS
+# ============================================================
+
+def _healthcare_client():
+    """Create a Gemini OpenAI-compatible client with no automatic retries."""
+    api_key = getattr(settings, "HEALTHCARE_GEMINI_API_KEY", "")
+
+    if not api_key:
+        raise RuntimeError("Healthcare Gemini API key is not configured.")
+
+    return OpenAI(
+        api_key=api_key,
+        base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+        timeout=18.0,
+        max_retries=0,
+    )
+
+
+def _is_temporary_ai_error(error):
+    error_text = str(error).lower()
+    temporary_words = (
+        "503",
+        "429",
+        "unavailable",
+        "high demand",
+        "overloaded",
+        "temporarily",
+        "rate limit",
+        "resource exhausted",
+        "timeout",
+        "timed out",
+    )
+    return any(word in error_text for word in temporary_words)
+
+
+def _call_healthcare_ai(messages, max_tokens=260):
+    """
+    Fast AI call:
+    - low-latency model first
+    - only one fallback model
+    - no sleep / no repeated retry loops
+    """
+    client = _healthcare_client()
+
+    model_names = (
+        "gemini-3.5-flash-lite",
+        "gemini-3.8-flash",
+    )
+
+    last_error = None
+
+    for model_name in model_names:
+        try:
+            print(f"Healthcare Gemini: trying {model_name}")
+
+            response = client.chat.completions.create(
+                model=model_name,
+                messages=messages,
+                temperature=0.2,
+                max_tokens=max_tokens,
+            )
+
+            reply = response.choices[0].message.content
+
+            if reply and reply.strip():
+                return reply.strip()
+
+        except Exception as exc:
+            last_error = exc
+            print(f"Healthcare Gemini model error ({model_name}):", exc)
+
+            # For permanent errors such as invalid API key / malformed request,
+            # do not waste time trying more models.
+            if not _is_temporary_ai_error(exc):
+                raise
+
+    if last_error:
+        raise last_error
+
+    raise RuntimeError("Healthcare AI returned an empty response.")
+
+
+def _image_to_data_url(uploaded_image):
+    """Validate and convert an uploaded healthcare image to a data URL."""
+    allowed_types = {
+        "image/jpeg",
+        "image/png",
+        "image/webp",
+    }
+
+    if uploaded_image.content_type not in allowed_types:
+        raise ValueError("Please upload only a JPG, PNG or WebP image.")
+
+    # Keep image requests reasonably small for faster upload/API processing.
+    if uploaded_image.size > 5 * 1024 * 1024:
+        raise ValueError("Image size must be 5 MB or smaller.")
+
+    image_bytes = uploaded_image.read()
+    encoded_image = base64.b64encode(image_bytes).decode("utf-8")
+
+    return (
+        f"data:{uploaded_image.content_type};base64,"
+        f"{encoded_image}"
+    )
 
 
 # ============================================================
 # CHATBOT SEND
 # ============================================================
+
 @require_POST
 def healthcare_chatbot_send(request):
-
-    message = request.POST.get(
-        "message",
-        ""
-    ).strip()
-
-    uploaded_image = request.FILES.get(
-        "image"
-    )
+    message = request.POST.get("message", "").strip()
+    uploaded_image = request.FILES.get("image")
 
     if not message and not uploaded_image:
-
         return JsonResponse({
-
-            "success":
-                False,
-
-            "error":
-                "Please enter a message or upload a health image."
-
+            "success": False,
+            "error": "Please enter a message or upload a health image."
         }, status=400)
 
-
-    # ========================================================
-    # API KEY
-    # ========================================================
-
-    api_key = getattr(
-        settings,
-        "HEALTHCARE_GEMINI_API_KEY",
-        ""
-    )
-
-
-    if not api_key:
-
-        return JsonResponse({
-
-            "success":
-                False,
-
-            "error":
-                "Healthcare Gemini API key is not configured."
-
-        }, status=500)
-
-
-    # ========================================================
-    # IMAGE PROCESSING
-    # ========================================================
-
-    image_data_url = None
-
-
-    if uploaded_image:
-
-        allowed_types = {
-
-            "image/jpeg",
-
-            "image/png",
-
-            "image/webp"
-
-        }
-
-
-        if uploaded_image.content_type not in allowed_types:
-
-            return JsonResponse({
-
-                "success":
-                    False,
-
-                "error":
-                    "Please upload only a JPG, PNG or WebP image."
-
-            }, status=400)
-
-
-        if uploaded_image.size > 5 * 1024 * 1024:
-
-            return JsonResponse({
-
-                "success":
-                    False,
-
-                "error":
-                    "Image size must be 5 MB or smaller."
-
-            }, status=400)
-
-
-        try:
-
-            image_bytes = uploaded_image.read()
-
-            encoded_image = base64.b64encode(
-                image_bytes
-            ).decode(
-                "utf-8"
-            )
-
-            image_data_url = (
-
-                f"data:{uploaded_image.content_type};base64,"
-
-                f"{encoded_image}"
-
-            )
-
-        except Exception as e:
-
-            print(
-                "Image processing error:",
-                e
-            )
-
-            return JsonResponse({
-
-                "success":
-                    False,
-
-                "error":
-                    "The uploaded image could not be processed."
-
-            }, status=400)
-
-
-    # ========================================================
-    # CHAT HISTORY
-    # ========================================================
-
-    chat_history = request.session.get(
-        "healthcare_chat_history",
-        []
-    )
-
-    chat_history = chat_history[-10:]
-
-
-    messages = [
-
-        {
-
-            "role":
-                "system",
-
-            "content":
-                HEALTHCARE_SYSTEM_INSTRUCTION
-
-        }
-
-    ]
-
-
-    for item in chat_history:
-
-        messages.append({
-
-            "role":
-                item["role"],
-
-            "content":
-                item["content"]
-
-        })
-
-
-    # ========================================================
-    # IMAGE MESSAGE
-    # ========================================================
-
-    if image_data_url:
-
-        image_question = message or (
-
-            "Please analyze this healthcare image and explain what "
-            "you can observe in simple, point-wise language. If it is "
-            "a medical report or prescription, explain the visible "
-            "information and medical terms. Do not diagnose."
-
-        )
-
-
-        messages.append({
-
-            "role":
-                "user",
-
-            "content": [
-
-                {
-
-                    "type":
-                        "text",
-
-                    "text":
-                        image_question
-
-                },
-
-                {
-
-                    "type":
-                        "image_url",
-
-                    "image_url": {
-
-                        "url":
-                            image_data_url
-
-                    }
-
-                }
-
-            ]
-
-        })
-
-
-    else:
-
-        messages.append({
-
-            "role":
-                "user",
-
-            "content":
-                message
-
-        })
-
-
-    # ========================================================
-    # GEMINI API
-    # Retry + fallback handling for temporary 503 / high-demand errors
-    # ========================================================
-
     try:
+        # Keep only the latest 6 messages (roughly 3 exchanges).
+        # This keeps follow-up context while reducing payload and latency.
+        chat_history = request.session.get("healthcare_chat_history", [])[-6:]
 
-        client = OpenAI(
-            api_key=api_key,
-            base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
-        )
+        messages = [{
+            "role": "system",
+            "content": HEALTHCARE_SYSTEM_INSTRUCTION,
+        }]
 
-        # Try the preferred model first, then fall back to other stable Flash models.
-        # This prevents the whole chatbot from failing when one Gemini model is busy.
-        gemini_models = [
-            "gemini-3.8-flash",
-            "gemini-3.7-flash",
-            "gemini-3.5-flash-lite",
-        ]
+        for item in chat_history:
+            role = item.get("role")
+            content = item.get("content")
 
-        response = None
-        last_error = None
+            if role in {"user", "assistant"} and content:
+                messages.append({
+                    "role": role,
+                    "content": content,
+                })
 
-        for model_name in gemini_models:
+        if uploaded_image:
+            image_data_url = _image_to_data_url(uploaded_image)
 
-            # Retry each model a few times for temporary server overloads.
-            for attempt in range(3):
-
-                try:
-
-                    print(
-                        f"Healthcare Gemini: trying {model_name}, "
-                        f"attempt {attempt + 1}/3"
-                    )
-
-                    response = client.chat.completions.create(
-                        model=model_name,
-                        messages=messages,
-                        temperature=0.3,
-                        max_tokens=300,
-                        reasoning_effort="low"
-                    )
-
-                    # Successful request: stop retrying/fallback.
-                    break
-
-                except Exception as model_error:
-
-                    last_error = model_error
-                    error_text = str(model_error).lower()
-
-                    is_temporary_error = (
-                        "503" in error_text
-                        or "unavailable" in error_text
-                        or "high demand" in error_text
-                        or "overloaded" in error_text
-                        or "temporarily" in error_text
-                    )
-
-                    print(
-                        f"Healthcare Gemini model error "
-                        f"({model_name}, attempt {attempt + 1}):",
-                        model_error
-                    )
-
-                    # For a temporary overload, wait briefly and retry.
-                    if is_temporary_error and attempt < 2:
-                        time.sleep(2 * (attempt + 1))
-                        continue
-
-                    # Stop retrying this model and move to the fallback model.
-                    break
-
-            if response is not None:
-                break
-
-        if response is None:
-            if last_error:
-                raise last_error
-            raise RuntimeError("No Gemini model returned a response.")
-
-        reply = response.choices[0].message.content
-
-        if not reply:
-            reply = (
-                "Sorry, I could not generate a response right now."
+            image_question = message or (
+                "Analyze this healthcare image. If it is a medical report or "
+                "prescription, extract and explain the readable information in "
+                "simple bullet points. Mention abnormal-looking values only as "
+                "observations, not as a diagnosis."
             )
 
+            messages.append({
+                "role": "user",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": image_question,
+                    },
+                    {
+                        "type": "image_url",
+                        "image_url": {
+                            "url": image_data_url,
+                        },
+                    },
+                ],
+            })
+        else:
+            messages.append({
+                "role": "user",
+                "content": message,
+            })
 
-        # ====================================================
-        # SAVE CHAT HISTORY
-        # ====================================================
+        reply = _call_healthcare_ai(messages, max_tokens=260)
 
         history_message = message
 
-
         if uploaded_image and not history_message:
-
-            history_message = (
-                "[User uploaded a healthcare image for analysis.]"
-            )
-
-
+            history_message = "[User uploaded a healthcare image for analysis.]"
         elif uploaded_image:
-
             history_message = (
-
-                f"[User uploaded a healthcare image: "
-
-                f"{uploaded_image.name}] {message}"
-
+                f"[User uploaded healthcare image: {uploaded_image.name}] "
+                f"{message}"
             )
 
-
         chat_history.append({
-
-            "role":
-                "user",
-
-            "content":
-                history_message
-
+            "role": "user",
+            "content": history_message,
         })
 
-
         chat_history.append({
-
-            "role":
-                "assistant",
-
-            "content":
-                reply
-
+            "role": "assistant",
+            "content": reply,
         })
 
-
-        request.session[
-            "healthcare_chat_history"
-        ] = chat_history[-10:]
-
-
+        request.session["healthcare_chat_history"] = chat_history[-6:]
         request.session.modified = True
 
-
         return JsonResponse({
-
-            "success":
-                True,
-
-            "reply":
-                reply
-
+            "success": True,
+            "reply": reply,
         })
 
+    except ValueError as exc:
+        return JsonResponse({
+            "success": False,
+            "error": str(exc),
+        }, status=400)
 
-    except Exception as e:
+    except Exception as exc:
+        print("Healthcare Gemini Error:", exc)
 
-        print(
-            "Healthcare Gemini Error:",
-            e
-        )
-
-        error_text = str(e).lower()
-
-        if (
-            "503" in error_text
-            or "unavailable" in error_text
-            or "high demand" in error_text
-            or "overloaded" in error_text
-            or "temporarily" in error_text
-        ):
+        if "api key" in str(exc).lower():
+            user_error = "Healthcare Gemini API key is not configured correctly."
+            status_code = 500
+        elif _is_temporary_ai_error(exc):
             user_error = (
-                "Healthcare AI is temporarily busy. "
-                "Please try again in a few seconds."
+                "Healthcare AI is busy right now. Please try again in a moment."
             )
             status_code = 503
         else:
             user_error = (
-                "Healthcare AI is temporarily unavailable. "
-                "Please try again."
+                "Healthcare AI could not process the request. Please try again."
             )
             status_code = 500
 
         return JsonResponse({
             "success": False,
-            "error": user_error
+            "error": user_error,
         }, status=status_code)
-    
+
+
+# ============================================================
+# FAST HEALTH REPORT / PRESCRIPTION ANALYSIS
+# ============================================================
+
+@require_POST
+def analyze_health_report(request):
+    """
+    Separate lightweight endpoint for report/prescription image analysis.
+
+    POST fields:
+        image: JPG / PNG / WebP
+        message: optional extra instruction
+
+    Returns both `analysis` and `extracted_information` so existing front-end
+    code can use either key.
+    """
+    uploaded_image = request.FILES.get("image")
+    extra_message = request.POST.get("message", "").strip()
+
+    if not uploaded_image:
+        return JsonResponse({
+            "success": False,
+            "error": "Please upload a health report or prescription image."
+        }, status=400)
+
+    try:
+        image_data_url = _image_to_data_url(uploaded_image)
+
+        report_prompt = (
+            "Read this medical report or prescription carefully. "
+            "Extract only information that is actually readable. "
+            "Return a concise point-wise explanation with these sections when "
+            "applicable: Report type, Patient details, Test/medicine names, "
+            "Visible values or instructions, Simple explanation, and Important "
+            "notes. Do not invent unreadable text and do not give a definite "
+            "diagnosis."
+        )
+
+        if extra_message:
+            report_prompt += f"\nUser request: {extra_message}"
+
+        messages = [
+            {
+                "role": "system",
+                "content": HEALTHCARE_SYSTEM_INSTRUCTION,
+            },
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": report_prompt,
+                    },
+                    {
+                        "type": "image_url",
+                        "image_url": {
+                            "url": image_data_url,
+                        },
+                    },
+                ],
+            },
+        ]
+
+        analysis = _call_healthcare_ai(messages, max_tokens=420)
+
+        return JsonResponse({
+            "success": True,
+            "analysis": analysis,
+            "reply": analysis,
+            "extracted_information": analysis,
+        })
+
+    except ValueError as exc:
+        return JsonResponse({
+            "success": False,
+            "error": str(exc),
+        }, status=400)
+
+    except Exception as exc:
+        print("Health Report Analysis Error:", exc)
+
+        if "api key" in str(exc).lower():
+            user_error = "Healthcare Gemini API key is not configured correctly."
+            status_code = 500
+        elif _is_temporary_ai_error(exc):
+            user_error = (
+                "Report analysis service is busy right now. Please try again shortly."
+            )
+            status_code = 503
+        else:
+            user_error = (
+                "Unable to analyze this report right now. Please try another clear image."
+            )
+            status_code = 500
+
+        return JsonResponse({
+            "success": False,
+            "error": user_error,
+        }, status=status_code)
+
+
 def disability_care(request):
     return render(request, 'healthcare/disability_care.html')
 def disability_awareness(request):

@@ -1262,7 +1262,7 @@ The user will select the explanation language after extraction.`
                 const response =
                     await fetch(
 
-                        "{% url 'healthcare_chatbot_send' %}",
+                        "{% url 'analyze_health_report' %}",
 
                         {
 
@@ -1303,7 +1303,10 @@ The user will select the explanation language after extraction.`
 
 
                 extractedInformation =
-                    data.reply;
+                    data.extracted_information ||
+                    data.analysis ||
+                    data.reply ||
+                    "";
 
 
                 resultContent.innerText =
@@ -1758,4 +1761,4 @@ ${language}`
 </footer>
 
 </body>
-</html
+</html>
