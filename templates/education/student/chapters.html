@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Chapters | PentraOne Education</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+
+            margin: 0;
+
+            padding: 0;
+        }
+
+
+        body {
+            min-height: 100vh;
+
+            font-family:
+                Inter,
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 12% 86%,
+                    rgba(37, 99, 235, 0.25),
+                    transparent 32%
+                ),
+                linear-gradient(
+                    135deg,
+                    #050505,
+                    #080b12,
+                    #071227
+                );
+
+            color: white;
+        }
+
+
+        .header {
+            height: 74px;
+
+            padding:
+                0 40px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                space-between;
+
+            border-bottom:
+                1px solid
+                rgba(148, 163, 184, 0.12);
+
+            background:
+                rgba(5, 7, 11, 0.80);
+        }
+
+
+        .brand {
+            color: #60a5fa;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+        }
+
+
+        .dashboard-btn,
+        .back-btn {
+            padding:
+                10px 14px;
+
+            border-radius: 12px;
+
+            border:
+                1px solid
+                rgba(148, 163, 184, 0.15);
+
+            color: #cbd5e1;
+
+            background:
+                rgba(17, 18, 20, 0.82);
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+
+        .page {
+            max-width: 1050px;
+
+            margin: auto;
+
+            padding:
+                34px 20px
+                60px;
+        }
+
+
+        .back-area {
+            margin-bottom: 20px;
+        }
+
+
+        .hero {
+            padding:
+                34px 36px;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(39, 43, 50, 0.85),
+                    rgba(12, 12, 13, 0.95)
+                );
+
+            border:
+                1px solid
+                rgba(148, 163, 184, 0.17);
+        }
+
+
+        .kicker {
+            color: #93c5fd;
+
+            font-size: 10px;
+
+            letter-spacing: 1px;
+
+            font-weight: 800;
+
+            margin-bottom: 10px;
+        }
+
+
+        .hero h1 {
+            font-size: 40px;
+
+            font-weight: 500;
+
+            margin-bottom: 10px;
+        }
+
+
+        .hero p {
+            color: #9ca3af;
+
+            font-size: 14px;
+        }
+
+
+        .list {
+            margin-top: 24px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 14px;
+        }
+
+
+        .row {
+            display: flex;
+
+            align-items: center;
+
+            gap: 16px;
+
+            padding:
+                19px 20px;
+
+            border-radius: 17px;
+
+            color: white;
+
+            text-decoration: none;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(29, 33, 40, 0.83),
+                    rgba(11, 12, 15, 0.96)
+                );
+
+            border:
+                1px solid
+                rgba(148, 163, 184, 0.14);
+
+            transition:
+                0.25s;
+        }
+
+
+        .row:hover {
+            transform:
+                translateX(5px);
+
+            border-color:
+                rgba(59, 130, 246, 0.42);
+        }
+
+
+        .number {
+            width: 45px;
+            height: 45px;
+
+            flex-shrink: 0;
+
+            border-radius: 13px;
+
+            display: grid;
+
+            place-items: center;
+
+            background:
+                rgba(37, 99, 235, 0.11);
+
+            border:
+                1px solid
+                rgba(59, 130, 246, 0.17);
+
+            color: #93c5fd;
+
+            font-weight: 800;
+        }
+
+
+        .content {
+            flex: 1;
+        }
+
+
+        .content h3 {
+            font-size: 16px;
+
+            margin-bottom: 4px;
+        }
+
+
+        .content p {
+            color: #858c98;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+
+        .empty {
+            padding: 30px;
+
+            text-align: center;
+
+            color: #8d94a0;
+        }
+
+
+        @media (max-width: 650px) {
+
+            .header {
+                padding:
+                    0 15px;
+            }
+
+            .hero h1 {
+                font-size: 31px;
+            }
+
+            .page {
+                padding:
+                    22px 14px;
+            }
+        }
+
+    </style>
+
+
+<style id="pentraone-brand-font">
+.pentra-brand-main{font-family:'Berlin Sans FB Demi','Berlin Sans FB','Arial Black',sans-serif;font-weight:600;letter-spacing:.3px;text-transform:uppercase;}
+.pentra-brand-one{font-family:'Bell MT','Times New Roman',serif;font-style:italic;font-weight:400;text-transform:lowercase;margin-left:2px;}
+</style>
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <div class="brand">
+        <span class="pentra-brand-main">PENTRA</span><span class="pentra-brand-one">one</span> EDUCATION
+    </div>
+
+    <a
+        href="{% url 'education:student_dashboard' %}"
+        class="dashboard-btn"
+    >
+        Student Dashboard
+    </a>
+
+</header>
+
+
+<main class="page">
+
+
+    <div class="back-area">
+
+        <a
+            href="{% url 'education:student_subjects' selected_subject.class_level.id %}"
+            class="back-btn"
+        >
+            ← Subjects
+        </a>
+
+    </div>
+
+
+    <section class="hero">
+
+        <div class="kicker">
+            {{ selected_subject.class_level.name }}
+            •
+            {{ selected_subject.name }}
+        </div>
+
+        <h1>
+            Choose a chapter
+        </h1>
+
+        <p>
+            Open a chapter to view lessons
+            and learning resources.
+        </p>
+
+    </section>
+
+
+    <section class="list">
+
+        {% for chapter in chapters %}
+
+            <a
+                href="{% url 'education:chapter_detail' chapter.id %}"
+                class="row"
+            >
+
+                <div class="number">
+                    {{ chapter.chapter_number }}
+                </div>
+
+
+                <div class="content">
+
+                    <h3>
+                        {{ chapter.name }}
+                    </h3>
+
+                    <p>
+                        {{ chapter.description|default:"Open this chapter to start learning."|truncatechars:120 }}
+                    </p>
+
+                </div>
+
+
+                <span>
+                    →
+                </span>
+
+            </a>
+
+        {% empty %}
+
+            <div class="empty">
+                No chapters are available
+                for this subject yet.
+            </div>
+
+        {% endfor %}
+
+    </section>
+
+
+</main>
+
+
+</body>
+</html>

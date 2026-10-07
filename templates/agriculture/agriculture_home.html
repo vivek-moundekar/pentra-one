@@ -1,0 +1,45 @@
+{% extends 'agriculture/base.html' %}
+{% load static %}
+{% block title %}PENTRAONE Agriculture{% endblock %}
+{% block content %}
+<section class="agri-hero fade-up">
+<div class="agri-eyebrow">🌱 {{ ui.home.agriculture_support }}</div>
+<h1 class="agri-title">{{ ui.home.smart_farming }}</h1>
+<p class="agri-lead">{{ ui.home.smart_farming_text }}</p>
+</section>
+<section class="agri-detail-card fade-up delay-1 agri-scan-card" style="margin-top:22px;padding:0;overflow:hidden">
+<div class="agri-weather-hero">
+<div style="padding:30px">
+<div class="agri-eyebrow">✨ {{ ui.home.ai_powered }}</div>
+<h2 style="font-size:32px;margin:14px 0 9px">📷 {{ ui.scan.scan_title }}</h2>
+<p style="color:var(--agri-muted);max-width:650px">{{ ui.scan.scan_description }}</p>
+<a class="agri-btn" href="{% url 'agriculture:scan' %}">📷 {{ ui.scan.start_scanning }} →</a>
+</div>
+<div class="agri-weather-art agri-hero-scan-art"><img src="{% static 'agriculture/images/scan-ask.jpg' %}" alt="Scan and Ask" style="width:100%;height:100%;object-fit:cover"></div>
+</div></section>
+<div class="agri-section-head fade-up delay-2"><div><h2>{{ ui.home.explore_agriculture }}</h2><p>{{ ui.home.choose_service }}</p></div></div>
+<section class="agri-grid" data-reveal="grid">
+<article class="agri-card fade-up delay-2"><div class="agri-visual"><div class="agri-icon agri-growing-plant"><span class="seed">🌰</span><span class="sprout">🌱</span><span class="crop">🌾</span></div></div><div class="agri-card-body"><h3>{{ ui.nav.crop_information }}</h3><p>{{ ui.crop_information_text }}</p><a class="agri-card-link" href="{% url 'agriculture:crops' %}">{{ ui.common.explore }} →</a></div></article>
+<article class="agri-card fade-up delay-2"><div class="agri-visual problem"><div class="agri-icon">🐛</div></div><div class="agri-card-body"><h3>🐛 {{ ui.crop.common_problems }}</h3><p>Find common pests, diseases and crop-related problems with practical farmer tips.</p><a class="agri-card-link" href="{% url 'agriculture:problems' %}">{{ ui.common.learn_more }} →</a></div></article>
+<article class="agri-card fade-up delay-3"><div class="agri-visual weather"><div class="agri-icon">🌦️</div></div><div class="agri-card-body"><h3>{{ ui.nav.weather }}</h3><p>{{ ui.weather.description }}</p><a class="agri-card-link" href="{% url 'agriculture:weather' %}">{{ ui.common.view }} →</a></div></article>
+<article class="agri-card fade-up delay-3"><div class="agri-visual" style="padding:0"><img src="{% static 'agriculture/images/scan-ask.jpg' %}" alt="Scan & Ask" style="width:100%;height:100%;object-fit:cover"></div><div class="agri-card-body"><h3>📷 {{ ui.nav.scan }}</h3><p>{{ ui.scan_description }}</p><a class="agri-card-link" href="{% url 'agriculture:scan' %}">{{ ui.scan.start_scanning }} →</a></div></article>
+<article class="agri-card fade-up delay-4"><div class="agri-visual schemes"><div class="agri-icon">🏛️</div></div><div class="agri-card-body"><h3>{{ ui.nav.schemes }}</h3><p>{{ ui.schemes_text }}</p><a class="agri-card-link" href="/government-schemes/">{{ ui.common.explore }} →</a></div></article>
+<article class="agri-card fade-up delay-4"><div class="agri-visual resources"><div class="agri-icon">📚</div></div><div class="agri-card-body"><h3>{{ ui.nav.resources }}</h3><p>{{ ui.resources_text }}</p><a class="agri-card-link" href="#agri-resources">{{ ui.common.explore }} →</a></div></article>
+</section>
+<div class="agri-section-head fade-up delay-4"><div><h2>{{ ui.sections.useful_today }}</h2><p>{{ ui.sections.quick_access }}</p></div></div>
+<section class="agri-quick">
+<div class="agri-quick-item"><div class="agri-quick-icon">🌦️</div><div class="grow"><h3>{{ ui.nav.weather }}</h3><p>Check local weather and farming conditions.</p></div><a class="agri-btn ghost" href="{% url 'agriculture:weather' %}">{{ ui.common.view }}</a></div>
+<div class="agri-quick-item"><div class="agri-quick-icon">🐛</div><div class="grow"><h3>{{ ui.crop.common_problems }}</h3><p>See crop problems and farmer tips.</p></div><a class="agri-btn ghost" href="{% url 'agriculture:problems' %}">{{ ui.common.view }}</a></div>
+</section>
+<div class="agri-section-head fade-up"><div><h2>{{ ui.crop.popular_crops }}</h2><p>{{ ui.crop.crop_guide }}</p></div><input id="cropSearch" class="agri-search" type="search" placeholder="{{ ui.crop.search_crops }}"></div>
+<section class="agri-crop-grid" id="cropList" data-reveal="crops">
+{% for crop in crops %}<a class="agri-crop-card fade-up" href="{% url 'agriculture:crop_detail' crop.id %}" data-crop-name="{{ crop.name|lower }}"><div class="agri-crop-image">{% if crop.image %}<img src="{{ crop.image.url }}" alt="{{ crop.name }}" loading="lazy">{% else %}<div class="agri-crop-placeholder">🌱</div>{% endif %}</div><div class="agri-crop-body"><h3>{{ crop.name }} →</h3>{% if crop.scientific_name %}<small>{{ crop.scientific_name }}</small>{% endif %}</div></a>{% empty %}<p>{{ ui.common.no_crops }}</p>{% endfor %}
+</section>
+<p id="noCropResults" style="display:none;color:var(--agri-muted)">{{ ui.common.no_crops }}</p>
+<section id="agri-resources" class="agri-section-head fade-up"><div><h2>📚 {{ ui.nav.resources }}</h2><p>{{ ui.resources_text }}</p></div></section>
+<section class="agri-about" id="agri-about">
+<div class="agri-about-card fade-up"><h3>🌾 PENTRAONE Agriculture</h3><p>A unified Agriculture section with crop guidance, crop-problem support, local weather tools, multilingual access and AI-powered Scan & Ask assistance.</p></div>
+<div class="agri-about-card fade-up"><h3>👨‍🌾 {{ ui.nav.farmer_help }}</h3><p>Need broader assistance? Use the Farmer Help button in the navbar to open PENTRAONE's chatbot support.</p><a class="agri-card-link" href="/chatbot/">Open Farmer Help →</a></div>
+</section>
+{% endblock %}
+{% block extra_js %}<script>(function(){const s=document.getElementById('cropSearch');const items=document.querySelectorAll('#cropList .agri-crop-card');const none=document.getElementById('noCropResults');if(s)s.addEventListener('input',()=>{let n=0,q=s.value.toLowerCase().trim();items.forEach(i=>{const show=!q||i.dataset.cropName.includes(q);i.style.display=show?'':'none';if(show)n++});if(none)none.style.display=n?'none':'block';});})();</script>{% endblock %}

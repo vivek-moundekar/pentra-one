@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Education Login | PentraOne</title>
+
+    <style>
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+
+            font-family:
+                Inter,
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 25% 80%,
+                    rgba(37, 99, 235, 0.30),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 78% 35%,
+                    rgba(59, 130, 246, 0.12),
+                    transparent 32%
+                ),
+                linear-gradient(
+                    135deg,
+                    #050505,
+                    #080b12,
+                    #071227
+                );
+
+            color: #ffffff;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 35px 20px;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =========================================
+           BACKGROUND DECORATION
+        ========================================= */
+
+        .background-glow {
+            position: fixed;
+
+            width: 550px;
+            height: 550px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(37, 99, 235, 0.12);
+
+            filter: blur(120px);
+
+            bottom: -250px;
+            left: -120px;
+
+            pointer-events: none;
+        }
+
+
+        /* =========================================
+           LOGIN CONTAINER
+        ========================================= */
+
+        .login-container {
+            width: 100%;
+            max-width: 660px;
+
+            padding: 48px 38px 40px;
+
+            border-radius: 28px;
+
+            background:
+                linear-gradient(
+                    150deg,
+                    rgba(39, 43, 50, 0.88),
+                    rgba(12, 12, 13, 0.95) 46%,
+                    rgba(10, 10, 10, 0.98)
+                );
+
+            border:
+                1px solid
+                rgba(148, 163, 184, 0.22);
+
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.62),
+                inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+            backdrop-filter: blur(22px);
+
+            position: relative;
+            z-index: 10;
+        }
+
+
+        /* =========================================
+           BRAND
+        ========================================= */
+
+        .brand {
+            text-align: center;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            color: #60a5fa;
+
+            letter-spacing: 1.6px;
+
+            margin-bottom: 18px;
+        }
+
+
+        /* =========================================
+           TITLE
+        ========================================= */
+
+        .login-title {
+            text-align: center;
+
+            font-size: 48px;
+
+            font-weight: 400;
+
+            letter-spacing: 0.3px;
+
+            margin-bottom: 12px;
+        }
+
+        .login-description {
+            max-width: 500px;
+
+            margin: 0 auto 30px;
+
+            text-align: center;
+
+            color: #b7bbc4;
+
+            font-size: 15px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================================
+           MESSAGES
+        ========================================= */
+
+        .messages {
+            margin-bottom: 20px;
+        }
+
+        .message {
+            padding: 12px 15px;
+
+            border-radius: 12px;
+
+            font-size: 14px;
+
+            margin-bottom: 10px;
+
+            background:
+                rgba(239, 68, 68, 0.12);
+
+            border:
+                1px solid
+                rgba(239, 68, 68, 0.28);
+
+            color: #fecaca;
+        }
+
+        .message.success {
+            background:
+                rgba(34, 197, 94, 0.12);
+
+            border-color:
+                rgba(34, 197, 94, 0.30);
+
+            color: #bbf7d0;
+        }
+
+
+        /* =========================================
+           ROLE SELECTOR
+        ========================================= */
+
+        .role-heading {
+            color: #c8ccd4;
+
+            font-size: 13px;
+
+            margin-bottom: 10px;
+        }
+
+        .role-selector {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 10px;
+
+            margin-bottom: 22px;
+        }
+
+        .role-option {
+            position: relative;
+        }
+
+        .role-option input {
+            position: absolute;
+
+            opacity: 0;
+
+            pointer-events: none;
+        }
+
+        .role-option label {
+            height: 48px;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            gap: 8px;
+
+            border-radius: 14px;
+
+            background: #111214;
+
+            border:
+                1px solid
+                #30343c;
+
+            color: #a7abb4;
+
+            font-size: 14px;
+
+            cursor: pointer;
+
+            transition:
+                all 0.25s ease;
+        }
+
+        .role-option label:hover {
+            border-color: #2563eb;
+
+            color: #ffffff;
+        }
+
+        .role-option input:checked + label {
+            color: #ffffff;
+
+            border-color: #3b82f6;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(37, 99, 235, 0.24),
+                    rgba(30, 41, 59, 0.55)
+                );
+
+            box-shadow:
+                0 0 0 2px
+                rgba(37, 99, 235, 0.10);
+        }
+
+
+        /* =========================================
+           FORM FIELD
+        ========================================= */
+
+        .input-wrapper {
+            position: relative;
+
+            margin-bottom: 15px;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+
+            height: 58px;
+
+            padding:
+                0 50px
+                0 52px;
+
+            border-radius: 30px;
+
+            background: #111112;
+
+            border:
+                1px solid
+                #31343b;
+
+            outline: none;
+
+            color: #ffffff;
+
+            font-size: 15px;
+
+            transition:
+                all 0.25s ease;
+        }
+
+        .input-wrapper input::placeholder {
+            color: #6f737c;
+        }
+
+        .input-wrapper input:focus {
+            border-color: #3b82f6;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(59, 130, 246, 0.10);
+        }
+
+        .field-icon {
+            position: absolute;
+
+            left: 20px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #747984;
+
+            width: 20px;
+            height: 20px;
+
+            pointer-events: none;
+        }
+
+
+        /* =========================================
+           PASSWORD TOGGLE
+        ========================================= */
+
+        .password-toggle {
+            position: absolute;
+
+            right: 20px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            border: none;
+            outline: none;
+
+            background: transparent;
+
+            color: #3b82f6;
+
+            font-size: 19px;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+
+        /* =========================================
+           REMEMBER ME
+        ========================================= */
+
+        .form-options {
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            margin:
+                4px 4px
+                24px;
+        }
+
+        .remember-box {
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            color: #a9adb5;
+
+            font-size: 13px;
+        }
+
+        .remember-box input {
+            width: 16px;
+            height: 16px;
+
+            accent-color: #2563eb;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================================
+           LOGIN BUTTON
+        ========================================= */
+
+        .login-btn {
+            width: 100%;
+
+            height: 60px;
+
+            border-radius: 30px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.04);
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #202329,
+                    #202020
+                );
+
+            color: #ffffff;
+
+            font-size: 17px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition:
+                all 0.25s ease;
+        }
+
+        .login-btn:hover {
+            transform:
+                translateY(-2px);
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #2563eb,
+                    #1d4ed8
+                );
+
+            box-shadow:
+                0 12px 28px
+                rgba(37, 99, 235, 0.28);
+        }
+
+
+        /* =========================================
+           DIVIDER
+        ========================================= */
+
+        .divider {
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            margin: 25px 0 18px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+
+            flex: 1;
+
+            height: 1px;
+
+            background: #26282d;
+        }
+
+        .divider span {
+            color: #70747d;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================================
+           GOOGLE BUTTON
+        ========================================= */
+
+        .google-btn {
+            width: 100%;
+
+            height: 54px;
+
+            border-radius: 28px;
+
+            border:
+                1px solid
+                #2b2d32;
+
+            background: #111112;
+
+            color: #d5d7dc;
+
+            text-decoration: none;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 11px;
+
+            font-size: 14px;
+
+            cursor: pointer;
+
+            transition:
+                all 0.25s ease;
+        }
+
+        .google-btn:hover {
+            transform:
+                translateY(-2px);
+
+            border-color: #3b82f6;
+
+            background: #17181a;
+
+            box-shadow:
+                0 10px 24px
+                rgba(37, 99, 235, 0.15);
+        }
+
+
+        /* OFFICIAL MULTICOLOR GOOGLE ICON */
+
+        .google-icon {
+            width: 21px;
+            height: 21px;
+
+            object-fit: contain;
+
+            display: block;
+        }
+
+
+        /* =========================================
+           REGISTER
+        ========================================= */
+
+        .register-text {
+            text-align: center;
+
+            color: #92969f;
+
+            font-size: 13px;
+
+            margin-top: 24px;
+        }
+
+        .register-text a {
+            color: #3b82f6;
+
+            text-decoration: none;
+
+            margin-left: 4px;
+
+            font-weight: 600;
+        }
+
+        .register-text a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================================
+           BACK LINK
+        ========================================= */
+
+        .back-link {
+            display: block;
+
+            text-align: center;
+
+            margin-top: 17px;
+
+            color: #747984;
+
+            font-size: 13px;
+
+            text-decoration: none;
+
+            transition:
+                color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: #ffffff;
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media
+        (max-width: 700px) {
+
+            body {
+                padding: 18px;
+            }
+
+            .login-container {
+                padding:
+                    38px 23px
+                    32px;
+
+                border-radius: 23px;
+            }
+
+            .login-title {
+                font-size: 40px;
+            }
+
+            .login-description {
+                font-size: 14px;
+            }
+        }
+
+
+        @media
+        (max-width: 430px) {
+
+            .login-title {
+                font-size: 35px;
+            }
+
+            .role-selector {
+                gap: 7px;
+            }
+
+            .role-option label {
+                font-size: 13px;
+            }
+
+            .input-wrapper input {
+                height: 55px;
+            }
+
+            .login-btn {
+                height: 56px;
+            }
+        }
+
+    </style>
+
+<style id="pentraone-brand-font">
+.pentra-brand-main{font-family:'Berlin Sans FB Demi','Berlin Sans FB','Arial Black',sans-serif;font-weight:600;letter-spacing:.3px;text-transform:uppercase;}
+.pentra-brand-one{font-family:'Bell MT','Times New Roman',serif;font-style:italic;font-weight:400;text-transform:lowercase;margin-left:2px;}
+</style>
+</head>
+
+
+<body>
+
+    <div class="background-glow"></div>
+
+
+    <main class="login-container">
+
+
+        <!-- BRAND -->
+
+        <div class="brand">
+            <span class="pentra-brand-main">PENTRA</span><span class="pentra-brand-one">one</span> EDUCATION
+        </div>
+
+
+        <!-- TITLE -->
+
+        <h1 class="login-title">
+            Log in
+        </h1>
+
+
+        <p class="login-description">
+            Log in to your Education account and continue
+            learning, practicing and preparing for your exams.
+        </p>
+
+
+
+        <!-- DJANGO MESSAGES -->
+
+        {% if messages %}
+
+            <div class="messages">
+
+                {% for message in messages %}
+
+                    <div class="message {{ message.tags }}">
+                        {{ message }}
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% endif %}
+
+
+
+        <!-- LOGIN FORM -->
+
+        <form
+            method="post"
+            id="educationLoginForm"
+        >
+
+            {% csrf_token %}
+
+
+            <!-- ROLE -->
+
+            <div class="role-heading">
+                Continue as
+            </div>
+
+
+            <div class="role-selector">
+
+
+                <!-- STUDENT -->
+
+                <div class="role-option">
+
+                    <input
+                        type="radio"
+                        name="role"
+                        id="roleStudent"
+                        value="student"
+                        checked
+                    >
+
+                    <label for="roleStudent">
+
+                        <span>🎓</span>
+
+                        Student
+
+                    </label>
+
+                </div>
+
+
+                <!-- TEACHER -->
+
+                <div class="role-option">
+
+                    <input
+                        type="radio"
+                        name="role"
+                        id="roleTeacher"
+                        value="teacher"
+                    >
+
+                    <label for="roleTeacher">
+
+                        <span>👨‍🏫</span>
+
+                        Teacher
+
+                    </label>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- USERNAME -->
+
+            <div class="input-wrapper">
+
+                <svg
+                    class="field-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                >
+
+                    <circle
+                        cx="12"
+                        cy="8"
+                        r="4">
+                    </circle>
+
+                    <path
+                        d="M4 21a8 8 0 0 1 16 0">
+                    </path>
+
+                </svg>
+
+
+                <input
+                    type="text"
+                    name="username"
+                    placeholder="Enter your username"
+                    autocomplete="username"
+                >
+
+            </div>
+
+
+
+            <!-- PASSWORD -->
+
+            <div class="input-wrapper">
+
+
+                <svg
+                    class="field-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                >
+
+                    <rect
+                        x="5"
+                        y="10"
+                        width="14"
+                        height="11"
+                        rx="2">
+                    </rect>
+
+                    <path
+                        d="M8 10V7a4 4 0 0 1 8 0v3">
+                    </path>
+
+                </svg>
+
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                >
+
+
+                <button
+                    type="button"
+                    class="password-toggle"
+                    id="passwordToggle"
+                    aria-label="Show password"
+                >
+                    👁
+                </button>
+
+
+            </div>
+
+
+
+            <!-- REMEMBER ME -->
+
+            <div class="form-options">
+
+                <label class="remember-box">
+
+                    <input
+                        type="checkbox"
+                        name="remember_me"
+                        id="rememberMe"
+                    >
+
+                    <span>
+                        Remember me
+                    </span>
+
+                </label>
+
+            </div>
+
+
+
+            <!-- LOGIN -->
+
+            <button
+                type="submit"
+                class="login-btn"
+            >
+                Log in
+            </button>
+
+
+        </form>
+
+
+
+        <!-- DIVIDER -->
+
+        <div class="divider">
+
+            <span>
+                OR
+            </span>
+
+        </div>
+
+
+
+        <!-- GOOGLE LOGIN -->
+
+        <a
+            href="#"
+            id="googleLoginButton"
+            class="google-btn"
+            data-google-url="{% url 'education:google_start' %}"
+        >
+
+            <img
+                src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+                alt="Google"
+                class="google-icon"
+            >
+
+            <span>
+                Continue with Google
+            </span>
+
+        </a>
+
+
+
+        <!-- REGISTER -->
+
+        <div class="register-text">
+
+            Don't have an account?
+
+            <a href="{% url 'education:register' %}">
+                Sign up
+            </a>
+
+        </div>
+
+
+
+        <!-- RETURN TO PENTRAONE -->
+
+        <a
+            href="/dashboard/"
+            class="back-link"
+        >
+            ← Back to PentraOne
+        </a>
+
+
+    </main>
+
+
+
+    <script>
+
+        /* =========================================
+           PASSWORD SHOW / HIDE
+        ========================================= */
+
+        const passwordInput =
+            document.getElementById("password");
+
+        const passwordToggle =
+            document.getElementById("passwordToggle");
+
+
+        passwordToggle.addEventListener(
+            "click",
+            function () {
+
+                if (
+                    passwordInput.type === "password"
+                ) {
+
+                    passwordInput.type = "text";
+
+                    passwordToggle.textContent = "🙈";
+
+                    passwordToggle.setAttribute(
+                        "aria-label",
+                        "Hide password"
+                    );
+
+                } else {
+
+                    passwordInput.type = "password";
+
+                    passwordToggle.textContent = "👁";
+
+                    passwordToggle.setAttribute(
+                        "aria-label",
+                        "Show password"
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* =========================================
+           GOOGLE LOGIN
+           SEND ROLE + REMEMBER ME
+        ========================================= */
+
+        const googleButton =
+            document.getElementById(
+                "googleLoginButton"
+            );
+
+
+        googleButton.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+
+                const selectedRole =
+                    document.querySelector(
+                        'input[name="role"]:checked'
+                    );
+
+
+                if (!selectedRole) {
+
+                    alert(
+                        "Please select Student or Teacher."
+                    );
+
+                    return;
+
+                }
+
+
+                const rememberMe =
+                    document.getElementById(
+                        "rememberMe"
+                    ).checked;
+
+
+                const baseURL =
+                    googleButton.dataset.googleUrl;
+
+
+                const params =
+                    new URLSearchParams();
+
+
+                params.set(
+                    "role",
+                    selectedRole.value
+                );
+
+
+                params.set(
+                    "remember",
+                    rememberMe ? "1" : "0"
+                );
+
+
+                window.location.href =
+                    baseURL +
+                    "?" +
+                    params.toString();
+
+            }
+        );
+
+    </script>
+
+
+</body>
+</html>

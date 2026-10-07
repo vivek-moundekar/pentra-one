@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        AI Exam Strategy | PentraOne
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        :root {
+
+            --bg: #101217;
+
+            --panel: rgba(35, 39, 50, 0.72);
+
+            --panel-dark: rgba(21, 24, 31, 0.84);
+
+            --panel-soft: rgba(55, 61, 75, 0.45);
+
+            --border: rgba(190, 199, 214, 0.25);
+
+            --border-light: rgba(220, 226, 236, 0.38);
+
+            --text: #f3f4f6;
+
+            --muted: #9ca3af;
+
+            --green: #8ed1b2;
+
+            --amber: #e0b984;
+
+        }
+
+
+        html {
+
+            scroll-behavior: smooth;
+
+        }
+
+
+        body {
+
+            margin: 0;
+
+            min-height: 100vh;
+
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            color:
+                var(--text);
+
+            background:
+                radial-gradient(
+                    circle at 83% 20%,
+                    rgba(93, 106, 132, 0.19),
+                    transparent 26%
+                ),
+                radial-gradient(
+                    circle at 13% 77%,
+                    rgba(85, 98, 124, 0.15),
+                    transparent 25%
+                ),
+                linear-gradient(
+                    135deg,
+                    #0d0f13,
+                    #13161d 50%,
+                    #0c0f14
+                );
+
+            overflow-x: hidden;
+
+        }
+
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            width: 175px;
+
+            height: 175px;
+
+            border-radius: 50%;
+
+            right: 8%;
+
+            top: 17%;
+
+            background:
+                radial-gradient(
+                    circle at 30% 25%,
+                    rgba(130, 143, 165, 0.48),
+                    rgba(44, 50, 63, 0.60) 52%,
+                    rgba(20, 23, 30, 0.15) 72%
+                );
+
+            box-shadow:
+                0 30px 65px rgba(0, 0, 0, 0.38);
+
+            pointer-events: none;
+
+            z-index: 0;
+
+        }
+
+
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            width: 135px;
+
+            height: 135px;
+
+            border-radius: 50%;
+
+            left: 7%;
+
+            bottom: 12%;
+
+            background:
+                radial-gradient(
+                    circle at 30% 25%,
+                    rgba(120, 134, 158, 0.38),
+                    rgba(42, 48, 61, 0.60) 55%,
+                    rgba(16, 19, 25, 0.12) 75%
+                );
+
+            pointer-events: none;
+
+            z-index: 0;
+
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .header {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+            background:
+                rgba(13, 15, 20, 0.72);
+
+            border-bottom:
+                1px solid rgba(190, 199, 214, 0.12);
+
+            backdrop-filter:
+                blur(20px);
+
+            -webkit-backdrop-filter:
+                blur(20px);
+
+            padding:
+                15px 5%;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+        }
+
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+        }
+
+
+        .brand-icon {
+
+            width: 44px;
+
+            height: 44px;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #687386,
+                    #252b35
+                );
+
+            border:
+                1px solid rgba(213, 221, 234, 0.25);
+
+            color: white;
+
+            display: grid;
+
+            place-items: center;
+
+            font-size: 20px;
+
+            box-shadow:
+                0 12px 30px rgba(0, 0, 0, 0.34);
+
+        }
+
+
+        .brand h2 {
+
+            margin: 0;
+
+            font-size: 17px;
+
+            font-weight: 500;
+
+        }
+
+
+        .brand p {
+
+            margin:
+                3px 0 0;
+
+            color:
+                var(--muted);
+
+            font-size: 11px;
+
+        }
+
+
+        .back {
+
+            text-decoration: none;
+
+            color:
+                #dde2ea;
+
+            border:
+                1px solid var(--border);
+
+            background:
+                rgba(91, 98, 113, 0.18);
+
+            border-radius:
+                22px;
+
+            padding:
+                10px 15px;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            transition:
+                0.25s ease;
+
+        }
+
+
+        .back:hover {
+
+            transform:
+                translateY(-2px);
+
+            background:
+                rgba(123, 132, 150, 0.28);
+
+            border-color:
+                var(--border-light);
+
+        }
+
+
+        /* =====================================================
+           MAIN
+        ===================================================== */
+
+        .container {
+
+            position: relative;
+
+            z-index: 2;
+
+            width:
+                min(1080px, 92%);
+
+            margin: auto;
+
+            padding:
+                34px 0 55px;
+
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(44, 49, 62, 0.84),
+                    rgba(25, 29, 38, 0.82)
+                );
+
+            color: white;
+
+            padding:
+                34px;
+
+            border-radius:
+                28px;
+
+            margin-bottom:
+                23px;
+
+            border:
+                1px solid rgba(205, 213, 226, 0.30);
+
+            box-shadow:
+                0 28px 70px rgba(0, 0, 0, 0.34);
+
+            backdrop-filter:
+                blur(22px);
+
+        }
+
+
+        .hero::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 260px;
+
+            height: 260px;
+
+            border-radius: 50%;
+
+            right: -90px;
+
+            top: -120px;
+
+            background:
+                radial-gradient(
+                    circle at 30% 30%,
+                    rgba(175, 188, 210, 0.20),
+                    rgba(79, 89, 108, 0.08) 60%,
+                    transparent 72%
+                );
+
+        }
+
+
+        .hero > * {
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        .eyebrow {
+
+            display:
+                inline-flex;
+
+            font-size: 10px;
+
+            font-weight: 700;
+
+            letter-spacing:
+                0.9px;
+
+            text-transform:
+                uppercase;
+
+            color:
+                #cbd2dc;
+
+            background:
+                rgba(157, 169, 189, 0.10);
+
+            border:
+                1px solid rgba(198, 207, 221, 0.18);
+
+            padding:
+                7px 11px;
+
+            border-radius:
+                18px;
+
+        }
+
+
+        .hero h1 {
+
+            margin:
+                12px 0 10px;
+
+            font-size:
+                34px;
+
+            font-weight: 400;
+
+            letter-spacing:
+                -0.6px;
+
+        }
+
+
+        .hero p {
+
+            margin: 0;
+
+            max-width:
+                720px;
+
+            line-height:
+                1.7;
+
+            color:
+                #bec5d0;
+
+            font-size:
+                13.5px;
+
+        }
+
+
+        .generate {
+
+            margin-top:
+                22px;
+
+            border:
+                1px solid rgba(226, 231, 240, 0.22);
+
+            border-radius:
+                24px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #858a94,
+                    #666b74
+                );
+
+            color:
+                white;
+
+            padding:
+                12px 18px;
+
+            font-weight:
+                600;
+
+            cursor:
+                pointer;
+
+            font-size:
+                13px;
+
+            transition:
+                0.25s ease;
+
+            box-shadow:
+                0 12px 30px rgba(0, 0, 0, 0.25);
+
+        }
+
+
+        .generate:hover {
+
+            transform:
+                translateY(-2px);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #969ca7,
+                    #737985
+                );
+
+        }
+
+
+        /* =====================================================
+           SECTION
+        ===================================================== */
+
+        .section {
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(38, 43, 55, 0.76),
+                    rgba(22, 26, 34, 0.80)
+                );
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                22px;
+
+            padding:
+                22px;
+
+            margin-bottom:
+                18px;
+
+            box-shadow:
+                0 18px 48px rgba(0, 0, 0, 0.24);
+
+            backdrop-filter:
+                blur(18px);
+
+        }
+
+
+        .section h2 {
+
+            margin:
+                0 0 6px;
+
+            font-size:
+                19px;
+
+            font-weight: 500;
+
+        }
+
+
+        .section-intro {
+
+            margin:
+                0 0 17px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                12px;
+
+            line-height:
+                1.6;
+
+        }
+
+
+        /* =====================================================
+           PERFORMANCE
+        ===================================================== */
+
+        .performance-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 12px;
+
+        }
+
+
+        .performance {
+
+            background:
+                rgba(14, 17, 23, 0.42);
+
+            border:
+                1px solid rgba(187, 197, 214, 0.15);
+
+            border-radius:
+                16px;
+
+            padding:
+                15px;
+
+            transition:
+                0.25s ease;
+
+        }
+
+
+        .performance:hover {
+
+            transform:
+                translateY(-3px);
+
+            border-color:
+                rgba(210, 218, 231, 0.28);
+
+        }
+
+
+        .performance strong {
+
+            display: block;
+
+            font-size: 13px;
+
+            margin-bottom:
+                6px;
+
+        }
+
+
+        .performance small {
+
+            display: block;
+
+            color:
+                var(--muted);
+
+            font-size: 11px;
+
+            margin-bottom:
+                8px;
+
+        }
+
+
+        .score {
+
+            font-size: 18px;
+
+            font-weight: 700;
+
+        }
+
+
+        .good {
+
+            color:
+                var(--green);
+
+        }
+
+
+        .needs-work {
+
+            color:
+                var(--amber);
+
+        }
+
+
+        /* =====================================================
+           ERROR
+        ===================================================== */
+
+        .error {
+
+            background:
+                rgba(130, 78, 57, 0.18);
+
+            border:
+                1px solid rgba(224, 173, 143, 0.28);
+
+            color:
+                #edc0a7;
+
+            padding:
+                15px;
+
+            border-radius:
+                15px;
+
+            margin-bottom:
+                18px;
+
+            font-size:
+                12px;
+
+            backdrop-filter:
+                blur(14px);
+
+        }
+
+
+        /* =====================================================
+           ASSESSMENT
+        ===================================================== */
+
+        .assessment {
+
+            background:
+                rgba(125, 138, 161, 0.11);
+
+            border:
+                1px solid rgba(191, 201, 217, 0.19);
+
+            color:
+                #dce1e9;
+
+            padding:
+                15px;
+
+            border-radius:
+                15px;
+
+            font-size:
+                13px;
+
+            line-height:
+                1.7;
+
+        }
+
+
+        /* =====================================================
+           PRIORITY
+        ===================================================== */
+
+        .priority-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 13px;
+
+        }
+
+
+        .priority {
+
+            background:
+                rgba(14, 17, 23, 0.40);
+
+            border:
+                1px solid rgba(187, 197, 214, 0.15);
+
+            border-radius:
+                16px;
+
+            padding:
+                15px;
+
+            transition:
+                0.25s ease;
+
+        }
+
+
+        .priority:hover {
+
+            transform:
+                translateY(-2px);
+
+            border-color:
+                rgba(213, 220, 232, 0.26);
+
+        }
+
+
+        .priority h3 {
+
+            margin:
+                0 0 8px;
+
+            font-size:
+                14px;
+
+            font-weight: 600;
+
+        }
+
+
+        .priority p {
+
+            margin:
+                5px 0;
+
+            color:
+                var(--muted);
+
+            font-size:
+                12px;
+
+            line-height:
+                1.6;
+
+        }
+
+
+        .priority p strong {
+
+            color:
+                #d9dee7;
+
+        }
+
+
+        /* =====================================================
+           TWO COLUMN
+        ===================================================== */
+
+        .two-col {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 18px;
+
+        }
+
+
+        .list-box {
+
+            background:
+                rgba(14, 17, 23, 0.40);
+
+            border:
+                1px solid rgba(187, 197, 214, 0.15);
+
+            border-radius:
+                16px;
+
+            padding:
+                15px;
+
+        }
+
+
+        .list-box h3 {
+
+            margin:
+                0 0 9px;
+
+            font-size:
+                14px;
+
+            font-weight:
+                600;
+
+        }
+
+
+        ul {
+
+            margin: 0;
+
+            padding-left:
+                18px;
+
+        }
+
+
+        li {
+
+            margin:
+                7px 0;
+
+            color:
+                #bcc3ce;
+
+            font-size:
+                12px;
+
+            line-height:
+                1.55;
+
+        }
+
+
+        /* =====================================================
+           DAILY PLAN
+        ===================================================== */
+
+        .plan-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 13px;
+
+        }
+
+
+        .plan {
+
+            background:
+                rgba(14, 17, 23, 0.40);
+
+            border:
+                1px solid rgba(187, 197, 214, 0.15);
+
+            border-radius:
+                16px;
+
+            padding:
+                15px;
+
+            transition:
+                0.25s ease;
+
+        }
+
+
+        .plan:hover {
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        .plan h3 {
+
+            margin:
+                0 0 7px;
+
+            font-size:
+                14px;
+
+            font-weight:
+                600;
+
+        }
+
+
+        .plan p {
+
+            margin: 0;
+
+            color:
+                var(--muted);
+
+            font-size:
+                12px;
+
+            line-height:
+                1.6;
+
+        }
+
+
+        /* =====================================================
+           EMPTY
+        ===================================================== */
+
+        .empty {
+
+            background:
+                rgba(14, 17, 23, 0.40);
+
+            border:
+                1px solid rgba(187, 197, 214, 0.14);
+
+            color:
+                var(--muted);
+
+            padding:
+                25px;
+
+            border-radius:
+                15px;
+
+            text-align:
+                center;
+
+            font-size:
+                12px;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .footer {
+
+            text-align:
+                center;
+
+            color:
+                #6f7785;
+
+            font-size:
+                11px;
+
+            margin-top:
+                35px;
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media(max-width: 750px) {
+
+            .performance-grid,
+
+            .priority-grid,
+
+            .plan-grid,
+
+            .two-col {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .hero {
+
+                padding:
+                    25px;
+
+                border-radius:
+                    22px;
+
+            }
+
+
+            .hero h1 {
+
+                font-size:
+                    27px;
+
+            }
+
+
+            .header {
+
+                padding:
+                    14px 4%;
+
+            }
+
+
+            .brand p {
+
+                display:
+                    none;
+
+            }
+
+
+            .back {
+
+                padding:
+                    9px 12px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            🎯
+        </div>
+
+        <div>
+
+            <h2>
+                PentraOne Education
+            </h2>
+
+            <p>
+                Class 10 Exam Preparation
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <a
+        href="{% url 'education:student_dashboard' %}"
+        class="back"
+    >
+        ← Dashboard
+    </a>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <section class="hero">
+
+        <div class="eyebrow">
+            Class 10 • AI Powered
+        </div>
+
+
+        <h1>
+            🧠 AI Exam Strategy
+        </h1>
+
+
+        <p>
+
+            Get a personalized preparation strategy
+            based on your actual PentraOne test performance.
+            The AI identifies weaker areas and suggests
+            what to revise first.
+
+        </p>
+
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <button
+                class="generate"
+                type="submit"
+            >
+
+                ✨ Generate My Exam Strategy
+
+            </button>
+
+        </form>
+
+    </section>
+
+
+    {% if generation_error %}
+
+        <div class="error">
+
+            ⚠️ {{ generation_error }}
+
+        </div>
+
+    {% endif %}
+
+
+    <!-- =====================================================
+         PERFORMANCE
+    ====================================================== -->
+
+    <section class="section">
+
+        <h2>
+            📊 Your Recent Performance
+        </h2>
+
+
+        <p class="section-intro">
+
+            Your latest Class 10 test results are used
+            to personalize the strategy.
+
+        </p>
+
+
+        {% if performance_summary %}
+
+            <div class="performance-grid">
+
+                {% for item in performance_summary %}
+
+                    <div class="performance">
+
+                        <strong>
+                            {{ item.subject }}
+                        </strong>
+
+
+                        <small>
+                            {{ item.chapter }}
+                        </small>
+
+
+                        <span
+                            class="
+                                score
+                                {% if item.percentage >= 70 %}
+                                    good
+                                {% else %}
+                                    needs-work
+                                {% endif %}
+                            "
+                        >
+
+                            {{ item.percentage }}%
+
+                        </span>
+
+
+                        <small>
+
+                            {{ item.score }}/{{ item.total }}
+
+                        </small>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="empty">
+
+                No completed Class 10 test results
+                are available yet.
+
+            </div>
+
+        {% endif %}
+
+    </section>
+
+
+    {% if strategy %}
+
+
+        <!-- =================================================
+             OVERALL ASSESSMENT
+        ================================================== -->
+
+        <section class="section">
+
+            <h2>
+                🎯 Overall Assessment
+            </h2>
+
+
+            <div class="assessment">
+
+                {{ strategy.overall_assessment }}
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PRIORITY SUBJECTS
+        ================================================== -->
+
+        <section class="section">
+
+            <h2>
+                ⭐ Priority Subjects
+            </h2>
+
+
+            <p class="section-intro">
+
+                Start with these areas according
+                to your performance.
+
+            </p>
+
+
+            {% if strategy.priority_subjects %}
+
+                <div class="priority-grid">
+
+                    {% for item in strategy.priority_subjects %}
+
+                        <article class="priority">
+
+                            <h3>
+                                {{ item.subject }}
+                            </h3>
+
+
+                            <p>
+
+                                <strong>
+                                    Why:
+                                </strong>
+
+                                {{ item.reason }}
+
+                            </p>
+
+
+                            <p>
+
+                                <strong>
+                                    Action:
+                                </strong>
+
+                                {{ item.action }}
+
+                            </p>
+
+                        </article>
+
+                    {% endfor %}
+
+                </div>
+
+            {% endif %}
+
+        </section>
+
+
+        <!-- =================================================
+             STRONG / WEAK
+        ================================================== -->
+
+        <section class="section">
+
+            <h2>
+                📚 Strong & Weak Areas
+            </h2>
+
+
+            <div class="two-col">
+
+
+                <div class="list-box">
+
+                    <h3>
+                        💪 Strong Areas
+                    </h3>
+
+
+                    <ul>
+
+                        {% for item in strategy.strong_areas %}
+
+                            <li>
+                                {{ item }}
+                            </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
+
+
+                <div class="list-box">
+
+                    <h3>
+                        ⚠️ Areas to Improve
+                    </h3>
+
+
+                    <ul>
+
+                        {% for item in strategy.weak_areas %}
+
+                            <li>
+                                {{ item }}
+                            </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             DAILY PLAN
+        ================================================== -->
+
+        <section class="section">
+
+            <h2>
+                🗓️ Suggested Daily Plan
+            </h2>
+
+
+            <div class="plan-grid">
+
+                {% for item in strategy.daily_plan %}
+
+                    <article class="plan">
+
+                        <h3>
+                            {{ item.time }}
+                        </h3>
+
+
+                        <p>
+                            {{ item.activity }}
+                        </p>
+
+                    </article>
+
+                {% endfor %}
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FINAL WEEK
+        ================================================== -->
+
+        <section class="section">
+
+            <h2>
+                🔥 Final Week Strategy
+            </h2>
+
+
+            <ul>
+
+                {% for item in strategy.final_week_strategy %}
+
+                    <li>
+                        {{ item }}
+                    </li>
+
+                {% endfor %}
+
+            </ul>
+
+        </section>
+
+
+        <!-- =================================================
+             EXAM DAY
+        ================================================== -->
+
+        <section class="section">
+
+            <h2>
+                📝 Exam-Day Tips
+            </h2>
+
+
+            <ul>
+
+                {% for item in strategy.exam_day_tips %}
+
+                    <li>
+                        {{ item }}
+                    </li>
+
+                {% endfor %}
+
+            </ul>
+
+        </section>
+
+
+    {% endif %}
+
+
+    <div class="footer">
+
+        PentraOne Education • AI Exam Preparation
+
+    </div>
+
+
+</main>
+
+
+</body>
+
+</html>

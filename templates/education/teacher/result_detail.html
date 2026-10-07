@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Result Details | PentraOne Education
+    </title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        :root {
+
+            --text: #f8fafc;
+
+            --muted: #94a3b8;
+
+            --border:
+                rgba(148, 163, 184, 0.16);
+
+            --blue:
+                #3b82f6;
+
+            --blue-dark:
+                #2563eb;
+
+            --green:
+                #22c55e;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            font-family:
+                Inter,
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            color:
+                var(--text);
+
+            background:
+
+                radial-gradient(
+                    circle at 12% 88%,
+                    rgba(37, 99, 235, 0.24),
+                    transparent 31%
+                ),
+
+                radial-gradient(
+                    circle at 88% 15%,
+                    rgba(99, 102, 241, 0.12),
+                    transparent 26%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #050505,
+                    #080c14 48%,
+                    #071426
+                );
+
+            overflow-x:
+                hidden;
+        }
+
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            width: 420px;
+
+            height: 420px;
+
+            left: -180px;
+
+            bottom: -180px;
+
+            border-radius: 50%;
+
+            filter:
+                blur(100px);
+
+            background:
+                rgba(37, 99, 235, 0.1);
+
+            pointer-events:
+                none;
+        }
+
+
+        /* ============================================
+           HEADER
+        ============================================ */
+
+        .header {
+
+            position:
+                sticky;
+
+            top: 0;
+
+            z-index:
+                50;
+
+            height:
+                76px;
+
+            padding:
+                0 42px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            background:
+                rgba(5, 8, 13, 0.78);
+
+            border-bottom:
+                1px solid
+                rgba(148, 163, 184, 0.11);
+
+            backdrop-filter:
+                blur(20px);
+        }
+
+
+        .brand {
+
+            display:
+                flex;
+
+            gap:
+                12px;
+
+            align-items:
+                center;
+
+            color:
+                white;
+
+            text-decoration:
+                none;
+        }
+
+
+        .brand-icon {
+
+            width:
+                40px;
+
+            height:
+                40px;
+
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            border-radius:
+                12px;
+
+            color:
+                #93c5fd;
+
+            background:
+                rgba(59, 130, 246, 0.09);
+
+            border:
+                1px solid
+                rgba(59, 130, 246, 0.19);
+        }
+
+
+        .brand-icon svg {
+
+            width:
+                20px;
+
+            height:
+                20px;
+
+            stroke:
+                currentColor;
+        }
+
+
+        .brand strong {
+
+            display:
+                block;
+
+            font-size:
+                15px;
+        }
+
+
+        .brand span {
+
+            display:
+                block;
+
+            margin-top:
+                2px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                10px;
+        }
+
+
+        .back {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                8px;
+
+            padding:
+                10px 14px;
+
+            border-radius:
+                11px;
+
+            border:
+                1px solid
+                var(--border);
+
+            color:
+                #cbd5e1;
+
+            text-decoration:
+                none;
+
+            font-size:
+                11px;
+
+            font-weight:
+                800;
+
+            background:
+                rgba(255, 255, 255, 0.035);
+
+            transition:
+                0.2s ease;
+        }
+
+
+        .back svg {
+
+            width:
+                18px;
+
+            height:
+                18px;
+
+            stroke:
+                currentColor;
+        }
+
+
+        .back:hover {
+
+            color:
+                white;
+
+            border-color:
+                rgba(59, 130, 246, 0.35);
+
+            background:
+                rgba(59, 130, 246, 0.08);
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        /* ============================================
+           PAGE
+        ============================================ */
+
+        .page {
+
+            position:
+                relative;
+
+            z-index:
+                1;
+
+            width:
+                min(
+                    1180px,
+                    calc(100% - 48px)
+                );
+
+            margin:
+                0 auto;
+
+            padding:
+                40px 0 55px;
+        }
+
+
+        /* ============================================
+           HERO
+        ============================================ */
+
+        .hero {
+
+            margin-bottom:
+                22px;
+
+            animation:
+                rise 0.4s ease both;
+        }
+
+
+        .eyebrow {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                6px;
+
+            margin-bottom:
+                10px;
+
+            padding:
+                6px 9px;
+
+            border-radius:
+                999px;
+
+            color:
+                #93c5fd;
+
+            background:
+                rgba(59, 130, 246, 0.08);
+
+            border:
+                1px solid
+                rgba(59, 130, 246, 0.18);
+
+            font-size:
+                9px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                1px;
+
+            text-transform:
+                uppercase;
+        }
+
+
+        .eyebrow::before {
+
+            content: "";
+
+            width:
+                6px;
+
+            height:
+                6px;
+
+            border-radius:
+                50%;
+
+            background:
+                var(--blue);
+
+            box-shadow:
+                0 0 10px
+                rgba(59, 130, 246, 0.7);
+        }
+
+
+        h1 {
+
+            font-size:
+                clamp(
+                    28px,
+                    4vw,
+                    43px
+                );
+
+            letter-spacing:
+                -1.2px;
+        }
+
+
+        .hero p {
+
+            margin-top:
+                10px;
+
+            max-width:
+                760px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                12px;
+
+            line-height:
+                1.7;
+        }
+
+
+        /* ============================================
+           SUMMARY
+        ============================================ */
+
+        .summary {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    4,
+                    minmax(0, 1fr)
+                );
+
+            gap:
+                12px;
+
+            margin-bottom:
+                18px;
+        }
+
+
+        .card,
+        .answer-card {
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(18, 24, 35, 0.82),
+                    rgba(8, 13, 22, 0.9)
+                );
+
+            border:
+                1px solid
+                var(--border);
+
+            backdrop-filter:
+                blur(18px);
+
+            box-shadow:
+                inset 0 1px 0
+                rgba(255, 255, 255, 0.025),
+                0 22px 60px
+                rgba(0, 0, 0, 0.15);
+        }
+
+
+        .card {
+
+            padding:
+                18px;
+
+            border-radius:
+                17px;
+
+            transition:
+                0.25s ease;
+
+            animation:
+                rise 0.45s ease both;
+        }
+
+
+        .card:hover {
+
+            transform:
+                translateY(-2px);
+
+            border-color:
+                rgba(59, 130, 246, 0.24);
+        }
+
+
+        .label {
+
+            color:
+                #718096;
+
+            font-size:
+                9px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                0.8px;
+
+            text-transform:
+                uppercase;
+        }
+
+
+        .value {
+
+            margin-top:
+                7px;
+
+            color:
+                #f8fafc;
+
+            font-size:
+                14px;
+
+            font-weight:
+                750;
+
+            line-height:
+                1.45;
+        }
+
+
+        .muted {
+
+            margin-top:
+                4px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                10px;
+
+            line-height:
+                1.5;
+        }
+
+
+        .score-card {
+
+            border-color:
+                rgba(59, 130, 246, 0.28);
+
+            box-shadow:
+                inset 0 1px 0
+                rgba(255, 255, 255, 0.025),
+                0 0 35px
+                rgba(37, 99, 235, 0.07);
+        }
+
+
+        .score-big {
+
+            margin-top:
+                4px;
+
+            color:
+                #93c5fd;
+
+            font-size:
+                28px;
+
+            font-weight:
+                850;
+
+            letter-spacing:
+                -0.8px;
+        }
+
+
+        /* ============================================
+           SECTION TITLE
+        ============================================ */
+
+        .section-title {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                15px;
+
+            margin:
+                30px 0 13px;
+        }
+
+
+        .section-title h2 {
+
+            font-size:
+                16px;
+        }
+
+
+        .section-title span {
+
+            color:
+                var(--muted);
+
+            font-size:
+                10px;
+        }
+
+
+        /* ============================================
+           ANSWERS
+        ============================================ */
+
+        .answers {
+
+            display:
+                grid;
+
+            gap:
+                12px;
+        }
+
+
+        .answer-card {
+
+            border-radius:
+                18px;
+
+            padding:
+                20px;
+
+            animation:
+                rise 0.45s ease both;
+
+            transition:
+                0.25s ease;
+        }
+
+
+        .answer-card:hover {
+
+            border-color:
+                rgba(59, 130, 246, 0.22);
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        .answer-top {
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            gap:
+                16px;
+
+            align-items:
+                flex-start;
+        }
+
+
+        .question-number {
+
+            color:
+                #93c5fd;
+
+            font-size:
+                9px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                0.8px;
+
+            text-transform:
+                uppercase;
+        }
+
+
+        .question {
+
+            margin-top:
+                7px;
+
+            color:
+                #f1f5f9;
+
+            font-size:
+                13px;
+
+            font-weight:
+                650;
+
+            line-height:
+                1.65;
+        }
+
+
+        .marks {
+
+            flex:
+                0 0 auto;
+
+            padding:
+                6px 9px;
+
+            border-radius:
+                999px;
+
+            color:
+                #bfdbfe;
+
+            background:
+                rgba(59, 130, 246, 0.08);
+
+            border:
+                1px solid
+                rgba(59, 130, 246, 0.17);
+
+            font-size:
+                9px;
+
+            font-weight:
+                800;
+        }
+
+
+        .answer-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap:
+                10px;
+
+            margin-top:
+                15px;
+        }
+
+
+        .answer-box {
+
+            padding:
+                13px;
+
+            border-radius:
+                12px;
+
+            background:
+                rgba(255, 255, 255, 0.025);
+
+            border:
+                1px solid
+                rgba(148, 163, 184, 0.10);
+        }
+
+
+        .answer-box.correct {
+
+            background:
+                rgba(34, 197, 94, 0.035);
+
+            border-color:
+                rgba(34, 197, 94, 0.13);
+        }
+
+
+        .answer-text {
+
+            margin-top:
+                6px;
+
+            color:
+                #cbd5e1;
+
+            font-size:
+                11px;
+
+            line-height:
+                1.65;
+
+            white-space:
+                pre-wrap;
+
+            word-break:
+                break-word;
+        }
+
+
+        /* ============================================
+           EMPTY
+        ============================================ */
+
+        .empty {
+
+            padding:
+                55px 20px;
+
+            text-align:
+                center;
+
+            color:
+                var(--muted);
+
+            border-radius:
+                18px;
+
+            border:
+                1px solid
+                var(--border);
+
+            background:
+                rgba(15, 20, 30, 0.65);
+
+            font-size:
+                11px;
+        }
+
+
+        /* ============================================
+           ANIMATION
+        ============================================ */
+
+        @keyframes rise {
+
+            from {
+
+                opacity:
+                    0;
+
+                transform:
+                    translateY(10px);
+            }
+
+            to {
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* ============================================
+           RESPONSIVE
+        ============================================ */
+
+        @media (max-width: 850px) {
+
+            .summary {
+
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 620px) {
+
+            .header {
+
+                height:
+                    68px;
+
+                padding:
+                    0 16px;
+            }
+
+
+            .brand span,
+            .back span {
+
+                display:
+                    none;
+            }
+
+
+            .page {
+
+                width:
+                    calc(100% - 28px);
+
+                padding-top:
+                    28px;
+            }
+
+
+            .summary {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .answer-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .answer-top {
+
+                flex-direction:
+                    column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ============================================
+     HEADER
+============================================ -->
+
+<header class="header">
+
+
+    <a
+        href="{% url 'education:teacher_dashboard' %}"
+        class="brand"
+    >
+
+
+        <div class="brand-icon">
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="1.8"
+            >
+
+                <path d="M4 19V9"></path>
+
+                <path d="M10 19V5"></path>
+
+                <path d="M16 19v-7"></path>
+
+                <path d="M22 19V3"></path>
+
+            </svg>
+
+        </div>
+
+
+        <div>
+
+            <strong>
+                PentraOne Education
+            </strong>
+
+            <span>
+                Teacher Portal · Result Detail
+            </span>
+
+        </div>
+
+
+    </a>
+
+
+    <a
+        href="{% url 'education:teacher_results' %}"
+        class="back"
+    >
+
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="1.8"
+        >
+
+            <path d="m15 18-6-6 6-6"></path>
+
+        </svg>
+
+
+        <span>
+            All Results
+        </span>
+
+    </a>
+
+
+</header>
+
+
+<!-- ============================================
+     PAGE
+============================================ -->
+
+<main class="page">
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+
+        <div class="eyebrow">
+
+            Read-only Result
+
+        </div>
+
+
+        <h1>
+
+            {{ result.test.title }}
+
+        </h1>
+
+
+        <p>
+
+            Detailed submitted answers for
+
+            <strong>
+
+                {% if result.student.get_full_name %}
+
+                    {{ result.student.get_full_name }}
+
+                {% else %}
+
+                    {{ result.student.username }}
+
+                {% endif %}
+
+            </strong>.
+
+            This page displays saved TestResult and StudentAnswer
+            information and does not modify the student's result.
+
+        </p>
+
+
+    </section>
+
+
+    <!-- ============================================
+         SUMMARY CARDS
+    ============================================ -->
+
+    <section class="summary">
+
+
+        <!-- STUDENT -->
+
+        <article class="card">
+
+
+            <div class="label">
+                Student
+            </div>
+
+
+            <div class="value">
+
+                {% if result.student.get_full_name %}
+
+                    {{ result.student.get_full_name }}
+
+                {% else %}
+
+                    {{ result.student.username }}
+
+                {% endif %}
+
+            </div>
+
+
+            <div class="muted">
+
+                @{{ result.student.username }}
+
+            </div>
+
+
+        </article>
+
+
+        <!-- ACADEMIC DETAILS -->
+
+        <article class="card">
+
+
+            <div class="label">
+
+                Academic Context
+
+            </div>
+
+
+            <div class="value">
+
+                {{ result.test.chapter.subject.class_level.name }}
+
+                ·
+
+                {{ result.test.chapter.subject.name }}
+
+            </div>
+
+
+            <div class="muted">
+
+                Chapter
+                {{ result.test.chapter.chapter_number }}
+
+                ·
+
+                {{ result.test.chapter.name }}
+
+            </div>
+
+
+        </article>
+
+
+        <!-- SCORE -->
+
+        <article class="card score-card">
+
+
+            <div class="label">
+
+                Score
+
+            </div>
+
+
+            <div class="score-big">
+
+                {{ percentage }}%
+
+            </div>
+
+
+            <div class="muted">
+
+                {{ result.score|floatformat:1 }}
+
+                /
+
+                {{ result.total_marks }}
+
+                marks
+
+            </div>
+
+
+        </article>
+
+
+        <!-- SUBMITTED -->
+
+        <article class="card">
+
+
+            <div class="label">
+
+                Submitted
+
+            </div>
+
+
+            <div class="value">
+
+                {{ result.submitted_at|date:"d M Y" }}
+
+            </div>
+
+
+            <div class="muted">
+
+                {{ result.submitted_at|date:"h:i A" }}
+
+            </div>
+
+
+        </article>
+
+
+    </section>
+
+
+    <!-- ============================================
+         ANSWER BREAKDOWN
+    ============================================ -->
+
+    <div class="section-title">
+
+
+        <h2>
+
+            Answer Breakdown
+
+        </h2>
+
+
+        <span>
+
+            {{ answers|length }}
+
+            saved answer{{ answers|length|pluralize }}
+
+        </span>
+
+
+    </div>
+
+
+    {% if answers %}
+
+
+        <section class="answers">
+
+
+            {% for answer in answers %}
+
+
+                <article class="answer-card">
+
+
+                    <!-- QUESTION -->
+
+                    <div class="answer-top">
+
+
+                        <div>
+
+
+                            <div class="question-number">
+
+                                Question
+                                {{ answer.question.order }}
+
+                                ·
+
+                                {{ answer.question.get_question_type_display }}
+
+                            </div>
+
+
+                            <div class="question">
+
+                                {{ answer.question.question_text }}
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="marks">
+
+                            {{ answer.marks_awarded|floatformat:1 }}
+
+                            /
+
+                            {{ answer.question.marks }}
+
+                            marks
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- ANSWERS -->
+
+                    <div class="answer-grid">
+
+
+                        <!-- STUDENT ANSWER -->
+
+                        <div class="answer-box">
+
+
+                            <div class="label">
+
+                                Student Answer
+
+                            </div>
+
+
+                            <div class="answer-text">
+
+                                {% if answer.answer_text %}
+
+                                    {{ answer.answer_text }}
+
+                                {% else %}
+
+                                    No answer submitted
+
+                                {% endif %}
+
+                            </div>
+
+
+                        </div>
+
+
+                        <!-- CORRECT ANSWER -->
+
+                        <div class="answer-box correct">
+
+
+                            <div class="label">
+
+                                Correct / Reference Answer
+
+                            </div>
+
+
+                            <div class="answer-text">
+
+                                {% if answer.question.correct_answer %}
+
+                                    {{ answer.question.correct_answer }}
+
+                                {% else %}
+
+                                    Not stored for this question
+
+                                {% endif %}
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </article>
+
+
+            {% endfor %}
+
+
+        </section>
+
+
+    {% else %}
+
+
+        <div class="empty">
+
+            No StudentAnswer records are attached to this result.
+
+        </div>
+
+
+    {% endif %}
+
+
+</main>
+
+
+</body>
+
+</html>

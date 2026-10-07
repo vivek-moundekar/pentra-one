@@ -1,0 +1,15 @@
+﻿[
+  {
+    "model": "healthcare.healthreport",
+    "pk": 4,
+    "fields": {
+      "patient_name": "Aryan thakur",
+      "report_type": "Medical Report / Prescription",
+      "report_date": "2026-09-18",
+      "extracted_information": "PATIENT INFORMATION\r\n\r\nPatient Name: MR. SANOJ THAKUR\r\nAge: 40y\r\nGender: Male\r\nDate: 11-Aug-2026\r\n\r\nREPORT / PRESCRIPTION INFORMATION\r\n\r\nDoctor: डॉ. विनीत दुबे (MBBS, D.V.D., M.C.S.E.P. (आय.) चर्मरोग, कुष्ठरोग, गुप्तरोग तज्ञ), Dr. Vineet Dube MBBS DV&D Reg No: 67821(MMC)\r\nHospital / Clinic: स्किन केअर क्लिनीक (Skin Care Clinic)\r\nMedicines:\r\n1) TAB. ZOHOBIL 40 MG\r\n   Composition: BILASTINE 40 MG TABLET\r\n   Dosage: 1-0-1\r\n   Timing - Freq. - Duration: 1 नाश्ते से पहले, 1 रात - खाने से पहले, रोज - 1 महीना\r\n2) TAB. DEX CPM-SR\r\n   Composition: DEXCHLORPHENIRAMINE MALEATE SR\r\n   Dosage: Not clearly readable (visible as a dash \"-\")\r\n   Timing - Freq. - Duration: जब जरूरत - अगली तारीख तक\r\nTests: Not mentioned in this prescription.\r\nImportant Values: Not applicable (This is a prescription)\r\n\r\nEXTRACTION NOTE\r\n\r\n*   The dosage for TAB. DEX CPM-SR is not clearly readable, only a dash is visible.\r\n*   The handwritten note at the bottom says: \"28 दिन बाद आये सेप्टेबर कि 8.9 को आये आते समय ब्लड टेस्ट साथ में लाये गोली खतम होने के 2-3 दिन पाहिले हि आये!\" which translates to: \"Come after 28 days, come on 8th or 9th September. Bring blood test reports along when you come. Come 2-3 days before the medicine finishes!\"\r\n*   The advice section mentions: \"गोली खतम होने से १ या २ दिन पहले आयें, ताकि आगे का उपचार दिया जा सके । पित्त के लिए योग्य उपचार शुरू करने पर भी ५ से ७ दिनों तक लाल चकत्ते आ सकते हैं डमर्मोग्राफीसम यानि रगड़ने या घसने पर त्वचा का लाल पड़ना । यह कोई रोग नहीं। यह धीरे धीरे ठीक हो जायेगा | ज्यादा जरुरी है, खुजली का कम होना । आते वक्त खून की जाँच की रिपोर्ट साथ",
+      "explanation": "",
+      "report_image": "health_reports/WhatsApp_Image_2026-09-11_at_1.11.09_AM.jpeg",
+      "created_at": "2026-09-18 14:11:31.880774"
+    }
+  }
+]

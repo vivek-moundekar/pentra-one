@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Government Schemes | Udaan</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f9fd;
+    color:#18324d;
+}
+
+a{
+    text-decoration:none;
+}
+
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+    height:76px;
+    background:#fff;
+    border-bottom:1px solid #e4edf5;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+    position:relative;
+    z-index:10;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#104b86;
+}
+
+.logo-mark{
+    width:46px;
+    height:46px;
+    border-radius:50% 50% 50% 15px;
+
+    background:linear-gradient(
+        135deg,
+        #ff9933 0 33%,
+        #fff 33% 66%,
+        #138808 66%
+    );
+
+    transform:rotate(-12deg);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:2px solid #e3edf5;
+
+    font-size:21px;
+}
+
+.logo-text strong{
+    display:block;
+    font-size:21px;
+    line-height:20px;
+}
+
+.logo-text small{
+    font-size:10px;
+    color:#7290aa;
+}
+
+.nav-links{
+    display:flex;
+    gap:25px;
+    align-items:center;
+}
+
+.nav-links a{
+    font-size:14px;
+    font-weight:bold;
+    color:#214d7c;
+}
+
+.nav-links a.active{
+    background:#e7f1ff;
+    padding:12px 17px;
+    border-radius:10px;
+    color:#0d4f91;
+}
+
+
+/* ================= GOOGLE TRANSLATE ================= */
+
+#google_translate_element{
+    min-width:145px;
+}
+
+#google_translate_element select{
+    padding:10px 14px;
+    border:1px solid #d8e5f1;
+    border-radius:20px;
+    background:#fff;
+    color:#174f85;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:13px;
+}
+
+.goog-te-banner-frame{
+    display:none !important;
+}
+
+body{
+    top:0 !important;
+}
+
+.goog-logo-link{
+    display:none !important;
+}
+
+.goog-te-gadget span{
+    display:none !important;
+}
+
+
+/* ================= MOBILE NAVBAR ================= */
+
+@media(max-width:850px){
+
+    .nav-links{
+        display:none;
+    }
+
+    .navbar{
+        height:65px;
+    }
+
+}
+
+
+/* ================= HERO ================= */
+
+.hero{
+    position:relative;
+    overflow:hidden;
+    min-height:200px;
+
+    background:linear-gradient(
+        100deg,
+        #dff2ff,
+        #eef9ff 55%,
+        #c8edff
+    );
+
+    border-bottom:1px solid #d7e9f5;
+}
+
+.hero-content{
+    max-width:1250px;
+    margin:auto;
+    padding:28px 6%;
+    position:relative;
+    z-index:3;
+}
+
+.hero-title{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.emblem{
+    width:70px;
+    height:80px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:53px;
+
+    filter:drop-shadow(
+        0 2px 2px rgba(0,0,0,.12)
+    );
+}
+
+.hero h1{
+    margin:0;
+    color:#123f7c;
+    font-size:40px;
+    font-weight:700;
+}
+
+.hero p{
+    margin:8px 0 0;
+    color:#286092;
+    font-size:18px;
+}
+
+.tricolor{
+    height:4px;
+    margin-top:20px;
+    width:65%;
+
+    background:linear-gradient(
+        to right,
+        #ff9933 33.33%,
+        #fff 33.33% 66.66%,
+        #138808 66.66%
+    );
+
+    border-radius:4px;
+}
+
+
+/* ================= RURAL VISUAL ================= */
+
+.rural-art{
+    position:absolute;
+    right:0;
+    bottom:0;
+    width:48%;
+    height:100%;
+    min-width:430px;
+}
+
+.sun{
+    fill:#ffd76b;
+}
+
+.hill1{
+    fill:#9ddc9d;
+}
+
+.hill2{
+    fill:#70bd82;
+}
+
+.field{
+    fill:#8fce75;
+}
+
+.house{
+    fill:#fff;
+    stroke:#6aa36b;
+    stroke-width:2;
+}
+
+.roof{
+    fill:#d9824a;
+}
+
+.tree{
+    fill:#36955b;
+}
+
+.trunk{
+    fill:#895a38;
+}
+
+.person{
+    fill:#1d6098;
+}
+
+.person2{
+    fill:#e26b58;
+}
+
+.person3{
+    fill:#9c4f9f;
+}
+
+
+/* ================= MAIN ================= */
+
+.container{
+    width:92%;
+    max-width:1250px;
+    margin:25px auto 60px;
+}
+
+
+/* ================= SEARCH ================= */
+
+.search-row{
+    display:flex;
+    gap:10px;
+    margin:0 auto 20px;
+    max-width:900px;
+}
+
+.search-row form{
+    display:flex;
+    gap:10px;
+    width:100%;
+}
+
+.search-row input{
+    flex:1;
+    padding:16px 20px;
+
+    border:1px solid #d5e3ef;
+    border-radius:10px;
+
+    background:#fff;
+
+    font-size:16px;
+
+    outline:none;
+
+    box-shadow:
+        0 2px 8px rgba(30,80,120,.05);
+}
+
+.search-row input:focus{
+    border-color:#1a65a3;
+}
+
+.search-row button{
+    border:0;
+    border-radius:10px;
+
+    background:#0e4f91;
+
+    color:#fff;
+
+    padding:0 32px;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+.search-row button:hover{
+    background:#083e73;
+}
+
+
+/* ================= CATEGORIES ================= */
+
+.categories{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    margin:0 auto 30px;
+}
+
+.cat{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+
+    padding:10px 16px;
+
+    border:1px solid #dfebf5;
+
+    border-radius:20px;
+
+    background:#fff;
+
+    color:#17558c;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    box-shadow:
+        0 2px 8px rgba(30,80,120,.05);
+}
+
+.cat:hover,
+.cat.all{
+    background:#0d4f91;
+    color:#fff;
+    border-color:#0d4f91;
+}
+
+
+/* ================= HEADING ================= */
+
+.schemes-heading{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    margin:18px 0 20px;
+}
+
+.heading-icon{
+    width:46px;
+    height:46px;
+
+    border-radius:11px;
+
+    background:#e5f1fb;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:23px;
+}
+
+.schemes-heading h2{
+    margin:0;
+
+    color:#12477f;
+
+    font-size:27px;
+}
+
+.schemes-heading p{
+    margin:4px 0 0;
+
+    color:#728aa0;
+
+    font-size:14px;
+}
+
+
+/* ================= SCHEME GRID ================= */
+
+.schemes{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+}
+
+
+/* ================= SCHEME CARD ================= */
+
+.scheme-card{
+
+    background:#fff;
+
+    border:1px solid #dfeaf3;
+
+    border-radius:14px;
+
+    padding:18px;
+
+    position:relative;
+
+    box-shadow:
+        0 4px 12px rgba(30,75,110,.06);
+
+    transition:.2s;
+
+    min-height:245px;
+
+    overflow:hidden;
+}
+
+.scheme-card:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 9px 22px rgba(30,75,110,.11);
+}
+
+.gov-badge{
+
+    position:absolute;
+
+    right:14px;
+
+    top:12px;
+
+    background:#e9f6ff;
+
+    color:#1970ad;
+
+    border:1px solid #d6ebf8;
+
+    border-radius:12px;
+
+    padding:5px 8px;
+
+    font-size:9px;
+
+    font-weight:bold;
+}
+
+.scheme-visual{
+
+    width:58px;
+    height:58px;
+
+    border-radius:13px;
+
+    background:#f0f7fc;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:31px;
+
+    margin-bottom:11px;
+
+    border:1px solid #e0edf6;
+}
+
+.scheme-card h3{
+
+    font-size:18px;
+
+    color:#0e4e8d;
+
+    margin:0 95px 8px 0;
+
+    line-height:1.35;
+}
+
+.category-tag{
+
+    display:inline-block;
+
+    padding:5px 9px;
+
+    border-radius:9px;
+
+    background:#edf7ef;
+
+    color:#25804a;
+
+    font-size:11px;
+
+    font-weight:bold;
+
+    margin-bottom:9px;
+}
+
+.scheme-card p{
+
+    font-size:13px;
+
+    color:#60798e;
+
+    line-height:1.55;
+
+    min-height:40px;
+
+    margin:0 0 14px;
+}
+
+.details-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    background:#0e5597;
+
+    color:#fff;
+
+    border-radius:8px;
+
+    padding:9px 14px;
+
+    font-size:12px;
+
+    font-weight:bold;
+}
+
+.details-btn:hover{
+    background:#073e72;
+}
+
+
+/* ================= EMPTY ================= */
+
+.empty{
+
+    grid-column:1/-1;
+
+    text-align:center;
+
+    background:#fff;
+
+    padding:45px;
+
+    border-radius:14px;
+
+    border:1px solid #dfeaf3;
+}
+
+.empty h3{
+
+    font-size:20px;
+
+    color:#12477f;
+}
+
+.empty p{
+
+    font-size:14px;
+
+    color:#728aa0;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1000px){
+
+    .schemes{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:850px){
+
+    .nav-links{
+        display:none;
+    }
+
+}
+
+@media(max-width:700px){
+
+    .hero{
+        min-height:230px;
+    }
+
+    .hero-content{
+        padding:25px 20px;
+    }
+
+    .hero h1{
+        font-size:30px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .rural-art{
+        opacity:.25;
+        width:100%;
+        min-width:0;
+    }
+
+    .tricolor{
+        width:100%;
+    }
+
+}
+
+@media(max-width:620px){
+
+    .schemes{
+        grid-template-columns:1fr;
+    }
+
+    .search-row form{
+        flex-direction:column;
+    }
+
+    .search-row button{
+        height:48px;
+    }
+
+    .categories{
+        justify-content:flex-start;
+    }
+
+    .scheme-card{
+        min-height:0;
+    }
+
+    .scheme-card h3{
+        font-size:19px;
+    }
+
+    .scheme-card p{
+        font-size:14px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+
+    <a href="/" class="logo">
+
+        <div class="logo-mark">
+            🕊️
+        </div>
+
+
+        <div class="logo-text">
+
+            <strong>
+                Udaan
+            </strong>
+
+            <small>
+                Empowering Rural India
+            </small>
+
+        </div>
+
+    </a>
+
+
+    <div class="nav-links">
+
+
+        <a href="/">
+            ⌂ Home
+        </a>
+
+
+        <a href="#">
+            ♧ About Us
+        </a>
+
+
+        <a href="#" class="active">
+            🏛 Schemes
+        </a>
+
+
+        <a href="#">
+            ▣ Resources
+        </a>
+
+
+        <a href="#">
+            ✉ Contact Us
+        </a>
+
+
+        <span>
+            ⌕
+        </span>
+
+
+        <!-- GOOGLE TRANSLATE -->
+
+        <div id="google_translate_element"></div>
+
+
+    </div>
+
+</nav>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+
+    <div class="hero-content">
+
+
+        <div class="hero-title">
+
+
+            <div class="emblem">
+                🏛️
+            </div>
+
+
+            <div>
+
+                <h1>
+                    Government Schemes
+                </h1>
+
+                <p>
+                    Find government schemes and benefits available for you
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="tricolor"></div>
+
+
+    </div>
+
+
+
+    <!-- RURAL INDIA VISUAL -->
+
+    <svg
+        class="rural-art"
+        viewBox="0 0 650 220"
+        preserveAspectRatio="xMidYMax meet"
+    >
+
+        <circle
+            class="sun"
+            cx="530"
+            cy="50"
+            r="30"
+        />
+
+
+        <path
+            class="hill1"
+            d="M0 150 Q100 75 210 145 T430 135 T650 125 V220 H0Z"
+        />
+
+
+        <path
+            class="hill2"
+            d="M0 170 Q130 105 245 165 T470 150 T650 145 V220 H0Z"
+        />
+
+
+        <path
+            class="field"
+            d="M0 190 Q160 155 320 185 T650 170 V220 H0Z"
+        />
+
+
+        <rect
+            class="house"
+            x="405"
+            y="135"
+            width="70"
+            height="48"
+            rx="2"
+        />
+
+
+        <path
+            class="roof"
+            d="M395 138 L440 105 L485 138Z"
+        />
+
+
+        <rect
+            class="trunk"
+            x="535"
+            y="125"
+            width="9"
+            height="50"
+        />
+
+
+        <circle
+            class="tree"
+            cx="540"
+            cy="105"
+            r="28"
+        />
+
+
+        <circle
+            class="tree"
+            cx="560"
+            cy="112"
+            r="22"
+        />
+
+
+        <circle
+            class="tree"
+            cx="520"
+            cy="115"
+            r="20"
+        />
+
+
+        <circle
+            class="person"
+            cx="300"
+            cy="128"
+            r="10"
+        />
+
+
+        <path
+            class="person"
+            d="M292 138 Q300 132 308 138 L313 177 L287 177Z"
+        />
+
+
+        <circle
+            class="person2"
+            cx="340"
+            cy="132"
+            r="9"
+        />
+
+
+        <path
+            class="person2"
+            d="M333 141 Q340 136 347 141 L352 178 L328 178Z"
+        />
+
+
+        <circle
+            class="person3"
+            cx="375"
+            cy="128"
+            r="10"
+        />
+
+
+        <path
+            class="person3"
+            d="M367 138 Q375 132 383 138 L389 178 L361 178Z"
+        />
+
+
+        <path
+            d="M250 195 Q320 175 390 195"
+            fill="none"
+            stroke="#5b9b54"
+            stroke-width="3"
+        />
+
+    </svg>
+
+</section>
+
+
+
+<main class="container">
+
+
+    <!-- ================= SEARCH ================= -->
+
+    <div class="search-row">
+
+
+        <form
+            method="GET"
+            action="{% url 'scheme_search' %}"
+        >
+
+
+            <input
+                type="text"
+                name="q"
+                placeholder="🔍 Search government schemes..."
+                value="{{ query }}"
+            >
+
+
+            <button type="submit">
+                Search
+            </button>
+
+
+        </form>
+
+    </div>
+
+
+
+    <!-- ================= CATEGORIES ================= -->
+
+    <div class="categories">
+
+
+        <a
+            class="cat all"
+            href="{% url 'scheme_list' %}"
+        >
+            ▦ All
+        </a>
+
+
+        <a
+            class="cat"
+            href="{% url 'scheme_category' 'Agriculture' %}"
+        >
+            🌱 Agriculture
+        </a>
+
+
+        <a
+            class="cat"
+            href="{% url 'scheme_category' 'Education' %}"
+        >
+            🎓 Education
+        </a>
+
+
+        <a
+            class="cat"
+            href="{% url 'scheme_category' 'Health' %}"
+        >
+            ❤ Health
+        </a>
+
+
+        <a
+            class="cat"
+            href="{% url 'scheme_category' 'Women & Child' %}"
+        >
+            👩 Women & Child
+        </a>
+
+
+        <a
+            class="cat"
+            href="{% url 'scheme_category' 'Employment' %}"
+        >
+            💼 Employment
+        </a>
+
+
+        <a
+            class="cat"
+            href="{% url 'scheme_category' 'Housing' %}"
+        >
+            🏠 Housing
+        </a>
+
+
+        <a
+            class="cat"
+            href="{% url 'scheme_category' 'Financial Assistance' %}"
+        >
+            🪙 Financial Assistance
+        </a>
+
+
+        <a
+            class="cat"
+            href="{% url 'scheme_category' 'Social Welfare' %}"
+        >
+            👥 Social Welfare
+        </a>
+
+
+    </div>
+
+
+
+    <!-- ================= HEADING ================= -->
+
+    <div class="schemes-heading">
+
+
+        <div class="heading-icon">
+            🏛️
+        </div>
+
+
+        <div>
+
+
+            {% if category %}
+
+                <h2>
+                    {{ category }} Schemes
+                </h2>
+
+                <p>
+                    Government schemes available under this category.
+                </p>
+
+
+            {% elif query %}
+
+                <h2>
+                    Search Results
+                </h2>
+
+                <p>
+                    Government schemes matching "{{ query }}".
+                </p>
+
+
+            {% else %}
+
+                <h2>
+                    Government Schemes
+                </h2>
+
+                <p>
+                    Explore various government schemes designed
+                    for your welfare and development.
+                </p>
+
+            {% endif %}
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= SCHEMES ================= -->
+
+    <div class="schemes">
+
+
+        {% for scheme in schemes %}
+
+
+        <div class="scheme-card">
+
+
+            <div class="gov-badge">
+                🏛 Government Scheme
+            </div>
+
+
+
+            <div class="scheme-visual">
+
+
+                {% if scheme.category == "Agriculture" %}
+
+                    🌾
+
+                {% elif scheme.category == "Education" %}
+
+                    🎓
+
+                {% elif scheme.category == "Women & Child" %}
+
+                    👩
+
+                {% elif scheme.category == "Employment" %}
+
+                    💼
+
+                {% elif scheme.category == "Housing" %}
+
+                    🏠
+
+                {% elif scheme.category == "Health" %}
+
+                    🏥
+
+                {% elif scheme.category == "Financial Assistance" %}
+
+                    💰
+
+                {% else %}
+
+                    🤝
+
+                {% endif %}
+
+
+            </div>
+
+
+
+            <h3>
+
+                <a href="{% url 'scheme_detail' scheme.slug %}">
+                    {{ scheme.name }}
+                </a>
+
+            </h3>
+
+
+
+            <span class="category-tag">
+                {{ scheme.category }}
+            </span>
+
+
+
+            <p>
+                {{ scheme.short_description }}
+            </p>
+
+
+
+            <a
+                class="details-btn"
+                href="{% url 'scheme_detail' scheme.slug %}"
+            >
+
+                View Details
+
+                <span>
+                    →
+                </span>
+
+            </a>
+
+
+        </div>
+
+
+        {% empty %}
+
+
+        <div class="empty">
+
+
+            <h3>
+                No government schemes found.
+            </h3>
+
+
+            <p>
+                Try another search or category.
+            </p>
+
+
+        </div>
+
+
+        {% endfor %}
+
+
+    </div>
+
+
+</main>
+
+
+
+<!-- ================= GOOGLE TRANSLATE ================= -->
+
+<script>
+
+function googleTranslateElementInit(){
+
+    new google.translate.TranslateElement(
+
+        {
+            pageLanguage:'en',
+            includedLanguages:'en,mr,hi',
+            autoDisplay:false
+        },
+
+        'google_translate_element'
+
+    );
+
+}
+
+</script>
+
+
+<script
+src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
+
+
+</body>
+
+</html>

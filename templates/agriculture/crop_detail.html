@@ -1,0 +1,158 @@
+{% extends 'agriculture/base.html' %}
+{% load static %}
+
+{% block title %}{{ crop.name }} | PENTRAONE Agriculture{% endblock %}
+
+{% block content %}
+
+<a class="agri-back" href="{% url 'agriculture:crops' %}">
+    {{ ui.common.back_crops }}
+</a>
+
+<section class="agri-detail-card fade-up">
+
+    <!-- Everything inside this wrapper will be read -->
+    <div data-voice-content>
+
+        <div class="agri-detail-header">
+
+            <div class="agri-detail-copy">
+
+                <div class="agri-eyebrow">
+                    🌱 {{ ui.crop.crop_guide }}
+                </div>
+
+                <h1>{{ crop.name }}</h1>
+
+                {% if crop.scientific_name %}
+                    <div class="agri-scientific">
+                        {{ crop.scientific_name }}
+                    </div>
+                {% endif %}
+
+                {% if crop.description %}
+                    <p class="agri-lead">
+                        {{ crop.description }}
+                    </p>
+                {% endif %}
+
+                <div class="agri-info-grid">
+
+                    {% if crop.season %}
+                    <div class="agri-info-card">
+                        <h3>🌤️ {{ ui.season }}</h3>
+                        <p>{{ crop.season }}</p>
+                    </div>
+                    {% endif %}
+
+                    {% if crop.soil %}
+                    <div class="agri-info-card">
+                        <h3>🌍 {{ ui.soil }}</h3>
+                        <p>{{ crop.soil }}</p>
+                    </div>
+                    {% endif %}
+
+                    {% if crop.water_requirement %}
+                    <div class="agri-info-card">
+                        <h3>💧 {{ ui.water }}</h3>
+                        <p>{{ crop.water_requirement }}</p>
+                    </div>
+                    {% endif %}
+
+                    {% if crop.sowing_time %}
+                    <div class="agri-info-card">
+                        <h3>🌱 {{ ui.sowing }}</h3>
+                        <p>{{ crop.sowing_time }}</p>
+                    </div>
+                    {% endif %}
+
+                    {% if crop.harvesting_time %}
+                    <div class="agri-info-card">
+                        <h3>🌾 {{ ui.harvesting }}</h3>
+                        <p>{{ crop.harvesting_time }}</p>
+                    </div>
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+            <div class="agri-detail-image">
+
+                {% if crop.image %}
+                    <img src="{{ crop.image.url }}" alt="{{ crop.name }}">
+                {% else %}
+                    <div class="agri-detail-placeholder">
+                        🌱
+                    </div>
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        {% if crop.common_problems or crop.farmer_tip %}
+
+        <div class="agri-info-grid" style="margin-top:24px">
+
+            {% if crop.common_problems %}
+            <div class="agri-info-card">
+                <h3>🐛 {{ ui.common_problems }}</h3>
+                <p>{{ crop.common_problems }}</p>
+            </div>
+            {% endif %}
+
+            {% if crop.farmer_tip %}
+            <div class="agri-info-card">
+                <h3>👨‍🌾 {{ ui.farmer_tip }}</h3>
+                <p>{{ crop.farmer_tip }}</p>
+            </div>
+            {% endif %}
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+    <!-- VOICE BUTTON -->
+    <div style="
+        display:flex;
+        justify-content:center;
+        margin-top:26px;
+    ">
+
+        <button
+            type="button"
+            class="agri-btn voice-reader-button"
+            data-voice-reader
+            data-voice-lang="{{ language }}"
+            data-voice-target="[data-voice-content]"
+        >
+            🔊 Listen
+        </button>
+
+    </div>
+
+    <div class="agri-cta">
+
+        <div>
+            <h2>{{ ui.need_help }}</h2>
+            <p>{{ ui.need_help_text }}</p>
+        </div>
+
+        <a class="agri-btn" href="{% url 'agriculture:scan' %}">
+            📷 {{ ui.scan.start_scanning }} →
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+
+<script src="{% static 'agriculture/js/voice_reader.js' %}"></script>
+
+{% endblock %}

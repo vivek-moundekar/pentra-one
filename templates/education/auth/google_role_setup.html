@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Select Role | PentraOne Education</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(37, 99, 235, 0.20), transparent 35%),
+                radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.16), transparent 35%),
+                #07111f;
+            color: #ffffff;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 24px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1050px;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            background: rgba(15, 23, 42, 0.92);
+
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            border-radius: 24px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 25px 60px rgba(0, 0, 0, 0.45);
+        }
+
+        /* ================================
+           LEFT SECTION
+        ================================= */
+
+        .left-section {
+            padding: 55px 45px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(37, 99, 235, 0.18),
+                    rgba(16, 185, 129, 0.08)
+                );
+        }
+
+        .brand {
+            font-size: 16px;
+            font-weight: 700;
+            color: #60a5fa;
+
+            margin-bottom: 25px;
+        }
+
+        .left-section h1 {
+            font-size: 38px;
+            line-height: 1.2;
+
+            margin-bottom: 18px;
+        }
+
+        .left-section p {
+            color: #cbd5e1;
+            font-size: 16px;
+            line-height: 1.7;
+
+            margin-bottom: 30px;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            margin-bottom: 18px;
+
+            color: #e2e8f0;
+        }
+
+        .feature-icon {
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background: rgba(37, 99, 235, 0.16);
+
+            font-size: 18px;
+        }
+
+        /* ================================
+           RIGHT SECTION
+        ================================= */
+
+        .right-section {
+            padding: 55px 45px;
+
+            display: flex;
+            align-items: center;
+        }
+
+        .role-box {
+            width: 100%;
+        }
+
+        .role-box h2 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            line-height: 1.6;
+
+            margin-bottom: 30px;
+        }
+
+        .google-user {
+            padding: 16px;
+
+            border-radius: 14px;
+
+            background: rgba(30, 41, 59, 0.8);
+
+            border: 1px solid rgba(148, 163, 184, 0.15);
+
+            margin-bottom: 28px;
+        }
+
+        .google-user strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .google-user span {
+            color: #94a3b8;
+            font-size: 14px;
+        }
+
+        /* ================================
+           ROLE CARDS
+        ================================= */
+
+        .role-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+
+            margin-bottom: 25px;
+        }
+
+        .role-card {
+            position: relative;
+        }
+
+        .role-card input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .role-card label {
+            min-height: 170px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            cursor: pointer;
+
+            border-radius: 16px;
+
+            background: #0f172a;
+
+            border: 2px solid #263244;
+
+            transition: 0.25s ease;
+
+            padding: 22px;
+        }
+
+        .role-card label:hover {
+            transform: translateY(-4px);
+
+            border-color: #3b82f6;
+
+            box-shadow:
+                0 12px 25px rgba(37, 99, 235, 0.15);
+        }
+
+        .role-card input:checked + label {
+            border-color: #3b82f6;
+
+            background:
+                rgba(37, 99, 235, 0.12);
+
+            box-shadow:
+                0 0 0 3px rgba(37, 99, 235, 0.12);
+        }
+
+        .role-icon {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .role-title {
+            font-size: 18px;
+            font-weight: 700;
+
+            margin-bottom: 6px;
+        }
+
+        .role-description {
+            color: #94a3b8;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* ================================
+           BUTTON
+        ================================= */
+
+        .continue-btn {
+            width: 100%;
+
+            border: none;
+            border-radius: 12px;
+
+            padding: 15px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #2563eb,
+                    #3b82f6
+                );
+
+            color: white;
+
+            font-size: 16px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .continue-btn:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 25px rgba(37, 99, 235, 0.28);
+        }
+
+        .back-link {
+            display: block;
+
+            margin-top: 20px;
+
+            text-align: center;
+
+            color: #94a3b8;
+
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            color: #ffffff;
+        }
+
+        /* ================================
+           MESSAGE
+        ================================= */
+
+        .message {
+            padding: 13px 15px;
+
+            margin-bottom: 20px;
+
+            border-radius: 10px;
+
+            background: rgba(239, 68, 68, 0.12);
+
+            border: 1px solid rgba(239, 68, 68, 0.25);
+
+            color: #fecaca;
+        }
+
+        /* ================================
+           RESPONSIVE
+        ================================= */
+
+        @media (max-width: 800px) {
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .left-section {
+                display: none;
+            }
+
+            .right-section {
+                padding: 35px 22px;
+            }
+
+            .role-options {
+                grid-template-columns: 1fr;
+            }
+
+            .role-card label {
+                min-height: 145px;
+            }
+        }
+    </style>
+
+<style id="pentraone-brand-font">
+.pentra-brand-main{font-family:'Berlin Sans FB Demi','Berlin Sans FB','Arial Black',sans-serif;font-weight:600;letter-spacing:.3px;text-transform:uppercase;}
+.pentra-brand-one{font-family:'Bell MT','Times New Roman',serif;font-style:italic;font-weight:400;text-transform:lowercase;margin-left:2px;}
+</style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- LEFT SIDE -->
+        <div class="left-section">
+
+            <div class="brand">
+                🎓 <span class="pentra-brand-main">PENTRA</span><span class="pentra-brand-one">one</span> EDUCATION
+            </div>
+
+            <h1>
+                One final step to start learning.
+            </h1>
+
+            <p>
+                Tell us how you will use PentraOne Education.
+                This helps us open the correct dashboard
+                and personalize your experience.
+            </p>
+
+            <div class="feature">
+                <div class="feature-icon">📚</div>
+                <span>Learn using class-wise content</span>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🤖</div>
+                <span>Use AI-powered learning tools</span>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">📝</div>
+                <span>Practice and take AI-generated tests</span>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🎯</div>
+                <span>Prepare smarter for examinations</span>
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+        <div class="right-section">
+
+            <div class="role-box">
+
+                <h2>
+                    Choose Your Role
+                </h2>
+
+                <p class="subtitle">
+                    You are signed in with Google.
+                    Select whether you are joining PentraOne
+                    as a student or teacher.
+                </p>
+
+
+                {% if user.is_authenticated %}
+
+                    <div class="google-user">
+
+                        <strong>
+                            {{ user.get_full_name|default:user.username }}
+                        </strong>
+
+                        <span>
+                            {{ user.email }}
+                        </span>
+
+                    </div>
+
+                {% endif %}
+
+
+                {% if messages %}
+
+                    {% for message in messages %}
+
+                        <div class="message">
+                            {{ message }}
+                        </div>
+
+                    {% endfor %}
+
+                {% endif %}
+
+
+                <form method="post">
+
+                    {% csrf_token %}
+
+
+                    <div class="role-options">
+
+                        <!-- STUDENT -->
+                        <div class="role-card">
+
+                            <input
+                                type="radio"
+                                id="student"
+                                name="role"
+                                value="student"
+                                required
+                            >
+
+                            <label for="student">
+
+                                <div class="role-icon">
+                                    🎓
+                                </div>
+
+                                <div class="role-title">
+                                    Student
+                                </div>
+
+                                <div class="role-description">
+                                    Learn concepts, watch lessons,
+                                    attempt tests and prepare for exams.
+                                </div>
+
+                            </label>
+
+                        </div>
+
+
+                        <!-- TEACHER -->
+                        <div class="role-card">
+
+                            <input
+                                type="radio"
+                                id="teacher"
+                                name="role"
+                                value="teacher"
+                                required
+                            >
+
+                            <label for="teacher">
+
+                                <div class="role-icon">
+                                    👨‍🏫
+                                </div>
+
+                                <div class="role-title">
+                                    Teacher
+                                </div>
+
+                                <div class="role-description">
+                                    Create lessons, generate AI tests
+                                    and monitor student performance.
+                                </div>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="continue-btn"
+                    >
+                        Continue to Education →
+                    </button>
+
+                </form>
+
+
+                <a
+                    href="{% url 'education:login' %}"
+                    class="back-link"
+                >
+                    ← Back to Education Login
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

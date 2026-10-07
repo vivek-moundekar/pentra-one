@@ -1,0 +1,161 @@
+{% extends 'agriculture/base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ crop.name }} • {{ ui.crop.common_problems }}
+{% endblock %}
+
+{% block content %}
+
+<a
+    class="agri-back"
+    href="{% url 'agriculture:problems' %}"
+>
+    {{ ui.common.back_crops }}
+</a>
+
+
+<section class="agri-detail-card fade-up">
+
+    <div data-voice-content>
+
+        <div class="agri-detail-header">
+
+            <div class="agri-detail-copy">
+
+                <div class="agri-eyebrow">
+                    🐛 {{ ui.crop.common_problems }}
+                </div>
+
+                <h1>
+                    {{ crop.name }}
+                </h1>
+
+                {% if crop.scientific_name %}
+
+                <div class="agri-scientific">
+                    {{ crop.scientific_name }}
+                </div>
+
+                {% endif %}
+
+                <p class="agri-lead">
+                    Review the common crop issues below and use
+                    Scan & Ask for image-based assistance when you
+                    need another opinion.
+                </p>
+
+            </div>
+
+
+            <div class="agri-detail-image">
+
+                {% if crop.image %}
+
+                    <img
+                        src="{{ crop.image.url }}"
+                        alt="{{ crop.name }}"
+                    >
+
+                {% else %}
+
+                    <div class="agri-detail-placeholder">
+                        🐛
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="agri-info-grid"
+            style="margin-top:24px"
+        >
+
+            <div class="agri-info-card">
+
+                <h3>
+                    🐛 {{ ui.common_problems }}
+                </h3>
+
+                <p>
+                    {{ crop.common_problems|default:'Crop problem information will be available soon.' }}
+                </p>
+
+            </div>
+
+
+            <div class="agri-info-card">
+
+                <h3>
+                    👨‍🌾 {{ ui.farmer_tip }}
+                </h3>
+
+                <p>
+                    {{ crop.farmer_tip|default:'Inspect affected leaves and stems, keep the field clean and seek local expert advice when symptoms are severe.' }}
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- VOICE BUTTON -->
+
+    <div style="
+        display:flex;
+        justify-content:center;
+        margin-top:26px;
+    ">
+
+        <button
+            type="button"
+            class="agri-btn voice-reader-button"
+            data-voice-reader
+            data-voice-lang="{{ language }}"
+            data-voice-target="[data-voice-content]"
+        >
+            🔊 Listen
+        </button>
+
+    </div>
+
+
+    <div class="agri-cta">
+
+        <div>
+
+            <h2>
+                {{ ui.need_help }}
+            </h2>
+
+            <p>
+                {{ ui.need_help_text }}
+            </p>
+
+        </div>
+
+        <a
+            class="agri-btn"
+            href="{% url 'agriculture:scan' %}"
+        >
+            📷 {{ ui.scan.start_scanning }} →
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+
+{% block extra_js %}
+
+<script src="{% static 'agriculture/js/voice_reader.js' %}"></script>
+
+{% endblock %}

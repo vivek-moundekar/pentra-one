@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Test Result | PentraOne Education
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f5f7fb;
+
+            color: #1f2937;
+
+        }
+
+
+        .header {
+
+            background: #2563eb;
+
+            color: white;
+
+            padding: 20px 35px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+        }
+
+
+        .header h2 {
+
+            margin: 0;
+
+        }
+
+
+        .header a {
+
+            color: white;
+
+            text-decoration: none;
+
+            background:
+                rgba(255,255,255,0.15);
+
+            padding: 10px 15px;
+
+            border-radius: 8px;
+
+        }
+
+
+        .container {
+
+            max-width: 900px;
+
+            margin: 40px auto;
+
+            padding: 20px;
+
+        }
+
+
+        .result-card {
+
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 35px;
+
+            text-align: center;
+
+            box-shadow:
+                0 8px 25px
+                rgba(0,0,0,0.07);
+
+        }
+
+
+        .icon {
+
+            font-size: 60px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        h1 {
+
+            margin: 0 0 10px;
+
+        }
+
+
+        .test-title {
+
+            color: #6b7280;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .score {
+
+            font-size: 48px;
+
+            font-weight: 800;
+
+            color: #2563eb;
+
+            margin: 20px 0;
+
+        }
+
+
+        .score-label {
+
+            color: #6b7280;
+
+        }
+
+
+        .info {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+
+            margin-top: 30px;
+
+        }
+
+
+        .info-box {
+
+            background: #f9fafb;
+
+            border-radius: 10px;
+
+            padding: 15px;
+
+        }
+
+
+        .info-number {
+
+            font-size: 23px;
+
+            font-weight: 800;
+
+            color: #1d4ed8;
+
+        }
+
+
+        .info-label {
+
+            color: #6b7280;
+
+            font-size: 13px;
+
+            margin-top: 5px;
+
+        }
+
+
+        .answers {
+
+            margin-top: 30px;
+
+            text-align: left;
+
+        }
+
+
+        .answers h2 {
+
+            text-align: center;
+
+        }
+
+
+        .answer {
+
+            background: #f9fafb;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 10px;
+
+            padding: 16px;
+
+            margin-top: 12px;
+
+        }
+
+
+        .question {
+
+            font-weight: 700;
+
+            line-height: 1.6;
+
+        }
+
+
+        .your-answer {
+
+            margin-top: 10px;
+
+            color: #4b5563;
+
+            line-height: 1.6;
+
+        }
+
+
+        .marks {
+
+            margin-top: 10px;
+
+            font-weight: 700;
+
+            color: #047857;
+
+        }
+
+
+        .descriptive-note {
+
+            color: #92400e;
+
+            background: #fffbeb;
+
+            padding: 8px;
+
+            border-radius: 6px;
+
+            margin-top: 10px;
+
+            font-size: 13px;
+
+        }
+
+
+        .btn {
+
+            display: inline-block;
+
+            margin-top: 30px;
+
+            padding: 13px 22px;
+
+            background: #2563eb;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 8px;
+
+            font-weight: 700;
+
+        }
+
+
+        .btn:hover {
+
+            background: #1d4ed8;
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .info {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .result-card {
+
+                padding: 22px;
+
+            }
+
+            .score {
+
+                font-size: 40px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="header">
+
+    <h2>
+        📚 PentraOne Education
+    </h2>
+
+
+    <a href="{% url 'education:student_tests' %}">
+        My Tests
+    </a>
+
+</div>
+
+
+
+<div class="container">
+
+
+    <div class="result-card">
+
+
+        <div class="icon">
+            🎉
+        </div>
+
+
+        <h1>
+            Test Submitted!
+        </h1>
+
+
+        <div class="test-title">
+
+            {{ result.test.title }}
+
+        </div>
+
+
+
+        <div class="score">
+
+            {{ result.score }}
+
+            /
+
+            {{ result.total_marks }}
+
+        </div>
+
+
+        <div class="score-label">
+
+            Current Score
+
+        </div>
+
+
+
+        <div class="info">
+
+
+            <div class="info-box">
+
+                <div class="info-number">
+
+                    {{ result.total_marks }}
+
+                </div>
+
+                <div class="info-label">
+
+                    Total Marks
+
+                </div>
+
+            </div>
+
+
+
+            <div class="info-box">
+
+                <div class="info-number">
+
+                    {{ answers|length }}
+
+                </div>
+
+                <div class="info-label">
+
+                    Questions Answered
+
+                </div>
+
+            </div>
+
+
+
+            <div class="info-box">
+
+                <div class="info-number">
+
+                    {{ result.submitted_at|date:"d M Y" }}
+
+                </div>
+
+                <div class="info-label">
+
+                    Submitted
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="answers">
+
+
+            <h2>
+                📋 Your Answers
+            </h2>
+
+
+
+            {% for answer in answers %}
+
+
+                <div class="answer">
+
+
+                    <div class="question">
+
+                        Question {{ forloop.counter }}:
+
+                        <br>
+
+                        {{ answer.question.question_text }}
+
+                    </div>
+
+
+
+                    <div class="your-answer">
+
+                        <strong>
+                            Your Answer:
+                        </strong>
+
+                        <br>
+
+
+                        {% if answer.answer_text %}
+
+                            {{ answer.answer_text }}
+
+                        {% else %}
+
+                            <em>
+                                Not answered
+                            </em>
+
+                        {% endif %}
+
+                    </div>
+
+
+
+                    {% if answer.question.question_type == "mcq" %}
+
+
+                        <div class="marks">
+
+                            Marks:
+
+                            {{ answer.marks_awarded }}
+
+                            /
+
+                            {{ answer.question.marks }}
+
+                        </div>
+
+
+                    {% else %}
+
+
+                        <div class="descriptive-note">
+
+                            ⏳ Descriptive answer saved.
+
+                            Teacher/AI evaluation can be
+                            added later.
+
+                        </div>
+
+
+                    {% endif %}
+
+
+                </div>
+
+
+            {% empty %}
+
+
+                <p>
+
+                    No answers were recorded.
+
+                </p>
+
+
+            {% endfor %}
+
+
+        </div>
+
+
+
+        <a
+            href="{% url 'education:student_tests' %}"
+            class="btn"
+        >
+
+            ← Back to My Tests
+
+        </a>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

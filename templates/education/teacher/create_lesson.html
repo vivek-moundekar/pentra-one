@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Create Lesson | PentraOne</title>
+
+    
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    :root {
+        --bg: #070809;
+        --panel: rgba(17, 18, 21, 0.88);
+        --border: rgba(180, 190, 205, 0.18);
+        --border-light: rgba(190, 202, 220, 0.32);
+        --text: #f6f7f9;
+        --muted: #8e949e;
+        --input: rgba(7, 8, 10, 0.78);
+        --blue: #4f8dff;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        color: var(--text);
+        background:
+            radial-gradient(circle at 50% 12%, rgba(65, 76, 94, 0.16), transparent 30%),
+            linear-gradient(145deg, #050606, #0c0d0f 55%, #08090a);
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        width: 360px;
+        height: 360px;
+        border-radius: 50%;
+        left: 50%;
+        top: -190px;
+        transform: translateX(-50%);
+        background: radial-gradient(circle, rgba(94,108,130,.18), rgba(32,38,49,.08) 55%, transparent 72%);
+        pointer-events: none;
+    }
+
+    .header {
+        height: 72px;
+        padding: 0 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(10, 11, 13, 0.72);
+        border-bottom: 1px solid rgba(180,190,205,.12);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+
+    .header h2 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .header a {
+        text-decoration: none;
+        color: #dde2ea;
+        background: rgba(91,98,113,.18);
+        border: 1px solid var(--border);
+        padding: 10px 15px;
+        border-radius: 22px;
+        font-size: 12px;
+        font-weight: 600;
+        transition: .25s ease;
+    }
+
+    .header a:hover {
+        transform: translateY(-2px);
+        background: rgba(123,132,150,.28);
+        border-color: var(--border-light);
+    }
+
+    .container {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 38px auto;
+        padding: 20px;
+    }
+
+    .back {
+        display: inline-block;
+        margin-bottom: 20px;
+        color: #aab1bc;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    .back:hover {
+        color: white;
+    }
+
+    .card {
+        padding: 35px;
+        border-radius: 20px;
+        background: linear-gradient(155deg, rgba(30,33,40,.84), rgba(12,13,16,.94) 42%, rgba(9,10,12,.96));
+        border: 1px solid var(--border);
+        box-shadow: 0 30px 70px rgba(0,0,0,.55);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        overflow: hidden;
+        position: relative;
+    }
+
+    .card::before {
+        content: "";
+        position: absolute;
+        width: 240px;
+        height: 150px;
+        left: -75px;
+        top: -65px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(92,109,137,.18), transparent 68%);
+        pointer-events: none;
+    }
+
+    .card > * {
+        position: relative;
+        z-index: 2;
+    }
+
+    h1 {
+        margin: 0 0 8px;
+        font-size: 29px;
+        font-weight: 500;
+        letter-spacing: -.6px;
+    }
+
+    .subtitle {
+        color: var(--muted);
+        margin: 0 0 30px;
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    .form-group {
+        margin-bottom: 18px;
+    }
+
+    label {
+        display: block;
+        margin: 0 0 7px 3px;
+        color: #a8adb5;
+        font-size: 11px;
+        font-weight: 500;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border: 1px solid rgba(167,178,195,.13);
+        border-radius: 18px;
+        background: var(--input);
+        color: white;
+        font-family: inherit;
+        font-size: 12px;
+        outline: none;
+        transition: .25s ease;
+        box-shadow: inset 0 1px 4px rgba(0,0,0,.4);
+    }
+
+    input {
+        min-height: 46px;
+        border-radius: 23px;
+    }
+
+    select {
+        min-height: 46px;
+        border-radius: 23px;
+        appearance: none;
+    }
+
+    textarea {
+        min-height: 125px;
+        resize: vertical;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+        color: #5e646e;
+    }
+
+    select option {
+        background: #111318;
+        color: white;
+    }
+
+    input:hover,
+    select:hover,
+    textarea:hover {
+        border-color: rgba(167,181,202,.24);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        border-color: rgba(78,137,255,.70);
+        background: rgba(8,10,14,.92);
+        box-shadow: 0 0 0 3px rgba(52,102,190,.09), inset 0 1px 4px rgba(0,0,0,.35);
+    }
+
+    .help {
+        margin: 7px 4px 0;
+        font-size: 10px;
+        line-height: 1.45;
+        color: #696f79;
+    }
+
+    .button {
+        width: 100%;
+        min-height: 46px;
+        border: 1px solid rgba(255,255,255,.055);
+        border-radius: 23px;
+        background: linear-gradient(180deg, #2f3136, #25272b);
+        color: white;
+        font-size: 12.5px;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,.05), 0 9px 22px rgba(0,0,0,.26);
+        transition: .25s ease;
+    }
+
+    .button:hover {
+        transform: translateY(-1px);
+        background: linear-gradient(180deg, #3a3c42, #292b30);
+    }
+
+
+    /* VIDEO UPLOAD */
+
+    .video-upload-box {
+        width: 100%;
+        min-height: 125px;
+        border: 1px dashed rgba(120, 150, 200, 0.35);
+        border-radius: 20px;
+        background: rgba(8, 10, 14, 0.72);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        padding: 24px;
+        cursor: pointer;
+        transition: .25s ease;
+    }
+
+    .video-upload-box:hover {
+        border-color: rgba(79, 141, 255, 0.75);
+        background: rgba(15, 20, 30, 0.88);
+        transform: translateY(-1px);
+    }
+
+    .upload-icon {
+        width: 46px;
+        height: 46px;
+        flex: 0 0 46px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(79, 141, 255, 0.12);
+        border: 1px solid rgba(79, 141, 255, 0.22);
+        color: #8cb4ff;
+        font-size: 20px;
+    }
+
+    .upload-text {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        min-width: 0;
+    }
+
+    .upload-text strong {
+        font-size: 13px;
+        font-weight: 600;
+        color: #eef2f8;
+    }
+
+    .upload-text span {
+        font-size: 10px;
+        color: #737b87;
+        word-break: break-word;
+    }
+
+    @media (max-width: 700px) {
+        .header { padding: 0 4%; }
+        .container { margin: 20px auto; padding: 15px; }
+        .card { padding: 28px 22px; border-radius: 18px; }
+        h1 { font-size: 25px; }
+    }
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<div class="header">
+
+    <h2>
+        📚 PentraOne Teacher
+    </h2>
+
+    <a href="{% url 'education:teacher_dashboard' %}">
+        Dashboard
+    </a>
+
+</div>
+
+
+<div class="container">
+
+
+    <a
+        href="{% url 'education:teacher_dashboard' %}"
+        class="back"
+    >
+        ← Back to Dashboard
+    </a>
+
+
+    <div class="card">
+
+        <h1>
+            📚 Create Lesson
+        </h1>
+
+        <p class="subtitle">
+            Add a lesson and its educational video
+            for your students.
+        </p>
+
+
+        <form method="POST" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+
+            <!-- CHAPTER -->
+
+            <div class="form-group">
+
+                <label for="chapter">
+                    Chapter
+                </label>
+
+                <select
+                    name="chapter"
+                    id="chapter"
+                    required
+                >
+
+                    <option value="">
+                        Select Chapter
+                    </option>
+
+                    {% for chapter in chapters %}
+
+                        <option value="{{ chapter.id }}">
+
+                            {{ chapter.subject.class_level.name }}
+                            -
+                            {{ chapter.subject.name }}
+                            -
+                            Chapter {{ chapter.chapter_number }}:
+                            {{ chapter.name }}
+
+                        </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+
+            <!-- LESSON NUMBER -->
+
+            <div class="form-group">
+
+                <label for="lesson_number">
+                    Lesson Number
+                </label>
+
+                <input
+                    type="number"
+                    name="lesson_number"
+                    id="lesson_number"
+                    min="1"
+                    placeholder="Example: 1"
+                    required
+                >
+
+            </div>
+
+
+            <!-- TITLE -->
+
+            <div class="form-group">
+
+                <label for="title">
+                    Lesson Title
+                </label>
+
+                <input
+                    type="text"
+                    name="title"
+                    id="title"
+                    placeholder="Example: Introduction to Light"
+                    required
+                >
+
+            </div>
+
+
+            <!-- DESCRIPTION -->
+
+            <div class="form-group">
+
+                <label for="description">
+                    Description
+                </label>
+
+                <textarea
+                    name="description"
+                    id="description"
+                    placeholder="Explain what students will learn in this lesson..."
+                ></textarea>
+
+            </div>
+
+
+            <!-- VIDEO UPLOAD -->
+
+            <div class="form-group">
+
+                <label>
+                    Upload Video
+                </label>
+
+                <label class="video-upload-box" for="video">
+
+                    <div class="upload-icon">
+                        ↑
+                    </div>
+
+                    <div class="upload-text">
+                        <strong>Click to upload lesson video</strong>
+                        <span id="videoFileName">
+                            MP4, WEBM or OGG
+                        </span>
+                    </div>
+
+                </label>
+
+                <input
+                    type="file"
+                    name="video"
+                    id="video"
+                    accept="video/mp4,video/webm,video/ogg"
+                    required
+                    hidden
+                >
+
+            </div>
+
+
+            <!-- SUBMIT -->
+
+            <button
+                type="submit"
+                class="button"
+            >
+                Save Lesson
+            </button>
+
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script>
+    const videoInput = document.getElementById("video");
+    const videoFileName = document.getElementById("videoFileName");
+
+    videoInput.addEventListener("change", function () {
+        if (this.files.length > 0) {
+            videoFileName.textContent = this.files[0].name;
+        } else {
+            videoFileName.textContent = "MP4, WEBM or OGG";
+        }
+    });
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>My Tests | PentraOne Education</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --text: #ffffff;
+            --muted: #9298a3;
+            --blue: #3b82f6;
+            --blue-dark: #2563eb;
+            --green: #22c55e;
+            --orange: #f59e0b;
+            --red: #ef4444;
+            --border: rgba(148, 163, 184, 0.16);
+        }
+
+        body {
+            min-height: 100vh;
+
+            font-family:
+                Inter,
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            color: var(--text);
+
+            background:
+                radial-gradient(
+                    circle at 12% 86%,
+                    rgba(37, 99, 235, 0.26),
+                    transparent 32%
+                ),
+                radial-gradient(
+                    circle at 88% 16%,
+                    rgba(99, 102, 241, 0.15),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #050505,
+                    #080b12 48%,
+                    #071227
+                );
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .header {
+            height: 74px;
+
+            padding:
+                0 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 100;
+
+            background:
+                rgba(5, 7, 11, 0.80);
+
+            border-bottom:
+                1px solid
+                rgba(148, 163, 184, 0.12);
+
+            backdrop-filter:
+                blur(18px);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(37, 99, 235, 0.28),
+                    rgba(79, 70, 229, 0.20)
+                );
+
+            border:
+                1px solid
+                rgba(96, 165, 250, 0.24);
+
+            animation:
+                floatSoft 4s
+                ease-in-out infinite;
+        }
+
+        .brand-icon svg {
+            width: 24px;
+            height: 24px;
+
+            stroke: #bfdbfe;
+        }
+
+        .brand-text small {
+            display: block;
+
+            color: #60a5fa;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 2px;
+        }
+
+        .brand-text strong {
+            font-size: 16px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 9px;
+        }
+
+        .header-btn {
+            min-height: 40px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding:
+                0 14px;
+
+            border-radius: 12px;
+
+            text-decoration: none;
+
+            color: #cbd5e1;
+
+            background:
+                rgba(17, 18, 20, 0.82);
+
+            border:
+                1px solid
+                rgba(148, 163, 184, 0.15);
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            transition: 0.25s;
+        }
+
+        .header-btn:hover {
+            color: white;
+
+            transform:
+                translateY(-2px);
+
+            border-color:
+                rgba(59, 130, 246, 0.50);
+        }
+
+
+        /* =========================================
+           PAGE
+        ========================================= */
+
+        .page {
+            max-width: 1160px;
+
+            margin: auto;
+
+            padding:
+                34px 20px
+                65px;
+        }
+
+
+        /* =========================================
+           HERO
+        ========================================= */
+
+        .hero {
+            position: relative;
+
+            padding:
+                36px;
+
+            overflow: hidden;
+
+            border-radius: 26px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(39, 43, 50, 0.86),
+                    rgba(12, 12, 13, 0.95)
+                );
+
+            border:
+                1px solid
+                rgba(148, 163, 184, 0.17);
+
+            box-shadow:
+                0 25px 65px
+                rgba(0, 0, 0, 0.35);
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 240px;
+            height: 240px;
+
+            right: -80px;
+            top: -90px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(59, 130, 246, 0.09);
+        }
+
+        .kicker {
+            color: #93c5fd;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.2px;
+
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            position: relative;
+            z-index: 2;
+
+            font-size:
+                clamp(
+                    32px,
+                    4.4vw,
+                    48px
+                );
+
+            font-weight: 500;
+
+            letter-spacing: -1.2px;
+
+            margin-bottom: 11px;
+        }
+
+        .hero p {
+            position: relative;
+            z-index: 2;
+
+            max-width: 720px;
+
+            color: #a1a7b2;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+        .hero-note {
+            position: relative;
+            z-index: 2;
+
+            display: inline-flex;
+            align-items: center;
+
+            gap: 8px;
+
+            margin-top: 18px;
+
+            padding:
+                9px 13px;
+
+            border-radius: 20px;
+
+            color: #93c5fd;
+
+            background:
+                rgba(37, 99, 235, 0.08);
+
+            border:
+                1px solid
+                rgba(59, 130, 246, 0.17);
+
+            font-size: 11px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================
+           COUNTERS
+        ========================================= */
+
+        .stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 14px;
+
+            margin-top: 22px;
+        }
+
+        .stat {
+            padding: 18px;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(31, 35, 43, 0.82),
+                    rgba(11, 12, 15, 0.95)
+                );
+
+            border:
+                1px solid
+                var(--border);
+        }
+
+        .stat small {
+            display: block;
+
+            color: #7f8793;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: 0.8px;
+
+            margin-bottom: 7px;
+        }
+
+        .stat strong {
+            font-size: 26px;
+
+            font-weight: 600;
+        }
+
+        .stat.available strong {
+            color: #86efac;
+        }
+
+        .stat.upcoming strong {
+            color: #fcd34d;
+        }
+
+        .stat.completed strong {
+            color: #93c5fd;
+        }
+
+
+        /* =========================================
+           MESSAGES
+        ========================================= */
+
+        .messages {
+            margin-top: 20px;
+        }
+
+        .message {
+            padding:
+                13px 15px;
+
+            border-radius: 13px;
+
+            color: #bfdbfe;
+
+            background:
+                rgba(37, 99, 235, 0.09);
+
+            border:
+                1px solid
+                rgba(59, 130, 246, 0.18);
+
+            font-size: 12px;
+
+            margin-bottom: 8px;
+        }
+
+
+        /* =========================================
+           SECTION
+        ========================================= */
+
+        .section-head {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            margin:
+                34px 2px
+                17px;
+        }
+
+        .section-head h2 {
+            font-size: 22px;
+
+            margin-bottom: 5px;
+        }
+
+        .section-head p {
+            color: #777e89;
+
+            font-size: 12px;
+        }
+
+        .progress-link {
+            color: #93c5fd;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+        .progress-link:hover {
+            text-decoration:
+                underline;
+        }
+
+
+        /* =========================================
+           TEST GRID
+        ========================================= */
+
+        .test-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
+
+            gap: 17px;
+        }
+
+        .test-card {
+            position: relative;
+
+            overflow: hidden;
+
+            min-height: 295px;
+
+            padding: 24px;
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(31, 35, 43, 0.84),
+                    rgba(11, 12, 15, 0.96)
+                );
+
+            border:
+                1px solid
+                var(--border);
+
+            box-shadow:
+                0 18px 45px
+                rgba(0, 0, 0, 0.25);
+
+            transition:
+                0.28s ease;
+
+            animation:
+                cardIn 0.5s ease both;
+        }
+
+        .test-card:nth-child(2) {
+            animation-delay:
+                0.05s;
+        }
+
+        .test-card:nth-child(3) {
+            animation-delay:
+                0.10s;
+        }
+
+        .test-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 140px;
+            height: 140px;
+
+            top: -70px;
+            right: -70px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(59, 130, 246, 0.08);
+        }
+
+        .test-card:hover {
+            transform:
+                translateY(-6px);
+
+            border-color:
+                rgba(59, 130, 246, 0.44);
+
+            box-shadow:
+                0 24px 55px
+                rgba(0, 0, 0, 0.34);
+        }
+
+        .card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 14px;
+
+            margin-bottom: 18px;
+        }
+
+        .test-icon {
+            width: 50px;
+            height: 50px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 15px;
+
+            background:
+                rgba(37, 99, 235, 0.10);
+
+            border:
+                1px solid
+                rgba(59, 130, 246, 0.18);
+        }
+
+        .test-icon svg {
+            width: 26px;
+            height: 26px;
+
+            stroke: #93c5fd;
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+
+            gap: 6px;
+
+            padding:
+                7px 10px;
+
+            border-radius: 20px;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: 0.5px;
+        }
+
+        .status-available {
+            color: #86efac;
+
+            background:
+                rgba(34, 197, 94, 0.08);
+
+            border:
+                1px solid
+                rgba(34, 197, 94, 0.20);
+        }
+
+        .status-available::before {
+            content: "";
+
+            width: 6px;
+            height: 6px;
+
+            border-radius: 50%;
+
+            background:
+                #22c55e;
+
+            box-shadow:
+                0 0 10px
+                rgba(34, 197, 94, 0.7);
+
+            animation:
+                pulse 1.4s infinite;
+        }
+
+        .status-upcoming {
+            color: #fde68a;
+
+            background:
+                rgba(245, 158, 11, 0.08);
+
+            border:
+                1px solid
+                rgba(245, 158, 11, 0.20);
+        }
+
+        .status-expired {
+            color: #a3a3a3;
+
+            background:
+                rgba(148, 163, 184, 0.06);
+
+            border:
+                1px solid
+                rgba(148, 163, 184, 0.15);
+        }
+
+        .class-subject {
+            color: #93c5fd;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 0.7px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 8px;
+        }
+
+        .test-card h3 {
+            font-size: 19px;
+
+            line-height: 1.35;
+
+            margin-bottom: 7px;
+        }
+
+        .chapter {
+            color: #858c98;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+
+            min-height: 37px;
+        }
+
+        .details {
+            display: flex;
+            flex-wrap: wrap;
+
+            gap: 7px;
+
+            margin:
+                17px 0;
+        }
+
+        .detail {
+            padding:
+                7px 9px;
+
+            border-radius: 9px;
+
+            color: #9ca3af;
+
+            background:
+                rgba(255, 255, 255, 0.025);
+
+            border:
+                1px solid
+                rgba(148, 163, 184, 0.10);
+
+            font-size: 10px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================
+           ATTEMPT STATE
+        ========================================= */
+
+        .attempt-box,
+        .expired-box {
+            margin-bottom: 15px;
+
+            padding:
+                12px 13px;
+
+            border-radius: 13px;
+
+            font-size: 11px;
+
+            line-height: 1.55;
+        }
+
+        .attempt-box {
+            color: #fde68a;
+
+            background:
+                rgba(245, 158, 11, 0.07);
+
+            border:
+                1px solid
+                rgba(245, 158, 11, 0.18);
+        }
+
+        .terminated {
+            color: #fca5a5;
+
+            background:
+                rgba(239, 68, 68, 0.07);
+
+            border-color:
+                rgba(239, 68, 68, 0.18);
+        }
+
+        .expired-box {
+            color: #9ca3af;
+
+            background:
+                rgba(148, 163, 184, 0.05);
+
+            border:
+                1px dashed
+                rgba(148, 163, 184, 0.18);
+        }
+
+
+        /* =========================================
+           BUTTONS
+        ========================================= */
+
+        .button-row {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 9px;
+        }
+
+        .btn {
+            min-height: 43px;
+
+            padding:
+                0 15px;
+
+            border-radius: 21px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 7px;
+
+            border: none;
+
+            text-decoration: none;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            transition:
+                0.23s ease;
+        }
+
+        .btn-primary {
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #4f46e5
+                );
+
+            box-shadow:
+                0 10px 22px
+                rgba(37, 99, 235, 0.20);
+        }
+
+        .btn-primary:hover {
+            transform:
+                translateY(-2px);
+        }
+
+        .btn-disabled {
+            color: #737983;
+
+            background:
+                rgba(255, 255, 255, 0.025);
+
+            border:
+                1px solid
+                rgba(148, 163, 184, 0.11);
+        }
+
+
+        /* =========================================
+           EMPTY
+        ========================================= */
+
+        .empty {
+            padding:
+                58px 24px;
+
+            border-radius: 22px;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(31, 35, 43, 0.82),
+                    rgba(11, 12, 15, 0.95)
+                );
+
+            border:
+                1px solid
+                var(--border);
+        }
+
+        .empty-icon {
+            width: 68px;
+            height: 68px;
+
+            margin:
+                0 auto 17px;
+
+            border-radius: 21px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 30px;
+
+            background:
+                rgba(37, 99, 235, 0.10);
+
+            border:
+                1px solid
+                rgba(59, 130, 246, 0.17);
+        }
+
+        .empty h2 {
+            font-size: 20px;
+
+            margin-bottom: 7px;
+        }
+
+        .empty p {
+            max-width: 520px;
+
+            margin: auto;
+
+            color: #858c98;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+        }
+
+        .empty a {
+            display: inline-flex;
+
+            margin-top: 18px;
+
+            padding:
+                11px 16px;
+
+            border-radius: 20px;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #4f46e5
+                );
+        }
+
+
+        /* =========================================
+           ANIMATIONS
+        ========================================= */
+
+        @keyframes floatSoft {
+
+            0%,
+            100% {
+                transform:
+                    translateY(0);
+            }
+
+            50% {
+                transform:
+                    translateY(-5px);
+            }
+        }
+
+        @keyframes cardIn {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(14px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.35;
+            }
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 850px) {
+
+            .stats {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .test-grid {
+                grid-template-columns:
+                    1fr;
+            }
+        }
+
+        @media (max-width: 620px) {
+
+            .header {
+                height: auto;
+
+                min-height: 68px;
+
+                padding:
+                    12px 15px;
+            }
+
+            .brand-text small {
+                display: none;
+            }
+
+            .brand-text strong {
+                font-size: 14px;
+            }
+
+            .header-actions {
+                gap: 5px;
+            }
+
+            .header-btn {
+                padding:
+                    0 10px;
+
+                font-size: 10px;
+            }
+
+            .page {
+                padding:
+                    22px 14px
+                    45px;
+            }
+
+            .hero {
+                padding:
+                    28px 22px;
+
+                border-radius: 21px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section-head {
+                align-items:
+                    flex-start;
+
+                flex-direction:
+                    column;
+
+                gap: 6px;
+            }
+
+            .test-card {
+                min-height:
+                    auto;
+            }
+        }
+
+    </style>
+
+
+<style id="pentraone-brand-font">
+.pentra-brand-main{font-family:'Berlin Sans FB Demi','Berlin Sans FB','Arial Black',sans-serif;font-weight:600;letter-spacing:.3px;text-transform:uppercase;}
+.pentra-brand-one{font-family:'Bell MT','Times New Roman',serif;font-style:italic;font-weight:400;text-transform:lowercase;margin-left:2px;}
+</style>
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="1.7"
+            >
+
+                <path
+                    d="M5 3h14v18H5z">
+                </path>
+
+                <path
+                    d="M8 8h8M8 12h8M8 16h5">
+                </path>
+
+            </svg>
+
+        </div>
+
+
+        <div class="brand-text">
+
+            <small>
+                <span class="pentra-brand-main">PENTRA</span><span class="pentra-brand-one">one</span> EDUCATION
+            </small>
+
+            <strong>
+                My Tests
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <div class="header-actions">
+
+        <a
+            href="{% url 'education:student_progress' %}"
+            class="header-btn"
+        >
+            My Progress
+        </a>
+
+        <a
+            href="{% url 'education:student_dashboard' %}"
+            class="header-btn"
+        >
+            Dashboard
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<main class="page">
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="kicker">
+            ASSESSMENTS
+        </div>
+
+
+        <h1>
+            My Tests
+        </h1>
+
+
+        <p>
+            View upcoming and available assessments.
+            Once you complete a test, it automatically
+            moves out of this page and its result remains
+            saved in My Progress.
+        </p>
+
+
+        <div class="hero-note">
+            ✓ Completed results are preserved in My Progress
+        </div>
+
+    </section>
+
+
+
+    <!-- COUNTERS -->
+
+    <section class="stats">
+
+        <div class="stat available">
+
+            <small>
+                AVAILABLE NOW
+            </small>
+
+            <strong>
+                {{ available_count }}
+            </strong>
+
+        </div>
+
+
+        <div class="stat upcoming">
+
+            <small>
+                UPCOMING
+            </small>
+
+            <strong>
+                {{ upcoming_count }}
+            </strong>
+
+        </div>
+
+
+        <div class="stat">
+
+            <small>
+                EXPIRED
+            </small>
+
+            <strong>
+                {{ expired_count }}
+            </strong>
+
+        </div>
+
+
+        <div class="stat completed">
+
+            <small>
+                COMPLETED
+            </small>
+
+            <strong>
+                {{ completed_count }}
+            </strong>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- MESSAGES -->
+
+    {% if messages %}
+
+        <div class="messages">
+
+            {% for message in messages %}
+
+                <div class="message">
+                    {{ message }}
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% endif %}
+
+
+
+    <!-- SECTION TITLE -->
+
+    <div class="section-head">
+
+        <div>
+
+            <h2>
+                Your Assessments
+            </h2>
+
+            <p>
+                Tests that still need your attention.
+            </p>
+
+        </div>
+
+
+        <a
+            href="{% url 'education:student_progress' %}"
+            class="progress-link"
+        >
+            View completed results →
+        </a>
+
+    </div>
+
+
+
+    <!-- TESTS -->
+
+    {% if test_items %}
+
+        <section class="test-grid">
+
+
+            {% for item in test_items %}
+
+
+                <article class="test-card">
+
+
+                    <!-- TOP -->
+
+                    <div class="card-top">
+
+
+                        <div class="test-icon">
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke-width="1.7"
+                            >
+
+                                <rect
+                                    x="5"
+                                    y="3"
+                                    width="14"
+                                    height="18"
+                                    rx="2">
+                                </rect>
+
+                                <path
+                                    d="M9 8h6M9 12h6M9 16h4">
+                                </path>
+
+                            </svg>
+
+                        </div>
+
+
+
+                        {% if item.status == "available" %}
+
+                            <div class="status status-available">
+                                AVAILABLE NOW
+                            </div>
+
+                        {% elif item.status == "upcoming" %}
+
+                            <div class="status status-upcoming">
+                                UPCOMING
+                            </div>
+
+                        {% else %}
+
+                            <div class="status status-expired">
+                                EXPIRED
+                            </div>
+
+                        {% endif %}
+
+
+                    </div>
+
+
+
+                    <!-- CLASS + SUBJECT -->
+
+                    <div class="class-subject">
+
+                        {{ item.test.chapter.subject.class_level.name }}
+
+                        •
+
+                        {{ item.test.chapter.subject.name }}
+
+                    </div>
+
+
+
+                    <!-- TITLE -->
+
+                    <h3>
+                        {{ item.test.title }}
+                    </h3>
+
+
+
+                    <!-- CHAPTER -->
+
+                    <div class="chapter">
+
+                        Chapter
+                        {{ item.test.chapter.chapter_number }}
+
+                        •
+
+                        {{ item.test.chapter.name }}
+
+                    </div>
+
+
+
+                    <!-- DETAILS -->
+
+                    <div class="details">
+
+                        <span class="detail">
+                            {{ item.question_count }}
+                            Questions
+                        </span>
+
+                        <span class="detail">
+                            {{ item.test.total_marks }}
+                            Marks
+                        </span>
+
+                        <span class="detail">
+                            {{ item.test.available_from|date:"d M, h:i A" }}
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- AVAILABLE -->
+
+                    {% if item.status == "available" %}
+
+
+                        {% if item.attempt %}
+
+
+                            {% if item.attempt.proctoring_status == "terminated" %}
+
+                                <div class="attempt-box terminated">
+
+                                    <strong>
+                                        Test terminated
+                                    </strong>
+
+                                    <br>
+
+                                    This attempt cannot be started again.
+
+                                </div>
+
+
+                                <div class="button-row">
+
+                                    <span class="btn btn-disabled">
+                                        Attempt Ended
+                                    </span>
+
+                                </div>
+
+
+                            {% elif item.attempt.is_submitted %}
+
+                                <div class="attempt-box">
+
+                                    <strong>
+                                        Submission recorded
+                                    </strong>
+
+                                    <br>
+
+                                    Your result is being processed.
+                                    Refresh this page shortly.
+
+                                </div>
+
+
+                                <div class="button-row">
+
+                                    <span class="btn btn-disabled">
+                                        Already Submitted
+                                    </span>
+
+                                </div>
+
+
+                            {% else %}
+
+                                <div class="attempt-box">
+
+                                    <strong>
+                                        Test already started
+                                    </strong>
+
+                                    <br>
+
+                                    Continue from your existing test tab.
+
+                                </div>
+
+
+                                <div class="button-row">
+
+                                    <span class="btn btn-disabled">
+                                        Test In Progress
+                                    </span>
+
+                                </div>
+
+                            {% endif %}
+
+
+                        {% else %}
+
+
+                            <div class="button-row">
+
+                                <a
+                                    href="{% url 'education:start_test' item.test.id %}"
+                                    class="btn btn-primary"
+                                >
+                                    Start Test →
+                                </a>
+
+                            </div>
+
+
+                        {% endif %}
+
+
+
+                    <!-- UPCOMING -->
+
+                    {% elif item.status == "upcoming" %}
+
+
+                        <div class="button-row">
+
+                            <span class="btn btn-disabled">
+                                Starts
+                                {{ item.test.available_from|date:"d M Y, h:i A" }}
+                            </span>
+
+                        </div>
+
+
+
+                    <!-- EXPIRED -->
+
+                    {% else %}
+
+
+                        <div class="expired-box">
+
+                            This test expired before a completed
+                            result was saved.
+
+                        </div>
+
+
+                        <div class="button-row">
+
+                            <span class="btn btn-disabled">
+                                Test Expired
+                            </span>
+
+                        </div>
+
+
+                    {% endif %}
+
+
+                </article>
+
+
+            {% endfor %}
+
+
+        </section>
+
+
+    {% else %}
+
+
+        <section class="empty">
+
+            <div class="empty-icon">
+                ✓
+            </div>
+
+            <h2>
+                You're all caught up
+            </h2>
+
+            <p>
+                There are no pending tests right now.
+                Completed tests and their scores are stored
+                safely in My Progress.
+            </p>
+
+            <a href="{% url 'education:student_progress' %}">
+                Open My Progress
+            </a>
+
+        </section>
+
+
+    {% endif %}
+
+
+</main>
+
+
+</body>
+</html>

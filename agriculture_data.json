@@ -1,0 +1,1127 @@
+[
+  {
+    "model": "agriculture.crop",
+    "pk": 1,
+    "fields": {
+      "name": "Wheat",
+      "scientific_name": "Triticum aestivum",
+      "description": "Wheat is an important food grain crop commonly grown during the winter season.",
+      "season": "Rabi",
+      "soil": "Well-drained loamy soil with good fertility. Avoid waterlogged fields.",
+      "water_requirement": "Moderate irrigation is required. Important stages include crown root development, flowering and grain filling.",
+      "sowing_time": "Usually October to December, depending on the region.",
+      "harvesting_time": "Usually March to April, depending on the variety and growing region.",
+      "image": "",
+      "is_active": true,
+      "created_at": "2026-08-29 16:56:11.356788",
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.crop",
+    "pk": 2,
+    "fields": {
+      "name": "Rice",
+      "scientific_name": "Oryza sativa",
+      "description": "Rice is a major food crop that grows well in warm conditions with adequate water.",
+      "season": "Kharif",
+      "soil": "Clayey or clay-loam soil with good water-holding capacity is generally suitable.",
+      "water_requirement": "Requires regular water availability, especially during establishment and reproductive stages.",
+      "sowing_time": "Usually June to July for the main Kharif crop.",
+      "harvesting_time": "Generally September to November depending on variety and region.",
+      "image": "",
+      "is_active": true,
+      "created_at": "2026-08-29 16:56:11.482120",
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.crop",
+    "pk": 3,
+    "fields": {
+      "name": "Cotton",
+      "scientific_name": "Gossypium spp.",
+      "description": "Cotton is an important fibre crop grown in warm conditions and is widely cultivated in India.",
+      "season": "Kharif",
+      "soil": "Deep, fertile and well-drained black soil is generally suitable for cotton.",
+      "water_requirement": "Needs adequate moisture but does not perform well under prolonged waterlogging.",
+      "sowing_time": "Usually June to July, depending on monsoon conditions.",
+      "harvesting_time": "Usually starts several months after sowing and may continue through the dry season.",
+      "image": "",
+      "is_active": true,
+      "created_at": "2026-08-29 16:56:11.658528",
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.crop",
+    "pk": 4,
+    "fields": {
+      "name": "Soybean",
+      "scientific_name": "Glycine max",
+      "description": "Soybean is an important oilseed and pulse crop commonly grown during the monsoon season.",
+      "season": "Kharif",
+      "soil": "Well-drained fertile soil with good moisture retention is suitable.",
+      "water_requirement": "Needs adequate soil moisture, especially during flowering and pod development.",
+      "sowing_time": "Usually June to July with the onset of monsoon.",
+      "harvesting_time": "Generally September to October depending on the variety.",
+      "image": "",
+      "is_active": true,
+      "created_at": "2026-08-29 16:56:11.780041",
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.crop",
+    "pk": 5,
+    "fields": {
+      "name": "Maize",
+      "scientific_name": "Zea mays",
+      "description": "Maize is a versatile cereal crop used for food, feed and industrial purposes.",
+      "season": "Kharif / Rabi / Summer",
+      "soil": "Fertile, well-drained loamy soil with good organic matter is generally preferred.",
+      "water_requirement": "Requires regular moisture. Water stress during flowering and grain formation can reduce yield.",
+      "sowing_time": "Depends on season and region; commonly June to July for Kharif maize.",
+      "harvesting_time": "Usually around 3 to 4 months after sowing, depending on variety and purpose.",
+      "image": "",
+      "is_active": true,
+      "created_at": "2026-08-29 16:56:11.896760",
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.crop",
+    "pk": 6,
+    "fields": {
+      "name": "Chickpea",
+      "scientific_name": "Cicer arietinum",
+      "description": "Chickpea is a major pulse crop commonly cultivated during the cool dry season.",
+      "season": "Rabi",
+      "soil": "Well-drained loam to black soil with moderate fertility is generally suitable.",
+      "water_requirement": "Requires limited irrigation. Excess water can be harmful.",
+      "sowing_time": "Usually October to November.",
+      "harvesting_time": "Generally February to March depending on region.",
+      "image": "",
+      "is_active": true,
+      "created_at": "2026-08-29 16:56:12.015190",
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.crop",
+    "pk": 7,
+    "fields": {
+      "name": "Tomato",
+      "scientific_name": "Solanum lycopersicum",
+      "description": "Tomato is a widely grown vegetable crop used fresh and in processed food products.",
+      "season": "Rabi / Kharif / Summer",
+      "soil": "Well-drained fertile sandy loam to loam soil with good organic matter is suitable.",
+      "water_requirement": "Needs regular and balanced irrigation. Avoid sudden changes in soil moisture.",
+      "sowing_time": "Varies by region and season.",
+      "harvesting_time": "Fruits are harvested when they reach the required stage of maturity.",
+      "image": "",
+      "is_active": true,
+      "created_at": "2026-08-29 16:56:12.129153",
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.crop",
+    "pk": 8,
+    "fields": {
+      "name": "Onion",
+      "scientific_name": "Allium cepa",
+      "description": "Onion is an important vegetable and commercial crop grown in several parts of India.",
+      "season": "Rabi / Kharif",
+      "soil": "Loose, fertile and well-drained soil is preferred.",
+      "water_requirement": "Requires regular but controlled irrigation. Stop irrigation before harvest as appropriate.",
+      "sowing_time": "Varies according to Kharif, late Kharif and Rabi seasons.",
+      "harvesting_time": "Harvest when bulbs mature and the tops begin to fall.",
+      "image": "",
+      "is_active": true,
+      "created_at": "2026-08-29 16:56:12.244203",
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.crop",
+    "pk": 9,
+    "fields": {
+      "name": "Sugarcane",
+      "scientific_name": "Saccharum officinarum",
+      "description": "Sugarcane is a long-duration commercial crop used mainly for sugar production.",
+      "season": "Annual / Seasonal",
+      "soil": "Deep fertile loamy soil with good drainage and water-holding capacity is suitable.",
+      "water_requirement": "Requires substantial water throughout the growing period, with irrigation adjusted to weather and soil.",
+      "sowing_time": "Varies by region and planting season.",
+      "harvesting_time": "Usually harvested after the crop reaches suitable maturity, often around 10 to 18 months depending on region.",
+      "image": "",
+      "is_active": true,
+      "created_at": "2026-08-29 16:56:12.377178",
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.crop",
+    "pk": 10,
+    "fields": {
+      "name": "Groundnut",
+      "scientific_name": "Arachis hypogaea",
+      "description": "Groundnut is an important oilseed crop that grows well in warm conditions.",
+      "season": "Kharif / Summer",
+      "soil": "Loose, well-drained sandy loam to loam soil is ideal because pods develop underground.",
+      "water_requirement": "Needs adequate moisture during establishment, flowering and pod development while avoiding waterlogging.",
+      "sowing_time": "Usually June to July for Kharif cultivation.",
+      "harvesting_time": "Generally harvested when pods are mature and the inner shell develops properly.",
+      "image": "",
+      "is_active": true,
+      "created_at": "2026-08-29 16:56:12.534199",
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 1,
+    "fields": {
+      "language": "hi",
+      "name": "गेहूं",
+      "description": "यह ठंडे मौसम में उगाई जाने वाली रबी की एक मुख्य फसल है।",
+      "season": "रबी",
+      "soil": "इसके लिए उपजाऊ और अच्छे जल निकास वाली दोमट मिट्टी सबसे अच्छी है।",
+      "water_requirement": "मध्यम सिंचाई की जरूरत होती है, खासकर जड़ बनते, फूल आते और दाना भरते समय पानी देना बहुत जरूरी है।",
+      "sowing_time": "आमतौर पर इसकी बुवाई अक्टूबर से दिसंबर के बीच की जाती है।",
+      "harvesting_time": "इसकी कटाई आमतौर पर मार्च से अप्रैल के बीच होती है।",
+      "crop_id": 1,
+      "common_problems": "चेपा (माहू) कीट, रतुआ रोग, खरपतवार और नमी की कमी।",
+      "farmer_tip": "खेत में ज्यादा पानी न भरें और फसलों में पीलेपन या रतुआ (धब्बों) की नियमित जांच करते रहें।"
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 2,
+    "fields": {
+      "language": "mr",
+      "name": "गहू",
+      "description": "हे थंड हवामानात येणारे रब्बी हंगामातील मुख्य पीक आहे.",
+      "season": "रब्बी",
+      "soil": "सुपीक आणि पाणी चांगला निचरा होणारी जमीन योग्य असते.",
+      "water_requirement": "मध्यम पाणी लागते, तसेच मुळे वाढताना, फुलताना आणि दाणे भरताना पाणी देणे गरजेचे आहे.",
+      "sowing_time": "साधारणपणे ऑक्टोबर ते डिसेंबर दरम्यान पेरणी केली जाते.",
+      "harvesting_time": "साधारणपणे मार्च ते एप्रिल दरम्यान काढणी केली जाते.",
+      "crop_id": 1,
+      "common_problems": "मावा कीड, तांबेरा रोग, तण आणि पाण्याचा ताण.",
+      "farmer_tip": "जास्त पाणी देऊ नका आणि पिकावर पिवळेपणा किंवा तांबेऱ्याचे डाग नियमित तपासा."
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 3,
+    "fields": {
+      "language": "hi",
+      "name": "धान",
+      "description": "यह एक मुख्य फसल है जो गर्म और नमी वाले मौसम में अच्छी बढ़ती है।",
+      "season": "खरीफ",
+      "soil": "चिकनी या दोमट मिट्टी जो नमी रोक सकती हो।",
+      "water_requirement": "शुरुआती बढ़वार और फूल आने के समय अच्छी नमी चाहिए।",
+      "sowing_time": "आमतौर पर जून से जुलाई।",
+      "harvesting_time": "आमतौर पर सितंबर से नवंबर।",
+      "crop_id": 2,
+      "common_problems": "पत्ती के कीड़े, तना छेदक, खरपतवार और फफूंद की बीमारियां।",
+      "farmer_tip": "खेत की लगातार देखभाल करें और बेवजह पानी जमा न होने दें।"
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 4,
+    "fields": {
+      "language": "mr",
+      "name": "भात",
+      "description": "हे एक मुख्य पीक आहे जे उबदार हवामानात आणि चांगल्या ओलाव्यात खूप छान येते.",
+      "season": "खरीप",
+      "soil": "पाणी धरून ठेवणारी चिकण किंवा गाळाची माती योग्य असते.",
+      "water_requirement": "सुरुवातीच्या वाढीच्या काळात आणि फुलोऱ्यात चांगला ओलावा लागतो.",
+      "sowing_time": "साधारणपणे जून ते जुलै.",
+      "harvesting_time": "साधारणपणे सप्टेंबर ते नोव्हेंबर.",
+      "crop_id": 2,
+      "common_problems": "पानावरील किडी, खोडकीड, तण आणि बुरशीजन्य रोग.",
+      "farmer_tip": "शेताची नियमित पाहणी करा आणि गरजेपेक्षा जास्त पाणी साचू देऊ नका."
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 5,
+    "fields": {
+      "language": "hi",
+      "name": "कपास",
+      "description": "कपास गर्म मौसम में उगाई जाने वाली एक महत्वपूर्ण रेशेदार फसल है, जिसकी भारत में बड़े पैमाने पर खेती की जाती है।",
+      "season": "खरीफ",
+      "soil": "इसके लिए गहरी, उपजाऊ और अच्छे जल निकास वाली (जिसमें पानी जमा न हो) काली मिट्टी आमतौर पर सबसे उपयुक्त होती है।",
+      "water_requirement": "फसल के लिए पर्याप्त नमी की जरूरत होती है, लेकिन लंबे समय तक पानी का जमाव होना नुकसानदेह हो सकता है।",
+      "sowing_time": "आमतौर पर जून से जुलाई, जो मानसून की स्थिति पर निर्भर करता है।",
+      "harvesting_time": "फसल की कटाई (चुनाई) आमतौर पर बुवाई के कुछ महीनों बाद शुरू होती है और सूखे मौसम में जारी रह सकती है।",
+      "crop_id": 3,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 6,
+    "fields": {
+      "language": "mr",
+      "name": "कापूस",
+      "description": "कापूस हे उष्ण हवामानात येणारे एक महत्त्वाचे धाग्याचे पीक असून भारतात याची मोठ्या प्रमाणावर लागवड केली जाते.",
+      "season": "खरीप",
+      "soil": "खोल, सुपीक आणि चांगला निचरा होणारी काळी जमीन सामान्यतः योग्य असते.",
+      "water_requirement": "पुरेशा प्रमाणात ओलावा आवश्यक असतो, परंतु जास्त वेळ पाणी साचून राहणे हानिकारक ठरू शकते.",
+      "sowing_time": "साधारणपणे जून ते जुलै, मान्सूनच्या (पावसाच्या) परिस्थितीवर अवलंबून.",
+      "harvesting_time": "काढणी (वेचणी) साधारणपणे पेरणीनंतर काही महिन्यांनी सुरू होते आणि कोरड्या हवामानात चालू राहू शकते.",
+      "crop_id": 3,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 7,
+    "fields": {
+      "language": "hi",
+      "name": "सोयाबीन",
+      "description": "सोयाबीन एक महत्वपूर्ण तिलहन और दलहन फसल है जिसे आमतौर पर मानसून के मौसम में उगाया जाता है।",
+      "season": "खरीफ",
+      "soil": "अच्छी जल निकासी वाली उपजाऊ मिट्टी जिसमें नमी रोकने की अच्छी क्षमता हो, इसके लिए आमतौर पर उपयुक्त होती है।",
+      "water_requirement": "फूल आने और फलियां बनने के समय मिट्टी में पर्याप्त नमी होना बहुत जरूरी है।",
+      "sowing_time": "आमतौर पर मानसून की शुरुआत के साथ जून से जुलाई तक।",
+      "harvesting_time": "फसल की किस्म और क्षेत्र के आधार पर आमतौर पर सितंबर से अक्टूबर तक।",
+      "crop_id": 4,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 8,
+    "fields": {
+      "language": "mr",
+      "name": "सोयाबीन",
+      "description": "सोयाबीन हे महत्त्वाचे तेलबिया आणि कडधान्य पीक असून ते प्रामुख्याने पावसाळ्यात घेतले जाते.",
+      "season": "खरीप",
+      "soil": "चांगला निचरा होणारी सुपीक आणि ओल धरून ठेवणारी जमीन योग्य आहे.",
+      "water_requirement": "फुलोरा आणि शेंगा भरण्याच्या काळात जमिनीत पुरेशी ओल आवश्यक असते.",
+      "sowing_time": "साधारण जून ते जुलै, पावसाळा सुरू झाल्यावर.",
+      "harvesting_time": "साधारण सप्टेंबर ते ऑक्टोबर, वाण आणि प्रदेशानुसार.",
+      "crop_id": 4,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 9,
+    "fields": {
+      "language": "hi",
+      "name": "मक्का",
+      "description": "मक्का एक बहुउपयोगी अनाज फसल है जिसका उपयोग भोजन, पशु आहार और उद्योगों में किया जाता है।",
+      "season": "खरीफ / रबी / गर्मी",
+      "soil": "उपजाऊ और अच्छी जल निकासी वाली दोमट मिट्टी, जिसमें जैविक पदार्थ अच्छा हो, उपयुक्त है।",
+      "water_requirement": "नियमित नमी आवश्यक होती है। फूल आने और दाना बनने के समय पानी की कमी से उत्पादन घट सकता है।",
+      "sowing_time": "मौसम और क्षेत्र के अनुसार। खरीफ में आमतौर पर जून से जुलाई।",
+      "harvesting_time": "किस्म और उपयोग के अनुसार आमतौर पर 3 से 4 महीने बाद।",
+      "crop_id": 5,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 10,
+    "fields": {
+      "language": "mr",
+      "name": "मका",
+      "description": "मका हे एक बहुउपयोगी तृणधान्य पीक आहे, ज्याचा वापर अन्न, जनावरांचा चारा आणि औद्योगिक कामांसाठी केला जातो.",
+      "season": "खरीप / रब्बी / उन्हाळी",
+      "soil": "चांगला निचरा होणारी, सुपीक, पोयट्याची आणि सेंद्रिय घटक भरपूर असलेली जमीन यासाठी योग्य असते.",
+      "water_requirement": "जमिनीत नियमित ओलावा असणे आवश्यक आहे. फुले येताना आणि दाणे भरताना पाण्याचा ताण पडल्यास उत्पादनात घट होऊ शकते.",
+      "sowing_time": "हंगाम आणि विभागानुसार पेरणीची वेळ बदलते. खरीप मक्याची पेरणी प्रामुख्याने जून ते जुलै दरम्यान केली जाते.",
+      "harvesting_time": "वाण आणि वापराच्या उद्देशानुसार, पेरणीनंतर साधारणपणे ३ ते ४ महिन्यांत काढणी केली जाते.",
+      "crop_id": 5,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 11,
+    "fields": {
+      "language": "hi",
+      "name": "चना",
+      "description": "चना एक प्रमुख दलहन फसल है जिसे आमतौर पर ठंडे और सूखे मौसम में उगाया जाता है।",
+      "season": "रबी",
+      "soil": "अच्छी जल निकासी वाली दोमट से काली मिट्टी उपयुक्त होती है।",
+      "water_requirement": "कम सिंचाई की आवश्यकता होती है। अधिक पानी हानिकारक हो सकता है।",
+      "sowing_time": "आमतौर पर अक्टूबर से नवंबर।",
+      "harvesting_time": "आमतौर पर फरवरी से मार्च, क्षेत्र के अनुसार।",
+      "crop_id": 6,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 12,
+    "fields": {
+      "language": "mr",
+      "name": "हरभरा",
+      "description": "हरभरा हे महत्त्वाचे कडधान्य पीक असून ते थंड आणि कोरड्या हवामानात घेतले जाते.",
+      "season": "रब्बी",
+      "soil": "चांगला निचरा होणारी गाळाची किंवा काळी जमीन योग्य आहे.",
+      "water_requirement": "कमी सिंचनाची गरज असते. जास्त पाणी हानिकारक ठरू शकते.",
+      "sowing_time": "साधारण ऑक्टोबर ते नोव्हेंबर.",
+      "harvesting_time": "साधारण फेब्रुवारी ते मार्च, प्रदेशानुसार.",
+      "crop_id": 6,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 13,
+    "fields": {
+      "language": "hi",
+      "name": "टमाटर",
+      "description": "टमाटर एक व्यापक रूप से उगाई जाने वाली सब्जी फसल है जिसका उपयोग ताजा और प्रसंस्कृत भोजन में किया जाता है।",
+      "season": "रबी / खरीफ / गर्मी",
+      "soil": "अच्छी जल निकासी वाली उपजाऊ बलुई दोमट से दोमट मिट्टी उपयुक्त है।",
+      "water_requirement": "नियमित और संतुलित सिंचाई आवश्यक है। मिट्टी की नमी में अचानक बदलाव से बचें।",
+      "sowing_time": "क्षेत्र और मौसम के अनुसार अलग-अलग।",
+      "harvesting_time": "फल की परिपक्वता के अनुसार कटाई की जाती है।",
+      "crop_id": 7,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 14,
+    "fields": {
+      "language": "mr",
+      "name": "टोमॅटो",
+      "description": "टोमॅटो हे मोठ्या प्रमाणावर घेतले जाणारे भाजीपाला पीक असून ताजे किंवा प्रक्रिया केलेल्या अन्नात वापरले जाते.",
+      "season": "रब्बी / खरीप / उन्हाळी",
+      "soil": "चांगला निचरा होणारी सुपीक वालुकामय दोमट ते दोमट जमीन योग्य आहे.",
+      "water_requirement": "नियमित आणि संतुलित सिंचन आवश्यक आहे. जमिनीतील ओल अचानक बदलू देऊ नये.",
+      "sowing_time": "प्रदेश आणि हंगामानुसार बदलते.",
+      "harvesting_time": "फळाची योग्य परिपक्वता झाल्यावर काढणी केली जाते.",
+      "crop_id": 7,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 15,
+    "fields": {
+      "language": "hi",
+      "name": "प्याज",
+      "description": "प्याज एक महत्वपूर्ण सब्जी और व्यावसायिक फसल है जो भारत के कई क्षेत्रों में उगाई जाती है।",
+      "season": "रबी / खरीफ",
+      "soil": "ढीली, उपजाऊ और अच्छी जल निकासी वाली मिट्टी पसंद की जाती है।",
+      "water_requirement": "नियमित लेकिन नियंत्रित सिंचाई आवश्यक है। कटाई से पहले उचित समय पर सिंचाई बंद करें।",
+      "sowing_time": "खरीफ, देर खरीफ और रबी मौसम के अनुसार अलग-अलग।",
+      "harvesting_time": "जब कंद तैयार हो जाएं और पत्तियां झुकने लगें तब कटाई करें।",
+      "crop_id": 8,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 16,
+    "fields": {
+      "language": "mr",
+      "name": "कांदा",
+      "description": "कांदा हे महत्त्वाचे भाजीपाला आणि व्यापारी पीक असून भारतातील अनेक भागांत घेतले जाते.",
+      "season": "रब्बी / खरीप",
+      "soil": "सैल, सुपीक आणि चांगला निचरा होणारी जमीन पसंत केली जाते.",
+      "water_requirement": "नियमित पण नियंत्रित सिंचन आवश्यक आहे. काढणीपूर्वी योग्य वेळी पाणी बंद करावे.",
+      "sowing_time": "खरीप, उशिरा खरीप आणि रब्बी हंगामानुसार बदलते.",
+      "harvesting_time": "कंद पूर्ण वाढले असून पाने वाकू लागल्यावर काढणी करावी.",
+      "crop_id": 8,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 17,
+    "fields": {
+      "language": "hi",
+      "name": "गन्ना",
+      "description": "गन्ना एक लंबी अवधि की व्यावसायिक फसल है जिसका मुख्य उपयोग चीनी उत्पादन में होता है।",
+      "season": "वार्षिक / मौसमी",
+      "soil": "गहरी उपजाऊ दोमट मिट्टी जिसमें जल निकासी और पानी रोकने की क्षमता अच्छी हो, उपयुक्त है।",
+      "water_requirement": "पूरे बढ़वार काल में अधिक पानी की आवश्यकता होती है, लेकिन सिंचाई मौसम और मिट्टी के अनुसार करनी चाहिए।",
+      "sowing_time": "क्षेत्र और बुवाई के मौसम के अनुसार।",
+      "harvesting_time": "क्षेत्र के अनुसार आमतौर पर 10 से 18 महीनों में परिपक्वता पर कटाई।",
+      "crop_id": 9,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 18,
+    "fields": {
+      "language": "mr",
+      "name": "ऊस",
+      "description": "ऊस हे दीर्घ कालावधीचे व्यापारी पीक असून त्याचा मुख्य वापर साखर उत्पादनासाठी होतो.",
+      "season": "वार्षिक / हंगामी",
+      "soil": "खोल, सुपीक आणि चांगला निचरा होणारी पाणी धरून ठेवणारी दोमट जमीन योग्य आहे.",
+      "water_requirement": "संपूर्ण वाढीच्या काळात भरपूर पाण्याची गरज असते, परंतु हवामान आणि जमिनीनुसार सिंचन करावे.",
+      "sowing_time": "प्रदेश आणि लागवडीच्या हंगामानुसार.",
+      "harvesting_time": "प्रदेशानुसार साधारण 10 ते 18 महिन्यांनी परिपक्व झाल्यावर काढणी केली जाते.",
+      "crop_id": 9,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 19,
+    "fields": {
+      "language": "hi",
+      "name": "मूंगफली",
+      "description": "मूंगफली एक महत्वपूर्ण तिलहन फसल है जो गर्म मौसम में अच्छी तरह उगती है।",
+      "season": "खरीफ / गर्मी",
+      "soil": "ढीली और अच्छी जल निकासी वाली बलुई दोमट से दोमट मिट्टी उपयुक्त है क्योंकि फलियां मिट्टी के अंदर बनती हैं।",
+      "water_requirement": "स्थापना, फूल आने और फलियां बनने के समय पर्याप्त नमी चाहिए, लेकिन पानी जमा नहीं होना चाहिए।",
+      "sowing_time": "खरीफ के लिए आमतौर पर जून से जुलाई।",
+      "harvesting_time": "जब फलियां पक जाएं और अंदर की परत अच्छी तरह विकसित हो जाए तब कटाई करें।",
+      "crop_id": 10,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 20,
+    "fields": {
+      "language": "mr",
+      "name": "भुईमूग",
+      "description": "भुईमूग हे महत्त्वाचे तेलबिया पीक असून उष्ण हवामानात चांगले वाढते.",
+      "season": "खरीप / उन्हाळी",
+      "soil": "सैल आणि चांगला निचरा होणारी वालुकामय दोमट ते दोमट जमीन योग्य आहे कारण शेंगा जमिनीत तयार होतात.",
+      "water_requirement": "उगवण, फुलोरा आणि शेंगा भरण्याच्या काळात पुरेशी ओल आवश्यक आहे, पण पाणी साचू देऊ नये.",
+      "sowing_time": "खरीपासाठी साधारण जून ते जुलै.",
+      "harvesting_time": "शेंगा परिपक्व झाल्यावर आणि आतील कवच योग्यरीत्या विकसित झाल्यावर काढणी करावी.",
+      "crop_id": 10,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 21,
+    "fields": {
+      "language": "en",
+      "name": "Wheat",
+      "description": "A common Rabi food crop grown in cool weather.",
+      "season": "Rabi",
+      "soil": "Fertile, well-drained loamy soil.",
+      "water_requirement": "Moderate irrigation. Water is important during root growth, flowering and grain filling.",
+      "sowing_time": "Usually October to December.",
+      "harvesting_time": "Usually March to April.",
+      "crop_id": 1,
+      "common_problems": "Aphids, rust disease, weeds and moisture stress.",
+      "farmer_tip": "Do not over-irrigate. Check the crop regularly for yellowing or rust spots."
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 22,
+    "fields": {
+      "language": "gu",
+      "name": "ઘઉં",
+      "description": "ઠંડી ઋતુમાં થતો આ એક મુખ્ય રવિ પાક છે.",
+      "season": "રવિ",
+      "soil": "ફળદ્રુપ અને સારા નિતારવાળી ગોરાડુ જમીન.",
+      "water_requirement": "મધ્યમ પાણી આપવું; મૂળ, ફૂલ અને દાણા ભરાતી વખતે પાણી ખાસ આપવું.",
+      "sowing_time": "સામાન્ય રીતે ઓક્ટોબરથી ડિસેમ્બર.",
+      "harvesting_time": "સામાન્ય રીતે માર્ચથી એપ્રિલ.",
+      "crop_id": 1,
+      "common_problems": "મોલો-મશી, ગેરુનો રોગ, નીંદણ, પાણીની ખેંચ.",
+      "farmer_tip": "વધારે પાણી ન આપવું અને પીળા પાન કે ડાઘ માટે પાક નિયમિત તપાસવો."
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 23,
+    "fields": {
+      "language": "bn",
+      "name": "গম",
+      "description": "এটি ঠান্ডা আবহাওয়ায় চাষ হওয়া একটি পরিচিত রবি শস্য।",
+      "season": "রবি",
+      "soil": "উর্বর এবং জল জমে থাকে না এমন দোঁআশ মাটি ভালো।",
+      "water_requirement": "মাঝারি জল লাগে; শিকড় গজানো, ফুল আসা ও দানা বাঁধার সময় জল দেওয়া জরুরি।",
+      "sowing_time": "সাধারণত অক্টোবর থেকে ডিসেম্বর মাসের মধ্যে বোনা হয়।",
+      "harvesting_time": "সাধারণত মার্চ থেকে এপ্রিল মাসের মধ্যে কাটা হয়।",
+      "crop_id": 1,
+      "common_problems": "জাব পোকা, মরিচা রোগ, আগাছা এবং জলের অভাব।",
+      "farmer_tip": "বেশি জল দেবেন না এবং গাছে হলুদ ভাব বা মরিচা দাগ আছে কিনা নিয়মিত দেখুন।"
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 24,
+    "fields": {
+      "language": "ta",
+      "name": "கோதுமை",
+      "description": "குளிர்ச்சியான வானிலையில் வளரும் ஒரு பொதுவான ரபி உணவுப் பயிர்.",
+      "season": "ரபி",
+      "soil": "வளமான, தண்ணீர் தேங்காத வண்டல் மண்.",
+      "water_requirement": "மிதமான நீர் தேவை. வேர் வளர்ச்சி, பூக்கும் போது மற்றும் தானியம் உருவாகும் போது தண்ணீர் பாய்ச்சுவது முக்கியம்.",
+      "sowing_time": "பொதுவாக அக்டோபர் முதல் டிசம்பர் வரை.",
+      "harvesting_time": "பொதுவாக மார்ச் முதல் ஏப்ரல் வரை.",
+      "crop_id": 1,
+      "common_problems": "அசுவினி பூச்சி, துரு நோய், களைகள் மற்றும் ஈரப்பதம் குறைபாடு.",
+      "farmer_tip": "அதிகமாக தண்ணீர் பாய்ச்ச வேண்டாம். பயிரில் மஞ்சள் நிறமோ அல்லது துரு புள்ளிகளோ தெரிகிறதா என்று அடிக்கடி கண்காணியுங்கள்."
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 25,
+    "fields": {
+      "language": "te",
+      "name": "గోధుమ",
+      "description": "ఇది చల్లని వాతావరణంలో పండే సాధారణ రబీ ఆహార పంట.",
+      "season": "రబీ",
+      "soil": "సారం ఉన్న, నీరు బాగా ఇంకే ఒండ్రు నేలలు మంచివి.",
+      "water_requirement": "మోస్తరు నీరు సరిపోతుంది; వేర్లు పెరిగేటప్పుడు, పూత మరియు గింజ పట్టే సమయంలో నీరు ముఖ్యం.",
+      "sowing_time": "సాధారణంగా అక్టోబర్ నుండి డిసెంబర్ వరకు.",
+      "harvesting_time": "సాధారణంగా మార్చి నుండి ఏప్రిల్ వరకు.",
+      "crop_id": 1,
+      "common_problems": "పేనుబంక, తుప్పు తెగులు, కలుపు మొక్కలు, తేమ లోపం.",
+      "farmer_tip": "ఎక్కువ నీరు పెట్టకండి; ఆకులపై పసుపు లేదా తుప్పు మచ్చలు ఉన్నాయో తరచూ చూడండి."
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 26,
+    "fields": {
+      "language": "kn",
+      "name": "ಗೋಧಿ",
+      "description": "ತಂಪಾದ ಹವಾಮಾನದಲ್ಲಿ ಬೆಳೆಯುವ ಪ್ರಮುಖ ರಬಿ ಆಹಾರ ಬೆಳೆ.",
+      "season": "ರಬಿ",
+      "soil": "ಫಲವತ್ತಾದ ಮತ್ತು ನೀರು ನಿಲ್ಲದೆ ಸರಾಗವಾಗಿ ಬಸಿದುಹೋಗುವ ಮಣ್ಣು ಸೂಕ್ತ.",
+      "water_requirement": "ಮಿತವಾದ ನೀರು ಬೇಕು, ಮುಖ್ಯವಾಗಿ ಬೇರು ಬೆಳೆಯುವಾಗ, ಹೂ ಬಿಡುವಾಗ ಮತ್ತು ಕಾಳು ತುಂಬುವಾಗ ನೀರು ಕೊಡಿ.",
+      "sowing_time": "ಸಾಮಾನ್ಯವಾಗಿ ಅಕ್ಟೋಬರ್‌ನಿಂದ ಡಿಸೆಂಬರ್ ತಿಂಗಳಲ್ಲಿ ಬಿತ್ತನೆ ಮಾಡಲಾಗುತ್ತದೆ.",
+      "harvesting_time": "ಸಾಮಾನ್ಯವಾಗಿ ಮಾರ್ಚ್‌ನಿಂದ ಏಪ್ರಿಲ್ ತಿಂಗಳಲ್ಲಿ ಕಟಾವು ಮಾಡಲಾಗುತ್ತದೆ.",
+      "crop_id": 1,
+      "common_problems": "ಜಿಗಿ ಹುಳು, ತುಕ್ಕು ರೋಗ, ಕಳೆಗಳು ಮತ್ತು ತೇವಾಂಶದ ಕೊರತೆ.",
+      "farmer_tip": "ಹೆಚ್ಚು ನೀರು ಹಾಯಿಸಬೇಡಿ, ಎಲೆ ಹಳದಿಯಾಗುವುದು ಅಥವಾ ತುಕ್ಕು ಮಚ್ಚೆಗಳಿವೆಯೇ ಎಂದು ಆಗಾಗ ಪರಿಶೀಲಿಸಿ."
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 27,
+    "fields": {
+      "language": "pa",
+      "name": "ਕਣਕ",
+      "description": "ਇਹ ਠੰਢੇ ਮੌਸਮ ਵਿੱਚ ਉਗਾਈ ਜਾਣ ਵਾਲੀ ਰੱਬੀ ਦੀ ਆਮ ਫ਼ਸਲ ਹੈ।",
+      "season": "ਰੱਬੀ",
+      "soil": "ਉਪਜਾਊ ਅਤੇ ਚੰਗੇ ਨਿਕਾਸ ਵਾਲੀ ਮੈਰਾ ਮਿੱਟੀ।",
+      "water_requirement": "ਦਰਮਿਆਨਾ ਪਾਣੀ ਚਾਹੀਦਾ ਹੈ, ਖਾਸ ਕਰਕੇ ਜੜ੍ਹਾਂ ਬਣਨ, ਫੁੱਲ ਆਉਣ ਅਤੇ ਦਾਣਾ ਭਰਨ ਵੇਲੇ।",
+      "sowing_time": "ਆਮ ਤੌਰ 'ਤੇ ਅਕਤੂਬਰ ਤੋਂ ਦਸੰਬਰ।",
+      "harvesting_time": "ਆਮ ਤੌਰ 'ਤੇ ਮਾਰਚ ਤੋਂ ਅਪ੍ਰੈਲ।",
+      "crop_id": 1,
+      "common_problems": "ਚੇਪਾ, ਕੁੰਗੀ ਦੀ ਬੀਮਾਰੀ, ਨਦੀਨ, ਪਾਣੀ ਦੀ ਘਾਟ।",
+      "farmer_tip": "ਲੋੜ ਤੋਂ ਵੱਧ ਪਾਣੀ ਨਾ ਲਾਓ ਅਤੇ ਪੀਲੇਪਣ ਜਾਂ ਕੁੰਗੀ ਦੇ ਧੱਬਿਆਂ ਲਈ ਫ਼ਸਲ ਦੀ ਜਾਂਚ ਕਰਦੇ ਰਹੋ।"
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 28,
+    "fields": {
+      "language": "en",
+      "name": "Rice",
+      "description": "A major food crop that grows best in warm conditions with enough moisture.",
+      "season": "Kharif",
+      "soil": "Clay or clay-loam soil that can hold moisture.",
+      "water_requirement": "Needs good moisture, especially during early growth and flowering.",
+      "sowing_time": "Usually June to July.",
+      "harvesting_time": "Usually September to November.",
+      "crop_id": 2,
+      "common_problems": "Leaf pests, stem borers, weeds and fungal diseases.",
+      "farmer_tip": "Check the field regularly and avoid unnecessary standing water."
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 29,
+    "fields": {
+      "language": "gu",
+      "name": "ડાંગર (ચોખા)",
+      "description": "આ એક મુખ્ય પાક છે જે ગરમી અને સારા ભેજમાં સારો થાય છે.",
+      "season": "ખરીફ",
+      "soil": "ચીકણી અથવા કાંપ વાળી જમીન જે ભેજ જાળવી શકે.",
+      "water_requirement": "શરૂઆતના વિકાસ અને ફૂલ આવતી વખતે સારા ભેજની જરૂર હોય છે.",
+      "sowing_time": "સામાન્ય રીતે જૂન થી જુલાઈ.",
+      "harvesting_time": "સામાન્ય રીતે સપ્ટેમ્બર થી નવેમ્બર.",
+      "crop_id": 2,
+      "common_problems": "પાંદડાના જીવડાં, કાંડ વીંધક ઈયળ, નીંદણ અને ફૂગના રોગો.",
+      "farmer_tip": "ખેતરની નિયમિત તપાસ કરો અને વધારાનું પાણી ભરાઈ રહેવા ન દો."
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 30,
+    "fields": {
+      "language": "bn",
+      "name": "ধান",
+      "description": "এটি একটি প্রধান খাদ্য ফসল যা গরম ও ভেজা আবহাওয়ায় সবচেয়ে ভালো হয়।",
+      "season": "খরিফ",
+      "soil": "এঁটেল বা এঁটেল-দোআঁশ মাটি যা জল ধরে রাখতে পারে।",
+      "water_requirement": "বিশেষ করে বাড়ন্ত বয়সে এবং ফুল আসার সময় ভালো জলের প্রয়োজন।",
+      "sowing_time": "সাধারণত জুন থেকে জুলাই মাস।",
+      "harvesting_time": "সাধারণত সেপ্টেম্বর থেকে নভেম্বর মাস।",
+      "crop_id": 2,
+      "common_problems": "পাতার পোকা, মাজরা পোকা, আগাছা এবং ছত্রাকজনিত রোগ।",
+      "farmer_tip": "জমি নিয়মিত ঘুরে দেখুন এবং অহেতুক জল জমতে দেবেন না।"
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 31,
+    "fields": {
+      "language": "te",
+      "name": "వరి",
+      "description": "ఇది వెచ్చని వాతావరణం మరియు తగినంత తేమ ఉన్న చోట బాగా పెరిగే ముఖ్యమైన పంట.",
+      "season": "ఖరీఫ్",
+      "soil": "నీటిని పట్టి ఉంచే బంకమన్ను లేదా ఒండ్రు నేలలు మంచివి.",
+      "water_requirement": "పంట పెరుగుతున్నప్పుడు మరియు పూత సమయంలో మంచి నీటి తడి అవసరం.",
+      "sowing_time": "సాధారణంగా జూన్ నుండి జూలై వరకు విత్తుకోవాలి.",
+      "harvesting_time": "సాధారణంగా సెప్టెంబర్ నుండి నవంబర్ వరకు కోత కోయవచ్చు.",
+      "crop_id": 2,
+      "common_problems": "ఆకు పురుగులు, కాండం తొలిచే పురుగు, కలుపు మరియు బూజు తెగుళ్ళు.",
+      "farmer_tip": "పొలాన్ని తరచుగా గమనిస్తూ ఉండండి, అవసరం లేకుండా నీటిని నిలవ ఉంచకండి."
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 32,
+    "fields": {
+      "language": "kn",
+      "name": "ಭತ್ತ",
+      "description": "ಇದು ಬೆಚ್ಚಗಿನ ವಾತಾವರಣ ಮತ್ತು ಉತ್ತಮ ತೇವಾಂಶದಲ್ಲಿ ಚೆನ್ನಾಗಿ ಬೆಳೆಯುವ ಮುಖ್ಯ ಆಹಾರ ಬೆಳೆ.",
+      "season": "ಖರೀಫ್",
+      "soil": "ನೀರನ್ನು ಹಿಡಿದಿಟ್ಟುಕೊಳ್ಳುವ ಜೇಡಿ ಅಥವಾ ಜಿಗುಟು ಮಣ್ಣು ಸೂಕ್ತ.",
+      "water_requirement": "ಆರಂಭದ ಬೆಳವಣಿಗೆ ಮತ್ತು ಹೂ ಬಿಡುವ ಸಮಯದಲ್ಲಿ ಉತ್ತಮ ತೇವಾಂಶ ಬೇಕು.",
+      "sowing_time": "ಸಾಮಾನ್ಯವಾಗಿ ಜೂನ್‌ನಿಂದ ಜುಲೈ ತಿಂಗಳು.",
+      "harvesting_time": "ಸಾಮಾನ್ಯವಾಗಿ ಸೆಪ್ಟೆಂಬರ್‌ನಿಂದ ನವೆಂಬರ್ ತಿಂಗಳು.",
+      "crop_id": 2,
+      "common_problems": "ಎಲೆ ಹುಳುಗಳು, ಕಾಂಡ ಕೊರೆಕ, ಕಳೆಗಳು ಮತ್ತು ಶಿಲೀಂಧ್ರ ರೋಗಗಳು.",
+      "farmer_tip": "ಹೊಲವನ್ನು ದಿನವೂ ಗಮನಿಸಿ, ಅನಗತ್ಯವಾಗಿ ನೀರು ನಿಲ್ಲಿಸಬೇಡಿ."
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 33,
+    "fields": {
+      "language": "pa",
+      "name": "ਝੋਨਾ",
+      "description": "ਇਹ ਇੱਕ ਮੁੱਖ ਫ਼ਸਲ ਹੈ ਜੋ ਗਰਮ ਅਤੇ ਨਮੀ ਵਾਲੇ ਮੌਸਮ ਵਿੱਚ ਚੰਗੀ ਹੁੰਦੀ ਹੈ।",
+      "season": "ਖਰੀਫ਼",
+      "soil": "ਚੀਕਣੀ ਜਾਂ ਦੋਮੱਟ ਮਿੱਟੀ ਜੋ ਪਾਣੀ ਫੜ ਕੇ ਰੱਖ ਸਕੇ।",
+      "water_requirement": "ਸ਼ੁਰੂਆਤੀ ਵਾਧੇ ਅਤੇ ਫੁੱਲ ਆਉਣ ਸਮੇਂ ਵਧੀਆ ਨਮੀ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ।",
+      "sowing_time": "ਆਮ ਤੌਰ 'ਤੇ ਜੂਨ ਤੋਂ ਜੁਲਾਈ।",
+      "harvesting_time": "ਆਮ ਤੌਰ 'ਤੇ ਸਤੰਬਰ ਤੋਂ ਨਵੰਬਰ।",
+      "crop_id": 2,
+      "common_problems": "ਪੱਤੇ ਦੇ ਕੀੜੇ, ਤਣਾ ਛੇਦਕ, ਨਦੀਨ ਅਤੇ ਉੱਲੀ ਦੇ ਰੋਗ।",
+      "farmer_tip": "ਖੇਤ ਦੀ ਲਗਾਤਾਰ ਦੇਖਭਾਲ ਕਰੋ ਅਤੇ ਵਾਧੂ ਪਾਣੀ ਨਾ ਖੜ੍ਹਾ ਹੋਣ ਦਿਓ।"
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 34,
+    "fields": {
+      "language": "en",
+      "name": "Cotton",
+      "description": "A warm-season fibre crop widely grown in India.",
+      "season": "Kharif",
+      "soil": "Deep, fertile and well-drained black soil is suitable.",
+      "water_requirement": "Needs enough moisture but does not like prolonged waterlogging.",
+      "sowing_time": "Usually June to July.",
+      "harvesting_time": "Harvest begins after the bolls mature.",
+      "crop_id": 3,
+      "common_problems": "Bollworms, sucking pests, weeds and leaf diseases.",
+      "farmer_tip": "Inspect new leaves and flower buds often for insects."
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 35,
+    "fields": {
+      "language": "gu",
+      "name": "કપાસ",
+      "description": "કપાસ એ ગરમ હવામાનમાં થતો એક મહત્વનો રેસાવાળો પાક છે અને ભારતમાં તેની મોટા પાયે ખેતી થાય છે.",
+      "season": "ખરીફ",
+      "soil": "સામાન્ય રીતે ઊંડી, ફળદ્રુપ અને સારા નિતારવાળી કાળી જમીન આ પાક માટે અનુકૂળ હોય છે.",
+      "water_requirement": "પૂરતો ભેજ હોવો જરૂરી છે, પરંતુ લાંબા સમય સુધી પાણી ભરાઈ રહેવું નુકસાનકારક સાબિત થઈ શકે છે.",
+      "sowing_time": "સામાન્ય રીતે જૂનથી જુલાઈ, ચોમાસાની સ્થિતિ પર આધારિત.",
+      "harvesting_time": "પાકની કાપણી (વીણી) સામાન્ય રીતે વાવણીના થોડા મહિના પછી શરૂ થાય છે અને સૂકા વાતાવરણમાં ચાલુ રહી શકે છે.",
+      "crop_id": 3,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 36,
+    "fields": {
+      "language": "bn",
+      "name": "তুলা",
+      "description": "তুলা একটি গুরুত্বপূর্ণ আঁশজাতীয় ফসল যা গরম আবহাওয়ায় জন্মায় এবং ভারতে ব্যাপকভাবে চাষ করা হয়।",
+      "season": "খরিফ",
+      "soil": "গভীর, উর্বর এবং জল নিকাশের ভালো সুবিধাযুক্ত কালো মাটি সাধারণত এর জন্য উপযোগী।",
+      "water_requirement": "মাটিতে পর্যাপ্ত আর্দ্রতা থাকা দরকার, তবে দীর্ঘ সময় ধরে জল জমে থাকলে ক্ষতি হতে পারে।",
+      "sowing_time": "সাধারণত জুন থেকে জুলাই মাস, বর্ষার পরিস্থিতির ওপর নির্ভর করে।",
+      "harvesting_time": "বীজ বোনার কয়েক মাস পর সাধারণত ফসল সংগ্রহ করা শুরু হয় এবং শুষ্ক আবহাওয়ায় এটি চলতে পারে।",
+      "crop_id": 3,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 37,
+    "fields": {
+      "language": "ta",
+      "name": "பருத்தி",
+      "description": "பருத்தி என்பது வெப்பமான தட்பவெப்பநிலையில் வளரக்கூடிய ஒரு முக்கியமான நார் பயிராகும். இது இந்தியாவில் பரவலாகப் பயிரிடப்படுகிறது.",
+      "season": "காரிஃப் பருவம்",
+      "soil": "ஆழமான, வளமான மற்றும் நீர் தேங்காமல் வடியக்கூடிய கரிசல் மண் பொதுவாக இதற்கு ஏற்றது.",
+      "water_requirement": "போதுமான ஈரப்பதம் தேவை, ஆனால் நீண்ட நேரம் தண்ணீர் தேங்கி நின்றால் பயிர் பாதிக்கப்படலாம்.",
+      "sowing_time": "வழக்கமாக ஜூன் முதல் ஜூலை வரை, பருவமழையைப் பொறுத்து விதைக்கலாம்.",
+      "harvesting_time": "பொதுவாக விதைத்த சில மாதங்களுக்குப் பிறகு அறுவடை தொடங்கும். வறண்ட தட்பவெப்பநிலையில் அறுவடை தொடர்ந்து நடைபெறலாம்.",
+      "crop_id": 3,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 38,
+    "fields": {
+      "language": "te",
+      "name": "పత్తి",
+      "description": "పత్తి అనేది వేడి వాతావరణంలో పెరిగే ఒక ముఖ్యమైన పీచు పంట మరియు ఇది భారతదేశంలో విస్తృతంగా సాగు చేయబడుతుంది.",
+      "season": "ఖరీఫ్",
+      "soil": "సాధారణంగా లోతైన, సారవంతమైన మరియు నీరు త్వరగా ఇంకిపోయే నల్లరేగడి నేలలు దీనికి అనుకూలంగా ఉంటాయి.",
+      "water_requirement": "తగినంత తేమ అవసరం, కానీ ఎక్కువ సమయం నీరు నిలిచి ఉండటం హానికరం కావచ్చు.",
+      "sowing_time": "సాధారణంగా జూన్ నుండి జూలై వరకు, ఇది రుతుపవనాల పరిస్థితులపై ఆధారపడి ఉంటుంది.",
+      "harvesting_time": "కోత సాధారణంగా విత్తిన కొన్ని నెలల తర్వాత ప్రారంభమవుతుంది మరియు పొడి వాతావరణంలో కూడా కొనసాగవచ్చు.",
+      "crop_id": 3,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 39,
+    "fields": {
+      "language": "kn",
+      "name": "ಹತ್ತಿ",
+      "description": "ಹತ್ತಿಯು ಬೆಚ್ಚಗಿನ ಹವಾಮಾನದಲ್ಲಿ ಬೆಳೆಯುವ ಒಂದು ಪ್ರಮುಖ ನಾರಿನ ಬೆಳೆಯಾಗಿದ್ದು, ಇದನ್ನು ಭಾರತದಲ್ಲಿ ವ್ಯಾಪಕವಾಗಿ ಬೆಳೆಯಲಾಗುತ್ತದೆ.",
+      "season": "ಖಾರಿಫ್ (ಮುಂಗಾರು)",
+      "soil": "ಆಳವಾದ, ಫಲವತ್ತಾದ ಮತ್ತು ನೀರು ಸರಾಗವಾಗಿ ಬಸಿದು ಹೋಗುವ ಕಪ್ಪು ಮಣ್ಣು ಸಾಮಾನ್ಯವಾಗಿ ಇದಕ್ಕೆ ಸೂಕ್ತವಾಗಿದೆ.",
+      "water_requirement": "ಸಾಕಷ್ಟು ತೇವಾಂಶ ಇರಬೇಕಾಗುತ್ತದೆ, ಆದರೆ ದೀರ್ಘಕಾಲದವರೆಗೆ ನೀರು ನಿಲ್ಲುವುದು ಹಾನಿಕಾರಕವಾಗಬಹುದು.",
+      "sowing_time": "ಸಾಮಾನ್ಯವಾಗಿ ಜೂನ್‌ನಿಂದ ಜುಲೈ ವರೆಗೆ, ಇದು ಮುಂಗಾರು ಮಳೆಯ ಪರಿಸ್ಥಿತಿಯನ್ನು ಅವಲಂಬಿಸಿರುತ್ತದೆ.",
+      "harvesting_time": "ಸಾಮಾನ್ಯವಾಗಿ ಬಿತ್ತನೆಯಾದ ಕೆಲವು ತಿಂಗಳ ನಂತರ ಕೊಯ್ಲು ಪ್ರಾರಂಭವಾಗುತ್ತದೆ ಮತ್ತು ಒಣ ಹವಾಮಾನದಲ್ಲಿ ಮುಂದುವರಿಯಬಹುದು.",
+      "crop_id": 3,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 40,
+    "fields": {
+      "language": "pa",
+      "name": "ਕਪਾਹ",
+      "description": "ਕਪਾਹ ਗਰਮ ਮੌਸਮ ਵਿੱਚ ਉਗਾਈ ਜਾਣ ਵਾਲੀ ਇੱਕ ਮਹੱਤਵਪੂਰਨ ਰੇਸ਼ੇਦਾਰ ਫ਼ਸਲ ਹੈ ਅਤੇ ਭਾਰਤ ਵਿੱਚ ਇਸਦੀ ਬਹੁਤ ਜ਼ਿਆਦਾ ਖੇਤੀ ਕੀਤੀ ਜਾਂਦੀ ਹੈ।",
+      "season": "ਸਾਉਣੀ (ਖ਼ਰੀਫ਼)",
+      "soil": "ਡੂੰਘੀ, ਉਪਜਾਊ ਅਤੇ ਵਧੀਆ ਜਲ-ਨਿਕਾਸ ਵਾਲੀ ਕਾਲੀ ਮਿੱਟੀ ਆਮ ਤੌਰ 'ਤੇ ਇਸ ਲਈ ਢੁਕਵੀਂ ਹੁੰਦੀ ਹੈ।",
+      "water_requirement": "ਲੋੜੀਂਦੀ ਨਮੀ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ, ਪਰ ਲੰਬੇ ਸਮੇਂ ਤੱਕ ਪਾਣੀ ਦਾ ਖੜ੍ਹਾ ਰਹਿਣਾ ਨੁਕਸਾਨਦੇਹ ਹੋ ਸਕਦਾ ਹੈ।",
+      "sowing_time": "ਆਮ ਤੌਰ 'ਤੇ ਜੂਨ ਤੋਂ ਜੁਲਾਈ, ਜੋ ਕਿ ਮਾਨਸੂਨ ਦੇ ਹਾਲਾਤਾਂ 'ਤੇ ਨਿਰਭਰ ਕਰਦਾ ਹੈ।",
+      "harvesting_time": "ਚੁਗਾਈ (ਕਟਾਈ) ਆਮ ਤੌਰ 'ਤੇ ਬਿਜਾਈ ਦੇ ਕਈ ਮਹੀਨਿਆਂ ਬਾਅਦ ਸ਼ੁਰੂ ਹੁੰਦੀ ਹੈ ਅਤੇ ਖੁਸ਼ਕ ਮੌਸਮ ਵਿੱਚ ਜਾਰੀ ਰਹਿ ਸਕਦੀ ਹੈ।",
+      "crop_id": 3,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 41,
+    "fields": {
+      "language": "en",
+      "name": "Soybean",
+      "description": "An important oilseed and pulse crop commonly grown in the monsoon.",
+      "season": "Kharif",
+      "soil": "Fertile, well-drained soil with good moisture retention.",
+      "water_requirement": "Needs enough moisture during flowering and pod formation.",
+      "sowing_time": "Usually June to July.",
+      "harvesting_time": "Usually September to October.",
+      "crop_id": 4,
+      "common_problems": "Leaf-eating insects, stem pests, weeds and fungal diseases.",
+      "farmer_tip": "Avoid waterlogging and inspect the crop after heavy rain."
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 42,
+    "fields": {
+      "language": "gu",
+      "name": "સોયાબીન",
+      "description": "સોયાબીન એ એક મહત્વનો તેલીબિયાં અને કઠોળ પાક છે, જે સામાન્ય રીતે ચોમાસાની ઋતુમાં ઉગાડવામાં આવે છે.",
+      "season": "ખરીફ",
+      "soil": "સામાન્ય રીતે પાણીના સારા નિકાલવાળી, ફળદ્રુપ અને ભેજ જાળવી રાખવાની સારી ક્ષમતા ધરાવતી જમીન અનુકૂળ રહે છે.",
+      "water_requirement": "ફૂલ આવવા અને સીંગો બેસવાના સમયે જમીનમાં પૂરતો ભેજ હોવો જરૂરી છે.",
+      "sowing_time": "સામાન્ય રીતે ચોમાસાની શરૂઆત સાથે, જૂન થી જુલાઈ.",
+      "harvesting_time": "પાકની જાત અને વિસ્તારના આધારે, સામાન્ય રીતે સપ્ટેમ્બર થી ઓક્ટોબર.",
+      "crop_id": 4,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 43,
+    "fields": {
+      "language": "bn",
+      "name": "সয়াবিন",
+      "description": "সয়াবিন হলো একটি গুরুত্বপূর্ণ তৈলবীজ এবং ডাল জাতীয় ফসল, যা সাধারণত বর্ষাকালে চাষ করা হয়।",
+      "season": "খরিফ",
+      "soil": "ভালো জল নিকাশি ক্ষমতাসম্পন্ন উর্বর মাটি, যা ভালো আর্দ্রতা ধরে রাখতে পারে, তা সাধারণত সয়াবিন চাষের জন্য উপযোগী।",
+      "water_requirement": "গাছে ফুল আসার সময় এবং শুঁটি (দানা) তৈরি হওয়ার সময় মাটিতে পর্যাপ্ত আর্দ্রতা বা রস থাকা জরুরি।",
+      "sowing_time": "সাধারণত বর্ষা শুরু হওয়ার সাথে সাথে জুন থেকে জুলাই মাস।",
+      "harvesting_time": "ফসলের জাত এবং এলাকার ওপর নির্ভর করে সাধারণত সেপ্টেম্বর থেকে অক্টোবর মাস।",
+      "crop_id": 4,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 44,
+    "fields": {
+      "language": "ta",
+      "name": "சோயாபீன்ஸ்",
+      "description": "சோயாபீன்ஸ் என்பது பொதுவாக பருவமழை காலத்தில் பயிரிடப்படும் ஒரு முக்கியமான எண்ணெய் வித்து மற்றும் பருப்பு வகை பயிர் ஆகும்.",
+      "season": "காரிஃப் பருவம்",
+      "soil": "நல்ல வடிகால் வசதியுள்ள, ஈரப்பதத்தை நன்றாகத் தக்க வைத்துக் கொள்ளும் வளமான மண் பொதுவாக இதற்கு ஏற்றது.",
+      "water_requirement": "பூக்கும் காலத்திலும் மற்றும் காய் பிடிக்கும் பருவத்திலும் மண்ணில் போதுமான ஈரப்பதம் இருப்பது மிகவும் முக்கியம்.",
+      "sowing_time": "பொதுவாக ஜூன் முதல் ஜூலை வரை, பருவமழை தொடங்கும் காலத்தில்.",
+      "harvesting_time": "பயிரின் ரகம் மற்றும் பகுதியைப் பொறுத்து, பொதுவாக செப்டம்பர் முதல் அக்டோபர் வரை.",
+      "crop_id": 4,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 45,
+    "fields": {
+      "language": "en",
+      "name": "Maize",
+      "description": "A useful cereal crop grown for food, feed and industry.",
+      "season": "Kharif / Rabi / Summer",
+      "soil": "Fertile, well-drained loamy soil.",
+      "water_requirement": "Needs regular moisture, especially during flowering and grain formation.",
+      "sowing_time": "Depends on season; Kharif is usually June to July.",
+      "harvesting_time": "Usually about 3 to 4 months after sowing.",
+      "crop_id": 5,
+      "common_problems": "Fall armyworm, stem borer, weeds and leaf diseases.",
+      "farmer_tip": "Check young leaves often for insect damage."
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 46,
+    "fields": {
+      "language": "gu",
+      "name": "મકાઈ",
+      "description": "મકાઈ એ એક બહુઉપયોગી અનાજનો પાક છે, જેનો ઉપયોગ ખોરાક, પશુ આહાર અને ઔદ્યોગિક હેતુઓ માટે થાય છે.",
+      "season": "ખરીફ / રવિ / ઉનાળુ",
+      "soil": "પૂરતા સેન્દ્રીય તત્વોવાળી, ફળદ્રુપ અને સારા નિતારવાળી ગોરાડુ જમીન સામાન્ય રીતે અનુકૂળ રહે છે.",
+      "water_requirement": "જમીનમાં નિયમિત ભેજ જરૂરી છે. ફૂલ આવવાના અને દાણા બનવાના સમયે પાણીની તંગી થાય તો ઉત્પાદન ઘટી શકે છે.",
+      "sowing_time": "ઋતુ અને વિસ્તાર પર આધાર રાખે છે. સામાન્ય રીતે ખરીફ મકાઈનું વાવેતર જૂન થી જુલાઈ દરમિયાન થાય છે.",
+      "harvesting_time": "સામાન્ય રીતે જાત અને હેતુ પર આધાર રાખીને, વાવણી પછી લગભગ 3 થી 4 મહિનામાં લણણી કરવામાં આવે છે.",
+      "crop_id": 5,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 47,
+    "fields": {
+      "language": "ta",
+      "name": "மக்காச்சோளம்",
+      "description": "மக்காச்சோளம் மனித உணவு, கால்நடைத் தீவனம் மற்றும் தொழிற்சாலை பயன்பாடுகளுக்குப் பயன்படும் ஒரு முக்கியமான தானியப் பயிராகும்.",
+      "season": "காரிஃப் / ரபி / கோடை",
+      "soil": "நல்ல வடிகால் வசதியும், போதுமான இயற்கை உரச்சத்தும் (அங்ககச் சத்து) கொண்ட வளமான வண்டல் மண் இதற்கு மிகவும் ஏற்றது.",
+      "water_requirement": "பயிருக்குத் தொடர்ந்து மிதமான ஈரப்பதம் தேவை. பூக்கும் தருணத்திலும், தானியம் உருவாகும் நேரத்திலும் தண்ணீர் பற்றாக்குறை ஏற்பட்டால் மகசூல் குறையக்கூடும்.",
+      "sowing_time": "பருவம் மற்றும் பகுதியைப் பொறுத்து விதைப்பு நேரம் மாறுபடும். காரிஃப் மக்காச்சோளம் பொதுவாக ஜூன் முதல் ஜூலை வரை விதைக்கப்படுகிறது.",
+      "harvesting_time": "பயிரின் ரகம் மற்றும் பயன்பாட்டைப் பொறுத்து, வழக்கமாக விதைத்த 3 முதல் 4 மாதங்களில் அறுவடை செய்யப்படுகிறது.",
+      "crop_id": 5,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 48,
+    "fields": {
+      "language": "pa",
+      "name": "ਮੱਕੀ",
+      "description": "ਮੱਕੀ ਇੱਕ ਬਹੁ-ਮੰਤਵੀ ਅਨਾਜ ਵਾਲੀ ਫ਼ਸਲ ਹੈ, ਜੋ ਖਾਣ ਲਈ, ਪਸ਼ੂਆਂ ਦੀ ਖੁਰਾਕ/ਚਾਰੇ ਵਜੋਂ ਅਤੇ ਉਦਯੋਗਿਕ ਕੰਮਾਂ ਲਈ ਵਰਤੀ ਜਾਂਦੀ ਹੈ।",
+      "season": "ਖ਼ਰੀਫ਼ / ਰਬੀ / ਗਰਮੀਆਂ",
+      "soil": "ਵਧੀਆ ਨਿਕਾਸ ਵਾਲੀ, ਉਪਜਾਊ ਦੋਮਟ ਜ਼ਮੀਨ ਜਿਸ ਵਿੱਚ ਜੈਵਿਕ ਮਾਦਾ (ਦੇਸੀ ਖਾਦ) ਚੰਗੀ ਮਾਤਰਾ ਵਿੱਚ ਹੋਵੇ, ਆਮ ਤੌਰ 'ਤੇ ਢੁਕਵੀਂ ਹੁੰਦੀ ਹੈ।",
+      "water_requirement": "ਲਗਾਤਾਰ ਨਮੀ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ। ਫੁੱਲ ਆਉਣ ਅਤੇ ਦਾਣੇ ਬਣਨ ਸਮੇਂ ਪਾਣੀ ਦੀ ਘਾਟ ਨਾਲ ਝਾੜ ਘਟ ਸਕਦਾ ਹੈ।",
+      "sowing_time": "ਮੌਸਮ ਅਤੇ ਇਲਾਕੇ 'ਤੇ ਨਿਰਭਰ ਕਰਦਾ ਹੈ। ਖ਼ਰੀਫ਼ ਦੀ ਮੱਕੀ ਆਮ ਤੌਰ 'ਤੇ ਜੂਨ ਤੋਂ ਜੁਲਾਈ ਦਰਮਿਆਨ ਬੀਜੀ ਜਾਂਦੀ ਹੈ।",
+      "harvesting_time": "ਆਮ ਤੌਰ 'ਤੇ ਬਿਜਾਈ ਤੋਂ ਲਗਭਗ 3 ਤੋਂ 4 ਮਹੀਨਿਆਂ ਬਾਅਦ, ਜੋ ਕਿ ਕਿਸਮ ਅਤੇ ਵਰਤੋਂ ਦੇ ਮਕਸਦ 'ਤੇ ਨਿਰਭਰ ਕਰਦਾ ਹੈ।",
+      "crop_id": 5,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 49,
+    "fields": {
+      "language": "en",
+      "name": "Chickpea",
+      "description": "A major pulse crop grown mainly in the cool Rabi season.",
+      "season": "Rabi",
+      "soil": "Well-drained loam to black soil.",
+      "water_requirement": "Needs limited irrigation. Avoid excess water.",
+      "sowing_time": "Usually October to November.",
+      "harvesting_time": "Usually February to March.",
+      "crop_id": 6,
+      "common_problems": "Pod borer, wilt, weeds and moisture stress.",
+      "farmer_tip": "Do not give too much water and watch flowers for pod borers."
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 50,
+    "fields": {
+      "language": "ta",
+      "name": "கொண்டைக்கடலை",
+      "description": "கொண்டைக்கடலை என்பது குளிர் மற்றும் வறண்ட காலங்களில் பொதுவாகப் பயிரிடப்படும் ஒரு முக்கியமான பருப்புப் பயிராகும்.",
+      "season": "ரபி பருவம்",
+      "soil": "நல்ல வடிகால் வசதியுள்ள வண்டல் மண் முதல் கரிசல் மண் வரை பொதுவாக ஏற்றது.",
+      "water_requirement": "குறைந்த அளவிலான பாசனமே தேவைப்படும். அதிகப்படியான நீர் பயிருக்கு பாதிப்பை ஏற்படுத்தலாம்.",
+      "sowing_time": "பொதுவாக அக்டோபர் முதல் நவம்பர் வரை.",
+      "harvesting_time": "பகுதியைப் பொறுத்து பொதுவாக பிப்ரவரி முதல் மார்ச் வரை.",
+      "crop_id": 6,
+      "common_problems": "",
+      "farmer_tip": ""
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 51,
+    "fields": {
+      "language": "en",
+      "name": "Tomato",
+      "description": "A common vegetable crop grown for fresh and processed food.",
+      "season": "Rabi / Kharif / Summer",
+      "soil": "Fertile, well-drained sandy loam to loam soil.",
+      "water_requirement": "Needs regular but balanced irrigation.",
+      "sowing_time": "Depends on the region and season.",
+      "harvesting_time": "Harvest when fruits reach the required maturity.",
+      "crop_id": 7,
+      "common_problems": "Fruit borer, whitefly, leaf disease and cracking.",
+      "farmer_tip": "Keep the field clean and avoid sudden changes in watering."
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 52,
+    "fields": {
+      "language": "en",
+      "name": "Onion",
+      "description": "An important vegetable and commercial crop grown in many parts of India.",
+      "season": "Rabi / Kharif",
+      "soil": "Loose, fertile and well-drained soil.",
+      "water_requirement": "Needs regular but controlled irrigation.",
+      "sowing_time": "Depends on the growing season and region.",
+      "harvesting_time": "Harvest when bulbs mature and tops start falling.",
+      "crop_id": 8,
+      "common_problems": "Thrips, fungal diseases, weeds and bulb rot.",
+      "farmer_tip": "Avoid excess irrigation and keep weeds under control."
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 53,
+    "fields": {
+      "language": "en",
+      "name": "Sugarcane",
+      "description": "A long-duration commercial crop mainly used for sugar.",
+      "season": "Annual / Seasonal",
+      "soil": "Deep, fertile soil with good drainage and moisture holding.",
+      "water_requirement": "Needs regular water through the growing period.",
+      "sowing_time": "Depends on region and planting season.",
+      "harvesting_time": "Usually around 10 to 18 months, depending on region.",
+      "crop_id": 9,
+      "common_problems": "Borers, termites, weeds and fungal diseases.",
+      "farmer_tip": "Maintain proper moisture and inspect stems for borer damage."
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 54,
+    "fields": {
+      "language": "en",
+      "name": "Groundnut",
+      "description": "An important oilseed crop that grows well in warm conditions.",
+      "season": "Kharif / Summer",
+      "soil": "Loose, well-drained sandy loam to loam soil.",
+      "water_requirement": "Needs enough moisture during flowering and pod development.",
+      "sowing_time": "Usually June to July for Kharif.",
+      "harvesting_time": "Harvest when pods are mature and well developed.",
+      "crop_id": 10,
+      "common_problems": "Leaf spots, sucking pests, termites and weeds.",
+      "farmer_tip": "Avoid waterlogging and check leaves for early disease spots."
+    }
+  },
+  {
+    "model": "agriculture.croptranslation",
+    "pk": 55,
+    "fields": {
+      "language": "ta",
+      "name": "நெல்",
+      "description": "இது வெதுவெதுப்பான நிலையிலும் நல்ல ஈரப்பதத்திலும் நன்றாக வளரும் முக்கிய உணவுப் பயிர்.",
+      "season": "காரீஃப்",
+      "soil": "தண்ணீரைத் தேக்கி வைக்கும் களிமண் அல்லது வண்டல் மண் ஏற்றது.",
+      "water_requirement": "ஆரம்ப வளர்ச்சியிலும் பூ பூக்கும் நேரத்திலும் நல்ல ஈரப்பதம் தேவை.",
+      "sowing_time": "வழக்கமாக ஜூன் முதல் ஜூலை வரை விதைக்கப்படும்.",
+      "harvesting_time": "வழக்கமாக செப்டம்பர் முதல் நவம்பர் வரை அறுவடை செய்யப்படும்.",
+      "crop_id": 2,
+      "common_problems": "இலைப்பூச்சி, குருத்துப்பூச்சி, களைகள் மற்றும் பூஞ்சை நோய்.",
+      "farmer_tip": "வயலை அடிக்கடி கவனித்து, தேவையில்லாமல் தண்ணீர் தேங்குவதைத் தவிர்க்கவும்."
+    }
+  }
+]

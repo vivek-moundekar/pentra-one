@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Start Your Business - PentraOne</title>
+    <style>
+        body { font-size: 17px; }
+        h1 { font-size: 32px !important; }
+        h2 { font-size: 22px !important; }
+        p { font-size: 16px !important; line-height: 1.6 !important; }
+        button, .lang-btn, .quiz-btn, .learn-btn { font-size: 16px !important; padding: 10px 18px !important; }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #E8F5E9;
+            margin: 0;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1B5E20;
+            margin-bottom: 10px;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .back-link a {
+            color: #1B5E20;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .business-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .business-card {
+            background-color: #FFFFFF;
+            border: 2px solid #A5D6A7;
+            border-radius: 16px;
+            padding: 20px;
+            width: 320px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .business-card h2 {
+            color: #2E7D32;
+            margin-top: 0;
+            font-size: 22px;
+        }
+
+        .business-card p {
+            font-size: 15px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .business-card p strong {
+            color: #1B5E20;
+        }
+
+        .info-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .info-badge {
+            background-color: #E8F5E9;
+            color: #2E7D32;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            border: 1px solid #A5D6A7;
+        }
+        .video-btn {
+    display: block;
+    margin-top: 12px;
+    background-color: #C62828;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
+}
+.video-btn:hover {
+    background-color: #B71C1C;
+}
+    </style>
+</head>
+<body>
+
+   <div class="back-link">
+    <a href="/women-skills/">⬅ Back to Hub</a>
+</div>
+<div style="text-align: center; margin-bottom: 15px;">
+    <button onclick="setLang('en')" style="margin: 0 4px; padding: 6px 14px; border-radius: 16px; border: 1px solid #A5D6A7; background: white; cursor: pointer;">English</button>
+    <button onclick="setLang('hi')" style="margin: 0 4px; padding: 6px 14px; border-radius: 16px; border: 1px solid #A5D6A7; background: white; cursor: pointer;">हिंदी</button>
+    <button onclick="setLang('mr')" style="margin: 0 4px; padding: 6px 14px; border-radius: 16px; border: 1px solid #A5D6A7; background: white; cursor: pointer;">मराठी</button>
+</div>
+
+
+    <h1>📈 Start Your Business</h1>
+
+    <div class="business-container">
+        {% for idea in ideas %}
+            <div class="business-card">
+                {% if idea.image_url %}
+            <img src="{{ idea.image_url }}" style="width:100%; border-radius:10px; margin-bottom:12px;">
+                {% endif %}
+               <h2 class="idea-title" data-en="{{ idea.title }}" data-hi="{{ idea.title_hi }}" data-mr="{{ idea.title_mr }}">{{ idea.title }}</h2>
+<p class="idea-desc" data-en="{{ idea.description }}" data-hi="{{ idea.description_hi }}" data-mr="{{ idea.description_mr }}">{{ idea.description }}</p>
+<p><strong class="sell-label" data-en="Where to Sell:" data-hi="कहाँ बेचें:" data-mr="कुठे विकावे:">Where to Sell:</strong> <span class="idea-sell" data-en="{{ idea.where_to_sell }}" data-hi="{{ idea.where_to_sell_hi }}" data-mr="{{ idea.where_to_sell_mr }}">{{ idea.where_to_sell }}</span></p>
+
+                                <div class="info-row">
+                    <span class="info-badge">💰 {{ idea.investment }}</span>
+                    <span class="info-badge">⏱ {{ idea.time_required }}</span>
+                    <span class="info-badge">📊 {{ idea.profit_potential }}</span>
+                </div>
+
+               {% if idea.video_url %}
+    <button class="video-btn" onclick="openVideo('{{ idea.video_url }}', '{{ idea.title }}')">🎥 Watch Video</button>
+{% endif %}
+            </div>
+        {% endfor %}
+    </div>
+<script>
+function setLang(lang) {
+    document.querySelectorAll('.idea-title, .idea-desc, .idea-sell, .sell-label').forEach(function(el) {
+        const text = el.getAttribute('data-' + lang);
+        if (text) {
+            el.innerText = text;
+        }
+    });
+}
+</script>
+<div class="modal-overlay" id="videoModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#E8F5E9; justify-content:center; align-items:center; z-index:1000;">
+    <div style="background:white; border-radius:16px; padding:20px; width:450px; max-width:90%; position:relative; box-shadow:0 8px 24px rgba(0,0,0,0.2);">
+        <button onclick="closeVideo()" style="position:absolute; top:10px; right:14px; background:none; border:none; font-size:20px; cursor:pointer; color:#2E7D32;">✖</button>
+        <h3 id="videoModalTitle" style="color:#2E7D32; margin-top:0;"></h3>
+        <div id="videoModalContent"></div>
+    </div>
+</div>
+
+<script>
+function openVideo(videoUrl, title) {
+    const vid = videoUrl.slice(-11);
+    document.getElementById('videoModalTitle').innerText = '🎥 ' + title;
+    document.getElementById('videoModalContent').innerHTML = `
+        <a href="https://www.youtube.com/watch?v=${vid}" target="_blank" style="display:block; position:relative;">
+            <img src="https://img.youtube.com/vi/${vid}/hqdefault.jpg" style="width:100%; border-radius:10px;">
+            <span style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(0,0,0,0.6); color:white; padding:10px 16px; border-radius:50%; font-size:20px;">▶</span>
+        </a>
+        <p style="text-align:center; font-size:13px; color:#666; margin-top:8px;">Click to watch on YouTube</p>
+    `;
+    document.getElementById('videoModal').style.display = 'flex';
+}
+function closeVideo() {
+    document.getElementById('videoModal').style.display = 'none';
+}
+</script>
+</body>
+</html>

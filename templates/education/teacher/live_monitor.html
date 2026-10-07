@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Live Exam Monitoring | PentraOne</title>
+
+
+    
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    :root {
+        --bg: #070809;
+        --panel: rgba(17, 18, 21, 0.88);
+        --panel-soft: rgba(27, 30, 36, 0.68);
+        --border: rgba(180, 190, 205, 0.18);
+        --border-light: rgba(190, 202, 220, 0.32);
+        --text: #f6f7f9;
+        --muted: #8e949e;
+        --green: #87d3ab;
+        --red: #e56f6f;
+        --orange: #e8b477;
+        --blue: #78a8ff;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+        color: var(--text);
+        background:
+            radial-gradient(circle at 50% 8%, rgba(65, 76, 94, 0.16), transparent 27%),
+            radial-gradient(circle at 86% 24%, rgba(49, 70, 110, 0.12), transparent 24%),
+            linear-gradient(145deg, #050606, #0c0d0f 55%, #08090a);
+        overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+        content: "";
+        position: fixed;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    body::before {
+        width: 380px;
+        height: 380px;
+        left: 50%;
+        top: -220px;
+        transform: translateX(-50%);
+        background: radial-gradient(circle, rgba(94,108,130,.16), rgba(32,38,49,.07) 55%, transparent 72%);
+    }
+
+    body::after {
+        width: 280px;
+        height: 280px;
+        right: -120px;
+        bottom: -90px;
+        background: radial-gradient(circle, rgba(66,83,112,.10), transparent 70%);
+    }
+
+    .header {
+        height: 72px;
+        padding: 0 5%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: rgba(10, 11, 13, 0.72);
+        border-bottom: 1px solid rgba(180,190,205,.12);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .brand-icon {
+        width: 43px;
+        height: 43px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        background: linear-gradient(145deg, #677286, #252b36);
+        border: 1px solid rgba(220,227,238,.25);
+        box-shadow: 0 10px 26px rgba(0,0,0,.32);
+    }
+
+    .brand h2 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .brand p {
+        margin: 3px 0 0;
+        color: var(--muted);
+        font-size: 11px;
+    }
+
+    .back-button {
+        text-decoration: none;
+        color: #dde2ea;
+        background: rgba(91,98,113,.18);
+        border: 1px solid var(--border);
+        padding: 10px 15px;
+        border-radius: 22px;
+        font-size: 12px;
+        font-weight: 600;
+        transition: .25s ease;
+    }
+
+    .back-button:hover {
+        transform: translateY(-2px);
+        background: rgba(123,132,150,.28);
+        border-color: var(--border-light);
+    }
+
+    .container {
+        position: relative;
+        z-index: 2;
+        width: min(1250px, 92%);
+        margin: auto;
+        padding: 35px 0 60px;
+    }
+
+    .page-heading {
+        padding: 28px;
+        border-radius: 22px;
+        margin-bottom: 25px;
+        background: linear-gradient(155deg, rgba(31,34,41,.82), rgba(12,13,16,.92));
+        border: 1px solid var(--border);
+        box-shadow: 0 24px 60px rgba(0,0,0,.34);
+        backdrop-filter: blur(22px);
+    }
+
+    .page-heading h1 {
+        margin: 0 0 7px;
+        font-size: 30px;
+        font-weight: 500;
+        letter-spacing: -.5px;
+    }
+
+    .page-heading p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.55;
+    }
+
+    .live-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        margin-top: 14px;
+        padding: 7px 12px;
+        background: rgba(62,128,91,.14);
+        border: 1px solid rgba(105,211,154,.25);
+        color: var(--green);
+        border-radius: 999px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: .3px;
+    }
+
+    .live-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--green);
+        box-shadow: 0 0 12px rgba(135,211,171,.6);
+        animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: .35; }
+    }
+
+    .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin-bottom: 28px;
+    }
+
+    .summary-card {
+        padding: 19px;
+        border-radius: 18px;
+        background: linear-gradient(155deg, rgba(30,33,40,.82), rgba(11,12,15,.94));
+        border: 1px solid var(--border);
+        box-shadow: 0 18px 45px rgba(0,0,0,.26);
+        backdrop-filter: blur(18px);
+    }
+
+    .summary-card .icon {
+        width: 38px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 14px;
+        margin-bottom: 12px;
+        font-size: 18px;
+        background: rgba(255,255,255,.035);
+        border: 1px solid rgba(255,255,255,.06);
+    }
+
+    .summary-card span {
+        display: block;
+        color: var(--muted);
+        font-size: 11px;
+        margin-bottom: 5px;
+    }
+
+    .summary-card strong {
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+    .section-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+    }
+
+    .section-title h2 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+    .section-title span {
+        color: var(--muted);
+        font-size: 11px;
+    }
+
+    .student-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
+        gap: 20px;
+    }
+
+    .student-card {
+        overflow: hidden;
+        border-radius: 20px;
+        background: linear-gradient(155deg, rgba(29,32,39,.84), rgba(10,11,14,.95));
+        border: 1px solid var(--border);
+        box-shadow: 0 22px 55px rgba(0,0,0,.30);
+        transition: .25s ease;
+        backdrop-filter: blur(20px);
+    }
+
+    .student-card:hover {
+        transform: translateY(-3px);
+        border-color: var(--border-light);
+    }
+
+    .student-header {
+        padding: 19px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    .student-profile {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+    }
+
+    .avatar {
+        width: 48px;
+        height: 48px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        background: linear-gradient(145deg, #657086, #242a34);
+        border: 1px solid rgba(220,227,238,.20);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .student-name {
+        margin: 0 0 4px;
+        font-size: 16px;
+        font-weight: 600;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .student-id {
+        color: var(--muted);
+        font-size: 10px;
+    }
+
+    .active-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 7px 10px;
+        background: rgba(62,128,91,.14);
+        color: var(--green);
+        border: 1px solid rgba(105,211,154,.22);
+        border-radius: 999px;
+        font-size: 9px;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+    .active-badge::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        background: var(--green);
+        border-radius: 50%;
+    }
+
+    .card-body {
+        padding: 19px;
+    }
+
+    .test-name {
+        padding: 12px 14px;
+        border-radius: 13px;
+        background: rgba(72,96,139,.14);
+        border: 1px solid rgba(104,138,202,.18);
+        color: #cbd7ee;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 17px;
+    }
+
+    .details-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 11px;
+        margin-bottom: 17px;
+    }
+
+    .detail-box {
+        background: rgba(7,8,10,.52);
+        border: 1px solid rgba(176,187,203,.11);
+        border-radius: 13px;
+        padding: 12px;
+    }
+
+    .detail-label {
+        display: block;
+        color: #747b86;
+        font-size: 9px;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: .5px;
+        margin-bottom: 5px;
+    }
+
+    .detail-value {
+        display: block;
+        color: #d7dbe2;
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+    .online { color: var(--green); }
+    .camera-waiting { color: var(--orange); }
+
+    .warning-section {
+        background: rgba(123,87,42,.14);
+        border: 1px solid rgba(228,174,102,.22);
+        border-radius: 14px;
+        padding: 14px;
+        margin-bottom: 17px;
+    }
+
+    .warning-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 9px;
+    }
+
+    .warning-header strong,
+    .warning-number {
+        color: var(--orange);
+        font-size: 11px;
+    }
+
+    .warning-number {
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    .warning-track {
+        height: 7px;
+        background: rgba(228,174,102,.13);
+        border-radius: 99px;
+        overflow: hidden;
+    }
+
+    .warning-fill {
+        height: 100%;
+        background: var(--orange);
+        border-radius: 99px;
+        width: 0%;
+    }
+
+    .events-heading {
+        font-size: 11px;
+        font-weight: 600;
+        margin-bottom: 9px;
+        color: #d4d8df;
+    }
+
+    .events-list {
+        border: 1px solid rgba(176,187,203,.11);
+        border-radius: 13px;
+        max-height: 170px;
+        overflow-y: auto;
+        margin-bottom: 16px;
+        background: rgba(7,8,10,.40);
+    }
+
+    .event-row {
+        padding: 10px 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        border-bottom: 1px solid rgba(255,255,255,.05);
+    }
+
+    .event-row:last-child {
+        border-bottom: none;
+    }
+
+    .event-message {
+        color: #c5cad3;
+        font-size: 10.5px;
+        font-weight: 500;
+    }
+
+    .event-time {
+        color: #707781;
+        font-size: 9.5px;
+        white-space: nowrap;
+    }
+
+    .no-events {
+        padding: 18px;
+        text-align: center;
+        color: #777e89;
+        font-size: 10.5px;
+    }
+
+    .terminate-button {
+        width: 100%;
+        border: 1px solid rgba(236,120,120,.20);
+        background: rgba(155,56,56,.18);
+        color: #ef9b9b;
+        padding: 12px;
+        border-radius: 22px;
+        font-size: 11px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: .25s ease;
+    }
+
+    .terminate-button:hover {
+        transform: translateY(-1px);
+        background: rgba(179,65,65,.28);
+        border-color: rgba(236,120,120,.35);
+    }
+
+    .empty-state {
+        padding: 70px 25px;
+        text-align: center;
+        border-radius: 20px;
+        background: linear-gradient(155deg, rgba(29,32,39,.84), rgba(10,11,14,.95));
+        border: 1px solid var(--border);
+        box-shadow: 0 22px 55px rgba(0,0,0,.28);
+    }
+
+    .empty-icon {
+        width: 72px;
+        height: 72px;
+        margin: 0 auto 17px;
+        border-radius: 50%;
+        background: linear-gradient(145deg, #647086, #262c36);
+        border: 1px solid rgba(220,227,238,.18);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+    }
+
+    .empty-state h2 {
+        margin: 0 0 7px;
+        font-size: 21px;
+        font-weight: 500;
+    }
+
+    .empty-state p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 12px;
+    }
+
+    .footer {
+        text-align: center;
+        color: #555b64;
+        font-size: 10px;
+        margin-top: 40px;
+    }
+
+    .live-video-box {
+        margin-bottom: 17px;
+        background: rgba(3,4,5,.84);
+        border: 1px solid rgba(176,187,203,.10);
+        border-radius: 15px;
+        padding: 8px;
+    }
+
+    .live-video {
+        width: 100%;
+        display: block;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        background: #000;
+        border-radius: 11px;
+    }
+
+    .live-video-status {
+        color: #8d949f;
+        font-size: 10px;
+        text-align: center;
+        padding: 7px 3px 2px;
+        font-weight: 600;
+    }
+
+    .live-video-status.connected { color: var(--green); }
+    .live-video-status.error { color: #ef9b9b; }
+
+    .realtime-panel {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin: 0 0 14px;
+    }
+
+    .realtime-panel span {
+        padding: 6px 9px;
+        border: 1px solid rgba(176,187,203,.11);
+        border-radius: 999px;
+        background: rgba(7,8,10,.48);
+        color: #9ca3ae;
+        font-size: 9.5px;
+        font-weight: 600;
+    }
+
+    .realtime-panel .rt-online {
+        background: rgba(62,128,91,.13);
+        color: var(--green);
+        border-color: rgba(105,211,154,.20);
+    }
+
+    .realtime-panel .rt-offline {
+        background: rgba(139,55,55,.14);
+        color: #ef9b9b;
+        border-color: rgba(236,120,120,.20);
+    }
+
+    .realtime-panel .rt-warning {
+        background: rgba(123,87,42,.14);
+        color: var(--orange);
+        border-color: rgba(228,174,102,.20);
+    }
+
+    @media (max-width: 900px) {
+        .summary-grid { grid-template-columns: repeat(2, 1fr); }
+        .page-heading { padding: 24px; }
+    }
+
+    @media (max-width: 600px) {
+        .header { padding: 0 4%; }
+        .brand p { display: none; }
+        .container { width: 92%; padding-top: 25px; }
+        .page-heading h1 { font-size: 25px; }
+        .summary-grid,
+        .student-grid,
+        .details-grid { grid-template-columns: 1fr; }
+        .student-header { align-items: flex-start; }
+        .active-badge { font-size: 8.5px; }
+    }
+</style>
+
+
+</head>
+
+
+<body>
+
+
+<!-- ============================================================
+     HEADER
+============================================================= -->
+
+<header class="header">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            🎓
+        </div>
+
+        <div>
+
+            <h2>PentraOne Education</h2>
+
+            <p>Teacher Monitoring Center</p>
+
+        </div>
+
+    </div>
+
+
+    <a
+        href="{% url 'education:teacher_dashboard' %}"
+        class="back-button"
+    >
+        ← Dashboard
+    </a>
+
+</header>
+
+
+
+<!-- ============================================================
+     MAIN
+============================================================= -->
+
+<main class="container">
+
+
+    <!-- PAGE HEADING -->
+
+    <section class="page-heading">
+
+        <div>
+
+            <h1>
+                🔴 Live Exam Monitoring
+            </h1>
+
+            <p>
+                Monitor students currently appearing for
+                your scheduled examinations.
+            </p>
+
+
+            <div class="live-status">
+
+                <span class="live-dot"></span>
+
+                LIVE MONITORING ACTIVE
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ========================================================
+         SUMMARY
+    ========================================================= -->
+
+    <section class="summary-grid">
+
+
+        <div class="summary-card">
+
+            <div class="icon">
+                👨‍🎓
+            </div>
+
+            <span>
+                Students Online
+            </span>
+
+            <strong>
+                {{ attempts|length }}
+            </strong>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="icon">
+                📝
+            </div>
+
+            <span>
+                Active Exams
+            </span>
+
+            <strong>
+                {{ attempts|length }}
+            </strong>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="icon">
+                ⚠️
+            </div>
+
+            <span>
+                Warning Limit
+            </span>
+
+            <strong>
+                3
+            </strong>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="icon">
+                📷
+            </div>
+
+            <span>
+                Proctoring
+            </span>
+
+            <strong>
+                ON
+            </strong>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ========================================================
+         STUDENT SECTION
+    ========================================================= -->
+
+    <div class="section-title">
+
+        <h2>
+            Students Currently Testing
+        </h2>
+
+        <span>
+            {{ attempts|length }} active attempt{{ attempts|length|pluralize }}
+        </span>
+
+    </div>
+
+
+
+    {% if attempts %}
+
+
+        <section class="student-grid">
+
+
+            {% for item in attempts %}
+
+
+                <article
+                    class="student-card"
+                    id="attempt-{{ item.attempt.id }}"
+                    data-attempt-id="{{ item.attempt.id }}"
+                >
+
+
+                    <!-- =================================================
+                         STUDENT HEADER
+                    ================================================== -->
+
+                    <div class="student-header">
+
+
+                        <div class="student-profile">
+
+
+                            <div class="avatar">
+
+                                {% if item.student.first_name %}
+
+                                    {{ item.student.first_name|first|upper }}
+
+                                {% else %}
+
+                                    {{ item.student.username|first|upper }}
+
+                                {% endif %}
+
+                            </div>
+
+
+                            <div>
+
+                                <h3 class="student-name">
+
+                                    {% if item.student.get_full_name %}
+
+                                        {{ item.student.get_full_name }}
+
+                                    {% else %}
+
+                                        {{ item.student.username }}
+
+                                    {% endif %}
+
+                                </h3>
+
+
+                                <div class="student-id">
+
+                                    Student ID:
+                                    {{ item.student.username }}
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <span class="active-badge">
+
+                            ACTIVE
+
+                        </span>
+
+
+                    </div>
+
+
+
+                    <!-- =================================================
+                         CARD BODY
+                    ================================================== -->
+
+                    <div class="card-body">
+
+                        <!-- =================================================
+                             STEP 2 - LIVE STUDENT CAMERA
+                        ================================================== -->
+                        <div class="live-video-box">
+                            <video
+                                class="live-video"
+                                id="live-video-{{ item.attempt.id }}"
+                                autoplay
+                                playsinline
+                                muted
+                                data-attempt-id="{{ item.attempt.id }}"
+                            ></video>
+
+                            <div
+                                class="live-video-status"
+                                id="live-video-status-{{ item.attempt.id }}"
+                            >
+                                🟡 Waiting for student's camera...
+                            </div>
+                        </div>
+
+
+                        <div class="realtime-panel">
+                            <span id="online-status-{{ item.attempt.id }}">🟢 Online</span>
+                            <span id="camera-status-{{ item.attempt.id }}">📷 Camera: Waiting</span>
+                            <span id="warning-status-{{ item.attempt.id }}">⚠️ Warnings: {{ item.warning_count }}/3</span>
+                            <span id="last-update-{{ item.attempt.id }}">🕐 Waiting...</span>
+                        </div>
+
+                        <!-- TEST NAME -->
+
+                        <div class="test-name">
+
+                            📝
+                            {{ item.test.title }}
+
+                        </div>
+
+
+
+                        <!-- DETAILS -->
+
+                        <div class="details-grid">
+
+
+                            <div class="detail-box">
+
+                                <span class="detail-label">
+                                    Exam Status
+                                </span>
+
+                                <span class="detail-value online">
+
+                                    ● In Progress
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="detail-box">
+
+                                <span class="detail-label">
+                                    Proctoring
+                                </span>
+
+                                <span class="detail-value online">
+
+                                    ● Active
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="detail-box">
+
+                                <span class="detail-label">
+                                    Warnings
+                                </span>
+
+                                <span class="detail-value">
+
+                                    {{ item.warning_count }}/3
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="detail-box">
+
+                                <span class="detail-label">
+                                    Last Update
+                                </span>
+
+                                <span class="detail-value">
+
+                                    {% if item.last_proctoring_update %}
+
+                                        {{ item.last_proctoring_update|date:"H:i:s" }}
+
+                                    {% else %}
+
+                                        Waiting...
+
+                                    {% endif %}
+
+                                </span>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             WARNING
+                        ================================================== -->
+
+                        <div class="warning-section">
+
+
+                            <div class="warning-header">
+
+                                <strong>
+                                    ⚠️ AI Proctoring Warnings
+                                </strong>
+
+                                <span class="warning-number">
+
+                                    {{ item.warning_count }}/3
+
+                                </span>
+
+                            </div>
+
+
+                            <div class="warning-track">
+
+                                <div
+                                    class="warning-fill"
+                                    style="width:
+                                    {% widthratio item.warning_count 3 100 %}%"
+                                ></div>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             EVENTS
+                        ================================================== -->
+
+                        <div class="events-heading">
+
+                            Recent Proctoring Events
+
+                        </div>
+
+
+                        <div class="events-list">
+
+
+                            {% if item.events %}
+
+
+                                {% for event in item.events %}
+
+
+                                    <div class="event-row">
+
+
+                                        <span class="event-message">
+
+                                            {% if event.message %}
+
+                                                {{ event.message }}
+
+                                            {% elif event.event_type %}
+
+                                                {{ event.event_type|title }}
+
+                                            {% else %}
+
+                                                Proctoring event
+
+                                            {% endif %}
+
+                                        </span>
+
+
+                                        <span class="event-time">
+
+                                            {{ event.created_at|date:"H:i:s" }}
+
+                                        </span>
+
+
+                                    </div>
+
+
+                                {% endfor %}
+
+
+                            {% else %}
+
+
+                                <div class="no-events">
+
+                                    ✓ No proctoring events recorded yet.
+
+                                </div>
+
+
+                            {% endif %}
+
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             TERMINATE
+                        ================================================== -->
+
+                        <button
+                            type="button"
+                            class="terminate-button"
+                            onclick="terminateAttempt(
+                                {{ item.attempt.id }},
+                                '{{ item.student.username|escapejs }}'
+                            )"
+                        >
+
+                            ⛔ Terminate Student Test
+
+                        </button>
+
+
+                    </div>
+
+
+                </article>
+
+
+            {% endfor %}
+
+
+        </section>
+
+
+    {% else %}
+
+
+        <!-- ========================================================
+             EMPTY STATE
+        ========================================================= -->
+
+        <section class="empty-state">
+
+
+            <div class="empty-icon">
+
+                🖥️
+
+            </div>
+
+
+            <h2>
+
+                No Active Exams
+
+            </h2>
+
+
+            <p>
+
+                No students are currently appearing
+                for your tests.
+
+            </p>
+
+
+        </section>
+
+
+    {% endif %}
+
+
+
+    <div class="footer">
+
+        PentraOne Education • Teacher Live Monitoring
+
+    </div>
+
+
+</main>
+
+
+
+<!-- ============================================================
+     TERMINATION JAVASCRIPT
+============================================================= -->
+
+<script>
+
+
+    /* =========================================================
+       STEP 2 - WEBRTC TEACHER LIVE CAMERA RECEIVER
+    ========================================================= */
+
+    const teacherPeerConnections = {};
+
+    const TEACHER_WEBRTC_CONFIGURATION = {
+        iceServers: [
+            { urls: "stun:stun.l.google.com:19302" },
+            { urls: "stun:stun1.l.google.com:19302" }
+        ]
+    };
+
+    function waitForTeacherIceGathering(peerConnection) {
+        return new Promise(function(resolve) {
+            if (
+                peerConnection.iceGatheringState ===
+                "complete"
+            ) {
+                resolve();
+                return;
+            }
+
+            function checkState() {
+                if (
+                    peerConnection.iceGatheringState ===
+                    "complete"
+                ) {
+                    peerConnection.removeEventListener(
+                        "icegatheringstatechange",
+                        checkState
+                    );
+                    resolve();
+                }
+            }
+
+            peerConnection.addEventListener(
+                "icegatheringstatechange",
+                checkState
+            );
+
+            setTimeout(function() {
+                peerConnection.removeEventListener(
+                    "icegatheringstatechange",
+                    checkState
+                );
+                resolve();
+            }, 8000);
+        });
+    }
+
+    function setLiveStatus(attemptId, message, state) {
+        const status =
+            document.getElementById(
+                "live-video-status-" + attemptId
+            );
+
+        if (!status) {
+            return;
+        }
+
+        status.textContent = message;
+        status.classList.remove(
+            "connected",
+            "error"
+        );
+
+        if (state) {
+            status.classList.add(state);
+        }
+    }
+
+    async function connectToStudentCamera(attemptId) {
+        if (
+            teacherPeerConnections[attemptId]
+        ) {
+            return;
+        }
+
+        try {
+            setLiveStatus(
+                attemptId,
+                "🟡 Waiting for student's camera...",
+                ""
+            );
+
+            const offerResponse = await fetch(
+                "{% url 'education:teacher_webrtc_offer' 0 %}"
+                    .replace(
+                        "/0/",
+                        "/" + attemptId + "/"
+                    ),
+                {
+                    method: "GET",
+                    cache: "no-store"
+                }
+            );
+
+            if (offerResponse.status === 404) {
+                return;
+            }
+
+            if (!offerResponse.ok) {
+                throw new Error(
+                    "Unable to read student camera offer."
+                );
+            }
+
+            const offer =
+                await offerResponse.json();
+
+            if (
+                !offer.success ||
+                !offer.sdp ||
+                !offer.type
+            ) {
+                return;
+            }
+
+            const peerConnection =
+                new RTCPeerConnection(
+                    TEACHER_WEBRTC_CONFIGURATION
+                );
+
+            teacherPeerConnections[attemptId] =
+                peerConnection;
+
+            peerConnection.ontrack =
+                function(event) {
+                    const video =
+                        document.getElementById(
+                            "live-video-" + attemptId
+                        );
+
+                    if (
+                        video &&
+                        event.streams &&
+                        event.streams[0]
+                    ) {
+                        video.srcObject =
+                            event.streams[0];
+
+                        video.play().catch(
+                            function() {}
+                        );
+
+                        setLiveStatus(
+                            attemptId,
+                            "🟢 LIVE CAMERA CONNECTED",
+                            "connected"
+                        );
+                    }
+                };
+
+            peerConnection.onconnectionstatechange =
+                function() {
+                    const state =
+                        peerConnection.connectionState;
+
+                    if (state === "connected") {
+                        setLiveStatus(
+                            attemptId,
+                            "🟢 LIVE CAMERA CONNECTED",
+                            "connected"
+                        );
+                    } else if (
+                        state === "failed" ||
+                        state === "disconnected"
+                    ) {
+                        setLiveStatus(
+                            attemptId,
+                            "🔴 Camera connection lost",
+                            "error"
+                        );
+
+                        delete teacherPeerConnections[
+                            attemptId
+                        ];
+                    }
+                };
+
+            await peerConnection.setRemoteDescription(
+                new RTCSessionDescription({
+                    type: offer.type,
+                    sdp: offer.sdp
+                })
+            );
+
+            const answer =
+                await peerConnection.createAnswer();
+
+            await peerConnection.setLocalDescription(
+                answer
+            );
+
+            await waitForTeacherIceGathering(
+                peerConnection
+            );
+
+            const finalAnswer =
+                peerConnection.localDescription;
+
+            const answerResponse = await fetch(
+                "{% url 'education:teacher_webrtc_answer' 0 %}"
+                    .replace(
+                        "/0/",
+                        "/" + attemptId + "/"
+                    ),
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type":
+                            "application/json",
+                        "X-CSRFToken":
+                            getCookie("csrftoken")
+                    },
+                    body: JSON.stringify({
+                        type: finalAnswer.type,
+                        sdp: finalAnswer.sdp
+                    })
+                }
+            );
+
+            if (!answerResponse.ok) {
+                throw new Error(
+                    "Unable to send camera answer."
+                );
+            }
+
+        } catch (error) {
+            console.warn(
+                "Teacher WebRTC error:",
+                attemptId,
+                error
+            );
+
+            setLiveStatus(
+                attemptId,
+                "🔴 Camera connection failed",
+                "error"
+            );
+
+            if (
+                teacherPeerConnections[attemptId]
+            ) {
+                try {
+                    teacherPeerConnections[
+                        attemptId
+                    ].close();
+                } catch (closeError) {
+                    console.warn(closeError);
+                }
+            }
+
+            delete teacherPeerConnections[
+                attemptId
+            ];
+        }
+    }
+
+    function startTeacherWebRTCMonitoring() {
+        document.querySelectorAll(
+            ".live-video[data-attempt-id]"
+        ).forEach(function(video) {
+            const attemptId =
+                video.dataset.attemptId;
+
+            connectToStudentCamera(
+                attemptId
+            );
+        });
+    }
+
+    setInterval(
+        startTeacherWebRTCMonitoring,
+        3000
+    );
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function() {
+            startTeacherWebRTCMonitoring();
+        }
+    );
+
+
+    /* =========================================================
+       STAGE 3 - REAL-TIME MONITORING POLLING
+    ========================================================= */
+
+    let realtimePolling = false;
+
+    function realtimeTime(value) {
+        if (!value) return "Waiting...";
+        const d = new Date(value);
+        return Number.isNaN(d.getTime()) ? "Waiting..." : d.toLocaleTimeString([], {hour:"2-digit", minute:"2-digit", second:"2-digit"});
+    }
+
+    function realtimeSet(attemptId, suffix, text, state) {
+        const el = document.getElementById(suffix + "-" + attemptId);
+        if (!el) return;
+        el.textContent = text;
+        el.classList.remove("rt-online", "rt-offline", "rt-warning");
+        if (state) el.classList.add(state);
+    }
+
+    async function refreshRealtimeMonitoring() {
+        if (realtimePolling) return;
+        realtimePolling = true;
+        try {
+            const response = await fetch(
+                "{% url 'education:teacher_live_monitor_data' %}",
+                {method:"GET", cache:"no-store", headers:{"X-Requested-With":"XMLHttpRequest"}}
+            );
+            if (!response.ok) throw new Error("Monitoring endpoint returned " + response.status);
+            const data = await response.json();
+            if (!data.success) return;
+
+            data.attempts.forEach(function(item) {
+                realtimeSet(item.attempt_id, "online-status", item.online ? "🟢 Online" : "🔴 Offline", item.online ? "rt-online" : "rt-offline");
+                realtimeSet(item.attempt_id, "camera-status", item.camera_status === "on" ? "📷 Camera: ON" : item.camera_status === "off" ? "📷 Camera: OFF" : "📷 Camera: Waiting", item.camera_status === "on" ? "rt-online" : item.camera_status === "off" ? "rt-offline" : "");
+                realtimeSet(item.attempt_id, "warning-status", "⚠️ Warnings: " + (item.warning_count || 0) + "/3", item.warning_count > 0 ? "rt-warning" : "rt-online");
+                realtimeSet(item.attempt_id, "last-update", "🕐 " + realtimeTime(item.last_proctoring_update), "");
+
+                const warningNumber = document.querySelector("#attempt-" + item.attempt_id + " .warning-number");
+                if (warningNumber) warningNumber.textContent = (item.warning_count || 0) + "/3";
+                const warningFill = document.querySelector("#attempt-" + item.attempt_id + " .warning-fill");
+                if (warningFill) warningFill.style.width = Math.min(item.warning_count || 0, 3) / 3 * 100 + "%";
+            });
+        } catch (error) {
+            console.warn("Real-time monitoring update failed:", error);
+        } finally {
+            realtimePolling = false;
+        }
+    }
+
+    setInterval(refreshRealtimeMonitoring, 2000);
+    document.addEventListener("DOMContentLoaded", refreshRealtimeMonitoring);
+
+    async function terminateAttempt(
+        attemptId,
+        studentName
+    ) {
+
+        const confirmed = confirm(
+            "Are you sure you want to terminate the test for " +
+            studentName +
+            "?"
+        );
+
+
+        if (!confirmed) {
+
+            return;
+
+        }
+
+
+        const csrfToken = getCookie("csrftoken");
+
+
+        try {
+
+            const response = await fetch(
+                "{% url 'education:teacher_terminate_test' 0 %}"
+                    .replace(
+                        "/0/",
+                        "/" + attemptId + "/"
+                    ),
+                {
+                    method: "POST",
+
+                    headers: {
+                        "X-CSRFToken": csrfToken,
+
+                        "X-Requested-With":
+                            "XMLHttpRequest"
+                    }
+                }
+            );
+
+
+            const data = await response.json();
+
+
+            if (data.success) {
+
+                const card = document.getElementById(
+                    "attempt-" + attemptId
+                );
+
+
+                if (card) {
+
+                    card.remove();
+
+                }
+
+
+                alert(
+                    "Test terminated successfully."
+                );
+
+
+                location.reload();
+
+            } else {
+
+                alert(
+                    data.message ||
+                    "Unable to terminate the test."
+                );
+
+            }
+
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert(
+                "Something went wrong while terminating the test."
+            );
+
+        }
+
+    }
+
+
+
+    function getCookie(name) {
+
+        let cookieValue = null;
+
+
+        if (document.cookie &&
+            document.cookie !== "") {
+
+            const cookies =
+                document.cookie.split(";");
+
+
+            for (
+                let i = 0;
+                i < cookies.length;
+                i++
+            ) {
+
+                const cookie =
+                    cookies[i].trim();
+
+
+                if (
+                    cookie.substring(
+                        0,
+                        name.length + 1
+                    ) ===
+                    (name + "=")
+                ) {
+
+                    cookieValue =
+                        decodeURIComponent(
+                            cookie.substring(
+                                name.length + 1
+                            )
+                        );
+
+                    break;
+
+                }
+
+            }
+
+        }
+
+
+        return cookieValue;
+
+    }
+
+</script>
+
+
+</body>
+
+</html>

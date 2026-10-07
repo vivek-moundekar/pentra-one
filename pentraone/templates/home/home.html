@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Udaan | Home</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #222;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            height: 75px;
+            background-color: #1f4e79;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 60px;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-button {
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        /* SIGN IN */
+
+        .signin {
+            background-color: white;
+            color: #1f4e79;
+        }
+
+        .signin:hover {
+            background-color: #e8f0f7;
+        }
+
+        /* SIGN UP */
+
+        .signup {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .signup:hover {
+            background-color: #218838;
+        }
+
+        /* SIGN OUT */
+
+        .signout {
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .signout:hover {
+            background-color: #c9302c;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 500px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 60px 20px;
+
+            background: linear-gradient(
+                135deg,
+                #e8f5e9,
+                #e3f2fd
+            );
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            color: #1f4e79;
+            margin-bottom: 15px;
+            letter-spacing: 2px;
+        }
+
+        .hero h2 {
+            font-size: 26px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #666;
+            margin-bottom: 32px;
+        }
+
+        .hero-button {
+            display: inline-block;
+            padding: 14px 32px;
+
+            background-color: #1f4e79;
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 7px;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .hero-button:hover {
+            background-color: #163b5c;
+            transform: translateY(-2px);
+        }
+
+        /* ================= SERVICES ================= */
+
+        .services {
+            padding: 65px 40px;
+            text-align: center;
+            background-color: #f5f7fa;
+        }
+
+        .services h2 {
+            color: #1f4e79;
+            margin-bottom: 40px;
+            font-size: 30px;
+        }
+
+        .cards {
+            max-width: 1150px;
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+
+            gap: 22px;
+        }
+
+        .card {
+            background-color: white;
+
+            padding: 30px 25px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 12px rgba(0, 0, 0, 0.08);
+
+            transition: 0.25s;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #1f4e79;
+            margin-bottom: 12px;
+            font-size: 20px;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* ================= ABOUT ================= */
+
+        .about {
+            background-color: white;
+            padding: 65px 30px;
+            text-align: center;
+        }
+
+        .about h2 {
+            color: #1f4e79;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            max-width: 850px;
+            margin: auto;
+
+            color: #666;
+
+            font-size: 16px;
+
+            line-height: 1.8;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background-color: #1f4e79;
+            color: white;
+
+            text-align: center;
+
+            padding: 22px;
+
+            font-size: 13px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                height: auto;
+                padding: 18px 20px;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+            .logo {
+                font-size: 26px;
+            }
+
+            .hero {
+                min-height: 450px;
+                padding: 45px 20px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero h2 {
+                font-size: 21px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .services {
+                padding: 45px 20px;
+            }
+
+            .about {
+                padding: 45px 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Udaan
+        </div>
+
+
+        <div class="nav-links">
+
+            <a href="/dashboard/" class="nav-button signin">
+                Dashboard
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>
+                UDAAN
+            </h1>
+
+            <h2>
+                Empowering Rural Communities
+            </h2>
+
+            <p>
+                Udaan is a unified platform designed to connect
+                rural communities with essential information,
+                opportunities and services.
+                From education and healthcare to agriculture,
+                government schemes and employment,
+                Udaan brings everything together in one place.
+            </p>
+
+
+            <a
+                href="/dashboard/"
+                class="hero-button"
+            >
+                Get Started
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SERVICES ================= -->
+
+    <section class="services">
+
+        <h2>
+            What Udaan Provides
+        </h2>
+
+
+        <div class="cards">
+
+
+            <!-- EDUCATION -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    📚
+                </div>
+
+                <h3>
+                    Education
+                </h3>
+
+                <p>
+                    Access learning resources, educational
+                    opportunities, scholarships and useful
+                    information for students.
+                </p>
+
+            </div>
+
+
+            <!-- HEALTHCARE -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🏥
+                </div>
+
+                <h3>
+                    Healthcare
+                </h3>
+
+                <p>
+                    Find healthcare information, health
+                    awareness resources and available
+                    healthcare services.
+                </p>
+
+            </div>
+
+
+            <!-- AGRICULTURE -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🌾
+                </div>
+
+                <h3>
+                    Agriculture
+                </h3>
+
+                <p>
+                    Get information about farming,
+                    crops, agricultural resources and
+                    opportunities for farmers.
+                </p>
+
+            </div>
+
+
+            <!-- GOVERNMENT SCHEMES -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🏛️
+                </div>
+
+                <h3>
+                    Government Schemes
+                </h3>
+
+                <p>
+                    Discover government schemes,
+                    subsidies, benefits and eligibility
+                    information.
+                </p>
+
+            </div>
+
+
+            <!-- EMPLOYMENT -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    💼
+                </div>
+
+                <h3>
+                    Employment
+                </h3>
+
+                <p>
+                    Find employment opportunities,
+                    career resources and skill development
+                    opportunities.
+                </p>
+
+            </div>
+
+
+            <!-- ENVIRONMENT -->
+
+            <div class="card">
+
+                <div class="card-icon">
+                    🌳
+                </div>
+
+                <h3>
+                    Environment
+                </h3>
+
+                <p>
+                    Learn about environmental protection,
+                    pollution control, recycling and
+                    sustainability.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section class="about">
+
+        <h2>
+            About Udaan
+        </h2>
+
+        <p>
+            Udaan aims to bridge the gap between rural
+            communities and the information and opportunities
+            they need. Our goal is to provide a simple,
+            accessible and centralized platform that helps
+            people discover services and opportunities
+            across different sectors.
+        </p>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        © 2026 Udaan — Empowering Rural Communities
+
+    </footer>
+
+
+</body>
+
+</html>

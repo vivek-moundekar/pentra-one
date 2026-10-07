@@ -1,0 +1,2447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Results | PentraOne Education</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #05070b;
+            --panel: rgba(15, 20, 30, 0.82);
+            --panel-soft: rgba(21, 29, 43, 0.68);
+            --border: rgba(148, 163, 184, 0.16);
+            --border-blue: rgba(59, 130, 246, 0.32);
+
+            --text: #f8fafc;
+            --muted: #94a3b8;
+
+            --blue: #3b82f6;
+            --blue-dark: #2563eb;
+            --cyan: #22d3ee;
+            --green: #22c55e;
+            --amber: #f59e0b;
+            --red: #ef4444;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            font-family:
+                Inter,
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            color: var(--text);
+
+            background:
+                radial-gradient(
+                    circle at 10% 90%,
+                    rgba(37, 99, 235, 0.25),
+                    transparent 31%
+                ),
+                radial-gradient(
+                    circle at 88% 13%,
+                    rgba(59, 130, 246, 0.13),
+                    transparent 27%
+                ),
+                linear-gradient(
+                    135deg,
+                    #050505,
+                    #070b12 48%,
+                    #071426
+                );
+
+            overflow-x: hidden;
+        }
+
+
+        body::before,
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            border-radius: 50%;
+
+            filter: blur(100px);
+
+            pointer-events: none;
+
+            z-index: 0;
+        }
+
+
+        body::before {
+
+            width: 430px;
+
+            height: 430px;
+
+            left: -180px;
+
+            bottom: -190px;
+
+            background:
+                rgba(37, 99, 235, 0.12);
+        }
+
+
+        body::after {
+
+            width: 330px;
+
+            height: 330px;
+
+            right: -150px;
+
+            top: 120px;
+
+            background:
+                rgba(34, 211, 238, 0.07);
+        }
+
+
+        /* ============================================
+           HEADER
+        ============================================ */
+
+        .header {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+            height: 76px;
+
+            padding: 0 42px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            background:
+                rgba(5, 8, 13, 0.77);
+
+            border-bottom:
+                1px solid
+                rgba(148, 163, 184, 0.11);
+
+            backdrop-filter: blur(20px);
+        }
+
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 13px;
+
+            text-decoration: none;
+
+            color: var(--text);
+        }
+
+
+        .brand-icon {
+
+            width: 40px;
+
+            height: 40px;
+
+            border-radius: 12px;
+
+            display: grid;
+
+            place-items: center;
+
+            color: #93c5fd;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(59, 130, 246, 0.20),
+                    rgba(37, 99, 235, 0.08)
+                );
+
+            border:
+                1px solid
+                rgba(59, 130, 246, 0.28);
+
+            box-shadow:
+                0 0 28px
+                rgba(37, 99, 235, 0.13);
+        }
+
+
+        .brand-icon svg {
+
+            width: 20px;
+
+            height: 20px;
+
+            stroke: currentColor;
+        }
+
+
+        .brand-copy strong {
+
+            display: block;
+
+            font-size: 15px;
+
+            letter-spacing: 0.2px;
+        }
+
+
+        .brand-copy span {
+
+            display: block;
+
+            margin-top: 2px;
+
+            color: var(--muted);
+
+            font-size: 10px;
+        }
+
+
+        .back-btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 10px 14px;
+
+            border-radius: 11px;
+
+            color: #cbd5e1;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            border:
+                1px solid
+                var(--border);
+
+            background:
+                rgba(255, 255, 255, 0.035);
+
+            transition:
+                0.2s ease;
+        }
+
+
+        .back-btn svg {
+
+            width: 18px;
+
+            height: 18px;
+
+            stroke: currentColor;
+        }
+
+
+        .back-btn:hover {
+
+            color: white;
+
+            border-color:
+                var(--border-blue);
+
+            background:
+                rgba(59, 130, 246, 0.08);
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        /* ============================================
+           PAGE
+        ============================================ */
+
+        .page {
+
+            position: relative;
+
+            z-index: 1;
+
+            width:
+                min(
+                    1450px,
+                    calc(100% - 48px)
+                );
+
+            margin:
+                0 auto;
+
+            padding:
+                42px 0 54px;
+        }
+
+
+        /* ============================================
+           HERO
+        ============================================ */
+
+        .hero {
+
+            margin-bottom:
+                28px;
+
+            animation:
+                rise 0.45s ease both;
+        }
+
+
+        .eyebrow {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap: 7px;
+
+            padding:
+                6px 9px;
+
+            margin-bottom:
+                12px;
+
+            border-radius:
+                999px;
+
+            color:
+                #93c5fd;
+
+            background:
+                rgba(59, 130, 246, 0.08);
+
+            border:
+                1px solid
+                rgba(59, 130, 246, 0.18);
+
+            font-size:
+                9px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                1.1px;
+
+            text-transform:
+                uppercase;
+        }
+
+
+        .eyebrow::before {
+
+            content: "";
+
+            width:
+                6px;
+
+            height:
+                6px;
+
+            border-radius:
+                50%;
+
+            background:
+                var(--blue);
+
+            box-shadow:
+                0 0 12px
+                rgba(59, 130, 246, 0.8);
+        }
+
+
+        .hero h1 {
+
+            font-size:
+                clamp(
+                    30px,
+                    4vw,
+                    46px
+                );
+
+            letter-spacing:
+                -1.4px;
+
+            line-height:
+                1.05;
+        }
+
+
+        .hero p {
+
+            max-width:
+                760px;
+
+            margin-top:
+                12px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                13px;
+
+            line-height:
+                1.75;
+        }
+
+
+        /* ============================================
+           STATS
+        ============================================ */
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    3,
+                    minmax(0, 1fr)
+                );
+
+            gap: 14px;
+
+            margin-bottom:
+                18px;
+        }
+
+
+        .stat-card {
+
+            min-height:
+                112px;
+
+            border-radius:
+                18px;
+
+            padding:
+                20px;
+
+            display: flex;
+
+            align-items:
+                center;
+
+            gap: 16px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(18, 24, 35, 0.82),
+                    rgba(8, 13, 22, 0.88)
+                );
+
+            border:
+                1px solid
+                var(--border);
+
+            box-shadow:
+                inset 0 1px 0
+                rgba(255, 255, 255, 0.025),
+                0 22px 60px
+                rgba(0, 0, 0, 0.17);
+
+            backdrop-filter:
+                blur(18px);
+
+            transition:
+                0.25s ease;
+
+            animation:
+                rise 0.5s ease both;
+        }
+
+
+        .stat-card:hover {
+
+            transform:
+                translateY(-3px);
+
+            border-color:
+                rgba(59, 130, 246, 0.26);
+
+            box-shadow:
+                0 16px 45px
+                rgba(37, 99, 235, 0.08);
+        }
+
+
+        .stat-icon {
+
+            width: 46px;
+
+            height: 46px;
+
+            min-width: 46px;
+
+            border-radius:
+                13px;
+
+            display: grid;
+
+            place-items:
+                center;
+
+            color:
+                #93c5fd;
+
+            background:
+                rgba(59, 130, 246, 0.09);
+
+            border:
+                1px solid
+                rgba(59, 130, 246, 0.16);
+        }
+
+
+        .stat-icon svg {
+
+            width: 21px;
+
+            height: 21px;
+
+            stroke:
+                currentColor;
+        }
+
+
+        .stat-value {
+
+            font-size:
+                25px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                -0.7px;
+        }
+
+
+        .stat-label {
+
+            margin-top:
+                4px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                10px;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                0.8px;
+
+            font-weight:
+                700;
+        }
+
+
+        /* ============================================
+           FILTERS
+        ============================================ */
+
+        .filters {
+
+            border-radius:
+                18px;
+
+            padding:
+                18px;
+
+            margin-bottom:
+                18px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(18, 24, 35, 0.82),
+                    rgba(8, 13, 22, 0.88)
+                );
+
+            border:
+                1px solid
+                var(--border);
+
+            box-shadow:
+                inset 0 1px 0
+                rgba(255, 255, 255, 0.025),
+                0 22px 60px
+                rgba(0, 0, 0, 0.15);
+
+            backdrop-filter:
+                blur(18px);
+        }
+
+
+        .filter-title {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                space-between;
+
+            margin-bottom:
+                14px;
+        }
+
+
+        .filter-title h3 {
+
+            font-size:
+                13px;
+        }
+
+
+        .filter-title span {
+
+            color:
+                var(--muted);
+
+            font-size:
+                10px;
+        }
+
+
+        .filter-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(220px, 1.5fr)
+                repeat(
+                    4,
+                    minmax(130px, 1fr)
+                )
+                auto;
+
+            gap: 10px;
+
+            align-items:
+                center;
+        }
+
+
+        .search-wrap {
+
+            position:
+                relative;
+        }
+
+
+        .search-icon {
+
+            position:
+                absolute;
+
+            left:
+                13px;
+
+            top:
+                50%;
+
+            transform:
+                translateY(-50%);
+
+            color:
+                #64748b;
+
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            pointer-events:
+                none;
+        }
+
+
+        .search-icon svg {
+
+            width:
+                17px;
+
+            height:
+                17px;
+
+            stroke:
+                currentColor;
+        }
+
+
+        input,
+        select {
+
+            width:
+                100%;
+
+            height:
+                42px;
+
+            border-radius:
+                11px;
+
+            border:
+                1px solid
+                rgba(148, 163, 184, 0.14);
+
+            outline:
+                none;
+
+            color:
+                #e5e7eb;
+
+            background:
+                rgba(3, 7, 14, 0.58);
+
+            padding:
+                0 12px;
+
+            font:
+                inherit;
+
+            font-size:
+                11px;
+
+            transition:
+                0.2s ease;
+        }
+
+
+        input {
+
+            padding-left:
+                40px;
+        }
+
+
+        input::placeholder {
+
+            color:
+                #64748b;
+        }
+
+
+        select option {
+
+            color:
+                white;
+
+            background:
+                #0b1220;
+        }
+
+
+        input:focus,
+        select:focus {
+
+            border-color:
+                rgba(59, 130, 246, 0.55);
+
+            box-shadow:
+                0 0 0 3px
+                rgba(59, 130, 246, 0.08);
+        }
+
+
+        .filter-actions {
+
+            display:
+                flex;
+
+            gap:
+                8px;
+        }
+
+
+        .btn {
+
+            height:
+                42px;
+
+            padding:
+                0 16px;
+
+            border:
+                0;
+
+            border-radius:
+                11px;
+
+            cursor:
+                pointer;
+
+            text-decoration:
+                none;
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            white-space:
+                nowrap;
+
+            font-size:
+                11px;
+
+            font-weight:
+                800;
+
+            transition:
+                0.2s ease;
+        }
+
+
+        .btn-primary {
+
+            color:
+                white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--blue),
+                    var(--blue-dark)
+                );
+
+            box-shadow:
+                0 8px 26px
+                rgba(37, 99, 235, 0.20);
+        }
+
+
+        .btn-primary:hover {
+
+            transform:
+                translateY(-1px);
+
+            box-shadow:
+                0 11px 30px
+                rgba(37, 99, 235, 0.27);
+        }
+
+
+        .btn-reset {
+
+            color:
+                #cbd5e1;
+
+            background:
+                rgba(255, 255, 255, 0.035);
+
+            border:
+                1px solid
+                var(--border);
+        }
+
+
+        .btn-reset:hover {
+
+            color:
+                white;
+
+            border-color:
+                rgba(59, 130, 246, 0.32);
+        }
+
+
+        /* ============================================
+           TABLE
+        ============================================ */
+
+        .table-card {
+
+            border-radius:
+                20px;
+
+            overflow:
+                hidden;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(18, 24, 35, 0.82),
+                    rgba(8, 13, 22, 0.88)
+                );
+
+            border:
+                1px solid
+                var(--border);
+
+            box-shadow:
+                inset 0 1px 0
+                rgba(255, 255, 255, 0.025),
+                0 22px 60px
+                rgba(0, 0, 0, 0.17);
+
+            backdrop-filter:
+                blur(18px);
+        }
+
+
+        .table-head {
+
+            min-height:
+                62px;
+
+            padding:
+                16px 20px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                18px;
+
+            border-bottom:
+                1px solid
+                rgba(148, 163, 184, 0.11);
+        }
+
+
+        .table-head strong {
+
+            font-size:
+                13px;
+        }
+
+
+        .table-head span {
+
+            color:
+                var(--muted);
+
+            font-size:
+                10px;
+        }
+
+
+        .table-scroll {
+
+            overflow-x:
+                auto;
+        }
+
+
+        table {
+
+            width:
+                100%;
+
+            border-collapse:
+                collapse;
+
+            min-width:
+                1200px;
+        }
+
+
+        th {
+
+            padding:
+                13px 14px;
+
+            text-align:
+                left;
+
+            color:
+                #7f8da3;
+
+            background:
+                rgba(255, 255, 255, 0.018);
+
+            border-bottom:
+                1px solid
+                rgba(148, 163, 184, 0.09);
+
+            font-size:
+                9px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                0.75px;
+
+            text-transform:
+                uppercase;
+        }
+
+
+        td {
+
+            padding:
+                15px 14px;
+
+            border-bottom:
+                1px solid
+                rgba(148, 163, 184, 0.07);
+
+            color:
+                #cbd5e1;
+
+            font-size:
+                11px;
+
+            vertical-align:
+                middle;
+        }
+
+
+        tbody tr {
+
+            transition:
+                0.2s ease;
+        }
+
+
+        tbody tr:hover {
+
+            background:
+                rgba(59, 130, 246, 0.035);
+        }
+
+
+        tbody tr:last-child td {
+
+            border-bottom:
+                0;
+        }
+
+
+        .student {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+
+            min-width:
+                170px;
+        }
+
+
+        .avatar {
+
+            width:
+                35px;
+
+            height:
+                35px;
+
+            min-width:
+                35px;
+
+            border-radius:
+                10px;
+
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            color:
+                #bfdbfe;
+
+            background:
+                rgba(59, 130, 246, 0.09);
+
+            border:
+                1px solid
+                rgba(59, 130, 246, 0.17);
+
+            font-size:
+                12px;
+
+            font-weight:
+                800;
+        }
+
+
+        .student-name {
+
+            color:
+                #f8fafc;
+
+            font-size:
+                11px;
+
+            font-weight:
+                750;
+        }
+
+
+        .student-username {
+
+            margin-top:
+                3px;
+
+            color:
+                #64748b;
+
+            font-size:
+                9px;
+        }
+
+
+        .main-text {
+
+            color:
+                #e2e8f0;
+
+            font-weight:
+                650;
+        }
+
+
+        .sub-text {
+
+            margin-top:
+                3px;
+
+            color:
+                #64748b;
+
+            font-size:
+                9px;
+        }
+
+
+        .score {
+
+            font-weight:
+                800;
+
+            color:
+                #e2e8f0;
+        }
+
+
+        .percentage {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            min-width:
+                54px;
+
+            padding:
+                6px 9px;
+
+            border-radius:
+                999px;
+
+            color:
+                #bfdbfe;
+
+            background:
+                rgba(59, 130, 246, 0.08);
+
+            border:
+                1px solid
+                rgba(59, 130, 246, 0.18);
+
+            font-weight:
+                800;
+
+            font-size:
+                10px;
+        }
+
+
+        .performance {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            padding:
+                5px 8px;
+
+            border-radius:
+                999px;
+
+            font-size:
+                8px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                0.4px;
+
+            text-transform:
+                uppercase;
+        }
+
+
+        .performance.excellent {
+
+            color:
+                #86efac;
+
+            background:
+                rgba(34, 197, 94, 0.08);
+
+            border:
+                1px solid
+                rgba(34, 197, 94, 0.16);
+        }
+
+
+        .performance.good {
+
+            color:
+                #93c5fd;
+
+            background:
+                rgba(59, 130, 246, 0.08);
+
+            border:
+                1px solid
+                rgba(59, 130, 246, 0.16);
+        }
+
+
+        .performance.average {
+
+            color:
+                #fde68a;
+
+            background:
+                rgba(245, 158, 11, 0.08);
+
+            border:
+                1px solid
+                rgba(245, 158, 11, 0.17);
+        }
+
+
+        .performance.needs-improvement {
+
+            color:
+                #fca5a5;
+
+            background:
+                rgba(239, 68, 68, 0.08);
+
+            border:
+                1px solid
+                rgba(239, 68, 68, 0.16);
+        }
+
+
+        .view-btn {
+
+            width:
+                36px;
+
+            height:
+                36px;
+
+            border-radius:
+                10px;
+
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            color:
+                #93c5fd;
+
+            text-decoration:
+                none;
+
+            background:
+                rgba(59, 130, 246, 0.07);
+
+            border:
+                1px solid
+                rgba(59, 130, 246, 0.16);
+
+            transition:
+                0.2s ease;
+        }
+
+
+        .view-btn svg {
+
+            width:
+                17px;
+
+            height:
+                17px;
+
+            stroke:
+                currentColor;
+        }
+
+
+        .view-btn:hover {
+
+            color:
+                white;
+
+            background:
+                rgba(59, 130, 246, 0.15);
+
+            border-color:
+                rgba(59, 130, 246, 0.35);
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        /* ============================================
+           EMPTY
+        ============================================ */
+
+        .empty {
+
+            padding:
+                70px 25px;
+
+            text-align:
+                center;
+        }
+
+
+        .empty-icon {
+
+            width:
+                56px;
+
+            height:
+                56px;
+
+            margin:
+                0 auto 16px;
+
+            border-radius:
+                16px;
+
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            color:
+                #93c5fd;
+
+            background:
+                rgba(59, 130, 246, 0.08);
+
+            border:
+                1px solid
+                rgba(59, 130, 246, 0.16);
+        }
+
+
+        .empty-icon svg {
+
+            width:
+                25px;
+
+            height:
+                25px;
+
+            stroke:
+                currentColor;
+        }
+
+
+        .empty h3 {
+
+            font-size:
+                15px;
+        }
+
+
+        .empty p {
+
+            max-width:
+                480px;
+
+            margin:
+                9px auto 0;
+
+            color:
+                var(--muted);
+
+            font-size:
+                11px;
+
+            line-height:
+                1.7;
+        }
+
+
+        /* ============================================
+           ANIMATION
+        ============================================ */
+
+        @keyframes rise {
+
+            from {
+
+                opacity:
+                    0;
+
+                transform:
+                    translateY(10px);
+            }
+
+            to {
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* ============================================
+           RESPONSIVE
+        ============================================ */
+
+        @media (max-width: 1200px) {
+
+            .filter-grid {
+
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+
+            .search-wrap {
+
+                grid-column:
+                    span 2;
+            }
+        }
+
+
+        @media (max-width: 850px) {
+
+            .header {
+
+                padding:
+                    0 20px;
+            }
+
+
+            .page {
+
+                width:
+                    calc(100% - 32px);
+            }
+
+
+            .stats {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .filter-grid {
+
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+
+            .search-wrap {
+
+                grid-column:
+                    1 / -1;
+            }
+
+
+            .filter-actions {
+
+                grid-column:
+                    1 / -1;
+            }
+
+
+            .filter-actions .btn {
+
+                flex:
+                    1;
+            }
+        }
+
+
+        @media (max-width: 560px) {
+
+            .header {
+
+                height:
+                    68px;
+
+                padding:
+                    0 15px;
+            }
+
+
+            .brand-copy span {
+
+                display:
+                    none;
+            }
+
+
+            .back-btn span {
+
+                display:
+                    none;
+            }
+
+
+            .page {
+
+                width:
+                    calc(100% - 24px);
+
+                padding-top:
+                    28px;
+            }
+
+
+            .hero h1 {
+
+                font-size:
+                    30px;
+            }
+
+
+            .filter-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .search-wrap,
+            .filter-actions {
+
+                grid-column:
+                    auto;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ============================================
+     HEADER
+============================================ -->
+
+<header class="header">
+
+    <a
+        href="{% url 'education:teacher_dashboard' %}"
+        class="brand"
+    >
+
+        <div class="brand-icon">
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="1.8"
+            >
+                <path d="M4 19V9M10 19V5M16 19v-7M22 19V3"></path>
+            </svg>
+
+        </div>
+
+
+        <div class="brand-copy">
+
+            <strong>
+                PentraOne Education
+            </strong>
+
+            <span>
+                Teacher Portal · Student Results
+            </span>
+
+        </div>
+
+    </a>
+
+
+    <a
+        href="{% url 'education:teacher_dashboard' %}"
+        class="back-btn"
+    >
+
+        <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke-width="1.8"
+        >
+            <path d="m15 18-6-6 6-6"></path>
+        </svg>
+
+        <span>
+            Teacher Dashboard
+        </span>
+
+    </a>
+
+</header>
+
+
+<!-- ============================================
+     MAIN PAGE
+============================================ -->
+
+<main class="page">
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="eyebrow">
+            Performance Analytics
+        </div>
+
+
+        <h1>
+            Student Results
+        </h1>
+
+
+        <p>
+            Review submitted assessments and monitor student performance
+            across your classes, subjects and chapters. Results shown here
+            are read-only and are loaded directly from saved TestResult records.
+        </p>
+
+    </section>
+
+
+    <!-- ============================================
+         STATISTICS
+    ============================================ -->
+
+    <section class="stats">
+
+
+        <!-- TOTAL RESULTS -->
+
+        <article class="stat-card">
+
+            <div class="stat-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke-width="1.8"
+                >
+                    <rect
+                        x="5"
+                        y="3"
+                        width="14"
+                        height="18"
+                        rx="2"
+                    ></rect>
+
+                    <path d="M9 8h6M9 12h6M9 16h4"></path>
+                </svg>
+
+            </div>
+
+
+            <div>
+
+                <div class="stat-value">
+                    {{ total_results }}
+                </div>
+
+                <div class="stat-label">
+                    Submitted Results
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- STUDENTS -->
+
+        <article class="stat-card">
+
+            <div class="stat-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke-width="1.8"
+                >
+
+                    <circle
+                        cx="9"
+                        cy="7"
+                        r="4"
+                    ></circle>
+
+                    <path d="M2 21v-2a6 6 0 0 1 6-6h2a6 6 0 0 1 6 6v2"></path>
+
+                    <path d="M17 11a4 4 0 0 1 5 4v2"></path>
+
+                </svg>
+
+            </div>
+
+
+            <div>
+
+                <div class="stat-value">
+                    {{ students_count }}
+                </div>
+
+                <div class="stat-label">
+                    Students
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- AVERAGE -->
+
+        <article class="stat-card">
+
+            <div class="stat-icon">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke-width="1.8"
+                >
+
+                    <path d="M4 19V9"></path>
+
+                    <path d="M10 19V5"></path>
+
+                    <path d="M16 19v-7"></path>
+
+                    <path d="M22 19V3"></path>
+
+                </svg>
+
+            </div>
+
+
+            <div>
+
+                <div class="stat-value">
+                    {{ average_percentage }}%
+                </div>
+
+                <div class="stat-label">
+                    Average Score
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </section>
+
+
+    <!-- ============================================
+         FILTERS
+    ============================================ -->
+
+    <section class="filters">
+
+
+        <div class="filter-title">
+
+            <h3>
+                Search & Filter Results
+            </h3>
+
+            <span>
+                Filter submitted student results
+            </span>
+
+        </div>
+
+
+        <form
+            method="GET"
+            class="filter-grid"
+        >
+
+
+            <!-- SEARCH -->
+
+            <div class="search-wrap">
+
+                <div class="search-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke-width="1.8"
+                    >
+
+                        <circle
+                            cx="11"
+                            cy="11"
+                            r="7"
+                        ></circle>
+
+                        <path d="m20 20-4-4"></path>
+
+                    </svg>
+
+                </div>
+
+
+                <input
+                    type="text"
+                    name="q"
+                    value="{{ filters.q }}"
+                    placeholder="Search student, username, test, subject..."
+                >
+
+            </div>
+
+
+            <!-- CLASS -->
+
+            <select name="class">
+
+                <option value="">
+                    All Classes
+                </option>
+
+
+                {% for class_item in classes %}
+
+                    <option
+                        value="{{ class_item.id }}"
+                        {% if filters.class == class_item.id|stringformat:"s" %}
+                            selected
+                        {% endif %}
+                    >
+
+                        {{ class_item.name }}
+
+                    </option>
+
+                {% endfor %}
+
+            </select>
+
+
+            <!-- SUBJECT -->
+
+            <select name="subject">
+
+                <option value="">
+                    All Subjects
+                </option>
+
+
+                {% for subject in subjects %}
+
+                    <option
+                        value="{{ subject.id }}"
+                        {% if filters.subject == subject.id|stringformat:"s" %}
+                            selected
+                        {% endif %}
+                    >
+
+                        {{ subject.class_level.name }}
+                        - {{ subject.name }}
+
+                    </option>
+
+                {% endfor %}
+
+            </select>
+
+
+            <!-- CHAPTER -->
+
+            <select name="chapter">
+
+                <option value="">
+                    All Chapters
+                </option>
+
+
+                {% for chapter in chapters %}
+
+                    <option
+                        value="{{ chapter.id }}"
+                        {% if filters.chapter == chapter.id|stringformat:"s" %}
+                            selected
+                        {% endif %}
+                    >
+
+                        {{ chapter.subject.name }}
+                        -
+                        Chapter {{ chapter.chapter_number }}
+                        -
+                        {{ chapter.name }}
+
+                    </option>
+
+                {% endfor %}
+
+            </select>
+
+
+            <!-- TEST -->
+
+            <select name="test">
+
+                <option value="">
+                    All Tests
+                </option>
+
+
+                {% for test in tests %}
+
+                    <option
+                        value="{{ test.id }}"
+                        {% if filters.test == test.id|stringformat:"s" %}
+                            selected
+                        {% endif %}
+                    >
+
+                        {{ test.title }}
+
+                    </option>
+
+                {% endfor %}
+
+            </select>
+
+
+            <!-- ACTION -->
+
+            <div class="filter-actions">
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Apply
+                </button>
+
+
+                <a
+                    href="{% url 'education:teacher_results' %}"
+                    class="btn btn-reset"
+                >
+                    Reset
+                </a>
+
+            </div>
+
+
+        </form>
+
+    </section>
+
+
+    <!-- ============================================
+         RESULTS TABLE
+    ============================================ -->
+
+    <section class="table-card">
+
+
+        <div class="table-head">
+
+            <div>
+
+                <strong>
+                    Submitted Test Results
+                </strong>
+
+                <br>
+
+                <span>
+                    {{ total_results }}
+                    result{{ total_results|pluralize }}
+                    found
+                </span>
+
+            </div>
+
+        </div>
+
+
+        {% if result_rows %}
+
+
+            <div class="table-scroll">
+
+
+                <table>
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Student
+                            </th>
+
+                            <th>
+                                Class
+                            </th>
+
+                            <th>
+                                Subject
+                            </th>
+
+                            <th>
+                                Chapter
+                            </th>
+
+                            <th>
+                                Test
+                            </th>
+
+                            <th>
+                                Score
+                            </th>
+
+                            <th>
+                                Percentage
+                            </th>
+
+                            <th>
+                                Performance
+                            </th>
+
+                            <th>
+                                Submitted
+                            </th>
+
+                            <th>
+                                Details
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+
+                        {% for row in result_rows %}
+
+
+                            <tr>
+
+
+                                <!-- STUDENT -->
+
+                                <td>
+
+                                    <div class="student">
+
+
+                                        <div class="avatar">
+
+                                            {% if row.result.student.first_name %}
+
+                                                {{ row.result.student.first_name|slice:":1"|upper }}
+
+                                            {% else %}
+
+                                                {{ row.result.student.username|slice:":1"|upper }}
+
+                                            {% endif %}
+
+                                        </div>
+
+
+                                        <div>
+
+                                            <div class="student-name">
+
+                                                {% if row.result.student.get_full_name %}
+
+                                                    {{ row.result.student.get_full_name }}
+
+                                                {% else %}
+
+                                                    {{ row.result.student.username }}
+
+                                                {% endif %}
+
+                                            </div>
+
+
+                                            <div class="student-username">
+
+                                                @{{ row.result.student.username }}
+
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+
+                                </td>
+
+
+                                <!-- CLASS -->
+
+                                <td>
+
+                                    <div class="main-text">
+
+                                        {{ row.result.test.chapter.subject.class_level.name }}
+
+                                    </div>
+
+                                </td>
+
+
+                                <!-- SUBJECT -->
+
+                                <td>
+
+                                    <div class="main-text">
+
+                                        {{ row.result.test.chapter.subject.name }}
+
+                                    </div>
+
+                                </td>
+
+
+                                <!-- CHAPTER -->
+
+                                <td>
+
+                                    <div class="main-text">
+
+                                        {{ row.result.test.chapter.name }}
+
+                                    </div>
+
+
+                                    <div class="sub-text">
+
+                                        Chapter
+                                        {{ row.result.test.chapter.chapter_number }}
+
+                                    </div>
+
+                                </td>
+
+
+                                <!-- TEST -->
+
+                                <td>
+
+                                    <div class="main-text">
+
+                                        {{ row.result.test.title }}
+
+                                    </div>
+
+                                </td>
+
+
+                                <!-- SCORE -->
+
+                                <td>
+
+                                    <span class="score">
+
+                                        {{ row.result.score|floatformat:1 }}
+                                        /
+                                        {{ row.result.total_marks }}
+
+                                    </span>
+
+                                </td>
+
+
+                                <!-- PERCENTAGE -->
+
+                                <td>
+
+                                    <span class="percentage">
+
+                                        {{ row.percentage }}%
+
+                                    </span>
+
+                                </td>
+
+
+                                <!-- PERFORMANCE -->
+
+                                <td>
+
+                                    {% if row.performance == "Excellent" %}
+
+                                        <span class="performance excellent">
+
+                                            Excellent
+
+                                        </span>
+
+
+                                    {% elif row.performance == "Good" %}
+
+                                        <span class="performance good">
+
+                                            Good
+
+                                        </span>
+
+
+                                    {% elif row.performance == "Average" %}
+
+                                        <span class="performance average">
+
+                                            Average
+
+                                        </span>
+
+
+                                    {% else %}
+
+                                        <span class="performance needs-improvement">
+
+                                            Needs Improvement
+
+                                        </span>
+
+                                    {% endif %}
+
+                                </td>
+
+
+                                <!-- DATE -->
+
+                                <td>
+
+                                    <div class="main-text">
+
+                                        {{ row.result.submitted_at|date:"d M Y" }}
+
+                                    </div>
+
+
+                                    <div class="sub-text">
+
+                                        {{ row.result.submitted_at|date:"h:i A" }}
+
+                                    </div>
+
+                                </td>
+
+
+                                <!-- DETAILS -->
+
+                                <td>
+
+                                    <a
+                                        href="{% url 'education:teacher_result_detail' row.result.id %}"
+                                        class="view-btn"
+                                        title="View Result"
+                                    >
+
+                                        <svg
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke-width="1.8"
+                                        >
+
+                                            <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"></path>
+
+                                            <circle
+                                                cx="12"
+                                                cy="12"
+                                                r="3"
+                                            ></circle>
+
+                                        </svg>
+
+                                    </a>
+
+                                </td>
+
+
+                            </tr>
+
+
+                        {% endfor %}
+
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+        {% else %}
+
+
+            <!-- EMPTY STATE -->
+
+            <div class="empty">
+
+
+                <div class="empty-icon">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke-width="1.8"
+                    >
+
+                        <path d="M4 19V9"></path>
+
+                        <path d="M10 19V5"></path>
+
+                        <path d="M16 19v-7"></path>
+
+                        <path d="M22 19V3"></path>
+
+                    </svg>
+
+                </div>
+
+
+                <h3>
+                    No submitted results found
+                </h3>
+
+
+                <p>
+                    Once students submit tests created by this teacher
+                    account, their saved TestResult records will appear
+                    here automatically.
+                </p>
+
+
+            </div>
+
+
+        {% endif %}
+
+
+    </section>
+
+
+</main>
+
+
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+# PENTRAone project / Agriculture module
+# Core Django application
+Django>=5.0,<6.0
+
+# Image processing used by Agriculture Scan & Ask
+Pillow>=10.0
+
+# Google Gemini SDK used by Scan & Ask and chatbot
+google-genai>=1.0
+
+# Environment-variable configuration used by Django settings
+python-decouple>=3.8
+
+# Sarvam Bulbul v3 Indian-language Voice Agent
+sarvamai>=0.1

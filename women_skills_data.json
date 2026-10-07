@@ -1,0 +1,1562 @@
+[
+  {
+    "model": "women_skills.skill",
+    "pk": 1,
+    "fields": {
+      "name": "Tailoring",
+      "description": "Learn stitching clothes and create products like dresses, bags and other items",
+      "investment": "₹5000 - ₹10000",
+      "materials": "Sewing machine, cloth, thread, scissors",
+      "guide": "Learn basic stitching, practice designs, create products and sell them locally or online",
+      "description_hi": "कपड़े सिलना सीखें और ड्रेस, बैग जैसी चीज़ें बनाएं।",
+      "description_mr": "कपडे शिवायला शिका आणि ड्रेस, बॅग यांसारख्या वस्तू बनवा.",
+      "guide_hi": "बेसिक सिलाई सीखें, डिज़ाइन बनाएं, सामान बेचें।",
+      "guide_mr": "मूलभूत शिवणकाम शिका, डिझाइन तयार करा, वस्तू विका.",
+      "name_hi": "सिलाई",
+      "name_mr": "शिवणकाम",
+      "materials_hi": "सिलाई मशीन, कपड़ा, धागा, कैंची",
+      "materials_mr": "शिवणयंत्र, कापड, धागा, कात्री"
+    }
+  },
+  {
+    "model": "women_skills.skill",
+    "pk": 2,
+    "fields": {
+      "name": "Papad & Pickle",
+      "description": "Make and sell homemade papad, pickles and snacks using traditional recipes",
+      "investment": "₹1000 - ₹3000",
+      "materials": "Flour, spices, oil, packaging materials",
+      "guide": "Prepare small batches, test recipes, package properly and sell to local shops or Self Help Groups",
+      "description_hi": "घर पर पापड़ और अचार बनाकर बेचें।",
+      "description_mr": "घरी पापड आणि लोणचे बनवून विका.",
+      "guide_hi": "छोटे बैच बनाएं, टेस्ट करें, दुकानों में बेचें।",
+      "guide_mr": "लहान बॅचेस बनवा, चव तपासा, दुकानांमध्ये विका.",
+      "name_hi": "पापड़ और अचार",
+      "name_mr": "पापड आणि लोणचे",
+      "materials_hi": "आटा, मसाले, तेल, पैकेजिंग सामग्री",
+      "materials_mr": "पीठ, मसाले, तेल, पॅकेजिंग साहित्य"
+    }
+  },
+  {
+    "model": "women_skills.skill",
+    "pk": 3,
+    "fields": {
+      "name": "Candle Making",
+      "description": "Learn to make decorative and scented candles using wax, colors and fragrances to sell as gifts or home decor items",
+      "investment": "₹1500 - ₹4000",
+      "materials": "Wax, wicks, molds, colors, fragrance oils",
+      "guide": "Melt wax, add color and fragrance, pour into molds, let it set, package attractively and sell online or at local markets.",
+      "description_hi": "सजावटी और खुशबूदार मोमबत्तियां बनाएं।",
+      "description_mr": "सजावटीच्या आणि सुगंधी मेणबत्त्या बनवा.",
+      "guide_hi": "मोम पिघलाएं, रंग-खुशबू डालें, सांचे में डालें।",
+      "guide_mr": "मेण वितळवा, रंग-सुगंध घाला, साच्यात घाला.",
+      "name_hi": "मोमबत्ती बनाना",
+      "name_mr": "मेणबत्ती तयार करणे",
+      "materials_hi": "मोम, बत्ती, सांचे, रंग, खुशबू वाला तेल",
+      "materials_mr": "मेण, वात, साचे, रंग, सुगंधी तेल"
+    }
+  },
+  {
+    "model": "women_skills.skill",
+    "pk": 4,
+    "fields": {
+      "name": "Beauty & Mehendi",
+      "description": "Learn mehendi (henna) designs and basic beauty services like facials, threading and makeup to offer at home or events",
+      "investment": "₹1000 - ₹5000",
+      "materials": "Henna cones, beauty kit, makeup essentials",
+      "guide": "Practice basic mehendi designs, learn beauty techniques through tutorials, build a small kit and offer services to neighbors and at local events",
+      "description_hi": "मेहंदी डिज़ाइन और ब्यूटी सर्विस सीखें।",
+      "description_mr": "मेहंदी डिझाइन आणि ब्युटी सेवा शिका.",
+      "guide_hi": "मेहंदी डिज़ाइन प्रैक्टिस करें, सेवाएं दें।",
+      "guide_mr": "मेहंदी डिझाइनचा सराव करा, सेवा द्या.",
+      "name_hi": "ब्यूटी और मेहंदी",
+      "name_mr": "ब्यूटी आणि मेहंदी",
+      "materials_hi": "मेहंदी कोन, ब्यूटी किट, मेकअप सामग्री",
+      "materials_mr": "मेहंदी कोन, ब्युटी किट, मेकअप साहित्य"
+    }
+  },
+  {
+    "model": "women_skills.skill",
+    "pk": 5,
+    "fields": {
+      "name": "Handmade Crafts",
+      "description": "Create handmade items like jewelry, bags, decorative pieces and gift items using simple craft materials",
+      "investment": "₹500 - ₹2000",
+      "materials": "Beads, thread, glue, decorative paper, fabric scraps",
+      "guide": "Learn basic craft techniques, create sample products, take good photos and sell through local exhibitions, WhatsApp or social media.",
+      "description_hi": "मोती, धागों से गहने और सजावटी सामान बनाएं।",
+      "description_mr": "मणी, धाग्यांपासून दागिने आणि सजावटीच्या वस्तू बनवा.",
+      "guide_hi": "बेसिक क्राफ्ट सीखें, सैंपल बनाएं, बेचें।",
+      "guide_mr": "मूलभूत कला शिका, नमुने तयार करा, विका.",
+      "name_hi": "हस्तशिल्प",
+      "name_mr": "हस्तकला",
+      "materials_hi": "मोती, धागा, गोंद, सजावटी कागज़, कपड़े के टुकड़े",
+      "materials_mr": "मणी, धागा, गोंद, सजावटीचा कागद, कापडाचे तुकडे"
+    }
+  },
+  {
+    "model": "women_skills.skill",
+    "pk": 6,
+    "fields": {
+      "name": "Soap Making",
+      "description": "Learn to make herbal and skin-friendly soaps using natural ingredients, useful for home use or selling as a small business.",
+      "investment": "₹1000 - ₹3000",
+      "materials": "Soap base, essential oils, molds, natural additives (like neem, turmeric, rose)",
+      "guide": "Melt the soap base, mix in oils and natural ingredients, pour into molds, let it harden, package nicely and sell locally or online.",
+      "description_hi": "नीम, हल्दी जैसी चीज़ों से साबुन बनाएं।",
+      "description_mr": "कडुलिंब, हळद यांसारख्या गोष्टींपासून साबण बनवा.",
+      "guide_hi": "साबुन बेस पिघलाएं, सामग्री मिलाएं, सांचे में डालें।",
+      "guide_mr": "साबण बेस वितळवा, साहित्य मिसळा, साच्यात घाला.",
+      "name_hi": "साबुन बनाना",
+      "name_mr": "साबण तयार करणे",
+      "materials_hi": "साबुन बेस, एसेंशियल ऑयल, सांचे, नीम-हल्दी-गुलाब जैसी प्राकृतिक चीज़ें",
+      "materials_mr": "साबण बेस, एसेंशियल ऑइल, साचे, कडुलिंब-हळद-गुलाब यांसारखे नैसर्गिक घटक"
+    }
+  },
+  {
+    "model": "women_skills.businessidea",
+    "pk": 1,
+    "fields": {
+      "title": "Tailoring Business",
+      "description": "Start a small stitching business from home, taking orders for clothes, alterations and custom designs from your local community.",
+      "investment": "₹5000 - ₹10000",
+      "time_required": "2-4 weeks to start",
+      "profit_potential": "Medium to High",
+      "where_to_sell": "Local shops, word of mouth, WhatsApp groups, local markets",
+      "related_skill": 1,
+      "image_url": "https://images.pexels.com/photos/18652118/pexels-photo-18652118.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
+      "description_hi": "घर से छोटा सिलाई व्यवसाय शुरू करें, कपड़े और अल्टरेशन के ऑर्डर लें।",
+      "description_mr": "घरातून लहान शिवणकाम व्यवसाय सुरू करा, कपडे आणि अल्टरेशनच्या ऑर्डर घ्या.",
+      "title_hi": "सिलाई का व्यवसाय",
+      "title_mr": "शिवणकाम व्यवसाय",
+      "where_to_sell_hi": "स्थानीय दुकानें, मुँह-ज़बानी प्रचार, व्हाट्सएप ग्रुप, स्थानीय बाज़ार",
+      "where_to_sell_mr": "स्थानिक दुकाने, तोंडी प्रचार, व्हॉट्सअॅप ग्रुप, स्थानिक बाजार",
+      "video_url": "https://www.youtube.com/embed/QhZTc1x1-pM"
+    }
+  },
+  {
+    "model": "women_skills.businessidea",
+    "pk": 2,
+    "fields": {
+      "title": "Papad & Pickle Business",
+      "description": "Make and sell homemade papad and pickles using traditional family recipes. A low-investment business with steady local demand.",
+      "investment": "₹1000 - ₹3000",
+      "time_required": "1 week to start",
+      "profit_potential": "Medium",
+      "where_to_sell": "Local shops, Self Help Groups, weekly markets, WhatsApp",
+      "related_skill": 2,
+      "image_url": "https://images.pexels.com/photos/8978859/pexels-photo-8978859.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
+      "description_hi": "पारंपरिक नुस्खों से घर का बना पापड़ और अचार बनाकर बेचें।",
+      "description_mr": "पारंपरिक पाककृतींनी घरगुती पापड आणि लोणचे बनवून विका.",
+      "title_hi": "पापड़ और अचार व्यवसाय",
+      "title_mr": "पापड आणि लोणचे व्यवसाय",
+      "where_to_sell_hi": "स्थानीय दुकानें, स्वयं सहायता समूह, साप्ताहिक बाज़ार, व्हाट्सएप",
+      "where_to_sell_mr": "स्थानिक दुकाने, बचत गट, साप्ताहिक बाजार, व्हॉट्सअॅप",
+      "video_url": "https://www.youtube.com/embed/m3cdFo4yyDw"
+    }
+  },
+  {
+    "model": "women_skills.businessidea",
+    "pk": 3,
+    "fields": {
+      "title": "Candle Making Business",
+      "description": "Create decorative and scented candles to sell as gifts, home decor items, or for festive occasions like Diwali and weddings.",
+      "investment": "₹1500 - ₹4000",
+      "time_required": "1-2 weeks to start",
+      "profit_potential": "Medium to High",
+      "where_to_sell": "Online pages, local markets, gift shops, festive stalls",
+      "related_skill": 3,
+      "image_url": "https://images.pexels.com/photos/7233940/pexels-photo-7233940.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
+      "description_hi": "सजावटी और खुशबूदार मोमबत्तियां बनाकर उपहार के रूप में बेचें।",
+      "description_mr": "सजावटीच्या आणि सुगंधी मेणबत्त्या बनवून भेटवस्तू म्हणून विका.",
+      "title_hi": "मोमबत्ती व्यवसाय",
+      "title_mr": "मेणबत्ती व्यवसाय",
+      "where_to_sell_hi": "ऑनलाइन पेज, स्थानीय बाज़ार, गिफ्ट शॉप, त्योहारी स्टॉल",
+      "where_to_sell_mr": "ऑनलाइन पेज, स्थानिक बाजार, गिफ्ट शॉप, सणासुदीचे स्टॉल",
+      "video_url": "https://www.youtube.com/embed/ocLS5hlUtJ0"
+    }
+  },
+  {
+    "model": "women_skills.businessidea",
+    "pk": 4,
+    "fields": {
+      "title": "Beauty & Mehendi Business",
+      "description": "Offer mehendi and basic beauty services at home or for events like weddings and festivals. Can grow into a full home-based salon.",
+      "investment": "₹1000 - ₹5000",
+      "time_required": "2-3 weeks to start",
+      "profit_potential": "High",
+      "where_to_sell": "Home visits, weddings, festivals, local events",
+      "related_skill": 4,
+      "image_url": "https://images.pexels.com/photos/2643557/pexels-photo-2643557.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
+      "description_hi": "घर पर या शादी-त्योहारों में मेहंदी और ब्यूटी सेवाएं दें।",
+      "description_mr": "घरी किंवा लग्न-सणांमध्ये मेहंदी आणि ब्युटी सेवा द्या.",
+      "title_hi": "ब्यूटी और मेहंदी व्यवसाय",
+      "title_mr": "ब्युटी आणि मेहंदी व्यवसाय",
+      "where_to_sell_hi": "घर पर सेवा, शादियाँ, त्योहार, स्थानीय कार्यक्रम",
+      "where_to_sell_mr": "घरी सेवा, लग्न, सण, स्थानिक कार्यक्रम",
+      "video_url": "https://www.youtube.com/embed/mMjnZRU1qPc"
+    }
+  },
+  {
+    "model": "women_skills.businessidea",
+    "pk": 5,
+    "fields": {
+      "title": "Handmade Crafts Business",
+      "description": "Create and sell handmade jewelry, bags, and decorative items. Great for building a small brand through social media and exhibitions.",
+      "investment": "₹500 - ₹2000",
+      "time_required": "1 week to start",
+      "profit_potential": "Medium",
+      "where_to_sell": "Local exhibitions, WhatsApp, Instagram, gift shops",
+      "related_skill": 5,
+      "image_url": "https://images.pexels.com/photos/6957322/pexels-photo-6957322.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
+      "description_hi": "हाथ से बने गहने, बैग और सजावटी सामान बनाकर बेचें।",
+      "description_mr": "हाताने बनवलेले दागिने, बॅग आणि सजावटीच्या वस्तू बनवून विका.",
+      "title_hi": "हस्तशिल्प व्यवसाय",
+      "title_mr": "हस्तकला व्यवसाय",
+      "where_to_sell_hi": "स्थानीय प्रदर्शनी, व्हाट्सएप, इंस्टाग्राम, गिफ्ट शॉप",
+      "where_to_sell_mr": "स्थानिक प्रदर्शन, व्हॉट्सअॅप, इंस्टाग्राम, गिफ्ट शॉप",
+      "video_url": "https://www.youtube.com/embed/yFaCV_Uu-1g"
+    }
+  },
+  {
+    "model": "women_skills.businessidea",
+    "pk": 6,
+    "fields": {
+      "title": "Soap Making Business",
+      "description": "Make herbal, natural soaps using ingredients like neem, turmeric and rose. A growing market for organic skincare products.",
+      "investment": "₹1000 - ₹3000",
+      "time_required": "1-2 weeks to start",
+      "profit_potential": "Medium to High",
+      "where_to_sell": "Local markets, online pages, health/organic stores",
+      "related_skill": 6,
+      "image_url": "https://images.pexels.com/photos/16244099/pexels-photo-16244099.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
+      "description_hi": "नीम, हल्दी और गुलाब जैसी प्राकृतिक चीज़ों से साबुन बनाएं।",
+      "description_mr": "कडुलिंब, हळद आणि गुलाब यांसारख्या नैसर्गिक गोष्टींपासून साबण बनवा.",
+      "title_hi": "साबुन व्यवसाय",
+      "title_mr": "साबण व्यवसाय",
+      "where_to_sell_hi": "स्थानीय बाज़ार, ऑनलाइन पेज, हेल्थ/ऑर्गेनिक स्टोर",
+      "where_to_sell_mr": "स्थानिक बाजार, ऑनलाइन पेज, आरोग्य/सेंद्रिय दुकाने",
+      "video_url": "https://www.youtube.com/embed/S6x_dEm5QQc"
+    }
+  },
+  {
+    "model": "women_skills.financialtip",
+    "pk": 1,
+    "fields": {
+      "title": "Why Save Money?",
+      "description": "Saving even a small amount regularly helps you handle emergencies and grow your business over time.",
+      "icon": "🐷",
+      "title_hi": "पैसे क्यों बचाएं?",
+      "description_hi": "थोड़ी-थोड़ी बचत भी नियमित रूप से करने से आप आपातकाल संभाल पाएंगी और व्यवसाय बढ़ा पाएंगी।",
+      "title_mr": "पैसे का बचत का करा?",
+      "description_mr": "थोडी थोडी नियमित बचत केल्याने तुम्ही आणीबाणी सांभाळू शकाल आणि व्यवसाय वाढवू शकाल.",
+      "image_url": "https://images.pexels.com/photos/3943715/pexels-photo-3943715.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
+      "video_url": "https://www.youtube.com/embed/_jrUzpd-WPg"
+    }
+  },
+  {
+    "model": "women_skills.financialtip",
+    "pk": 2,
+    "fields": {
+      "title": "How to Open a Bank Account",
+      "description": "Visit your nearest bank with an ID proof and address proof. Many banks offer free basic savings accounts for women.",
+      "icon": "🏦",
+      "title_hi": "बैंक खाता कैसे खोलें",
+      "description_hi": "अपने पास के बैंक में पहचान पत्र और पते के प्रमाण के साथ जाएं। कई बैंक महिलाओं के लिए मुफ्त खाता देते हैं।",
+      "title_mr": "बँक खाते कसे उघडावे",
+      "description_mr": "तुमच्या जवळच्या बँकेत ओळखपत्र आणि पत्ता पुरावा घेऊन जा. अनेक बँका महिलांसाठी मोफत खाते देतात.",
+      "image_url": "https://images.pexels.com/photos/6969954/pexels-photo-6969954.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
+      "video_url": "https://www.youtube.com/embed/FTCiizTx_fw"
+    }
+  },
+  {
+    "model": "women_skills.financialtip",
+    "pk": 3,
+    "fields": {
+      "title": "What is UPI?",
+      "description": "UPI lets you send and receive money instantly using your phone, without needing cash. It's free and safe to use.",
+      "icon": "📱",
+      "title_hi": "UPI क्या है?",
+      "description_hi": "UPI से आप फोन से बिना नकद के तुरंत पैसे भेज और पा सकती हैं। यह मुफ्त और सुरक्षित है।",
+      "title_mr": "UPI म्हणजे काय?",
+      "description_mr": "UPI मुळे तुम्ही फोनवरून रोख न वापरता लगेच पैसे पाठवू आणि मिळवू शकता. हे मोफत आणि सुरक्षित आहे.",
+      "image_url": "https://images.pexels.com/photos/4226272/pexels-photo-4226272.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
+      "video_url": "https://www.youtube.com/embed/r7qMf8t9PSc"
+    }
+  },
+  {
+    "model": "women_skills.financialtip",
+    "pk": 4,
+    "fields": {
+      "title": "Avoiding Online Scams",
+      "description": "Never share your OTP, PIN, or password with anyone, even if they claim to be from the bank. Banks never ask for these.",
+      "icon": "🔒",
+      "title_hi": "ऑनलाइन धोखाधड़ी से बचें",
+      "description_hi": "अपना OTP, PIN या पासवर्ड किसी को न बताएं, भले ही वे बैंक से होने का दावा करें। बैंक कभी नहीं मांगते।",
+      "title_mr": "ऑनलाइन फसवणुकीपासून वाचा",
+      "description_mr": "तुमचा OTP, PIN किंवा पासवर्ड कोणालाही सांगू नका, जरी ते बँकेतून असल्याचा दावा करत असतील.",
+      "image_url": "https://images.pexels.com/photos/6353659/pexels-photo-6353659.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
+      "video_url": "https://www.youtube.com/embed/Y8z67bi1i2A"
+    }
+  },
+  {
+    "model": "women_skills.financialtip",
+    "pk": 5,
+    "fields": {
+      "title": "Simple Budget Planning",
+      "description": "Divide your income into three parts: daily needs, savings, and business investment. Track it in a small notebook.",
+      "icon": "📝",
+      "title_hi": "आसान बजट योजना",
+      "description_hi": "अपनी आय को तीन भागों में बांटें: रोज़मर्रा की ज़रूरतें, बचत, और व्यवसाय निवेश। एक छोटी नोटबुक में लिखें।",
+      "title_mr": "सोपे अंदाजपत्रक",
+      "description_mr": "तुमचे उत्पन्न तीन भागांत विभागा: रोजच्या गरजा, बचत, आणि व्यवसाय गुंतवणूक. एका छोट्या वहीत नोंद ठेवा.",
+      "image_url": "https://images.pexels.com/photos/4386366/pexels-photo-4386366.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
+      "video_url": "https://www.youtube.com/embed/M7ucIl9MGs0"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 1,
+    "fields": {
+      "stage_number": 1,
+      "title": "Getting Started",
+      "description": "Before you begin tailoring, gather your basic tools: a sewing machine (or needle and thread for hand stitching), fabric, scissors, measuring tape, and pins. Set up a clean, well-lit workspace where you can work comfortably.",
+      "image_url": "https://images.unsplash.com/photo-1772291320136-7bfb40006088?q=80&w=1326&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "video_url": "",
+      "skill": 1,
+      "description_hi": "सिलाई शुरू करने से पहले, बुनियादी औज़ार इकट्ठा करें: सिलाई मशीन (या हाथ से सिलाई के लिए सुई-धागा), कपड़ा, कैंची, मापने का टेप और पिन। एक साफ, अच्छी रोशनी वाली जगह तैयार करें जहाँ आप आराम से काम कर सकें।",
+      "description_mr": "शिवणकाम सुरू करण्यापूर्वी, मूलभूत साधने गोळा करा: शिवणयंत्र (किंवा हाताने शिवण्यासाठी सुई-धागा), कापड, कात्री, मोजपट्टी आणि पिना. एक स्वच्छ, चांगल्या उजेडाची जागा तयार करा जिथे तुम्ही आरामात काम करू शकाल.",
+      "title_hi": "शुरुआत करें",
+      "title_mr": "सुरुवात करा"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 2,
+    "fields": {
+      "stage_number": 3,
+      "title": "Taking Measurements",
+      "description": "Learn to measure chest, waist, hip, shoulder and length correctly using a measuring tape. Accurate measurements are the foundation of a well-fitted garment.",
+      "image_url": "https://images.unsplash.com/photo-1718184021018-d2158af6b321?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "video_url": "",
+      "skill": 1,
+      "description_hi": "मापने के टेप से छाती, कमर, कूल्हे, कंधे और लंबाई को सही तरीके से मापना सीखें। सही नाप ही अच्छी फिटिंग वाले कपड़े की नींव है।",
+      "description_mr": "मोजपट्टीने छाती, कंबर, नितंब, खांदा आणि लांबी योग्यरित्या मोजायला शिका. योग्य माप हा चांगल्या फिटिंगच्या कपड्याचा पाया आहे.",
+      "title_hi": "नाप लेना",
+      "title_mr": "माप घेणे"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 3,
+    "fields": {
+      "stage_number": 4,
+      "title": "Making a Simple Product",
+      "description": "Start with an easy project like a cloth pouch or simple kurta. Cut the fabric using your measurements, pin the pieces together, and stitch step by step.",
+      "image_url": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=600",
+      "video_url": "",
+      "skill": 1,
+      "description_hi": "कपड़े का थैला या सरल कुर्ता जैसे आसान प्रोजेक्ट से शुरू करें। अपने नाप के हिसाब से कपड़ा काटें, टुकड़ों को पिन से जोड़ें, और चरण दर चरण सिलाई करें।",
+      "description_mr": "कापडी पिशवी किंवा साधा कुर्ता यांसारख्या सोप्या प्रोजेक्टपासून सुरुवात करा. तुमच्या मापानुसार कापड कापा, तुकडे पिनने जोडा, आणि टप्प्याटप्प्याने शिवण करा.",
+      "title_hi": "सामान बनाना",
+      "title_mr": "वस्तू तयार करणे"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 4,
+    "fields": {
+      "stage_number": 5,
+      "title": "Finishing & Selling",
+      "description": "Check your finished product for loose threads and even stitching. Price it based on material and time cost, then sell through local shops, WhatsApp or exhibitions.",
+      "image_url": "https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600",
+      "video_url": "",
+      "skill": 1,
+      "description_hi": "अपने तैयार सामान में ढीले धागे और सिलाई की जांच करें। सामग्री और समय की लागत के आधार पर कीमत तय करें, फिर स्थानीय दुकानों, व्हाट्सएप या प्रदर्शनी के ज़रिए बेचें।",
+      "description_mr": "तुमच्या तयार वस्तूमध्ये सैल धागे आणि शिवणकाम तपासा. साहित्य आणि वेळेच्या खर्चावर आधारित किंमत ठरवा, नंतर स्थानिक दुकाने, व्हॉट्सअॅप किंवा प्रदर्शनाद्वारे विका.",
+      "title_hi": "फिनिशिंग और बिक्री",
+      "title_mr": "फिनिशिंग आणि विक्री"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 5,
+    "fields": {
+      "stage_number": 1,
+      "title": "Getting Started",
+      "description": "Gather ingredients like flour or urad dal, spices, oil and rolling equipment. Keep your kitchen clean and utensils ready before you begin.",
+      "image_url": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600",
+      "video_url": "",
+      "skill": 2,
+      "description_hi": "आटा या उड़द दाल, मसाले, तेल और बेलने का सामान इकट्ठा करें। शुरू करने से पहले अपनी रसोई साफ रखें और बर्तन तैयार रखें।",
+      "description_mr": "पीठ किंवा उडीद डाळ, मसाले, तेल आणि लाटण्याचे साहित्य गोळा करा. सुरुवात करण्यापूर्वी तुमचे स्वयंपाकघर स्वच्छ ठेवा आणि भांडी तयार ठेवा.",
+      "title_hi": "शुरुआत करें",
+      "title_mr": "सुरुवात करा"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 6,
+    "fields": {
+      "stage_number": 2,
+      "title": "Preparing the Dough/Mixture",
+      "description": "Mix flour with water and spices to form a smooth dough or batter. Knead well for papad, or prepare the base mixture for pickles with oil and masala.",
+      "image_url": "https://plus.unsplash.com/premium_photo-1663854478191-f184bb84bb34?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "video_url": "https://www.youtube.com/embed/m3cdFo4yyDw",
+      "skill": 2,
+      "description_hi": "आटे को पानी और मसालों के साथ मिलाकर मुलायम आटा या घोल बनाएं। पापड़ के लिए अच्छी तरह गूंधें, या अचार के लिए तेल-मसाले के साथ बेस मिश्रण तैयार करें।",
+      "description_mr": "पीठ पाणी आणि मसाल्यांसोबत मिसळून मऊ पीठ किंवा मिश्रण तयार करा. पापडासाठी नीट मळून घ्या, किंवा लोणच्यासाठी तेल-मसाल्यांसह बेस मिश्रण तयार करा.",
+      "title_hi": "आटा/मिश्रण तैयार करना",
+      "title_mr": "पीठ/मिश्रण तयार करणे"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 7,
+    "fields": {
+      "stage_number": 3,
+      "title": "Shaping and Drying",
+      "description": "Roll out small portions into thin round papads and place them to sun-dry for 2-3 days. For pickles, cut vegetables/fruits and mix with spices and oil, then store in jars.",
+      "image_url": "https://images.unsplash.com/photo-1757774551171-91143e145b0a?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "video_url": "",
+      "skill": 2,
+      "description_hi": "छोटे-छोटे हिस्सों को बेलकर पतले गोल पापड़ बनाएं और 2-3 दिन धूप में सुखाएं। अचार के लिए, सब्ज़ी/फल काटकर मसाले और तेल में मिलाएं, फिर जार में रखें।",
+      "description_mr": "लहान भाग लाटून पातळ गोल पापड तयार करा आणि 2-3 दिवस उन्हात वाळवा. लोणच्यासाठी, भाजी/फळ कापून मसाले आणि तेलात मिसळा, नंतर बरणीत ठेवा.",
+      "title_hi": "आकार देना और सुखाना",
+      "title_mr": "आकार देणे आणि वाळवणे"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 8,
+    "fields": {
+      "stage_number": 4,
+      "title": "Quality Check & Packaging",
+      "description": "Make sure papads are completely dry with no moisture before storing, and pickles are properly mixed with oil to prevent spoiling. Pack in clean, sealed containers.",
+      "image_url": "https://images.unsplash.com/photo-1729697943081-63d7ed69c59f?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "video_url": "",
+      "skill": 2,
+      "description_hi": "पापड़ को स्टोर करने से पहले पूरी तरह सूखा होना चाहिए, और अचार को खराब होने से बचाने के लिए तेल के साथ अच्छी तरह मिलाना चाहिए। साफ, सील किए हुए डिब्बों में पैक करें।",
+      "description_mr": "साठवण्यापूर्वी पापड पूर्णपणे कोरडे असावेत, आणि लोणचे खराब होऊ नये म्हणून तेलात नीट मिसळावे. स्वच्छ, बंद डब्यांत पॅक करा.",
+      "title_hi": "गुणवत्ता जांच और पैकेजिंग",
+      "title_mr": "गुणवत्ता तपासणी आणि पॅकेजिंग"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 9,
+    "fields": {
+      "stage_number": 5,
+      "title": "Selling",
+      "description": "Start by selling to neighbors and local shops. Use word of mouth, WhatsApp groups and Self Help Group networks to grow your customer base.",
+      "image_url": "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=600",
+      "video_url": "",
+      "skill": 2,
+      "description_hi": "पड़ोसियों और स्थानीय दुकानों को बेचकर शुरुआत करें। अपने ग्राहकों को बढ़ाने के लिए मुँह-ज़बानी प्रचार, व्हाट्सएप ग्रुप और स्वयं सहायता समूह नेटवर्क का उपयोग करें।",
+      "description_mr": "शेजारी आणि स्थानिक दुकानांना विकून सुरुवात करा. तुमचे ग्राहक वाढवण्यासाठी तोंडी प्रचार, व्हॉट्सअॅप ग्रुप आणि बचत गट नेटवर्कचा वापर करा.",
+      "title_hi": "बिक्री",
+      "title_mr": "विक्री"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 10,
+    "fields": {
+      "stage_number": 1,
+      "title": "Getting Started",
+      "description": "Collect wax, wicks, a melting pot, molds or containers, and fragrance oils. Set up your work area on a heat-safe surface, away from children.",
+      "image_url": "https://images.unsplash.com/photo-1603905179139-db12ab535ca9?q=80&w=874&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "video_url": "",
+      "skill": 3,
+      "description_hi": "मोम, बत्ती, पिघलाने का बर्तन, सांचे या कंटेनर, और खुशबू वाला तेल इकट्ठा करें। बच्चों से दूर, गर्मी-सुरक्षित जगह पर काम करें।",
+      "description_mr": "मेण, वात, वितळवण्याचे भांडे, साचे किंवा कंटेनर, आणि सुगंधी तेल गोळा करा. मुलांपासून दूर, उष्णता-सुरक्षित जागेवर काम करा.",
+      "title_hi": "शुरुआत करें",
+      "title_mr": "सुरुवात करा"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 11,
+    "fields": {
+      "stage_number": 2,
+      "title": "Melting the Wax",
+      "description": "Melt wax slowly using a double-boiler method (a pot inside a pot of hot water) until fully liquid. Never melt wax directly on high flame.",
+      "image_url": "https://images.unsplash.com/photo-1758792620227-76d7c58623e0?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "video_url": "https://www.youtube.com/embed/ocLS5hlUtJ0",
+      "skill": 3,
+      "description_hi": "डबल-बॉयलर विधि (गर्म पानी के बर्तन के अंदर बर्तन) से धीरे-धीरे मोम पिघलाएं जब तक पूरी तरह तरल न हो जाए। मोम को कभी सीधे तेज़ आंच पर न पिघलाएं।",
+      "description_mr": "डबल-बॉयलर पद्धतीने (गरम पाण्याच्या भांड्यात भांडे) हळूहळू मेण वितळवा जोपर्यंत ते पूर्णपणे द्रव होत नाही. मेण कधीही थेट तीव्र आचेवर वितळवू नका.",
+      "title_hi": "मोम पिघलाना",
+      "title_mr": "मेण वितळवणे"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 12,
+    "fields": {
+      "stage_number": 3,
+      "title": "Adding Color & Fragrance",
+      "description": "Once melted, mix in a small amount of color and a few drops of fragrance oil. Stir well so the color and scent are evenly spread through the wax.",
+      "image_url": "https://images.unsplash.com/photo-1602874801007-bd458bb1b8b6?w=600",
+      "video_url": "",
+      "skill": 3,
+      "description_hi": "पिघलने के बाद, थोड़ा रंग और खुशबू वाले तेल की कुछ बूंदें मिलाएं। अच्छी तरह हिलाएं ताकि रंग और खुशबू पूरे मोम में समान रूप से फैल जाए।",
+      "description_mr": "वितळल्यानंतर, थोडा रंग आणि सुगंधी तेलाचे काही थेंब मिसळा. रंग आणि सुगंध संपूर्ण मेणात समान पसरण्यासाठी नीट ढवळा.",
+      "title_hi": "रंग और खुशबू मिलाना",
+      "title_mr": "रंग आणि सुगंध घालणे"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 13,
+    "fields": {
+      "stage_number": 4,
+      "title": "Pouring & Setting",
+      "description": "Center the wick in your mold or container, then carefully pour the wax in. Let it cool and harden undisturbed for a few hours before removing from the mold.",
+      "image_url": "https://images.unsplash.com/photo-1602874801007-bd458bb1b8b6?w=600",
+      "video_url": "",
+      "skill": 3,
+      "description_hi": "बत्ती को सांचे या कंटेनर के बीच में रखें, फिर सावधानी से मोम डालें। सांचे से निकालने से पहले इसे कुछ घंटों तक बिना हिलाए ठंडा और सख्त होने दें।",
+      "description_mr": "वात साच्याच्या किंवा कंटेनरच्या मध्यभागी ठेवा, नंतर काळजीपूर्वक मेण ओता. साच्यातून काढण्यापूर्वी काही तास न हलवता थंड आणि घट्ट होऊ द्या.",
+      "title_hi": "डालना और जमाना",
+      "title_mr": "ओतणे आणि घट्ट करणे"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 14,
+    "fields": {
+      "stage_number": 5,
+      "title": "Packaging & Selling",
+      "description": "Trim the wick, clean up the edges, and package attractively with labels. Sell as gifts, home decor items, or through local markets and online pages.",
+      "image_url": "https://images.unsplash.com/photo-1602874801007-bd458bb1b8b6?w=600",
+      "video_url": "",
+      "skill": 3,
+      "description_hi": "बत्ती को काटें, किनारे साफ करें, और लेबल के साथ आकर्षक ढंग से पैक करें। उपहार, घर की सजावट के सामान के रूप में, या स्थानीय बाज़ार और ऑनलाइन पेज के ज़रिए बेचें।",
+      "description_mr": "वात कापा, कडा स्वच्छ करा, आणि लेबलसह आकर्षकपणे पॅक करा. भेटवस्तू, घर सजावटीच्या वस्तू म्हणून, किंवा स्थानिक बाजार आणि ऑनलाइन पेजद्वारे विका.",
+      "title_hi": "पैकेजिंग और बिक्री",
+      "title_mr": "पॅकेजिंग आणि विक्री"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 15,
+    "fields": {
+      "stage_number": 1,
+      "title": "Getting Started",
+      "description": "Get henna cones (ready-made or prepare your own paste), and basic beauty tools like cotton, facial kits and threading tools. Practice on paper before trying on skin.",
+      "image_url": "https://images.unsplash.com/photo-1763012422430-dec55624bc28?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "video_url": "",
+      "skill": 4,
+      "description_hi": "मेहंदी कोन (बना-बनाया या खुद का पेस्ट) और बुनियादी ब्यूटी औज़ार जैसे रूई, फेशियल किट और थ्रेडिंग टूल लें। त्वचा पर करने से पहले कागज़ पर अभ्यास करें।",
+      "description_mr": "मेहंदी कोन (तयार किंवा स्वतःची पेस्ट) आणि मूलभूत ब्युटी साधने जसे कापूस, फेशियल किट आणि थ्रेडिंग टूल घ्या. त्वचेवर करण्यापूर्वी कागदावर सराव करा.",
+      "title_hi": "शुरुआत करें",
+      "title_mr": "सुरुवात करा"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 16,
+    "fields": {
+      "stage_number": 2,
+      "title": "Basic Mehendi Patterns",
+      "description": "Start with simple shapes like dots, lines, flowers and leaves. Practice holding the cone at a steady angle for smooth, even lines.",
+      "image_url": "https://plus.unsplash.com/premium_photo-1682091989037-bec54be9afa7?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "video_url": "https://www.youtube.com/embed/mMjnZRU1qPc",
+      "skill": 4,
+      "description_hi": "बिंदु, रेखाएं, फूल और पत्तियों जैसे सरल आकारों से शुरू करें। सीधी, समान रेखाओं के लिए कोन को स्थिर कोण पर पकड़ने का अभ्यास करें।",
+      "description_mr": "बिंदू, रेषा, फुले आणि पानांसारख्या साध्या आकारांपासून सुरुवात करा. सरळ, समान रेषांसाठी कोन स्थिर कोनात धरण्याचा सराव करा.",
+      "title_hi": "बेसिक मेहंदी पैटर्न",
+      "title_mr": "मूलभूत मेहंदी नमुने"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 17,
+    "fields": {
+      "stage_number": 3,
+      "title": "Basic Beauty Techniques",
+      "description": "Learn simple beauty services like eyebrow threading and basic facials using safe, hygienic tools and products suited for different skin types.",
+      "image_url": "https://images.unsplash.com/photo-1733145820348-042a1ae7682a?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "video_url": "",
+      "skill": 4,
+      "description_hi": "सुरक्षित, स्वच्छ औज़ारों और अलग-अलग त्वचा के प्रकार के लिए उपयुक्त उत्पादों का उपयोग करके भौंह थ्रेडिंग और बेसिक फेशियल जैसी सरल ब्यूटी सेवाएं सीखें।",
+      "description_mr": "सुरक्षित, स्वच्छ साधने आणि वेगवेगळ्या त्वचेच्या प्रकारांसाठी योग्य उत्पादने वापरून भुवया थ्रेडिंग आणि मूलभूत फेशियलसारख्या सोप्या ब्युटी सेवा शिका.",
+      "title_hi": "बेसिक ब्यूटी तकनीकें",
+      "title_mr": "मूलभूत ब्युटी तंत्रे"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 18,
+    "fields": {
+      "stage_number": 4,
+      "title": "Building Your Kit",
+      "description": "Slowly build a basic kit with henna cones, threading tools, and beauty essentials. Keep everything clean and organized for hygienic service.",
+      "image_url": "https://images.unsplash.com/photo-1585687635785-994bda55c78e?q=80&w=852&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "video_url": "",
+      "skill": 4,
+      "description_hi": "मेहंदी कोन, थ्रेडिंग टूल और ब्यूटी सामग्री के साथ धीरे-धीरे एक बेसिक किट बनाएं। स्वच्छ सेवा के लिए सब कुछ साफ और व्यवस्थित रखें।",
+      "description_mr": "मेहंदी कोन, थ्रेडिंग टूल आणि ब्युटी साहित्यासह हळूहळू एक मूलभूत किट तयार करा. स्वच्छ सेवेसाठी सर्वकाही स्वच्छ आणि व्यवस्थित ठेवा.",
+      "title_hi": "अपनी किट बनाना",
+      "title_mr": "तुमची किट तयार करणे"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 19,
+    "fields": {
+      "stage_number": 5,
+      "title": "Offering Services",
+      "description": "Offer your services to neighbors, at festivals, weddings and local events. Word of mouth and good quality work will help you build a loyal customer base.",
+      "image_url": "https://images.unsplash.com/photo-1731441326210-bfcb6595e93a?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "video_url": "",
+      "skill": 4,
+      "description_hi": "पड़ोसियों को, त्योहारों, शादियों और स्थानीय कार्यक्रमों में अपनी सेवाएं दें। मुँह-ज़बानी प्रचार और अच्छे काम से वफादार ग्राहक बनेंगे।",
+      "description_mr": "शेजाऱ्यांना, सणांमध्ये, लग्नांमध्ये आणि स्थानिक कार्यक्रमांमध्ये तुमच्या सेवा द्या. तोंडी प्रचार आणि चांगल्या कामामुळे विश्वासू ग्राहक तयार होतील.",
+      "title_hi": "सेवाएं देना",
+      "title_mr": "सेवा देणे"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 20,
+    "fields": {
+      "stage_number": 1,
+      "title": "Getting Started",
+      "description": "Gather basic materials like beads, thread, glue, decorative paper and fabric scraps. Choose one simple item to start with, like a bracelet or paper gift box.",
+      "image_url": "https://images.unsplash.com/photo-1605627079912-97c3810a11a4?q=80&w=1407&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "video_url": "",
+      "skill": 5,
+      "description_hi": "मोती, धागा, गोंद, सजावटी कागज़ और कपड़े के टुकड़े जैसी बुनियादी सामग्री इकट्ठा करें। ब्रेसलेट या कागज़ के गिफ्ट बॉक्स जैसी एक सरल चीज़ चुनें।",
+      "description_mr": "मणी, धागा, गोंद, सजावटीचा कागद आणि कापडाचे तुकडे यांसारखे मूलभूत साहित्य गोळा करा. ब्रेसलेट किंवा कागदी गिफ्ट बॉक्ससारखी एक सोपी वस्तू निवडा.",
+      "title_hi": "शुरुआत करें",
+      "title_mr": "सुरुवात करा"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 21,
+    "fields": {
+      "stage_number": 2,
+      "title": "Basic Techniques",
+      "description": "Learn basic stringing, knotting and gluing techniques used in most handmade crafts. Practice with simple bead patterns before moving to complex designs.",
+      "image_url": "https://images.unsplash.com/photo-1780398021114-071c0392ed97?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "video_url": "https://www.youtube.com/embed/yFaCV_Uu-1g",
+      "skill": 5,
+      "description_hi": "अधिकतर हस्तशिल्प में इस्तेमाल होने वाली बेसिक स्ट्रिंगिंग, गांठ बांधने और चिपकाने की तकनीकें सीखें। जटिल डिज़ाइन पर जाने से पहले सरल मोती पैटर्न से अभ्यास करें।",
+      "description_mr": "बहुतेक हस्तकलेत वापरल्या जाणाऱ्या मूलभूत स्ट्रिंगिंग, गाठ बांधणे आणि चिकटवण्याच्या तंत्रांचा सराव करा. गुंतागुंतीच्या डिझाइनकडे जाण्यापूर्वी साध्या मणी नमुन्यांसह सराव करा.",
+      "title_hi": "बेसिक तकनीकें",
+      "title_mr": "मूलभूत तंत्रे"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 22,
+    "fields": {
+      "stage_number": 3,
+      "title": "Creating Sample Products",
+      "description": "Make a few sample pieces to test your technique and finish quality. Use these samples to show customers what you can create.",
+      "image_url": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600",
+      "video_url": "",
+      "skill": 5,
+      "description_hi": "अपनी तकनीक और फिनिश की गुणवत्ता जांचने के लिए कुछ नमूना टुकड़े बनाएं। इन नमूनों से ग्राहकों को दिखाएं कि आप क्या बना सकती हैं।",
+      "description_mr": "तुमचे तंत्र आणि फिनिशची गुणवत्ता तपासण्यासाठी काही नमुना तुकडे तयार करा. या नमुन्यांचा वापर ग्राहकांना तुम्ही काय बनवू शकता हे दाखवण्यासाठी करा.",
+      "title_hi": "नमूना उत्पाद बनाना",
+      "title_mr": "नमुना उत्पादने तयार करणे"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 23,
+    "fields": {
+      "stage_number": 4,
+      "title": "Presentation & Photography",
+      "description": "Take clear, well-lit photos of your finished crafts against a simple background. Good photos make a big difference when selling online or on WhatsApp.",
+      "image_url": "https://images.unsplash.com/photo-1766933330352-81ff095ad04a?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "video_url": "",
+      "skill": 5,
+      "description_hi": "साधारण बैकग्राउंड में अपने तैयार सामान की साफ, अच्छी रोशनी वाली फोटो लें। ऑनलाइन या व्हाट्सएप पर बेचते समय अच्छी फोटो बहुत फर्क डालती हैं।",
+      "description_mr": "साध्या पार्श्वभूमीवर तुमच्या तयार वस्तूंचे स्वच्छ, चांगल्या उजेडातील फोटो काढा. ऑनलाइन किंवा व्हॉट्सअॅपवर विकताना चांगले फोटो खूप फरक करतात.",
+      "title_hi": "प्रस्तुति और फोटोग्राफी",
+      "title_mr": "सादरीकरण आणि छायाचित्रण"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 24,
+    "fields": {
+      "stage_number": 5,
+      "title": "Selling",
+      "description": "Sell through local exhibitions, WhatsApp status, Instagram, or word of mouth. Start with friends and family, then expand to a wider audience.",
+      "image_url": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600",
+      "video_url": "",
+      "skill": 5,
+      "description_hi": "स्थानीय प्रदर्शनी, व्हाट्सएप स्टेटस, इंस्टाग्राम या मुँह-ज़बानी प्रचार से बेचें। दोस्तों और परिवार से शुरू करें, फिर बड़े ग्राहकों तक पहुंचें।",
+      "description_mr": "स्थानिक प्रदर्शन, व्हॉट्सअॅप स्टेटस, इंस्टाग्राम किंवा तोंडी प्रचाराद्वारे विका. मित्र आणि कुटुंबापासून सुरुवात करा, नंतर मोठ्या ग्राहकांपर्यंत पोहोचा.",
+      "title_hi": "बिक्री",
+      "title_mr": "विक्री"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 25,
+    "fields": {
+      "stage_number": 1,
+      "title": "Getting Started",
+      "description": "Gather a melt-and-pour soap base, essential oils, molds and natural additives like neem, turmeric or rose. Set up on a clean, heat-safe surface.",
+      "image_url": "https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "video_url": "",
+      "skill": 6,
+      "description_hi": "मेल्ट-एंड-पोर साबुन बेस, एसेंशियल ऑयल, सांचे और नीम, हल्दी या गुलाब जैसी प्राकृतिक सामग्री इकट्ठा करें। साफ, गर्मी-सुरक्षित जगह पर काम करें।",
+      "description_mr": "मेल्ट-अँड-पोअर साबण बेस, एसेंशियल ऑइल, साचे आणि कडुलिंब, हळद किंवा गुलाब यांसारखे नैसर्गिक साहित्य गोळा करा. स्वच्छ, उष्णता-सुरक्षित जागेवर काम करा.",
+      "title_hi": "शुरुआत करें",
+      "title_mr": "सुरुवात करा"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 26,
+    "fields": {
+      "stage_number": 2,
+      "title": "Melting the Soap Base",
+      "description": "Cut the soap base into cubes and melt gently using a double-boiler or microwave in short bursts, stirring often. Avoid overheating.",
+      "image_url": "https://images.unsplash.com/photo-1758792620227-76d7c58623e0?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "video_url": "https://www.youtube.com/embed/S6x_dEm5QQc",
+      "skill": 6,
+      "description_hi": "साबुन बेस को टुकड़ों में काटें और डबल-बॉयलर या माइक्रोवेव में थोड़ा-थोड़ा करके, बार-बार हिलाते हुए धीरे से पिघलाएं। ज़्यादा गर्म करने से बचें।",
+      "description_mr": "साबण बेस तुकड्यांमध्ये कापा आणि डबल-बॉयलर किंवा मायक्रोवेव्हमध्ये थोडे थोडे, वारंवार ढवळत हळूवारपणे वितळवा. जास्त गरम करणे टाळा.",
+      "title_hi": "साबुन बेस पिघलाना",
+      "title_mr": "साबण बेस वितळवणे"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 27,
+    "fields": {
+      "stage_number": 3,
+      "title": "Adding Natural Ingredients",
+      "description": "Mix in natural additives like neem powder, turmeric or rose extract along with a few drops of essential oil for fragrance and skin benefits.",
+      "image_url": "https://plus.unsplash.com/premium_photo-1663045957012-7ee9ce79a56a?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "video_url": "",
+      "skill": 6,
+      "description_hi": "खुशबू और त्वचा के फायदे के लिए नीम पाउडर, हल्दी या गुलाब के अर्क के साथ एसेंशियल ऑयल की कुछ बूंदें मिलाएं।",
+      "description_mr": "सुगंध आणि त्वचेच्या फायद्यांसाठी कडुलिंब पावडर, हळद किंवा गुलाब अर्कासह एसेंशियल ऑइलचे काही थेंब मिसळा.",
+      "title_hi": "प्राकृतिक सामग्री मिलाना",
+      "title_mr": "नैसर्गिक घटक घालणे"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 28,
+    "fields": {
+      "stage_number": 4,
+      "title": "Pouring & Setting",
+      "description": "Pour the mixture into soap molds and let it cool and harden completely, usually for a few hours, before removing from the mold.",
+      "image_url": "https://images.unsplash.com/photo-1711207354771-8a52847af385?q=80&w=2182&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "video_url": "",
+      "skill": 6,
+      "description_hi": "मिश्रण को साबुन के सांचों में डालें और सांचे से निकालने से पहले इसे पूरी तरह ठंडा और सख्त होने दें, आमतौर पर कुछ घंटे लगते हैं।",
+      "description_mr": "मिश्रण साबणाच्या साच्यांत ओता आणि साच्यातून काढण्यापूर्वी ते पूर्णपणे थंड आणि घट्ट होऊ द्या, साधारणपणे काही तास लागतात.",
+      "title_hi": "डालना और जमाना",
+      "title_mr": "ओतणे आणि घट्ट करणे"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 29,
+    "fields": {
+      "stage_number": 5,
+      "title": "Packaging & Selling",
+      "description": "Wrap the finished soaps neatly with labels mentioning ingredients. Sell locally, at exhibitions, or online as natural, handmade skincare products.",
+      "image_url": "https://images.unsplash.com/photo-1603533627544-4b256401b1ee?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "video_url": "",
+      "skill": 6,
+      "description_hi": "तैयार साबुन को सामग्री बताने वाले लेबल के साथ अच्छी तरह लपेटें। स्थानीय रूप से, प्रदर्शनी में, या ऑनलाइन प्राकृतिक, हाथ से बने स्किनकेयर उत्पाद के रूप में बेचें।",
+      "description_mr": "तयार साबण साहित्य सांगणाऱ्या लेबलसह नीट गुंडाळा. स्थानिक पातळीवर, प्रदर्शनात, किंवा ऑनलाइन नैसर्गिक, हाताने बनवलेली त्वचा निगा उत्पादने म्हणून विका.",
+      "title_hi": "पैकेजिंग और बिक्री",
+      "title_mr": "पॅकेजिंग आणि विक्री"
+    }
+  },
+  {
+    "model": "women_skills.learningstage",
+    "pk": 30,
+    "fields": {
+      "stage_number": 2,
+      "title": "Basic Stitches",
+      "description": "Learn the two most important hand stitches to begin with: the running stitch (simple in-and-out stitch used for basic seams) and the backstitch (stronger stitch used for durability). Practice on a scrap piece of cloth before working on real projects.",
+      "image_url": "https://plus.unsplash.com/premium_photo-1664197370003-4e589dc86888?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "video_url": "https://www.youtube.com/embed/QhZTc1x1-pM",
+      "skill": 1,
+      "description_hi": "शुरुआत के लिए दो सबसे ज़रूरी हाथ की सिलाई सीखें: रनिंग स्टिच (सामान्य सिलाई के लिए) और बैकस्टिच (मज़बूती के लिए)। असली काम शुरू करने से पहले बचे हुए कपड़े पर अभ्यास करें।",
+      "description_mr": "सुरुवातीला शिकण्यासाठी दोन सर्वात महत्त्वाचे हाताचे टाके शिका: रनिंग स्टिच (साध्या शिवणीसाठी) आणि बॅकस्टिच (मजबुतीसाठी). खऱ्या कामावर सुरुवात करण्यापूर्वी उरलेल्या कापडावर सराव करा.",
+      "title_hi": "बेसिक सिलाई",
+      "title_mr": "मूलभूत शिवणकाम"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 1,
+    "fields": {
+      "question_text": "What is the most basic tool needed to start tailoring?",
+      "option_a": "Sewing machine",
+      "option_b": "Hammer",
+      "option_c": "Paintbrush",
+      "option_d": "Screwdriver",
+      "correct_option": "a",
+      "skill": 1,
+      "option_a_hi": "सिलाई मशीन",
+      "option_a_mr": "शिवणयंत्र",
+      "option_b_hi": "हथौड़ा",
+      "option_b_mr": "हातोडा",
+      "option_c_hi": "पेंट ब्रश",
+      "option_c_mr": "रंगब्रश",
+      "option_d_hi": "पेचकस",
+      "option_d_mr": "स्क्रूड्रायव्हर",
+      "question_text_hi": "सिलाई शुरू करने के लिए सबसे ज़रूरी औज़ार क्या है?",
+      "question_text_mr": "शिवणकाम सुरू करण्यासाठी सर्वात मूलभूत साधन कोणते आहे?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 2,
+    "fields": {
+      "question_text": "Which of these is commonly used to measure cloth before cutting?",
+      "option_a": "Weighing scale",
+      "option_b": "Measuring tape",
+      "option_c": "Thermometer",
+      "option_d": "Ruler for wood",
+      "correct_option": "b",
+      "skill": 1,
+      "option_a_hi": "तौलने की मशीन",
+      "option_a_mr": "वजनकाटा",
+      "option_b_hi": "मापने का टेप",
+      "option_b_mr": "मोजपट्टी",
+      "option_c_hi": "थर्मामीटर",
+      "option_c_mr": "थर्मामीटर",
+      "option_d_hi": "लकड़ी की रूलर",
+      "option_d_mr": "लाकडी पट्टी",
+      "question_text_hi": "कपड़ा काटने से पहले नापने के लिए क्या इस्तेमाल होता है?",
+      "question_text_mr": "कापड कापण्यापूर्वी मोजण्यासाठी काय वापरले जाते?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 3,
+    "fields": {
+      "question_text": "Where can a beginner tailor sell their first products?",
+      "option_a": "Only in shopping malls",
+      "option_b": "Local shops and local markets",
+      "option_c": "Only in foreign countries",
+      "option_d": "Nowhere, just for personal use",
+      "correct_option": "b",
+      "skill": 1,
+      "option_a_hi": "सिर्फ शॉपिंग मॉल में",
+      "option_a_mr": "फक्त शॉपिंग मॉलमध्ये",
+      "option_b_hi": "स्थानीय दुकानें और बाज़ार",
+      "option_b_mr": "स्थानिक दुकाने आणि बाजार",
+      "option_c_hi": "सिर्फ विदेश में",
+      "option_c_mr": "फक्त परदेशात",
+      "option_d_hi": "कहीं नहीं, सिर्फ अपने लिए",
+      "option_d_mr": "कुठेच नाही, फक्त स्वतःसाठी",
+      "question_text_hi": "नई सिलाई करने वाली अपना पहला सामान कहाँ बेच सकती है?",
+      "question_text_mr": "नवीन शिवणकाम करणारी तिच्या पहिल्या वस्तू कुठे विकू शकते?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 4,
+    "fields": {
+      "question_text": "What should you do before stitching a final product?",
+      "option_a": "Skip practice and start directly",
+      "option_b": "Practice designs first",
+      "option_c": "Sell it without checking quality",
+      "option_d": "Throw away the cloth",
+      "correct_option": "b",
+      "skill": 1,
+      "option_a_hi": "बिना अभ्यास के सीधे शुरू करें",
+      "option_a_mr": "सरावाशिवाय थेट सुरू करा",
+      "option_b_hi": "पहले डिज़ाइन का अभ्यास करें",
+      "option_b_mr": "आधी डिझाइनचा सराव करा",
+      "option_c_hi": "बिना जांचे बेच दें",
+      "option_c_mr": "न तपासता विका",
+      "option_d_hi": "कपड़ा फेंक दें",
+      "option_d_mr": "कापड फेकून द्या",
+      "question_text_hi": "अंतिम सामान सिलने से पहले क्या करना चाहिए?",
+      "question_text_mr": "अंतिम वस्तू शिवण्यापूर्वी काय करावे?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 5,
+    "fields": {
+      "question_text": "Which item is NOT a material used in tailoring?",
+      "option_a": "Cloth",
+      "option_b": "Thread",
+      "option_c": "Scissors",
+      "option_d": "Cement",
+      "correct_option": "d",
+      "skill": 1,
+      "option_a_hi": "कपड़ा",
+      "option_a_mr": "कापड",
+      "option_b_hi": "धागा",
+      "option_b_mr": "धागा",
+      "option_c_hi": "कैंची",
+      "option_c_mr": "कात्री",
+      "option_d_hi": "सीमेंट",
+      "option_d_mr": "सिमेंट",
+      "question_text_hi": "इनमें से कौन सी चीज़ सिलाई में इस्तेमाल नहीं होती?",
+      "question_text_mr": "यापैकी कोणती वस्तू शिवणकामात वापरली जात नाही?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 6,
+    "fields": {
+      "question_text": "What is mainly used to make papad?",
+      "option_a": "Flour",
+      "option_b": "Cement",
+      "option_c": "Plastic",
+      "option_d": "Glass",
+      "correct_option": "a",
+      "skill": 2,
+      "option_a_hi": "आटा",
+      "option_a_mr": "पीठ",
+      "option_b_hi": "सीमेंट",
+      "option_b_mr": "सिमेंट",
+      "option_c_hi": "प्लास्टिक",
+      "option_c_mr": "प्लास्टिक",
+      "option_d_hi": "कांच",
+      "option_d_mr": "काच",
+      "question_text_hi": "पापड़ बनाने के लिए मुख्य रूप से क्या इस्तेमाल होता है?",
+      "question_text_mr": "पापड बनवण्यासाठी मुख्यतः काय वापरले जाते?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 7,
+    "fields": {
+      "question_text": "Why is packaging important for papad and pickle?",
+      "option_a": "It looks nice only",
+      "option_b": "It keeps the product fresh and sellable",
+      "option_c": "It is not important",
+      "option_d": "It increases weight",
+      "correct_option": "b",
+      "skill": 2,
+      "option_a_hi": "सिर्फ अच्छा दिखने के लिए",
+      "option_a_mr": "फक्त छान दिसण्यासाठी",
+      "option_b_hi": "यह सामान ताज़ा और बिकने लायक रखता है",
+      "option_b_mr": "यामुळे वस्तू ताजी आणि विक्रीयोग्य राहते",
+      "option_c_hi": "यह ज़रूरी नहीं है",
+      "option_c_mr": "हे महत्त्वाचे नाही",
+      "option_d_hi": "इससे वज़न बढ़ता है",
+      "option_d_mr": "यामुळे वजन वाढते",
+      "question_text_hi": "पापड़ और अचार के लिए पैकेजिंग क्यों ज़रूरी है?",
+      "question_text_mr": "पापड आणि लोणच्यासाठी पॅकेजिंग का महत्त्वाचे आहे?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 8,
+    "fields": {
+      "question_text": "Where can papad and pickle be sold?",
+      "option_a": "Local shops and Self Help Groups",
+      "option_b": "Only online in other countries",
+      "option_c": "Nowhere",
+      "option_d": "Only to family",
+      "correct_option": "a",
+      "skill": 2,
+      "option_a_hi": "स्थानीय दुकानें और स्वयं सहायता समूह",
+      "option_a_mr": "स्थानिक दुकाने आणि बचत गट",
+      "option_b_hi": "सिर्फ विदेश में ऑनलाइन",
+      "option_b_mr": "फक्त परदेशात ऑनलाइन",
+      "option_c_hi": "कहीं नहीं",
+      "option_c_mr": "कुठेच नाही",
+      "option_d_hi": "सिर्फ परिवार को",
+      "option_d_mr": "फक्त कुटुंबाला",
+      "question_text_hi": "पापड़ और अचार कहाँ बेचे जा सकते हैं?",
+      "question_text_mr": "पापड आणि लोणचे कुठे विकता येतात?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 9,
+    "fields": {
+      "question_text": "What should you do before selling a new pickle recipe?",
+      "option_a": "Sell immediately without testing",
+      "option_b": "Test the recipe first",
+      "option_c": "Skip taste testing",
+      "option_d": "Add more oil only",
+      "correct_option": "b",
+      "skill": 2,
+      "option_a_hi": "बिना टेस्ट किए तुरंत बेचें",
+      "option_a_mr": "चाचणी न करता लगेच विका",
+      "option_b_hi": "पहले रेसिपी टेस्ट करें",
+      "option_b_mr": "आधी रेसिपी तपासा",
+      "option_c_hi": "स्वाद जांचना छोड़ दें",
+      "option_c_mr": "चव तपासणे टाळा",
+      "option_d_hi": "सिर्फ तेल बढ़ा दें",
+      "option_d_mr": "फक्त तेल वाढवा",
+      "question_text_hi": "नई अचार रेसिपी बेचने से पहले क्या करना चाहिए?",
+      "question_text_mr": "नवीन लोणच्याची रेसिपी विकण्यापूर्वी काय करावे?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 10,
+    "fields": {
+      "question_text": "Which of these is an ingredient commonly used in pickles?",
+      "option_a": "Spices",
+      "option_b": "Nails",
+      "option_c": "Wood",
+      "option_d": "Paint",
+      "correct_option": "a",
+      "skill": 2,
+      "option_a_hi": "मसाले",
+      "option_a_mr": "मसाले",
+      "option_b_hi": "कील",
+      "option_b_mr": "खिळे",
+      "option_c_hi": "लकड़ी",
+      "option_c_mr": "लाकूड",
+      "option_d_hi": "पेंट",
+      "option_d_mr": "रंग",
+      "question_text_hi": "इनमें से कौन सी चीज़ अचार में आम तौर पर इस्तेमाल होती है?",
+      "question_text_mr": "यापैकी कोणता घटक लोणच्यात सामान्यतः वापरला जातो?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 11,
+    "fields": {
+      "question_text": "What is the main material used to make a candle?",
+      "option_a": "Wax",
+      "option_b": "Sand",
+      "option_c": "Metal",
+      "option_d": "Glass",
+      "correct_option": "a",
+      "skill": 3,
+      "option_a_hi": "मोम",
+      "option_a_mr": "मेण",
+      "option_b_hi": "रेत",
+      "option_b_mr": "वाळू",
+      "option_c_hi": "धातु",
+      "option_c_mr": "धातू",
+      "option_d_hi": "कांच",
+      "option_d_mr": "काच",
+      "question_text_hi": "मोमबत्ती बनाने के लिए मुख्य सामग्री क्या है?",
+      "question_text_mr": "मेणबत्ती बनवण्यासाठी मुख्य साहित्य कोणते आहे?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 12,
+    "fields": {
+      "question_text": "What holds the candle upright and helps it burn?",
+      "option_a": "Wick",
+      "option_b": "Sticker",
+      "option_c": "Box",
+      "option_d": "Ribbon",
+      "correct_option": "a",
+      "skill": 3,
+      "option_a_hi": "बत्ती",
+      "option_a_mr": "वात",
+      "option_b_hi": "स्टिकर",
+      "option_b_mr": "स्टिकर",
+      "option_c_hi": "बॉक्स",
+      "option_c_mr": "बॉक्स",
+      "option_d_hi": "रिबन",
+      "option_d_mr": "रिबन",
+      "question_text_hi": "मोमबत्ती को सीधा रखने और जलाने में क्या मदद करता है?",
+      "question_text_mr": "मेणबत्तीला सरळ ठेवण्यास आणि जळण्यास काय मदत करते?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 13,
+    "fields": {
+      "question_text": "What can be added to give candles a nice smell?",
+      "option_a": "Fragrance oils",
+      "option_b": "Salt",
+      "option_c": "Sugar",
+      "option_d": "Vinegar",
+      "correct_option": "a",
+      "skill": 3,
+      "option_a_hi": "खुशबू वाला तेल",
+      "option_a_mr": "सुगंधी तेल",
+      "option_b_hi": "नमक",
+      "option_b_mr": "मीठ",
+      "option_c_hi": "चीनी",
+      "option_c_mr": "साखर",
+      "option_d_hi": "सिरका",
+      "option_d_mr": "व्हिनेगर",
+      "question_text_hi": "मोमबत्ती में अच्छी खुशबू के लिए क्या मिलाया जा सकता है?",
+      "question_text_mr": "मेणबत्तीला चांगला सुगंध येण्यासाठी काय घालता येते?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 14,
+    "fields": {
+      "question_text": "What shape does the candle take from?",
+      "option_a": "Mold",
+      "option_b": "Bag",
+      "option_c": "Bottle cap only",
+      "option_d": "Spoon",
+      "correct_option": "a",
+      "skill": 3,
+      "option_a_hi": "सांचा",
+      "option_a_mr": "साचा",
+      "option_b_hi": "बैग",
+      "option_b_mr": "बॅग",
+      "option_c_hi": "सिर्फ बोतल का ढक्कन",
+      "option_c_mr": "फक्त बाटलीचे झाकण",
+      "option_d_hi": "चम्मच",
+      "option_d_mr": "चमचा",
+      "question_text_hi": "मोमबत्ती अपना आकार किससे लेती है?",
+      "question_text_mr": "मेणबत्तीला आकार कशापासून मिळतो?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 15,
+    "fields": {
+      "question_text": "Where can handmade candles be sold?",
+      "option_a": "Online and local markets",
+      "option_b": "Nowhere",
+      "option_c": "Only in factories",
+      "option_d": "Only to shopkeepers",
+      "correct_option": "a",
+      "skill": 3,
+      "option_a_hi": "ऑनलाइन और स्थानीय बाज़ार",
+      "option_a_mr": "ऑनलाइन आणि स्थानिक बाजार",
+      "option_b_hi": "कहीं नहीं",
+      "option_b_mr": "कुठेच नाही",
+      "option_c_hi": "सिर्फ फैक्ट्री में",
+      "option_c_mr": "फक्त कारखान्यात",
+      "option_d_hi": "सिर्फ दुकानदारों को",
+      "option_d_mr": "फक्त दुकानदारांना",
+      "question_text_hi": "हाथ से बनी मोमबत्तियां कहाँ बेची जा सकती हैं?",
+      "question_text_mr": "हाताने बनवलेल्या मेणबत्त्या कुठे विकता येतात?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 16,
+    "fields": {
+      "question_text": "What is used to create mehendi designs?",
+      "option_a": "Henna cone",
+      "option_b": "Paintbrush",
+      "option_c": "Marker",
+      "option_d": "Chalk",
+      "correct_option": "a",
+      "skill": 4,
+      "option_a_hi": "मेहंदी कोन",
+      "option_a_mr": "मेहंदी कोन",
+      "option_b_hi": "पेंट ब्रश",
+      "option_b_mr": "रंगब्रश",
+      "option_c_hi": "मार्कर",
+      "option_c_mr": "मार्कर",
+      "option_d_hi": "चॉक",
+      "option_d_mr": "खडू",
+      "question_text_hi": "मेहंदी डिज़ाइन बनाने के लिए क्या इस्तेमाल होता है?",
+      "question_text_mr": "मेहंदी डिझाइन तयार करण्यासाठी काय वापरले जाते?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 17,
+    "fields": {
+      "question_text": "Which of these is a basic beauty service mentioned?",
+      "option_a": "Facials",
+      "option_b": "Plumbing",
+      "option_c": "Carpentry",
+      "option_d": "Farming",
+      "correct_option": "a",
+      "skill": 4,
+      "option_a_hi": "फेशियल",
+      "option_a_mr": "फेशियल",
+      "option_b_hi": "प्लंबिंग",
+      "option_b_mr": "प्लंबिंग",
+      "option_c_hi": "बढ़ईगीरी",
+      "option_c_mr": "सुतारकाम",
+      "option_d_hi": "खेती",
+      "option_d_mr": "शेती",
+      "question_text_hi": "इनमें से कौन सी एक बेसिक ब्यूटी सेवा है?",
+      "question_text_mr": "यापैकी कोणती मूलभूत ब्युटी सेवा आहे?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 18,
+    "fields": {
+      "question_text": "How can someone improve their mehendi skills?",
+      "option_a": "Practice designs regularly",
+      "option_b": "Never practice",
+      "option_c": "Avoid tutorials",
+      "option_d": "Stop after one try",
+      "correct_option": "a",
+      "skill": 4,
+      "option_a_hi": "नियमित अभ्यास करें",
+      "option_a_mr": "नियमित सराव करा",
+      "option_b_hi": "कभी अभ्यास न करें",
+      "option_b_mr": "कधीही सराव करू नका",
+      "option_c_hi": "ट्यूटोरियल से बचें",
+      "option_c_mr": "ट्युटोरियल टाळा",
+      "option_d_hi": "एक बार कोशिश कर छोड़ दें",
+      "option_d_mr": "एकदाच प्रयत्न करून सोडा",
+      "question_text_hi": "मेहंदी की कला कैसे बेहतर की जा सकती है?",
+      "question_text_mr": "मेहंदी कला कशी सुधारता येते?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 19,
+    "fields": {
+      "question_text": "Where can beauty and mehendi services be offered?",
+      "option_a": "At home and events",
+      "option_b": "Only in hospitals",
+      "option_c": "Only in schools",
+      "option_d": "Nowhere",
+      "correct_option": "a",
+      "skill": 4,
+      "option_a_hi": "घर पर और कार्यक्रमों में",
+      "option_a_mr": "घरी आणि कार्यक्रमांत",
+      "option_b_hi": "सिर्फ अस्पताल में",
+      "option_b_mr": "फक्त रुग्णालयात",
+      "option_c_hi": "सिर्फ स्कूल में",
+      "option_c_mr": "फक्त शाळेत",
+      "option_d_hi": "कहीं नहीं",
+      "option_d_mr": "कुठेच नाही",
+      "question_text_hi": "ब्यूटी और मेहंदी सेवाएं कहाँ दी जा सकती हैं?",
+      "question_text_mr": "ब्युटी आणि मेहंदी सेवा कुठे देता येतात?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 20,
+    "fields": {
+      "question_text": "What is needed to start a basic beauty kit?",
+      "option_a": "Makeup essentials",
+      "option_b": "Cooking utensils",
+      "option_c": "Gardening tools",
+      "option_d": "Car parts",
+      "correct_option": "a",
+      "skill": 4,
+      "option_a_hi": "मेकअप सामग्री",
+      "option_a_mr": "मेकअप साहित्य",
+      "option_b_hi": "खाना पकाने के बर्तन",
+      "option_b_mr": "स्वयंपाकाची भांडी",
+      "option_c_hi": "बागवानी के औज़ार",
+      "option_c_mr": "बागकामाची साधने",
+      "option_d_hi": "गाड़ी के पुर्जे",
+      "option_d_mr": "गाडीचे भाग",
+      "question_text_hi": "एक बेसिक ब्यूटी किट शुरू करने के लिए क्या चाहिए?",
+      "question_text_mr": "मूलभूत ब्युटी किट सुरू करण्यासाठी काय आवश्यक आहे?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 21,
+    "fields": {
+      "question_text": "Which of these is a handmade craft item?",
+      "option_a": "Jewelry",
+      "option_b": "Cement bricks",
+      "option_c": "Tractor parts",
+      "option_d": "Glass windows",
+      "correct_option": "a",
+      "skill": 5,
+      "option_a_hi": "गहने",
+      "option_a_mr": "दागिने",
+      "option_b_hi": "सीमेंट की ईंटें",
+      "option_b_mr": "सिमेंटच्या विटा",
+      "option_c_hi": "ट्रैक्टर के पुर्जे",
+      "option_c_mr": "ट्रॅक्टरचे भाग",
+      "option_d_hi": "कांच की खिड़कियां",
+      "option_d_mr": "काचेच्या खिडक्या",
+      "question_text_hi": "इनमें से कौन सी चीज़ हस्तशिल्प है?",
+      "question_text_mr": "यापैकी कोणती वस्तू हस्तकला आहे?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 22,
+    "fields": {
+      "question_text": "What is commonly used in handmade crafts?",
+      "option_a": "Beads and thread",
+      "option_b": "Steel rods",
+      "option_c": "Bricks",
+      "option_d": "Motor oil",
+      "correct_option": "a",
+      "skill": 5,
+      "option_a_hi": "मोती और धागा",
+      "option_a_mr": "मणी आणि धागा",
+      "option_b_hi": "स्टील की छड़ें",
+      "option_b_mr": "स्टीलच्या कांबी",
+      "option_c_hi": "ईंटें",
+      "option_c_mr": "विटा",
+      "option_d_hi": "मोटर ऑयल",
+      "option_d_mr": "मोटर तेल",
+      "question_text_hi": "हस्तशिल्प में आमतौर पर क्या इस्तेमाल होता है?",
+      "question_text_mr": "हस्तकलेत सामान्यतः काय वापरले जाते?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 23,
+    "fields": {
+      "question_text": "How should craft products be presented for selling?",
+      "option_a": "Take good photos",
+      "option_b": "Hide them",
+      "option_c": "Never show them",
+      "option_d": "Sell without any photos",
+      "correct_option": "a",
+      "skill": 5,
+      "option_a_hi": "अच्छी फोटो लें",
+      "option_a_mr": "चांगले फोटो काढा",
+      "option_b_hi": "छुपाएं",
+      "option_b_mr": "लपवा",
+      "option_c_hi": "कभी न दिखाएं",
+      "option_c_mr": "कधीही दाखवू नका",
+      "option_d_hi": "बिना फोटो के बेचें",
+      "option_d_mr": "फोटोशिवाय विका",
+      "question_text_hi": "बेचने के लिए हस्तशिल्प सामान कैसे दिखाना चाहिए?",
+      "question_text_mr": "विक्रीसाठी हस्तकला वस्तू कशा सादर कराव्यात?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 24,
+    "fields": {
+      "question_text": "Where can handmade crafts be sold?",
+      "option_a": "Exhibitions and social media",
+      "option_b": "Nowhere",
+      "option_c": "Only in warehouses",
+      "option_d": "Only to strangers on the street",
+      "correct_option": "a",
+      "skill": 5,
+      "option_a_hi": "प्रदर्शनी और सोशल मीडिया",
+      "option_a_mr": "प्रदर्शन आणि सोशल मीडिया",
+      "option_b_hi": "कहीं नहीं",
+      "option_b_mr": "कुठेच नाही",
+      "option_c_hi": "सिर्फ गोदाम में",
+      "option_c_mr": "फक्त गोदामात",
+      "option_d_hi": "सिर्फ अजनबियों को सड़क पर",
+      "option_d_mr": "फक्त रस्त्यावरील अनोळखी लोकांना",
+      "question_text_hi": "हस्तशिल्प कहाँ बेचे जा सकते हैं?",
+      "question_text_mr": "हस्तकला कुठे विकता येते?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 25,
+    "fields": {
+      "question_text": "What should you create first before selling many items?",
+      "option_a": "Sample products",
+      "option_b": "Nothing, sell directly",
+      "option_c": "Only prices",
+      "option_d": "Only packaging",
+      "correct_option": "a",
+      "skill": 5,
+      "option_a_hi": "नमूना उत्पाद",
+      "option_a_mr": "नमुना उत्पादने",
+      "option_b_hi": "कुछ नहीं, सीधे बेचें",
+      "option_b_mr": "काहीही नाही, थेट विका",
+      "option_c_hi": "सिर्फ कीमतें",
+      "option_c_mr": "फक्त किमती",
+      "option_d_hi": "सिर्फ पैकेजिंग",
+      "option_d_mr": "फक्त पॅकेजिंग",
+      "question_text_hi": "बहुत सारा सामान बेचने से पहले पहले क्या बनाना चाहिए?",
+      "question_text_mr": "अनेक वस्तू विकण्यापूर्वी आधी काय तयार करावे?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 26,
+    "fields": {
+      "question_text": "What is the base material for making soap?",
+      "option_a": "Soap base",
+      "option_b": "Cement",
+      "option_c": "Sand",
+      "option_d": "Metal",
+      "correct_option": "a",
+      "skill": 6,
+      "option_a_hi": "साबुन बेस",
+      "option_a_mr": "साबण बेस",
+      "option_b_hi": "सीमेंट",
+      "option_b_mr": "सिमेंट",
+      "option_c_hi": "रेत",
+      "option_c_mr": "वाळू",
+      "option_d_hi": "धातु",
+      "option_d_mr": "धातू",
+      "question_text_hi": "साबुन बनाने के लिए मूल सामग्री क्या है?",
+      "question_text_mr": "साबण बनवण्यासाठी मूळ साहित्य कोणते आहे?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 27,
+    "fields": {
+      "question_text": "What can be added to soap for natural benefits?",
+      "option_a": "Neem, turmeric, rose",
+      "option_b": "Sand",
+      "option_c": "Plastic",
+      "option_d": "Nails",
+      "correct_option": "a",
+      "skill": 6,
+      "option_a_hi": "नीम, हल्दी, गुलाब",
+      "option_a_mr": "कडुलिंब, हळद, गुलाब",
+      "option_b_hi": "रेत",
+      "option_b_mr": "वाळू",
+      "option_c_hi": "प्लास्टिक",
+      "option_c_mr": "प्लास्टिक",
+      "option_d_hi": "कील",
+      "option_d_mr": "खिळे",
+      "question_text_hi": "प्राकृतिक फायदे के लिए साबुन में क्या मिलाया जा सकता है?",
+      "question_text_mr": "नैसर्गिक फायद्यांसाठी साबणात काय घालता येते?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 28,
+    "fields": {
+      "question_text": "What gives soap its shape?",
+      "option_a": "Mold",
+      "option_b": "Bottle cap",
+      "option_c": "Bag",
+      "option_d": "Spoon",
+      "correct_option": "a",
+      "skill": 6,
+      "option_a_hi": "सांचा",
+      "option_a_mr": "साचा",
+      "option_b_hi": "बोतल का ढक्कन",
+      "option_b_mr": "बाटलीचे झाकण",
+      "option_c_hi": "बैग",
+      "option_c_mr": "बॅग",
+      "option_d_hi": "चम्मच",
+      "option_d_mr": "चमचा",
+      "question_text_hi": "साबुन को आकार क्या देता है?",
+      "question_text_mr": "साबणाला आकार काय देतो?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 29,
+    "fields": {
+      "question_text": "What must happen to the soap base before adding ingredients?",
+      "option_a": "It must be melted",
+      "option_b": "It must be frozen",
+      "option_c": "It must be burned",
+      "option_d": "It must be crushed",
+      "correct_option": "a",
+      "skill": 6,
+      "option_a_hi": "पिघलाना चाहिए",
+      "option_a_mr": "वितळवावे लागते",
+      "option_b_hi": "जमाना चाहिए",
+      "option_b_mr": "गोठवावे लागते",
+      "option_c_hi": "जलाना चाहिए",
+      "option_c_mr": "जाळावे लागते",
+      "option_d_hi": "कुचलना चाहिए",
+      "option_d_mr": "फोडावे लागते",
+      "question_text_hi": "सामग्री मिलाने से पहले साबुन बेस के साथ क्या करना चाहिए?",
+      "question_text_mr": "साहित्य मिसळण्यापूर्वी साबण बेसचे काय करावे लागते?"
+    }
+  },
+  {
+    "model": "women_skills.quizquestion",
+    "pk": 30,
+    "fields": {
+      "question_text": "Where can handmade soaps be sold?",
+      "option_a": "Locally and online",
+      "option_b": "Nowhere",
+      "option_c": "Only in factories",
+      "option_d": "Only to strangers",
+      "correct_option": "a",
+      "skill": 6,
+      "option_a_hi": "स्थानीय और ऑनलाइन",
+      "option_a_mr": "स्थानिक आणि ऑनलाइन",
+      "option_b_hi": "कहीं नहीं",
+      "option_b_mr": "कुठेच नाही",
+      "option_c_hi": "सिर्फ फैक्ट्री में",
+      "option_c_mr": "फक्त कारखान्यात",
+      "option_d_hi": "सिर्फ अजनबियों को",
+      "option_d_mr": "फक्त अनोळखी लोकांना",
+      "question_text_hi": "हाथ से बने साबुन कहाँ बेचे जा सकते हैं?",
+      "question_text_mr": "हाताने बनवलेले साबण कुठे विकता येतात?"
+    }
+  },
+  {
+    "model": "women_skills.sellingtip",
+    "pk": 1,
+    "fields": {
+      "title": "Using WhatsApp Business",
+      "description": "Create a free WhatsApp Business account to showcase your products with photos, prices, and easy ordering.",
+      "icon": "💬",
+      "title_hi": "व्हाट्सएप बिज़नेस का उपयोग",
+      "description_hi": "अपने प्रोडक्ट फोटो, कीमत के साथ दिखाने के लिए मुफ्त व्हाट्सएप बिज़नेस अकाउंट बनाएं।",
+      "title_mr": "व्हॉट्सअॅप बिझनेस वापरणे",
+      "description_mr": "तुमची उत्पादने फोटो आणि किमतीसह दाखवण्यासाठी मोफत व्हॉट्सअॅप बिझनेस खाते तयार करा.",
+      "image_url": "https://images.pexels.com/photos/6812441/pexels-photo-6812441.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
+      "video_url": "https://www.youtube.com/embed/7a1AXiAmSB0"
+    }
+  },
+  {
+    "model": "women_skills.sellingtip",
+    "pk": 2,
+    "fields": {
+      "title": "Selling at Local Markets",
+      "description": "Weekly local markets (haat/bazaar) are a great way to reach customers directly and get instant feedback.",
+      "icon": "🏪",
+      "title_hi": "स्थानीय बाज़ार में बेचना",
+      "description_hi": "साप्ताहिक बाज़ार ग्राहकों तक सीधे पहुंचने और तुरंत प्रतिक्रिया पाने का अच्छा तरीका है।",
+      "title_mr": "स्थानिक बाजारात विक्री",
+      "description_mr": "साप्ताहिक बाजार थेट ग्राहकांपर्यंत पोहोचण्याचा आणि लगेच प्रतिक्रिया मिळवण्याचा चांगला मार्ग आहे.",
+      "image_url": "https://images.pexels.com/photos/13103276/pexels-photo-13103276.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
+      "video_url": ""
+    }
+  },
+  {
+    "model": "women_skills.sellingtip",
+    "pk": 3,
+    "fields": {
+      "title": "Taking Good Product Photos",
+      "description": "Use natural daylight, a plain background, and take photos from multiple angles to attract more buyers.",
+      "icon": "📸",
+      "title_hi": "अच्छी प्रोडक्ट फोटो लेना",
+      "description_hi": "प्राकृतिक रोशनी, सादा background, और कई एंगल से फोटो लें ताकि ज़्यादा ग्राहक आकर्षित हों।",
+      "title_mr": "चांगले उत्पादन फोटो काढणे",
+      "description_mr": "नैसर्गिक प्रकाश, साधी पार्श्वभूमी आणि अनेक कोनातून फोटो काढा जेणेकरून अधिक ग्राहक आकर्षित होतील.",
+      "image_url": "https://images.pexels.com/photos/370474/pexels-photo-370474.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
+      "video_url": ""
+    }
+  },
+  {
+    "model": "women_skills.sellingtip",
+    "pk": 4,
+    "fields": {
+      "title": "Talking to Customers",
+      "description": "Be polite, answer questions clearly, and always follow up after a sale to build trust and repeat customers.",
+      "icon": "🗣",
+      "title_hi": "ग्राहकों से बात करना",
+      "description_hi": "विनम्र रहें, सवालों के स्पष्ट जवाब दें, और बिक्री के बाद फॉलो-अप करें ताकि भरोसा बने।",
+      "title_mr": "ग्राहकांशी बोलणे",
+      "description_mr": "नम्र रहा, प्रश्नांची स्पष्ट उत्तरे द्या, आणि विक्रीनंतर पाठपुरावा करा जेणेकरून विश्वास निर्माण होईल.",
+      "image_url": "https://images.pexels.com/photos/30319868/pexels-photo-30319868.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
+      "video_url": ""
+    }
+  },
+  {
+    "model": "women_skills.sellingtip",
+    "pk": 5,
+    "fields": {
+      "title": "Receiving Payments Safely",
+      "description": "Use UPI apps like PhonePe or Google Pay for safe, instant payments. Always confirm payment before handing over goods.",
+      "icon": "💳",
+      "title_hi": "सुरक्षित भुगतान लेना",
+      "description_hi": "सुरक्षित, तुरंत भुगतान के लिए PhonePe या Google Pay जैसे UPI ऐप का उपयोग करें। सामान देने से पहले भुगतान की पुष्टि करें।",
+      "title_mr": "सुरक्षित पेमेंट घेणे",
+      "description_mr": "सुरक्षित, त्वरित पेमेंटसाठी PhonePe किंवा Google Pay सारखे UPI अॅप वापरा. वस्तू देण्यापूर्वी पेमेंटची खात्री करा.",
+      "image_url": "https://images.pexels.com/photos/6237886/pexels-photo-6237886.jpeg?auto=compress&cs=tinysrgb&h=627&fit=crop&w=1200",
+      "video_url": ""
+    }
+  }
+]

@@ -1,0 +1,132 @@
+{% extends 'agriculture/base.html' %}
+{% load static %}
+
+{% block title %}{{ ui.crop.common_problems }} | PENTRAONE{% endblock %}
+
+{% block content %}
+
+<section class="agri-hero fade-up">
+
+    <div data-voice-content>
+
+        <div class="agri-eyebrow">
+            🛡️ {{ ui.crop.common_problems }}
+        </div>
+
+        <h1 class="agri-title">
+            {{ ui.crop.common_problems }}
+        </h1>
+
+        <p class="agri-lead">
+            Find common pests, diseases and farming problems for your crops,
+            then open a crop-specific page for practical guidance.
+        </p>
+
+    </div>
+
+    <!-- VOICE BUTTON -->
+    <div style="margin-top:22px">
+
+        <button
+            type="button"
+            class="agri-btn voice-reader-button"
+            data-voice-reader
+            data-voice-lang="{{ language }}"
+            data-voice-target="[data-voice-content]"
+        >
+            🔊 Listen
+        </button>
+
+    </div>
+
+</section>
+
+
+<div class="agri-section-head">
+
+    <div>
+
+        <h2>{{ ui.crop.crops }}</h2>
+
+        <p>
+            Select a crop to see common problems and farmer tips.
+        </p>
+
+    </div>
+
+</div>
+
+
+<section class="agri-crop-grid">
+
+    {% for crop in crops %}
+
+    <a
+        class="agri-crop-card fade-up"
+        href="{% url 'agriculture:problem_detail' crop.id %}"
+    >
+
+        <div class="agri-crop-image">
+
+            {% if crop.image %}
+
+                <img
+                    src="{{ crop.image.url }}"
+                    alt="{{ crop.name }}"
+                >
+
+            {% else %}
+
+                <div class="agri-crop-placeholder">
+                    🌱
+                </div>
+
+            {% endif %}
+
+        </div>
+
+        <div class="agri-crop-body">
+
+            <h3>
+                {{ crop.name }} →
+            </h3>
+
+            <small>
+
+                {% if crop.common_problems %}
+
+                    {{ crop.common_problems|truncatechars:115 }}
+
+                {% else %}
+
+                    Crop problem information will be available soon.
+
+                {% endif %}
+
+            </small>
+
+        </div>
+
+    </a>
+
+    {% empty %}
+
+    <div class="agri-detail-card">
+
+        <p>
+            {{ ui.common.no_crops }}
+        </p>
+
+    </div>
+
+    {% endfor %}
+
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+
+<script src="{% static 'agriculture/js/voice_reader.js' %}"></script>
+
+{% endblock %}

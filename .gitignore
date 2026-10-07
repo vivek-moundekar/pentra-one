@@ -1,0 +1,8 @@
+venv/
+models/
+dataset/
+.env
+__pycache__/
+*.pyc
+db.sqlite3
+media/

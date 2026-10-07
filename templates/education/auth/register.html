@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Create Education Account | PentraOne
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        :root {
+
+            --bg: #070809;
+
+            --panel: rgba(17, 18, 21, 0.88);
+
+            --panel-soft: rgba(27, 30, 36, 0.68);
+
+            --border: rgba(180, 190, 205, 0.18);
+
+            --border-light: rgba(190, 202, 220, 0.32);
+
+            --text: #f6f7f9;
+
+            --muted: #8e949e;
+
+            --input: rgba(9, 10, 12, 0.72);
+
+            --button: #27292e;
+
+            --blue: #4d8dff;
+
+        }
+
+
+        html {
+
+            min-height: 100%;
+
+        }
+
+
+        body {
+
+            margin: 0;
+
+            min-height: 100vh;
+
+            padding:
+                45px 15px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            color:
+                var(--text);
+
+            background:
+                radial-gradient(
+                    circle at 50% 15%,
+                    rgba(65, 76, 94, 0.16),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    145deg,
+                    #050606,
+                    #0c0d0f 55%,
+                    #08090a
+                );
+
+            overflow-x: hidden;
+
+            position: relative;
+
+        }
+
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            width: 360px;
+
+            height: 360px;
+
+            border-radius: 50%;
+
+            left: 50%;
+
+            top: -180px;
+
+            transform:
+                translateX(-50%);
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(94, 108, 130, 0.18),
+                    rgba(32, 38, 49, 0.08) 55%,
+                    transparent 72%
+                );
+
+            filter:
+                blur(5px);
+
+            pointer-events:
+                none;
+
+        }
+
+
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            width: 420px;
+
+            height: 220px;
+
+            left: 50%;
+
+            bottom: -150px;
+
+            transform:
+                translateX(-50%);
+
+            background:
+                radial-gradient(
+                    ellipse,
+                    rgba(74, 88, 110, 0.10),
+                    transparent 70%
+                );
+
+            pointer-events:
+                none;
+
+        }
+
+
+        /* =====================================================
+           CARD
+        ===================================================== */
+
+        .card {
+
+            position: relative;
+
+            z-index: 2;
+
+            width: 100%;
+
+            max-width:
+                430px;
+
+            padding:
+                38px 34px 30px;
+
+            border-radius:
+                18px;
+
+            background:
+                linear-gradient(
+                    155deg,
+                    rgba(30, 33, 40, 0.84),
+                    rgba(12, 13, 16, 0.94) 42%,
+                    rgba(9, 10, 12, 0.96)
+                );
+
+            border:
+                1px solid var(--border);
+
+            box-shadow:
+                0 30px 70px rgba(0, 0, 0, 0.55),
+                inset 0 1px 0 rgba(255, 255, 255, 0.035);
+
+            backdrop-filter:
+                blur(24px);
+
+            -webkit-backdrop-filter:
+                blur(24px);
+
+            overflow: hidden;
+
+        }
+
+
+        .card::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 240px;
+
+            height: 150px;
+
+            left: -75px;
+
+            top: -65px;
+
+            border-radius:
+                50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(92, 109, 137, 0.20),
+                    transparent 68%
+                );
+
+            pointer-events:
+                none;
+
+        }
+
+
+        .card::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 200px;
+
+            height: 170px;
+
+            right: -80px;
+
+            top: 70px;
+
+            border-radius:
+                50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(54, 88, 145, 0.12),
+                    transparent 70%
+                );
+
+            pointer-events:
+                none;
+
+        }
+
+
+        .card-content {
+
+            position: relative;
+
+            z-index: 3;
+
+        }
+
+
+        /* =====================================================
+           HEADING
+        ===================================================== */
+
+        .top-icon {
+
+            width: 42px;
+
+            height: 42px;
+
+            margin:
+                0 auto 14px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius:
+                14px;
+
+            background:
+                rgba(255, 255, 255, 0.035);
+
+            border:
+                1px solid rgba(255, 255, 255, 0.07);
+
+            font-size:
+                19px;
+
+        }
+
+
+        h1 {
+
+            margin:
+                0;
+
+            text-align:
+                center;
+
+            color:
+                #ffffff;
+
+            font-size:
+                29px;
+
+            line-height:
+                1.2;
+
+            font-weight:
+                500;
+
+            letter-spacing:
+                -0.7px;
+
+        }
+
+
+        .subtitle {
+
+            max-width:
+                320px;
+
+            margin:
+                9px auto 28px;
+
+            text-align:
+                center;
+
+            color:
+                #8b919a;
+
+            font-size:
+                11.5px;
+
+            line-height:
+                1.6;
+
+        }
+
+
+        /* =====================================================
+           FIELD
+        ===================================================== */
+
+        .field {
+
+            margin-bottom:
+                15px;
+
+        }
+
+
+        .field label {
+
+            display:
+                block;
+
+            margin:
+                0 0 7px 3px;
+
+            color:
+                #a8adb5;
+
+            font-size:
+                11px;
+
+            font-weight:
+                500;
+
+        }
+
+
+        .field input {
+
+            width:
+                100%;
+
+            height:
+                46px;
+
+            padding:
+                0 15px;
+
+            border:
+                1px solid rgba(167, 178, 195, 0.13);
+
+            border-radius:
+                23px;
+
+            background:
+                rgba(7, 8, 10, 0.78);
+
+            color:
+                #ffffff;
+
+            font-family:
+                inherit;
+
+            font-size:
+                12px;
+
+            outline:
+                none;
+
+            transition:
+                0.25s ease;
+
+            box-shadow:
+                inset 0 1px 4px rgba(0, 0, 0, 0.4);
+
+        }
+
+
+        .field input::placeholder {
+
+            color:
+                #5e646e;
+
+        }
+
+
+        .field input:hover {
+
+            border-color:
+                rgba(167, 181, 202, 0.24);
+
+        }
+
+
+        .field input:focus {
+
+            border-color:
+                rgba(78, 137, 255, 0.70);
+
+            background:
+                rgba(8, 10, 14, 0.92);
+
+            box-shadow:
+                0 0 0 3px rgba(52, 102, 190, 0.09),
+                inset 0 1px 4px rgba(0, 0, 0, 0.35);
+
+        }
+
+
+        .password-help {
+
+            margin:
+                6px 4px 0;
+
+            color:
+                #696f79;
+
+            font-size:
+                10px;
+
+            line-height:
+                1.45;
+
+        }
+
+
+        /* =====================================================
+           ROLE
+        ===================================================== */
+
+        .role-title {
+
+            margin:
+                4px 0 10px 3px;
+
+            color:
+                #a8adb5;
+
+            font-size:
+                11px;
+
+            font-weight:
+                500;
+
+        }
+
+
+        .role-options {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap:
+                10px;
+
+            margin-bottom:
+                17px;
+
+        }
+
+
+        .role-option {
+
+            min-height:
+                50px;
+
+            padding:
+                0 13px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            gap:
+                7px;
+
+            border:
+                1px solid rgba(170, 180, 195, 0.13);
+
+            border-radius:
+                25px;
+
+            background:
+                rgba(8, 9, 11, 0.64);
+
+            color:
+                #aeb4bd;
+
+            text-align:
+                center;
+
+            cursor:
+                pointer;
+
+            font-size:
+                12px;
+
+            transition:
+                0.25s ease;
+
+        }
+
+
+        .role-option:hover {
+
+            color:
+                white;
+
+            border-color:
+                rgba(83, 138, 255, 0.45);
+
+            background:
+                rgba(38, 60, 100, 0.15);
+
+        }
+
+
+        .role-option:has(input:checked) {
+
+            color:
+                #ffffff;
+
+            border-color:
+                rgba(82, 141, 255, 0.68);
+
+            background:
+                rgba(45, 85, 160, 0.16);
+
+            box-shadow:
+                inset 0 0 20px rgba(52, 107, 205, 0.06);
+
+        }
+
+
+        .role-option input {
+
+            width:
+                13px;
+
+            height:
+                13px;
+
+            margin: 0;
+
+            accent-color:
+                #4f8dff;
+
+        }
+
+
+        /* =====================================================
+           ERRORS
+        ===================================================== */
+
+        .error {
+
+            margin-top:
+                6px;
+
+            padding-left:
+                4px;
+
+            color:
+                #ef9b9b;
+
+            font-size:
+                10.5px;
+
+            line-height:
+                1.4;
+
+        }
+
+
+        .error ul {
+
+            margin:
+                0;
+
+            padding-left:
+                15px;
+
+        }
+
+
+        .errors {
+
+            margin-bottom:
+                17px;
+
+            padding:
+                11px 13px;
+
+            border-radius:
+                12px;
+
+            color:
+                #e9a0a0;
+
+            background:
+                rgba(133, 45, 45, 0.13);
+
+            border:
+                1px solid rgba(211, 99, 99, 0.20);
+
+            font-size:
+                11px;
+
+            line-height:
+                1.5;
+
+        }
+
+
+        .errors ul {
+
+            margin:
+                0;
+
+            padding-left:
+                16px;
+
+        }
+
+
+        /* =====================================================
+           BUTTON
+        ===================================================== */
+
+        .create-button {
+
+            width:
+                100%;
+
+            height:
+                46px;
+
+            margin-top:
+                3px;
+
+            border:
+                1px solid rgba(255, 255, 255, 0.055);
+
+            border-radius:
+                23px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #2f3136,
+                    #25272b
+                );
+
+            color:
+                #ffffff;
+
+            font-family:
+                inherit;
+
+            font-size:
+                12.5px;
+
+            font-weight:
+                600;
+
+            letter-spacing:
+                0.1px;
+
+            cursor:
+                pointer;
+
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.05),
+                0 9px 22px rgba(0, 0, 0, 0.26);
+
+            transition:
+                0.25s ease;
+
+        }
+
+
+        .create-button:hover {
+
+            transform:
+                translateY(-1px);
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #3a3c42,
+                    #292b30
+                );
+
+        }
+
+
+        .create-button:active {
+
+            transform:
+                scale(0.99);
+
+        }
+
+
+        /* =====================================================
+           LOGIN LINK
+        ===================================================== */
+
+        .login {
+
+            margin-top:
+                22px;
+
+            text-align:
+                center;
+
+            color:
+                #777d86;
+
+            font-size:
+                10.5px;
+
+        }
+
+
+        .login a {
+
+            margin-left:
+                4px;
+
+            color:
+                #4f8dff;
+
+            text-decoration:
+                none;
+
+            font-weight:
+                500;
+
+        }
+
+
+        .login a:hover {
+
+            text-decoration:
+                underline;
+
+        }
+
+
+        .footer-note {
+
+            margin-top:
+                24px;
+
+            text-align:
+                center;
+
+            color:
+                #4d525a;
+
+            font-size:
+                9.5px;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media(max-width: 500px) {
+
+            body {
+
+                padding:
+                    25px 12px;
+
+                align-items:
+                    flex-start;
+
+            }
+
+
+            .card {
+
+                padding:
+                    32px 21px 27px;
+
+                border-radius:
+                    17px;
+
+            }
+
+
+            h1 {
+
+                font-size:
+                    25px;
+
+            }
+
+
+            .subtitle {
+
+                margin-bottom:
+                    24px;
+
+            }
+
+
+            .role-options {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="card">
+
+    <div class="card-content">
+
+
+        <div class="top-icon">
+            ✦
+        </div>
+
+
+        <h1>
+            Create account
+        </h1>
+
+
+        <p class="subtitle">
+            Join PentraOne Education and continue your learning journey.
+        </p>
+
+
+        {% if form.non_field_errors %}
+
+            <div class="errors">
+
+                {{ form.non_field_errors }}
+
+            </div>
+
+        {% endif %}
+
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+
+            <!-- FULL NAME -->
+
+            <div class="field">
+
+                <label for="{{ form.first_name.id_for_label }}">
+                    Full Name
+                </label>
+
+                {{ form.first_name }}
+
+                {% if form.first_name.errors %}
+
+                    <div class="error">
+                        {{ form.first_name.errors }}
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- USERNAME -->
+
+            <div class="field">
+
+                <label for="{{ form.username.id_for_label }}">
+                    Username
+                </label>
+
+                {{ form.username }}
+
+                {% if form.username.errors %}
+
+                    <div class="error">
+                        {{ form.username.errors }}
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="field">
+
+                <label for="{{ form.email.id_for_label }}">
+                    Email
+                </label>
+
+                {{ form.email }}
+
+                {% if form.email.errors %}
+
+                    <div class="error">
+                        {{ form.email.errors }}
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- PASSWORD -->
+
+            <div class="field">
+
+                <label for="{{ form.password1.id_for_label }}">
+                    Password
+                </label>
+
+                {{ form.password1 }}
+
+                <div class="password-help">
+                    Use a secure password that meets Django's password requirements.
+                </div>
+
+                {% if form.password1.errors %}
+
+                    <div class="error">
+                        {{ form.password1.errors }}
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- CONFIRM PASSWORD -->
+
+            <div class="field">
+
+                <label for="{{ form.password2.id_for_label }}">
+                    Confirm Password
+                </label>
+
+                {{ form.password2 }}
+
+                {% if form.password2.errors %}
+
+                    <div class="error">
+                        {{ form.password2.errors }}
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- ROLE -->
+
+            <div class="role-title">
+                Select your role
+            </div>
+
+
+            <div class="role-options">
+
+                {% for radio in form.role %}
+
+                    <label class="role-option">
+
+                        {{ radio.tag }}
+
+                        {% if radio.data.value == "student" %}
+
+                            👨‍🎓 Student
+
+                        {% elif radio.data.value == "teacher" %}
+
+                            👩‍🏫 Teacher
+
+                        {% else %}
+
+                            {{ radio.choice_label }}
+
+                        {% endif %}
+
+                    </label>
+
+                {% endfor %}
+
+            </div>
+
+
+            {% if form.role.errors %}
+
+                <div class="error">
+                    {{ form.role.errors }}
+                </div>
+
+            {% endif %}
+
+
+            <!-- CREATE ACCOUNT -->
+
+            <button
+                type="submit"
+                class="create-button"
+            >
+                Create Account
+            </button>
+
+
+        </form>
+
+
+        <div class="login">
+
+            Already have an account?
+
+            <a href="{% url 'education:login' %}">
+                Log in
+            </a>
+
+        </div>
+
+
+        <div class="footer-note">
+            PentraOne Education
+        </div>
+
+
+    </div>
+
+</div>
+
+
+</body>
+
+</html>

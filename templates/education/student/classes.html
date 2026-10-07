@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Select Class | PentraOne Education</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #050505;
+            --border: rgba(148, 163, 184, 0.17);
+            --text: #ffffff;
+            --muted: #9298a3;
+            --blue: #3b82f6;
+        }
+
+        body {
+            min-height: 100vh;
+
+            font-family:
+                Inter,
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            color: var(--text);
+
+            background:
+                radial-gradient(
+                    circle at 12% 86%,
+                    rgba(37, 99, 235, 0.25),
+                    transparent 32%
+                ),
+                radial-gradient(
+                    circle at 88% 16%,
+                    rgba(99, 102, 241, 0.14),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #050505,
+                    #080b12 48%,
+                    #071227
+                );
+        }
+
+
+        /* HEADER */
+
+        .header {
+            height: 74px;
+
+            padding: 0 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background:
+                rgba(5, 7, 11, 0.80);
+
+            border-bottom:
+                1px solid
+                rgba(148, 163, 184, 0.12);
+
+            backdrop-filter: blur(18px);
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 10;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+        }
+
+        .brand-mark {
+            width: 40px;
+            height: 40px;
+
+            border-radius: 13px;
+
+            display: grid;
+            place-items: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(37, 99, 235, 0.28),
+                    rgba(79, 70, 229, 0.20)
+                );
+
+            border:
+                1px solid
+                rgba(96, 165, 250, 0.24);
+
+            animation:
+                floatAnimation 4s
+                ease-in-out infinite;
+        }
+
+        .brand-mark svg {
+            width: 22px;
+            height: 22px;
+
+            stroke: #bfdbfe;
+        }
+
+        .brand-text small {
+            display: block;
+
+            color: #60a5fa;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.4px;
+        }
+
+        .brand-text strong {
+            font-size: 16px;
+        }
+
+        .dashboard-btn {
+            color: #cbd5e1;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: 700;
+
+            padding: 10px 14px;
+
+            border-radius: 12px;
+
+            border:
+                1px solid
+                rgba(148, 163, 184, 0.15);
+
+            background:
+                rgba(17, 18, 20, 0.82);
+
+            transition: 0.25s;
+        }
+
+        .dashboard-btn:hover {
+            color: white;
+
+            border-color:
+                rgba(59, 130, 246, 0.5);
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        /* PAGE */
+
+        .page {
+            max-width: 1120px;
+
+            margin: auto;
+
+            padding:
+                34px 20px
+                65px;
+        }
+
+
+        /* HERO */
+
+        .hero {
+            position: relative;
+
+            overflow: hidden;
+
+            padding: 34px 36px;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(39, 43, 50, 0.85),
+                    rgba(12, 12, 13, 0.95)
+                );
+
+            border:
+                1px solid
+                var(--border);
+
+            box-shadow:
+                0 25px 65px
+                rgba(0, 0, 0, 0.35);
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 220px;
+            height: 220px;
+
+            border-radius: 50%;
+
+            right: -80px;
+            top: -90px;
+
+            background:
+                rgba(59, 130, 246, 0.09);
+        }
+
+        .kicker {
+            color: #93c5fd;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.2px;
+
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            font-size:
+                clamp(
+                    30px,
+                    4vw,
+                    46px
+                );
+
+            font-weight: 500;
+
+            letter-spacing: -1.1px;
+
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            color: #a1a7b2;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            max-width: 720px;
+        }
+
+
+        /* CARDS */
+
+        .grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(210px, 1fr)
+                );
+
+            gap: 16px;
+
+            margin-top: 24px;
+        }
+
+        .card {
+            position: relative;
+
+            min-height: 165px;
+
+            padding: 22px;
+
+            border-radius: 20px;
+
+            text-decoration: none;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(31, 35, 43, 0.82),
+                    rgba(11, 12, 15, 0.95)
+                );
+
+            border:
+                1px solid
+                rgba(148, 163, 184, 0.15);
+
+            box-shadow:
+                0 16px 38px
+                rgba(0, 0, 0, 0.22);
+
+            transition: 0.27s;
+
+            animation:
+                cardIn 0.5s ease both;
+
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 105px;
+            height: 105px;
+
+            border-radius: 50%;
+
+            right: -52px;
+            top: -52px;
+
+            background:
+                rgba(59, 130, 246, 0.08);
+        }
+
+        .card:hover {
+            transform:
+                translateY(-6px);
+
+            border-color:
+                rgba(59, 130, 246, 0.46);
+
+            box-shadow:
+                0 22px 50px
+                rgba(0, 0, 0, 0.32);
+        }
+
+        .icon {
+            width: 46px;
+            height: 46px;
+
+            border-radius: 14px;
+
+            display: grid;
+            place-items: center;
+
+            background:
+                rgba(37, 99, 235, 0.10);
+
+            border:
+                1px solid
+                rgba(59, 130, 246, 0.17);
+
+            margin-bottom: 16px;
+
+            font-size: 21px;
+        }
+
+        .card h3 {
+            font-size: 17px;
+
+            margin-bottom: 7px;
+        }
+
+        .card p {
+            color: #8d94a0;
+
+            font-size: 12px;
+
+            line-height: 1.55;
+        }
+
+        .arrow {
+            position: absolute;
+
+            right: 18px;
+            bottom: 17px;
+
+            color: #9ca3af;
+        }
+
+        .empty {
+            padding: 32px;
+
+            border-radius: 18px;
+
+            text-align: center;
+
+            color: #8d94a0;
+
+            background:
+                rgba(17, 18, 20, 0.76);
+
+            border:
+                1px solid
+                rgba(148, 163, 184, 0.13);
+        }
+
+
+        /* ANIMATION */
+
+        @keyframes floatAnimation {
+
+            0%,
+            100% {
+                transform:
+                    translateY(0);
+            }
+
+            50% {
+                transform:
+                    translateY(-5px);
+            }
+        }
+
+        @keyframes cardIn {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 650px) {
+
+            .header {
+                height: 66px;
+
+                padding:
+                    0 15px;
+            }
+
+            .brand-text small {
+                display: none;
+            }
+
+            .page {
+                padding:
+                    22px 14px
+                    44px;
+            }
+
+            .hero {
+                padding:
+                    27px 22px;
+
+                border-radius: 20px;
+            }
+
+            .hero h1 {
+                font-size: 31px;
+            }
+
+            .grid {
+                grid-template-columns:
+                    1fr;
+            }
+        }
+
+    </style>
+
+
+<style id="pentraone-brand-font">
+.pentra-brand-main{font-family:'Berlin Sans FB Demi','Berlin Sans FB','Arial Black',sans-serif;font-weight:600;letter-spacing:.3px;text-transform:uppercase;}
+.pentra-brand-one{font-family:'Bell MT','Times New Roman',serif;font-style:italic;font-weight:400;text-transform:lowercase;margin-left:2px;}
+</style>
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <div class="brand">
+
+        <div class="brand-mark">
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="1.7"
+            >
+                <path
+                    d="M3 6.7 12 3l9 3.7-9 3.7L3 6.7Z">
+                </path>
+
+                <path
+                    d="M7 9v5.5c0 1.7 2.2 3.1 5 3.1s5-1.4 5-3.1V9">
+                </path>
+
+            </svg>
+
+        </div>
+
+
+        <div class="brand-text">
+
+            <small>
+                <span class="pentra-brand-main">PENTRA</span><span class="pentra-brand-one">one</span> EDUCATION
+            </small>
+
+            <strong>
+                Learning Space
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <a
+        href="{% url 'education:student_dashboard' %}"
+        class="dashboard-btn"
+    >
+        Student Dashboard
+    </a>
+
+</header>
+
+
+
+<main class="page">
+
+
+    <section class="hero">
+
+        <div class="kicker">
+            START LEARNING
+        </div>
+
+        <h1>
+            Choose your class
+        </h1>
+
+        <p>
+            Select your class to explore
+            subjects, chapters and learning
+            resources prepared for you.
+        </p>
+
+    </section>
+
+
+
+    <section class="grid">
+
+        {% for class in classes %}
+
+            <a
+                href="{% url 'education:student_subjects' class.id %}"
+                class="card"
+            >
+
+                <div class="icon">
+                    🎓
+                </div>
+
+                <h3>
+                    {{ class.name }}
+                </h3>
+
+                <p>
+                    Open subjects and continue
+                    your learning journey.
+                </p>
+
+                <span class="arrow">
+                    →
+                </span>
+
+            </a>
+
+        {% empty %}
+
+            <div class="empty">
+                No classes are available yet.
+            </div>
+
+        {% endfor %}
+
+    </section>
+
+
+</main>
+
+
+</body>
+</html>

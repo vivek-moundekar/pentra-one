@@ -1,0 +1,2321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {{ test.title }} | PentraOne Education
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f5f7fb;
+
+            color: #1f2937;
+        }
+
+
+        .topbar {
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+            background: #2563eb;
+
+            color: white;
+
+            padding: 15px 25px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+        }
+
+
+        .topbar h2 {
+            margin: 0;
+
+            font-size: 19px;
+        }
+
+
+        .timer {
+            background: white;
+
+            color: #1d4ed8;
+
+            padding: 10px 18px;
+
+            border-radius: 8px;
+
+            font-size: 18px;
+
+            font-weight: 800;
+
+            min-width: 140px;
+
+            text-align: center;
+        }
+
+
+        .timer.warning {
+            background: #fff7ed;
+
+            color: #c2410c;
+        }
+
+
+        .timer.danger {
+            background: #fff1f2;
+
+            color: #be123c;
+        }
+
+
+        .container {
+            max-width: 950px;
+
+            margin: 30px auto;
+
+            padding: 15px;
+        }
+
+
+        .warning {
+            background: #fff7ed;
+
+            border-left: 5px solid #f97316;
+
+            padding: 16px;
+
+            border-radius: 10px;
+
+            margin-bottom: 20px;
+
+            line-height: 1.6;
+        }
+
+
+        .anti-cheat {
+            background: #eff6ff;
+
+            border-left: 5px solid #2563eb;
+
+            padding: 16px;
+
+            border-radius: 10px;
+
+            margin-bottom: 25px;
+
+            line-height: 1.6;
+        }
+
+
+        .fullscreen-btn {
+            border: none;
+
+            background: #2563eb;
+
+            color: white;
+
+            padding: 10px 16px;
+
+            border-radius: 8px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            margin-top: 10px;
+        }
+
+
+        .test-card {
+            background: white;
+
+            border-radius: 16px;
+
+            padding: 28px;
+
+            box-shadow:
+                0 8px 25px
+                rgba(0,0,0,0.07);
+        }
+
+
+        .test-card h1 {
+            margin-top: 0;
+        }
+
+
+        .test-info {
+            color: #6b7280;
+
+            line-height: 1.8;
+
+            margin-bottom: 25px;
+
+            padding-bottom: 20px;
+
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+
+        .question {
+            border: 1px solid #e5e7eb;
+
+            border-radius: 13px;
+
+            padding: 22px;
+
+            margin-bottom: 20px;
+
+            background: white;
+        }
+
+
+        .question-number {
+            color: #2563eb;
+
+            font-weight: 800;
+
+            margin-bottom: 10px;
+        }
+
+
+        .question-text {
+            font-size: 17px;
+
+            font-weight: 700;
+
+            line-height: 1.6;
+
+            margin-bottom: 18px;
+        }
+
+
+        .option {
+            margin: 12px 0;
+
+            padding: 12px;
+
+            border-radius: 8px;
+
+            background: #f9fafb;
+
+            border: 1px solid #e5e7eb;
+        }
+
+
+        .option:hover {
+            background: #eff6ff;
+        }
+
+
+        .option label {
+            display: block;
+
+            cursor: pointer;
+
+            line-height: 1.5;
+        }
+
+
+        .option input {
+            margin-right: 10px;
+        }
+
+
+        textarea {
+            width: 100%;
+
+            min-height: 150px;
+
+            resize: vertical;
+
+            border: 1px solid #d1d5db;
+
+            border-radius: 9px;
+
+            padding: 12px;
+
+            font-family: Arial, sans-serif;
+
+            font-size: 15px;
+        }
+
+
+        textarea:focus {
+            outline: none;
+
+            border-color: #2563eb;
+        }
+
+
+        .marks {
+            display: inline-block;
+
+            margin-top: 10px;
+
+            padding: 5px 9px;
+
+            border-radius: 6px;
+
+            background: #eff6ff;
+
+            color: #1d4ed8;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+
+        .submit-section {
+            margin-top: 30px;
+
+            padding-top: 25px;
+
+            border-top: 2px solid #e5e7eb;
+
+            text-align: center;
+        }
+
+
+        .submit-btn {
+            border: none;
+
+            background: #16a34a;
+
+            color: white;
+
+            padding: 14px 30px;
+
+            border-radius: 9px;
+
+            font-size: 17px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+        }
+
+
+        .submit-btn:hover {
+            background: #15803d;
+        }
+
+
+        .submit-note {
+            color: #6b7280;
+
+            margin-top: 12px;
+
+            font-size: 13px;
+        }
+
+
+        .terminated {
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 1000;
+
+            background:
+                rgba(17,24,39,0.97);
+
+            color: white;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 25px;
+        }
+
+
+        .terminated-box {
+            max-width: 500px;
+        }
+
+
+        .terminated h1 {
+            font-size: 34px;
+        }
+
+
+        .terminated p {
+            color: #d1d5db;
+
+            line-height: 1.7;
+        }
+
+
+
+        .camera-panel {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            z-index: 500;
+            width: 230px;
+            background: #111827;
+            border-radius: 12px;
+            padding: 8px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+        }
+        .camera-panel video {
+            width: 100%;
+            display: block;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            border-radius: 8px;
+            background: #000;
+        }
+        .camera-status {
+            color: white;
+            font-size: 12px;
+            padding: 7px 3px 2px;
+            text-align: center;
+        }
+        .camera-status.ok { color: #86efac; }
+        .camera-status.error { color: #fca5a5; }
+        .secure-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 22px;
+            overflow: hidden;
+            color: #f3f4f6;
+            background:
+                radial-gradient(circle at 30% 18%, rgba(100, 116, 139, 0.10), transparent 26%),
+                radial-gradient(circle at 75% 72%, rgba(51, 65, 85, 0.12), transparent 30%),
+                #101217;
+            backdrop-filter: blur(12px);
+        }
+
+        .secure-overlay::before,
+        .secure-overlay::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #475569, #111827 72%);
+            box-shadow: inset -14px -14px 26px rgba(0,0,0,.32),
+                        inset 12px 12px 24px rgba(148,163,184,.10),
+                        0 18px 45px rgba(0,0,0,.28);
+            opacity: .82;
+            pointer-events: none;
+        }
+
+        .secure-overlay::before {
+            width: 125px;
+            height: 125px;
+            top: 7%;
+            left: calc(50% - 285px);
+        }
+
+        .secure-overlay::after {
+            width: 180px;
+            height: 180px;
+            right: calc(50% - 365px);
+            top: 22%;
+        }
+
+        .secure-box {
+            position: relative;
+            z-index: 1;
+            width: min(660px, 100%);
+            max-height: calc(100vh - 44px);
+            overflow-y: auto;
+            padding: 34px 40px 32px;
+            border-radius: 28px;
+            background: linear-gradient(145deg, rgba(37,43,55,.78), rgba(24,29,39,.66));
+            border: 1px solid rgba(203,213,225,.34);
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,.05),
+                0 28px 80px rgba(0,0,0,.38),
+                0 0 45px rgba(148,163,184,.06);
+            backdrop-filter: blur(22px);
+            -webkit-backdrop-filter: blur(22px);
+        }
+
+        .secure-box::before {
+            content: "";
+            position: absolute;
+            width: 105px;
+            height: 105px;
+            left: -70px;
+            bottom: 72px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #475569, #111827 72%);
+            box-shadow: inset -12px -12px 22px rgba(0,0,0,.28),
+                        inset 10px 10px 18px rgba(148,163,184,.08);
+            opacity: .78;
+            z-index: -1;
+        }
+
+        .secure-heading {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .secure-heading-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 12px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            color: #d1d5db;
+            background: rgba(255,255,255,.05);
+            border: 1px solid rgba(203,213,225,.20);
+            font-size: 21px;
+        }
+
+        .secure-box h1 {
+            margin: 0;
+            font-size: 27px;
+            font-weight: 500;
+            letter-spacing: .3px;
+            color: #f3f4f6;
+        }
+
+        .secure-subtitle {
+            max-width: 520px;
+            margin: 10px auto 0;
+            color: #b6bdc9;
+            line-height: 1.7;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .instruction-title {
+            margin: 22px 0 9px;
+            color: #e5e7eb;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .35px;
+            text-transform: uppercase;
+        }
+
+        .rules-list {
+            margin: 0;
+            padding-left: 20px;
+            color: #c6ccd6;
+            font-size: 12px;
+            line-height: 1.75;
+        }
+
+        .rules-list li {
+            margin: 5px 0;
+            padding-left: 4px;
+        }
+
+        .rules-list li::marker {
+            color: #9ca3af;
+        }
+
+        .critical-rule {
+            margin-top: 16px;
+            padding: 12px 0 0;
+            border-top: 1px solid rgba(203,213,225,.12);
+            color: #d1d5db;
+            font-size: 11px;
+            line-height: 1.7;
+        }
+
+        .critical-rule strong {
+            color: #f3f4f6;
+        }
+
+        .agreement {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+            margin-top: 17px;
+            color: #cbd5e1;
+            font-size: 11px;
+            line-height: 1.55;
+            cursor: pointer;
+        }
+
+        .agreement input {
+            margin-top: 2px;
+            accent-color: #6b7280;
+        }
+
+        .secure-start-btn {
+            width: min(340px, 100%);
+            display: block;
+            margin: 20px auto 0;
+            border: 1px solid rgba(255,255,255,.11);
+            background: linear-gradient(135deg, #727272, #5f6368);
+            color: #ffffff;
+            padding: 13px 22px;
+            border-radius: 999px;
+            font-family: "Segoe UI", Arial, sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            letter-spacing: .15px;
+            cursor: pointer;
+            box-shadow: 0 10px 28px rgba(0,0,0,.20);
+            transition: transform .2s ease, background .2s ease, box-shadow .2s ease, opacity .2s ease;
+        }
+
+        .secure-start-btn:hover:not(:disabled) {
+            transform: translateY(-1px);
+            background: linear-gradient(135deg, #858585, #6d7278);
+            box-shadow: 0 12px 30px rgba(0,0,0,.28);
+        }
+
+        .secure-start-btn:disabled {
+            cursor: not-allowed;
+            opacity: .42;
+        }
+
+        #cameraPermissionMessage {
+            min-height: 18px;
+            margin: 10px 0 0;
+            color: #b6bdc9;
+            text-align: center;
+            font-size: 11px;
+        }
+
+        @media (max-width: 650px) {
+            .secure-overlay { padding: 12px; }
+            .secure-box {
+                padding: 26px 22px 24px;
+                max-height: calc(100vh - 24px);
+                border-radius: 22px;
+            }
+            .secure-box h1 { font-size: 23px; }
+            .secure-overlay::before { left: -28px; top: 5%; }
+            .secure-overlay::after { right: -75px; top: 22%; }
+        }
+        .violation-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 3000;
+            background: rgba(17,24,39,0.98);
+            color: white;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 25px;
+        }
+        .violation-box { max-width: 550px; }
+        .violation-box h1 { font-size: 34px; }
+        .violation-box p { color: #d1d5db; line-height: 1.7; }
+
+
+        .object-warning {
+            position: fixed;
+            left: 18px;
+            bottom: 18px;
+            z-index: 600;
+            display: none;
+            background: #fff7ed;
+            color: #9a3412;
+            border: 2px solid #f97316;
+            border-radius: 10px;
+            padding: 12px 15px;
+            font-weight: 800;
+            max-width: 330px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.18);
+        }
+
+        @media (max-width: 700px) {
+
+            .topbar {
+                flex-direction: column;
+
+                align-items: stretch;
+            }
+
+
+            .timer {
+                width: 100%;
+            }
+
+
+            .test-card {
+                padding: 18px;
+            }
+
+        }
+
+
+        /* =========================================================
+           STEP 2 - TEACHER LIVE CAMERA STREAM
+        ========================================================= */
+        .camera-live-status {
+            color: #93c5fd;
+            font-size: 11px;
+            text-align: center;
+            padding: 2px 3px 5px;
+        }
+
+    </style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd@2.2.3/dist/coco-ssd.min.js"></script>
+
+</head>
+
+
+
+
+<body>
+
+<div id="secureOverlay" class="secure-overlay">
+
+    <div class="secure-box">
+
+        <div class="secure-heading">
+            <div class="secure-heading-icon">🔐</div>
+            <h1>Test Instructions</h1>
+            <p class="secure-subtitle">
+                Read these instructions carefully before starting the test.
+                Camera monitoring and fullscreen secure mode will begin after you continue.
+            </p>
+        </div>
+
+        <div class="instruction-title">Before You Start</div>
+
+        <ul class="rules-list">
+            <li>Keep your face clearly visible in the camera throughout the test.</li>
+            <li>Allow camera permission when your browser asks for access.</li>
+            <li>The test will run in fullscreen mode. Do not exit fullscreen.</li>
+            <li>Complete and submit the test before the timer reaches zero.</li>
+        </ul>
+
+        <div class="instruction-title">Anti-Cheating Rules</div>
+
+        <ul class="rules-list">
+            <li>Do not switch browser tabs or move to another application or window.</li>
+            <li>Copy, paste and cut actions are blocked and monitored.</li>
+            <li>Phones, laptops, books and multiple persons may trigger AI proctoring warnings.</li>
+            <li>Camera activity and security events may be visible to the teacher during the exam.</li>
+            <li>Do not stop or cover the camera while the test is active.</li>
+        </ul>
+
+        <div class="critical-rule">
+            <strong>Important:</strong> Tab switching, window focus loss,
+            leaving fullscreen, or stopping the camera can terminate the test.
+            Repeated AI proctoring warnings can also terminate and automatically submit the attempt.
+        </div>
+
+        <label class="agreement" for="rulesAccepted">
+            <input type="checkbox" id="rulesAccepted">
+            <span>
+                I have read and understood the instructions and anti-cheating rules.
+            </span>
+        </label>
+
+        <button
+            type="button"
+            id="secureStartButton"
+            class="secure-start-btn"
+            disabled
+        >
+            Enable Camera &amp; Start Test
+        </button>
+
+        <p id="cameraPermissionMessage"></p>
+
+    </div>
+
+</div>
+
+
+<div class="topbar">
+
+    <h2>
+        📝 {{ test.title }}
+    </h2>
+
+
+    <div
+        id="timer"
+        class="timer"
+    >
+        Loading...
+    </div>
+
+</div>
+
+
+
+<div class="container">
+
+
+    <div class="warning">
+
+        <strong>
+            ⚠️ Test Started
+        </strong>
+
+        <br>
+
+        Your test attempt has started.
+
+        Please complete and submit the test before
+        the timer reaches zero.
+
+    </div>
+
+
+
+    <div class="anti-cheat">
+
+        <strong>
+            🛡️ Test Monitoring Enabled
+        </strong>
+
+        <br>
+
+        Tab switching, window focus loss and fullscreen exits are monitored.
+        Copying, pasting and cutting are blocked during the test.
+
+        <br><br>
+
+
+        <button
+            type="button"
+            id="fullscreenButton"
+            class="fullscreen-btn"
+        >
+
+            ⛶ Enter Fullscreen
+
+        </button>
+
+    </div>
+
+
+
+    <div class="test-card">
+
+
+        <h1>
+            {{ test.title }}
+        </h1>
+
+
+
+        <div class="test-info">
+
+            <strong>
+                Class:
+            </strong>
+
+            {{ test.chapter.subject.class_level.name }}
+
+            <br>
+
+
+            <strong>
+                Subject:
+            </strong>
+
+            {{ test.chapter.subject.name }}
+
+            <br>
+
+
+            <strong>
+                Chapter:
+            </strong>
+
+            {{ test.chapter.name }}
+
+            <br>
+
+
+            <strong>
+                Questions:
+            </strong>
+
+            {{ questions|length }}
+
+            <br>
+
+
+            <strong>
+                Total Marks:
+            </strong>
+
+            {{ test.total_marks }}
+
+        </div>
+
+
+
+        <!-- ==================================================
+             TEST FORM
+        =================================================== -->
+
+        <form
+            id="testForm"
+            method="post"
+            action="{% url 'education:submit_test' test.id %}"
+        >
+
+            {% csrf_token %}
+
+
+
+            {% for question in questions %}
+
+
+                <div class="question">
+
+
+                    <div class="question-number">
+
+                        Question {{ forloop.counter }}
+
+                    </div>
+
+
+
+                    <div class="question-text">
+
+                        {{ question.question_text }}
+
+                    </div>
+
+
+
+                    <!-- MCQ -->
+
+                    {% if question.question_type == "mcq" %}
+
+
+                        {% for key, value in question.options.items %}
+
+
+                            <div class="option">
+
+                                <label>
+
+                                    <input
+                                        type="radio"
+                                        name="question_{{ question.id }}"
+                                        value="{{ key }}"
+                                    >
+
+                                    <strong>
+                                        {{ key }}.
+                                    </strong>
+
+                                    {{ value }}
+
+                                </label>
+
+                            </div>
+
+
+                        {% endfor %}
+
+
+
+                    <!-- DESCRIPTIVE -->
+
+                    {% else %}
+
+
+                        <textarea
+                            name="question_{{ question.id }}"
+                            placeholder="Write your answer here..."
+                        ></textarea>
+
+
+                    {% endif %}
+
+
+
+                    <span class="marks">
+
+                        {{ question.marks }}
+
+                        mark{% if question.marks != 1 %}s{% endif %}
+
+                    </span>
+
+
+                </div>
+
+
+            {% endfor %}
+
+
+
+            <!-- ==================================================
+                 SUBMIT
+            =================================================== -->
+
+            <div class="submit-section">
+
+
+                <button
+                    type="submit"
+                    id="submitButton"
+                    class="submit-btn"
+                >
+
+                    ✓ Submit Test
+
+                </button>
+
+
+                <div class="submit-note">
+
+                    Make sure you have answered all questions
+                    before submitting.
+
+                </div>
+
+
+            </div>
+
+
+        </form>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+<div id="cameraPanel" class="camera-panel" style="display:none;">
+    <video id="cameraVideo" autoplay muted playsinline></video>
+    <div id="cameraStatus" class="camera-status">
+        Camera starting...
+    </div>
+    <div class="camera-live-status">
+        Teacher live monitoring is enabled
+    </div>
+</div>
+
+
+<div id="objectWarning" class="object-warning">
+    ⚠️ Proctoring Warning:
+    <span id="objectWarningText"></span>
+</div>
+
+<div id="violationOverlay" class="violation-overlay">
+    <div class="violation-box">
+        <h1>🚫 Test Terminated</h1>
+        <p id="violationMessage">
+            A security violation was detected.
+        </p>
+        <p>Your attempt has been closed. You will be redirected to My Tests automatically.</p>
+    </div>
+</div>
+
+<!-- =========================================================
+     TIME ENDED
+========================================================= -->
+
+<div
+    id="terminatedScreen"
+    class="terminated"
+>
+
+
+    <div class="terminated-box">
+
+
+        <h1>
+
+            ⏰ Time's Up!
+
+        </h1>
+
+
+        <p>
+
+            The test time has ended.
+
+        </p>
+
+
+        <p>
+
+            Your test is being submitted automatically.
+
+        </p>
+
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+const expiresAt = new Date(
+    "{{ attempt.expires_at|date:'c' }}"
+).getTime();
+
+const timerElement = document.getElementById("timer");
+const terminatedScreen = document.getElementById("terminatedScreen");
+const testForm = document.getElementById("testForm");
+const submitButton = document.getElementById("submitButton");
+
+const secureOverlay = document.getElementById("secureOverlay");
+const secureStartButton = document.getElementById("secureStartButton");
+const cameraVideo = document.getElementById("cameraVideo");
+const cameraPanel = document.getElementById("cameraPanel");
+const cameraStatus = document.getElementById("cameraStatus");
+const cameraPermissionMessage =
+    document.getElementById("cameraPermissionMessage");
+const rulesAccepted = document.getElementById("rulesAccepted");
+
+if (rulesAccepted && secureStartButton) {
+    rulesAccepted.addEventListener("change", function() {
+        secureStartButton.disabled = !rulesAccepted.checked;
+    });
+}
+const violationOverlay =
+    document.getElementById("violationOverlay");
+const violationMessage =
+    document.getElementById("violationMessage");
+
+let timerInterval = null;
+let submitted = false;
+let securityStarted = false;
+let cameraStream = null;
+let terminating = false;
+
+/* =========================================================
+   STEP 2 - WEBRTC LIVE CAMERA PUBLISHING
+========================================================= */
+let studentPeerConnection = null;
+let webrtcPublishing = false;
+
+const WEBRTC_CONFIGURATION = {
+    iceServers: [
+        { urls: "stun:stun.l.google.com:19302" },
+        { urls: "stun:stun1.l.google.com:19302" }
+    ]
+};
+
+function waitForIceGatheringComplete(peerConnection) {
+    return new Promise(function(resolve) {
+        if (peerConnection.iceGatheringState === "complete") {
+            resolve();
+            return;
+        }
+
+        function checkState() {
+            if (peerConnection.iceGatheringState === "complete") {
+                peerConnection.removeEventListener(
+                    "icegatheringstatechange",
+                    checkState
+                );
+                resolve();
+            }
+        }
+
+        peerConnection.addEventListener(
+            "icegatheringstatechange",
+            checkState
+        );
+
+        /* Safety timeout so a blocked STUN server cannot hang the test. */
+        setTimeout(function() {
+            peerConnection.removeEventListener(
+                "icegatheringstatechange",
+                checkState
+            );
+            resolve();
+        }, 8000);
+    });
+}
+
+async function startStudentWebRTC() {
+    if (
+        webrtcPublishing ||
+        !cameraStream ||
+        !securityStarted ||
+        terminating ||
+        submitted
+    ) {
+        return;
+    }
+
+    try {
+        const offerResponse = await fetch(
+            "{% url 'education:student_webrtc_offer' attempt.id %}",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": getCSRFToken()
+                },
+                body: JSON.stringify({
+                    action: "offer"
+                })
+            }
+        );
+
+        if (!offerResponse.ok) {
+            throw new Error(
+                "Unable to initialize live camera signaling."
+            );
+        }
+
+        /* The first POST only clears/initializes signaling state. */
+        const signalingInfo = await offerResponse.json();
+
+        studentPeerConnection =
+            new RTCPeerConnection(WEBRTC_CONFIGURATION);
+
+        cameraStream.getTracks().forEach(function(track) {
+            studentPeerConnection.addTrack(
+                track,
+                cameraStream
+            );
+        });
+
+        studentPeerConnection.onconnectionstatechange =
+            function() {
+                const state =
+                    studentPeerConnection.connectionState;
+
+                if (state === "connected") {
+                    webrtcPublishing = true;
+                    cameraStatus.textContent =
+                        "🟢 Camera + AI + Teacher Monitoring";
+                } else if (
+                    state === "failed" ||
+                    state === "disconnected" ||
+                    state === "closed"
+                ) {
+                    webrtcPublishing = false;
+
+                    if (
+                        securityStarted &&
+                        !terminating &&
+                        !submitted
+                    ) {
+                        cameraStatus.textContent =
+                            "🟡 Camera Active • Teacher Stream Reconnecting";
+                    }
+                }
+            };
+
+        const offer =
+            await studentPeerConnection.createOffer();
+
+        await studentPeerConnection.setLocalDescription(
+            offer
+        );
+
+        await waitForIceGatheringComplete(
+            studentPeerConnection
+        );
+
+        const finalOffer =
+            studentPeerConnection.localDescription;
+
+        const sendOfferResponse = await fetch(
+            "{% url 'education:student_webrtc_offer' attempt.id %}",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": getCSRFToken()
+                },
+                body: JSON.stringify({
+                    action: "offer",
+                    sdp: finalOffer.sdp,
+                    type: finalOffer.type
+                })
+            }
+        );
+
+        if (!sendOfferResponse.ok) {
+            throw new Error("Teacher signaling failed.");
+        }
+
+        /*
+         * Poll for the teacher's answer.
+         */
+        let answerReceived = false;
+
+        for (let i = 0; i < 30; i++) {
+            await new Promise(function(resolve) {
+                setTimeout(resolve, 1000);
+            });
+
+            if (
+                terminating ||
+                submitted ||
+                !studentPeerConnection
+            ) {
+                return;
+            }
+
+            const answerResponse = await fetch(
+                "{% url 'education:student_webrtc_answer' attempt.id %}",
+                {
+                    method: "GET",
+                    cache: "no-store"
+                }
+            );
+
+            if (
+                answerResponse.status === 200
+            ) {
+                const answer =
+                    await answerResponse.json();
+
+                if (
+                    answer.success &&
+                    answer.sdp &&
+                    answer.type
+                ) {
+                    await studentPeerConnection.setRemoteDescription(
+                        new RTCSessionDescription({
+                            type: answer.type,
+                            sdp: answer.sdp
+                        })
+                    );
+
+                    answerReceived = true;
+                    break;
+                }
+            }
+        }
+
+        if (!answerReceived) {
+            throw new Error(
+                "Teacher did not answer the camera stream."
+            );
+        }
+
+    } catch (error) {
+        console.warn(
+            "WebRTC student stream error:",
+            error
+        );
+
+        webrtcPublishing = false;
+
+        if (
+            securityStarted &&
+            !terminating &&
+            !submitted
+        ) {
+            cameraStatus.textContent =
+                "🟡 Camera + AI Active • Teacher Stream Waiting";
+        }
+    }
+}
+
+function closeStudentWebRTC() {
+    if (studentPeerConnection) {
+        try {
+            studentPeerConnection.close();
+        } catch (error) {
+            console.warn(error);
+        }
+        studentPeerConnection = null;
+    }
+
+    webrtcPublishing = false;
+}
+
+
+/* =========================================================
+   CSRF
+========================================================= */
+
+function getCSRFToken() {
+
+    /*
+     * Use Django's hidden csrfmiddlewaretoken from the
+     * test form instead of relying on the csrftoken cookie.
+     * This works even when CSRF_COOKIE_HTTPONLY is enabled.
+     */
+
+    const tokenInput =
+        document.querySelector(
+            '#testForm input[name="csrfmiddlewaretoken"]'
+        );
+
+    if (tokenInput) {
+        return tokenInput.value;
+    }
+
+    return "";
+}
+
+
+/* =========================================================
+   SECURITY EVENT LOGGING
+========================================================= */
+
+function logEvent(eventName) {
+
+    const formData = new FormData();
+
+    formData.append("event", eventName);
+
+    fetch(
+        "{% url 'education:test_anti_cheat_event' test.id %}",
+        {
+            method: "POST",
+            headers: {
+                "X-CSRFToken": getCSRFToken()
+            },
+            body: formData,
+            keepalive: true
+        }
+    ).catch(function () {});
+}
+
+
+/* =========================================================
+   IMMEDIATE TERMINATION
+========================================================= */
+
+async function terminateTest(reason) {
+
+    if (terminating || submitted) {
+        return;
+    }
+
+    terminating = true;
+    stopMonitoringHeartbeat();
+
+    /*
+     * Capture the student's current answers BEFORE disabling
+     * the form. Disabled fields are not included in FormData.
+     */
+    const formData =
+        new FormData(testForm);
+
+    submitted = true;
+
+    /*
+     * Record the violation/proctoring event.
+     */
+    logEvent(reason);
+
+    violationMessage.textContent =
+        "Reason: " +
+        reason
+            .replaceAll("_", " ")
+            .replace(/\b\w/g, function(letter) {
+                return letter.toUpperCase();
+            });
+
+    violationOverlay.style.display =
+        "flex";
+
+    if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent =
+            "Test Terminated";
+    }
+
+    /*
+     * Lock the test immediately.
+     */
+    document.querySelectorAll(
+        "#testForm input, #testForm textarea, #testForm button"
+    ).forEach(function(element) {
+        element.disabled = true;
+    });
+
+    closeStudentWebRTC();
+
+    if (cameraStream) {
+        cameraStream
+            .getTracks()
+            .forEach(function(track) {
+                track.stop();
+            });
+    }
+
+    /*
+     * Leave fullscreen cleanly before redirecting.
+     */
+    try {
+        if (document.fullscreenElement) {
+            await document.exitFullscreen();
+        }
+    } catch (error) {
+        console.warn(
+            "Fullscreen exit failed:",
+            error
+        );
+    }
+
+    /*
+     * Submit the attempt in the background so Django can save
+     * the answers/result, but DO NOT navigate to the submit
+     * response/error page.
+     */
+    try {
+
+        await fetch(
+            testForm.action,
+            {
+                method: "POST",
+
+                headers: {
+                    "X-CSRFToken":
+                        getCSRFToken(),
+
+                    "X-Requested-With":
+                        "XMLHttpRequest"
+                },
+
+                body: formData,
+
+                credentials:
+                    "same-origin"
+            }
+        );
+
+    } catch (error) {
+
+        console.warn(
+            "Automatic terminated-test submission failed:",
+            error
+        );
+
+    } finally {
+
+        /*
+         * Redirect the student away from the terminated exam.
+         */
+        setTimeout(function() {
+
+            window.location.href =
+                "{% url 'education:student_tests' %}";
+
+        }, 1200);
+    }
+}
+
+
+/* =========================================================
+   CAMERA
+========================================================= */
+
+async function startCamera() {
+
+    try {
+
+        if (
+            !navigator.mediaDevices ||
+            !navigator.mediaDevices.getUserMedia
+        ) {
+            throw new Error("Camera API is not supported.");
+        }
+
+        cameraPermissionMessage.textContent =
+            "Requesting camera permission...";
+
+        cameraStream =
+            await navigator.mediaDevices.getUserMedia({
+                video: {
+                    facingMode: "user",
+                    width: { ideal: 1280 },
+                    height: { ideal: 720 }
+                },
+                audio: false
+            });
+
+        cameraVideo.srcObject = cameraStream;
+
+        await cameraVideo.play();
+
+        cameraPanel.style.display = "block";
+
+        cameraStatus.textContent = "🟢 Camera Active";
+        cameraStatus.classList.add("ok");
+
+        cameraPermissionMessage.textContent =
+            "Camera is active.";
+
+        cameraStream.getVideoTracks().forEach(function(track) {
+
+            track.addEventListener("ended", function() {
+
+                if (
+                    securityStarted &&
+                    !terminating &&
+                    !submitted
+                ) {
+                    terminateTest("camera_stopped");
+                }
+
+            });
+
+        });
+
+        return true;
+
+    } catch (error) {
+
+        console.error("Camera error:", error);
+
+        cameraStatus.textContent =
+            "🔴 Camera Not Available";
+
+        cameraStatus.classList.add("error");
+
+        cameraPermissionMessage.textContent =
+            "Camera permission is required to take this test.";
+
+        return false;
+    }
+}
+
+
+/* =========================================================
+   FULLSCREEN
+========================================================= */
+
+async function enterFullscreen() {
+
+    try {
+
+        if (!document.fullscreenElement) {
+
+            await document.documentElement.requestFullscreen();
+
+        }
+
+        return true;
+
+    } catch (error) {
+
+        console.warn("Fullscreen request failed:", error);
+
+        return false;
+    }
+}
+
+
+/* =========================================================
+   STAGE 3 - REAL-TIME TEACHER MONITORING HEARTBEAT
+========================================================= */
+
+let monitoringHeartbeatTimer = null;
+
+async function sendMonitoringHeartbeat() {
+    if (submitted || terminating || !securityStarted) {
+        return;
+    }
+
+    try {
+        await fetch(
+            "{% url 'education:student_monitor_heartbeat' attempt.id %}",
+            {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": getCSRFToken(),
+                    "X-Requested-With": "XMLHttpRequest"
+                },
+                cache: "no-store"
+            }
+        );
+    } catch (error) {
+        console.warn("Monitoring heartbeat failed:", error);
+    }
+}
+
+function startMonitoringHeartbeat() {
+    if (monitoringHeartbeatTimer) return;
+    sendMonitoringHeartbeat();
+    monitoringHeartbeatTimer = setInterval(sendMonitoringHeartbeat, 2000);
+}
+
+function stopMonitoringHeartbeat() {
+    if (!monitoringHeartbeatTimer) return;
+    clearInterval(monitoringHeartbeatTimer);
+    monitoringHeartbeatTimer = null;
+}
+
+/* =========================================================
+   START SECURE MODE
+========================================================= */
+
+secureStartButton.addEventListener(
+    "click",
+    async function() {
+
+        secureStartButton.disabled = true;
+        secureStartButton.textContent =
+            "Starting Secure Mode...";
+
+        const cameraReady = await startCamera();
+
+        if (!cameraReady) {
+
+            secureStartButton.disabled = false;
+
+            secureStartButton.textContent =
+                "🎥 Try Camera Again";
+
+            return;
+        }
+
+        await enterFullscreen();
+
+        securityStarted = true;
+
+        startMonitoringHeartbeat();
+
+        secureOverlay.style.display = "none";
+
+        logEvent("secure_test_started");
+
+        /*
+         * STEP 2:
+         * Publish the same camera stream to the teacher.
+         * This does not replace the student's local camera.
+         */
+        startStudentWebRTC();
+
+        /*
+         * Load AI object detection only after the student has
+         * explicitly started secure mode.
+         */
+        loadObjectDetectionModel();
+    }
+);
+
+
+/* =========================================================
+   AI CAMERA OBJECT DETECTION
+========================================================= */
+
+let objectDetectionModel = null;
+let objectDetectionRunning = false;
+let objectDetectionBusy = false;
+let objectDetectionTimer = null;
+
+let objectWarningCount = 0;
+
+const MAX_OBJECT_WARNINGS = 3;
+
+/*
+ * COCO-SSD detects these classes.
+ * We keep the list focused on objects relevant to
+ * exam proctoring.
+ */
+const suspiciousClasses = new Set([
+    "cell phone",
+    "laptop",
+    "book"
+]);
+
+const objectWarningBox =
+    document.getElementById("objectWarning");
+
+const objectWarningText =
+    document.getElementById("objectWarningText");
+
+
+function showObjectWarning(reason) {
+
+    if (
+        terminating ||
+        submitted
+    ) {
+        return;
+    }
+
+    objectWarningCount += 1;
+
+    logEvent(
+        "object_warning_" +
+        objectWarningCount +
+        "_" +
+        reason.replaceAll(" ", "_")
+    );
+
+    if (
+        objectWarningCount >=
+        MAX_OBJECT_WARNINGS
+    ) {
+
+        objectWarningBox.style.display =
+            "none";
+
+        terminateTest(
+            "object_detection_3_warnings"
+        );
+
+        return;
+    }
+
+    objectWarningText.textContent =
+        reason +
+        " detected. Warning " +
+        objectWarningCount +
+        " of " +
+        MAX_OBJECT_WARNINGS +
+        ".";
+
+    objectWarningBox.style.display =
+        "block";
+
+    clearTimeout(
+        showObjectWarning.hideTimer
+    );
+
+    showObjectWarning.hideTimer =
+        setTimeout(
+            function() {
+                objectWarningBox.style.display =
+                    "none";
+            },
+            5000
+        );
+}
+
+
+/*
+ * Find suspicious objects from the model predictions.
+ *
+ * Confidence is intentionally 0.45 instead of 0.65.
+ * This makes phone/laptop detection more practical on
+ * a normal laptop webcam.
+ */
+function getSuspiciousDetection(predictions) {
+
+    let personCount = 0;
+    const objects = [];
+
+    for (
+        const prediction
+        of predictions
+    ) {
+
+        if (
+            !prediction ||
+            !prediction.class
+        ) {
+            continue;
+        }
+
+        const score =
+            Number(prediction.score || 0);
+
+        if (score < 0.45) {
+            continue;
+        }
+
+        if (
+            prediction.class === "person"
+        ) {
+            personCount += 1;
+        }
+
+        if (
+            suspiciousClasses.has(
+                prediction.class
+            )
+        ) {
+            objects.push({
+                name: prediction.class,
+                score: score
+            });
+        }
+    }
+
+    /*
+     * Multiple people are suspicious.
+     */
+    if (personCount > 1) {
+        return "Multiple persons";
+    }
+
+    /*
+     * Return the highest-confidence suspicious object.
+     */
+    if (objects.length > 0) {
+
+        objects.sort(
+            function(a, b) {
+                return b.score - a.score;
+            }
+        );
+
+        return objects[0].name;
+    }
+
+    return null;
+}
+
+
+/*
+ * Load COCO-SSD after secure mode begins.
+ */
+async function loadObjectDetectionModel() {
+
+    try {
+
+        if (
+            typeof cocoSsd ===
+            "undefined"
+        ) {
+
+            console.error(
+                "COCO-SSD library is unavailable."
+            );
+
+            cameraStatus.textContent =
+                "🔴 AI Library Not Loaded";
+
+            logEvent(
+                "ai_library_unavailable"
+            );
+
+            return;
+        }
+
+        cameraStatus.textContent =
+            "🟡 Loading AI Model...";
+
+        /*
+         * Load the pretrained COCO-SSD model.
+         */
+        objectDetectionModel =
+            await cocoSsd.load({
+                base: "lite_mobilenet_v2"
+            });
+
+        objectDetectionRunning =
+            true;
+
+        cameraStatus.textContent =
+            "🟢 Camera + AI Monitoring Active";
+
+        logEvent(
+            "ai_model_loaded"
+        );
+
+        /*
+         * Run detection every 1 second.
+         */
+        if (
+            !objectDetectionTimer
+        ) {
+
+            objectDetectionTimer =
+                setInterval(
+                    runObjectDetection,
+                    1000
+                );
+        }
+
+        /*
+         * Also run once immediately.
+         */
+        runObjectDetection();
+
+    } catch (error) {
+
+        console.error(
+            "AI model loading failed:",
+            error
+        );
+
+        objectDetectionRunning =
+            false;
+
+        cameraStatus.textContent =
+            "🔴 AI Model Failed";
+
+        logEvent(
+            "ai_model_load_failed"
+        );
+    }
+}
+
+
+/*
+ * Run detection on the live camera frame.
+ */
+async function runObjectDetection() {
+
+    if (
+        !securityStarted ||
+        !objectDetectionRunning ||
+        !objectDetectionModel ||
+        objectDetectionBusy ||
+        terminating ||
+        submitted
+    ) {
+        return;
+    }
+
+    if (
+        !cameraVideo ||
+        cameraVideo.readyState < 2 ||
+        cameraVideo.videoWidth <= 0 ||
+        cameraVideo.videoHeight <= 0
+    ) {
+        return;
+    }
+
+    objectDetectionBusy =
+        true;
+
+    try {
+
+        const predictions =
+            await objectDetectionModel.detect(
+                cameraVideo,
+                20,
+                0.45
+            );
+
+        console.log(
+            "AI predictions:",
+            predictions
+        );
+
+        const reason =
+            getSuspiciousDetection(
+                predictions
+            );
+
+        if (reason) {
+            showObjectWarning(reason);
+        }
+
+    } catch (error) {
+
+        console.warn(
+            "AI detection error:",
+            error
+        );
+
+    } finally {
+
+        objectDetectionBusy =
+            false;
+    }
+}
+
+
+/* =========================================================
+   MANUAL SUBMISSION
+========================================================= */
+
+testForm.addEventListener(
+    "submit",
+    function(event) {
+
+        if (submitted) {
+            return;
+        }
+
+        const confirmed = confirm(
+            "Are you sure you want to submit the test? You cannot attempt it again."
+        );
+
+        if (!confirmed) {
+
+            event.preventDefault();
+
+            return;
+        }
+
+        submitted = true;
+
+        submitButton.disabled = true;
+
+        submitButton.textContent = "Submitting...";
+    }
+);
+
+
+/* =========================================================
+   TAB SWITCH
+========================================================= */
+
+document.addEventListener(
+    "visibilitychange",
+    function() {
+
+        if (
+            securityStarted &&
+            document.hidden &&
+            !terminating &&
+            !submitted
+        ) {
+            terminateTest("tab_switch");
+        }
+    }
+);
+
+
+/* =========================================================
+   WINDOW FOCUS LOSS
+========================================================= */
+
+window.addEventListener(
+    "blur",
+    function() {
+
+        if (
+            securityStarted &&
+            !terminating &&
+            !submitted
+        ) {
+            terminateTest("focus_loss");
+        }
+    }
+);
+
+
+/* =========================================================
+   COPY
+========================================================= */
+
+document.addEventListener(
+    "copy",
+    function(event) {
+
+        if (!securityStarted || submitted) {
+            return;
+        }
+
+        /*
+         * Copy is blocked, but the exam continues.
+         */
+        event.preventDefault();
+
+        logEvent("copy_attempt");
+    }
+);
+
+
+/* =========================================================
+   PASTE
+========================================================= */
+
+document.addEventListener(
+    "paste",
+    function(event) {
+
+        if (!securityStarted || submitted) {
+            return;
+        }
+
+        /*
+         * Paste is blocked, but the exam continues.
+         */
+        event.preventDefault();
+
+        logEvent("paste_attempt");
+    }
+);
+
+
+/* =========================================================
+   CUT
+========================================================= */
+
+document.addEventListener(
+    "cut",
+    function(event) {
+
+        if (!securityStarted || submitted) {
+            return;
+        }
+
+        /*
+         * Cut is blocked, but the exam continues.
+         */
+        event.preventDefault();
+
+        logEvent("cut_attempt");
+    }
+);
+
+
+/* =========================================================
+   KEYBOARD COPY / PASTE
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (!securityStarted || submitted) {
+            return;
+        }
+
+        const key = event.key.toLowerCase();
+
+        /*
+         * Block Ctrl+C / Ctrl+V / Ctrl+X (and Cmd equivalents)
+         * without terminating the test.
+         */
+        if (
+            (event.ctrlKey || event.metaKey) &&
+            (
+                key === "c" ||
+                key === "v" ||
+                key === "x"
+            )
+        ) {
+
+            event.preventDefault();
+
+            if (key === "c") {
+                logEvent("copy_attempt");
+            } else if (key === "v") {
+                logEvent("paste_attempt");
+            } else {
+                logEvent("cut_attempt");
+            }
+
+            return;
+        }
+
+        /*
+         * Block common browser/system shortcuts that can be
+         * intercepted by the page, but NEVER block ordinary
+         * C, V or X typing.
+         */
+        if (
+            event.ctrlKey &&
+            (
+                key === "a" ||
+                key === "f" ||
+                key === "p" ||
+                key === "s" ||
+                key === "u"
+            )
+        ) {
+
+            event.preventDefault();
+
+            logEvent("keyboard_violation");
+
+            return;
+        }
+
+        /*
+         * Shift and Ctrl are modifier keys. A browser cannot
+         * permanently lock a physical key at OS level, but
+         * shortcuts using them can be prevented here.
+         */
+    }
+);
+
+
+/* =========================================================
+   FULLSCREEN EXIT
+========================================================= */
+
+document.addEventListener(
+    "fullscreenchange",
+    function() {
+
+        if (
+            securityStarted &&
+            !document.fullscreenElement &&
+            !terminating &&
+            !submitted
+        ) {
+            terminateTest("fullscreen_exit");
+        }
+    }
+);
+
+
+/* =========================================================
+   CONTEXT MENU
+========================================================= */
+
+document.addEventListener(
+    "contextmenu",
+    function(event) {
+
+        if (securityStarted) {
+            event.preventDefault();
+        }
+    }
+);
+
+
+/* =========================================================
+   PAGE EXIT WARNING
+========================================================= */
+
+window.addEventListener(
+    "beforeunload",
+    function(event) {
+
+        if (
+            securityStarted &&
+            !submitted &&
+            !terminating
+        ) {
+
+            event.preventDefault();
+            event.returnValue = "";
+        }
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

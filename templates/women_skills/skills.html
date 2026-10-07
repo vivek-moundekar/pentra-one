@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Discover Skills - PentraOne</title>
+    <style>
+        body { font-size: 17px; }
+        h1 { font-size: 32px !important; }
+        h2 { font-size: 22px !important; }
+        p { font-size: 16px !important; line-height: 1.6 !important; }
+        button, .lang-btn, .quiz-btn, .learn-btn { font-size: 16px !important; padding: 10px 18px !important; }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #FDF6F9;
+            margin: 0;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #6A1B4D;
+            margin-bottom: 10px;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .back-link a {
+            color: #6A1B4D;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .skill-card {
+            background-color: #FFFFFF;
+            border: 2px solid #F8BBD0;
+            border-radius: 16px;
+            padding: 20px;
+            width: 320px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .skill-card h2 {
+            color: #AD1457;
+            margin-top: 0;
+            font-size: 22px;
+        }
+
+        .skill-card p {
+            font-size: 15px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .skill-card p strong {
+            color: #6A1B4D;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #EDE7F6;
+            color: #4527A0;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 13px;
+            margin-top: 8px;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .quiz-btn, .learn-btn {
+            flex: 1;
+            border: none;
+            padding: 8px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            color: white;
+        }
+
+        .quiz-btn {
+            background-color: #AD1457;
+        }
+        .quiz-btn:hover {
+            background-color: #880E4F;
+        }
+
+        .learn-btn {
+            background-color: #2E7D32;
+        }
+        .learn-btn:hover {
+            background-color: #1B5E20;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #FDF6F9;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-box {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            width: 450px;
+            max-width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #6A1B4D;
+        }
+
+        .modal-title {
+            color: #AD1457;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question {
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .option-btn {
+            display: block;
+            width: 100%;
+            text-align: left;
+            background-color: #F3E5F5;
+            border: 1px solid #E1BEE7;
+            border-radius: 8px;
+            padding: 8px 12px;
+            margin-top: 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .option-btn:hover {
+            background-color: #E1BEE7;
+        }
+
+        .option-btn.correct {
+            background-color: #C8E6C9;
+            border-color: #4CAF50;
+        }
+
+        .option-btn.wrong {
+            background-color: #FFCDD2;
+            border-color: #F44336;
+        }
+
+        .next-btn {
+            margin-top: 12px;
+            background-color: #4527A0;
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 16px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .quiz-result {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #2E7D32;
+        }
+
+        .feedback-text {
+            margin-top: 8px;
+            font-size: 14px;
+        }
+
+        /* ---- Learning stage styles ---- */
+        .stage-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .stage-video {
+            width: 100%;
+            height: 220px;
+            border-radius: 10px;
+            margin-top: 10px;
+            border: none;
+        }
+
+        .stage-desc {
+            margin-top: 12px;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .stage-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+
+        .stage-nav button {
+            background-color: #2E7D32;
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 16px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .stage-nav button:disabled {
+            background-color: #C8E6C9;
+            cursor: not-allowed;
+        }
+
+        .stage-progress {
+            text-align: center;
+            font-size: 13px;
+            color: #666;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+   <div class="back-link">
+    <a href="/women-skills/">⬅ Back to Hub</a>
+</div>
+    <div style="text-align: center; margin-bottom: 15px;">
+    <button onclick="setLang('en')" style="margin: 0 4px; padding: 6px 14px; border-radius: 16px; border: 1px solid #F8BBD0; background: white; cursor: pointer;">English</button>
+    <button onclick="setLang('hi')" style="margin: 0 4px; padding: 6px 14px; border-radius: 16px; border: 1px solid #F8BBD0; background: white; cursor: pointer;">हिंदी</button>
+    <button onclick="setLang('mr')" style="margin: 0 4px; padding: 6px 14px; border-radius: 16px; border: 1px solid #F8BBD0; background: white; cursor: pointer;">मराठी</button>
+    </div>
+
+    <h1>💡 Discover Skills</h1>
+
+    <div class="skills-container">
+        {% for skill in skills %}
+            <div class="skill-card">
+                <h2 class="skill-name" data-en="{{ skill.name }}" data-hi="{{ skill.name_hi }}" data-mr="{{ skill.name_mr }}">{{ skill.name }}</h2>
+<p class="skill-desc" data-en="{{ skill.description }}" data-hi="{{ skill.description_hi }}" data-mr="{{ skill.description_mr }}">{{ skill.description }}</p>
+<p><strong class="materials-label" data-en="Materials:" data-hi="सामग्री:" data-mr="साहित्य:">Materials:</strong> <span class="skill-materials" data-en="{{ skill.materials }}" data-hi="{{ skill.materials_hi }}" data-mr="{{ skill.materials_mr }}">{{ skill.materials }}</span></p>
+<p><strong class="guide-label" data-en="Guide:" data-hi="गाइड:" data-mr="मार्गदर्शक:">Guide:</strong> <span class="skill-guide" data-en="{{ skill.guide }}" data-hi="{{ skill.guide_hi }}" data-mr="{{ skill.guide_mr }}">{{ skill.guide }}</span></p>
+                <span class="badge">💰 {{ skill.investment }}</span>
+
+                <div class="btn-row">
+                    <button class="learn-btn" onclick="openLearn({{ skill.id }}, '{{ skill.name }}')">📖 Learn Step by Step</button>
+                    <button class="quiz-btn" onclick="openQuiz({{ skill.id }}, '{{ skill.name }}')">📝 Take Quiz</button>
+                </div>
+
+                <!-- Hidden quiz data -->
+                <div id="quiz-data-{{ skill.id }}" style="display:none;">
+    {% for question in skill.questions.all %}
+        <div class="q"
+            data-question="{{ question.question_text }}"
+            data-a="{{ question.option_a }}"
+            data-b="{{ question.option_b }}"
+            data-c="{{ question.option_c }}"
+            data-d="{{ question.option_d }}"
+            data-correct="{{ question.correct_option }}"
+            data-question-hi="{{ question.question_text_hi }}"
+            data-a-hi="{{ question.option_a_hi }}"
+            data-b-hi="{{ question.option_b_hi }}"
+            data-c-hi="{{ question.option_c_hi }}"
+            data-d-hi="{{ question.option_d_hi }}"
+            data-question-mr="{{ question.question_text_mr }}"
+            data-a-mr="{{ question.option_a_mr }}"
+            data-b-mr="{{ question.option_b_mr }}"
+            data-c-mr="{{ question.option_c_mr }}"
+            data-d-mr="{{ question.option_d_mr }}">
+        </div>
+    {% endfor %}
+</div>
+
+                <!-- Hidden learning stage data -->
+              <div id="stage-data-{{ skill.id }}" style="display:none;">
+    {% for stage in skill.stages.all %}
+        <div class="s"
+            data-title="{{ stage.title }}"
+            data-desc="{{ stage.description }}"
+            data-image="{{ stage.image_url }}"
+            data-video="{{ stage.video_url }}"
+            data-title-hi="{{ stage.title_hi }}"
+            data-desc-hi="{{ stage.description_hi }}"
+            data-title-mr="{{ stage.title_mr }}"
+            data-desc-mr="{{ stage.description_mr }}">
+        </div>
+    {% endfor %}
+</div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Quiz Modal -->
+    <div class="modal-overlay" id="quizModal">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeQuiz()">✖</button>
+            <h2 class="modal-title" id="modalTitle">Quiz</h2>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <!-- Learn Step by Step Modal -->
+    <div class="modal-overlay" id="learnModal">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeLearn()">✖</button>
+            <h2 class="modal-title" id="learnModalTitle">Learn</h2>
+            <div id="learnModalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        let currentLang = localStorage.getItem('pentraoneLang') || 'en';
+        function setLang(lang) {
+            currentLang = lang;
+        localStorage.setItem('pentraoneLang', lang);
+        document.querySelectorAll('.skill-name, .skill-desc, .skill-guide, .guide-label, .skill-materials, .materials-label').forEach(function(el) {
+        const text = el.getAttribute('data-' + lang);
+        if (text) {
+            el.innerText = text;
+        }
+    });
+}
+        // ---------------- QUIZ LOGIC ----------------
+        let quizState = {};
+
+        function openQuiz(skillId, skillName) {
+    const dataDiv = document.getElementById('quiz-data-' + skillId);
+    const questionDivs = dataDiv.getElementsByClassName('q');
+
+    let questions = [];
+    for (let i = 0; i < questionDivs.length; i++) {
+        let q = questionDivs[i];
+        const suffix = currentLang === 'en' ? '' : '-' + currentLang;
+        questions.push({
+            question: q.getAttribute('data-question' + suffix) || q.getAttribute('data-question'),
+            a: q.getAttribute('data-a' + suffix) || q.getAttribute('data-a'),
+            b: q.getAttribute('data-b' + suffix) || q.getAttribute('data-b'),
+            c: q.getAttribute('data-c' + suffix) || q.getAttribute('data-c'),
+            d: q.getAttribute('data-d' + suffix) || q.getAttribute('data-d'),
+            correct: q.getAttribute('data-correct')
+        });
+    }
+
+            quizState = {
+                questions: questions,
+                currentIndex: 0,
+                score: 0,
+                answered: false
+            };
+
+            document.getElementById('modalTitle').innerText = '📝 ' + skillName + ' Quiz';
+            document.getElementById('quizModal').style.display = 'flex';
+            renderQuestion();
+        }
+
+        function closeQuiz() {
+            document.getElementById('quizModal').style.display = 'none';
+        }
+
+        function renderQuestion() {
+            const contentDiv = document.getElementById('modalContent');
+
+          if (quizState.currentIndex >= quizState.questions.length) {
+    const resultLabels = {
+        en: "🎉 Quiz finished! Your score: ",
+        hi: "🎉 क्विज़ पूरी हुई! आपका स्कोर: ",
+        mr: "🎉 क्विझ पूर्ण झाली! तुमचा गुण: "
+    };
+    const resultText = resultLabels[currentLang] || resultLabels.en;
+    contentDiv.innerHTML = '<div class="quiz-result">' + resultText + quizState.score + ' / ' + quizState.questions.length + '</div>';
+    return;
+}
+
+            const q = quizState.questions[quizState.currentIndex];
+            quizState.answered = false;
+
+            const qLabels = {
+    en: { q: "Q" },
+    hi: { q: "प्रश्न " },
+    mr: { q: "प्रश्न " }
+};
+const QL = qLabels[currentLang] || qLabels.en;
+
+contentDiv.innerHTML = `
+    <div class="quiz-question">${QL.q}${quizState.currentIndex + 1}: ${q.question}</div>
+    <button class="option-btn" onclick="checkAnswer('a')">A) ${q.a}</button>
+    <button class="option-btn" onclick="checkAnswer('b')">B) ${q.b}</button>
+    <button class="option-btn" onclick="checkAnswer('c')">C) ${q.c}</button>
+    <button class="option-btn" onclick="checkAnswer('d')">D) ${q.d}</button>
+    <div class="feedback-text" id="feedback"></div>
+`;
+        }
+
+        function checkAnswer(selected) {
+            if (quizState.answered) return;
+            quizState.answered = true;
+
+            const q = quizState.questions[quizState.currentIndex];
+            const buttons = document.getElementById('modalContent').getElementsByClassName('option-btn');
+            const feedback = document.getElementById('feedback');
+
+            const optionLetters = ['a', 'b', 'c', 'd'];
+
+            for (let i = 0; i < buttons.length; i++) {
+                if (optionLetters[i] === q.correct) {
+                    buttons[i].classList.add('correct');
+                }
+                if (optionLetters[i] === selected && selected !== q.correct) {
+                    buttons[i].classList.add('wrong');
+                }
+                buttons[i].disabled = true;
+            }
+            const feedbackLabels = {
+    en: { correct: "✅ Correct!", wrong: "❌ Wrong! Correct answer: ", next: "Next ➡" },
+    hi: { correct: "✅ सही!", wrong: "❌ गलत! सही उत्तर: ", next: "अगला ➡" },
+    mr: { correct: "✅ बरोबर!", wrong: "❌ चूक! योग्य उत्तर: ", next: "पुढे ➡" }
+};
+const FL = feedbackLabels[currentLang] || feedbackLabels.en;
+
+if (selected === q.correct) {
+    quizState.score += 1;
+    feedback.innerHTML = FL.correct;
+} else {
+    feedback.innerHTML = FL.wrong + q.correct.toUpperCase();
+}
+
+feedback.innerHTML += '<br><button class="next-btn" onclick="nextQuestion()">' + FL.next + '</button>';
+        }
+
+        function nextQuestion() {
+            quizState.currentIndex += 1;
+            renderQuestion();
+        }
+
+        // ---------------- LEARN STEP BY STEP LOGIC ----------------
+        let learnState = {};
+
+        function openLearn(skillId, skillName) {
+    const dataDiv = document.getElementById('stage-data-' + skillId);
+    const stageDivs = dataDiv.getElementsByClassName('s');
+
+    let stages = [];
+    for (let i = 0; i < stageDivs.length; i++) {
+        let s = stageDivs[i];
+        const suffix = currentLang === 'en' ? '' : '-' + currentLang;
+        stages.push({
+            title: s.getAttribute('data-title' + suffix) || s.getAttribute('data-title'),
+            desc: s.getAttribute('data-desc' + suffix) || s.getAttribute('data-desc'),
+            image: s.getAttribute('data-image'),
+            video: s.getAttribute('data-video')
+        });
+    }
+
+            learnState = {
+                stages: stages,
+                currentIndex: 0
+            };
+
+            document.getElementById('learnModalTitle').innerText = '📖 ' + skillName + ' - Step by Step';
+            document.getElementById('learnModal').style.display = 'flex';
+            renderStage();
+        }
+
+        function closeLearn() {
+            document.getElementById('learnModal').style.display = 'none';
+        }
+
+        function renderStage() {
+            const contentDiv = document.getElementById('learnModalContent');
+
+            if (learnState.stages.length === 0) {
+                contentDiv.innerHTML = '<p>No learning content available yet for this skill.</p>';
+                return;
+            }
+
+            const s = learnState.stages[learnState.currentIndex];
+
+            let mediaHtml = '';
+            if (s.video) {
+    const videoId = s.video.split('/embed/')[1];
+    mediaHtml += `<a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" style="display:block; position:relative; margin-top:10px;">
+        <img src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" style="width:100%; border-radius:10px;">
+        <span style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(0,0,0,0.6); color:white; padding:10px 16px; border-radius:50%; font-size:20px;">▶</span>
+    </a>
+    <p style="text-align:center; font-size:12px; color:#666; margin-top:4px;">🎥 Click to watch tutorial on YouTube</p>`;
+}
+            if (s.image) {
+                mediaHtml += `<img class="stage-image" src="${s.image}" alt="${s.title}">`;
+            }
+
+                 const stageLabels = {
+            en: { stage: "Stage", of: "of", prev: "⬅ Previous", next: "Next ➡" },
+            hi: { stage: "चरण", of: "में से", prev: "⬅ पिछला", next: "अगला ➡" },
+            mr: { stage: "टप्पा", of: "पैकी", prev: "⬅ मागील", next: "पुढे ➡" }
+        };
+        const L = stageLabels[currentLang] || stageLabels.en;
+
+        contentDiv.innerHTML = `
+            <div class="quiz-question">${L.stage} ${learnState.currentIndex + 1}: ${s.title}</div>
+            ${mediaHtml}
+            <div class="stage-desc">${s.desc}</div>
+            <div class="stage-progress">${L.stage} ${learnState.currentIndex + 1} ${L.of} ${learnState.stages.length}</div>
+            <div class="stage-nav">
+                <button onclick="prevStage()" ${learnState.currentIndex === 0 ? 'disabled' : ''}>${L.prev}</button>
+                <button onclick="nextStage()" ${learnState.currentIndex === learnState.stages.length - 1 ? 'disabled' : ''}>${L.next}</button>
+            </div>
+        `;
+        }
+
+        function nextStage() {
+            if (learnState.currentIndex < learnState.stages.length - 1) {
+                learnState.currentIndex += 1;
+                renderStage();
+            }
+        }
+
+        function prevStage() {
+            if (learnState.currentIndex > 0) {
+                learnState.currentIndex -= 1;
+                renderStage();
+            }
+        }
+        setLang(currentLang);
+    </script>
+
+
+</body>
+</html>

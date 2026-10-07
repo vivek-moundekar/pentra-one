@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        My Progress | PentraOne Education
+    </title>
+
+    <style>
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        :root {
+            --text: #ffffff;
+            --muted: #9298a3;
+            --blue: #3b82f6;
+            --blue-dark: #2563eb;
+            --green: #22c55e;
+            --yellow: #f59e0b;
+            --red: #ef4444;
+
+            --border:
+                rgba(148, 163, 184, 0.16);
+        }
+
+
+        body {
+            min-height: 100vh;
+
+            font-family:
+                Inter,
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            color: var(--text);
+
+            background:
+                radial-gradient(
+                    circle at 12% 86%,
+                    rgba(37, 99, 235, 0.26),
+                    transparent 32%
+                ),
+                radial-gradient(
+                    circle at 88% 16%,
+                    rgba(99, 102, 241, 0.15),
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #050505,
+                    #080b12 48%,
+                    #071227
+                );
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .header {
+            height: 74px;
+
+            padding:
+                0 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 100;
+
+            background:
+                rgba(5, 7, 11, 0.82);
+
+            border-bottom:
+                1px solid
+                rgba(148, 163, 184, 0.12);
+
+            backdrop-filter:
+                blur(18px);
+        }
+
+
+        .brand {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+        }
+
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(37, 99, 235, 0.28),
+                    rgba(79, 70, 229, 0.20)
+                );
+
+            border:
+                1px solid
+                rgba(96, 165, 250, 0.24);
+
+            box-shadow:
+                0 8px 22px
+                rgba(37, 99, 235, 0.15);
+        }
+
+
+        .brand-icon svg {
+            width: 24px;
+            height: 24px;
+
+            stroke: #bfdbfe;
+        }
+
+
+        .brand-text small {
+            display: block;
+
+            color: #60a5fa;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.5px;
+
+            margin-bottom: 2px;
+        }
+
+
+        .brand-text strong {
+            font-size: 16px;
+        }
+
+
+        .dashboard-btn {
+            min-height: 40px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding:
+                0 14px;
+
+            border-radius: 12px;
+
+            text-decoration: none;
+
+            color: #cbd5e1;
+
+            background:
+                rgba(17, 18, 20, 0.82);
+
+            border:
+                1px solid
+                rgba(148, 163, 184, 0.15);
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            transition:
+                0.25s;
+        }
+
+
+        .dashboard-btn:hover {
+            color: white;
+
+            transform:
+                translateY(-2px);
+
+            border-color:
+                rgba(59, 130, 246, 0.50);
+        }
+
+
+        /* =========================================
+           PAGE
+        ========================================= */
+
+        .page {
+            max-width: 1160px;
+
+            margin: auto;
+
+            padding:
+                34px 20px
+                65px;
+        }
+
+
+        /* =========================================
+           HERO
+        ========================================= */
+
+        .hero {
+            position: relative;
+
+            padding:
+                36px;
+
+            overflow: hidden;
+
+            border-radius: 26px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(39, 43, 50, 0.86),
+                    rgba(12, 12, 13, 0.95)
+                );
+
+            border:
+                1px solid
+                rgba(148, 163, 184, 0.17);
+
+            box-shadow:
+                0 25px 65px
+                rgba(0, 0, 0, 0.35);
+        }
+
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 240px;
+            height: 240px;
+
+            right: -80px;
+            top: -90px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(59, 130, 246, 0.09);
+        }
+
+
+        .kicker {
+            color: #93c5fd;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.2px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .hero h1 {
+            position: relative;
+            z-index: 2;
+
+            font-size:
+                clamp(
+                    32px,
+                    4.4vw,
+                    48px
+                );
+
+            font-weight: 500;
+
+            letter-spacing: -1.2px;
+
+            margin-bottom: 11px;
+        }
+
+
+        .hero p {
+            position: relative;
+            z-index: 2;
+
+            max-width: 720px;
+
+            color: #a1a7b2;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================
+           STATS
+        ========================================= */
+
+        .stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 14px;
+
+            margin-top: 22px;
+        }
+
+
+        .stat-card {
+            padding: 20px;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(31, 35, 43, 0.82),
+                    rgba(11, 12, 15, 0.95)
+                );
+
+            border:
+                1px solid
+                var(--border);
+
+            transition:
+                0.25s;
+        }
+
+
+        .stat-card:hover {
+            transform:
+                translateY(-4px);
+
+            border-color:
+                rgba(59, 130, 246, 0.38);
+        }
+
+
+        .stat-card small {
+            display: block;
+
+            color: #7f8793;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: 0.8px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .stat-card strong {
+            font-size: 28px;
+
+            font-weight: 600;
+        }
+
+
+        .stat-card span {
+            color: #60a5fa;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================
+           SECTION TITLE
+        ========================================= */
+
+        .section-head {
+            margin:
+                34px 2px
+                16px;
+        }
+
+
+        .section-head h2 {
+            font-size: 22px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .section-head p {
+            color: #777e89;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================================
+           RESULT LIST
+        ========================================= */
+
+        .results {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 13px;
+        }
+
+
+        .result-link {
+            color: inherit;
+
+            text-decoration: none;
+        }
+
+
+        .result-card {
+            padding:
+                18px 20px;
+
+            border-radius: 18px;
+
+            display: grid;
+
+            grid-template-columns:
+                1.6fr
+                0.7fr
+                0.7fr
+                auto;
+
+            gap: 14px;
+
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(29, 33, 40, 0.83),
+                    rgba(11, 12, 15, 0.96)
+                );
+
+            border:
+                1px solid
+                rgba(148, 163, 184, 0.14);
+
+            transition:
+                0.25s ease;
+        }
+
+
+        .result-card:hover {
+            transform:
+                translateY(-4px);
+
+            border-color:
+                rgba(59, 130, 246, 0.42);
+
+            box-shadow:
+                0 18px 40px
+                rgba(0, 0, 0, 0.25);
+        }
+
+
+        .result-main h3 {
+            font-size: 15px;
+
+            line-height: 1.4;
+
+            margin-bottom: 5px;
+        }
+
+
+        .meta {
+            color: #7f8793;
+
+            font-size: 11px;
+
+            line-height: 1.5;
+        }
+
+
+        .score {
+            font-size: 15px;
+
+            font-weight: 700;
+
+            margin-top: 3px;
+        }
+
+
+        .percentage {
+            color: #93c5fd;
+
+            font-size: 20px;
+
+            font-weight: 700;
+
+            margin-top: 3px;
+        }
+
+
+        /* =========================================
+           PERFORMANCE BADGE
+        ========================================= */
+
+        .performance {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            min-width: 95px;
+
+            padding:
+                7px 10px;
+
+            border-radius: 20px;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            white-space: nowrap;
+
+            border:
+                1px solid
+                rgba(148, 163, 184, 0.14);
+
+            background:
+                rgba(255, 255, 255, 0.03);
+        }
+
+
+        .performance.excellent {
+            color: #86efac;
+
+            border-color:
+                rgba(34, 197, 94, 0.25);
+
+            background:
+                rgba(34, 197, 94, 0.08);
+        }
+
+
+        .performance.good {
+            color: #93c5fd;
+
+            border-color:
+                rgba(59, 130, 246, 0.25);
+
+            background:
+                rgba(59, 130, 246, 0.08);
+        }
+
+
+        .performance.improving {
+            color: #fde68a;
+
+            border-color:
+                rgba(245, 158, 11, 0.25);
+
+            background:
+                rgba(245, 158, 11, 0.08);
+        }
+
+
+        .performance.practice {
+            color: #fca5a5;
+
+            border-color:
+                rgba(239, 68, 68, 0.25);
+
+            background:
+                rgba(239, 68, 68, 0.08);
+        }
+
+
+        /* =========================================
+           EMPTY
+        ========================================= */
+
+        .empty {
+            padding:
+                55px 24px;
+
+            text-align: center;
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(31, 35, 43, 0.82),
+                    rgba(11, 12, 15, 0.95)
+                );
+
+            border:
+                1px solid
+                var(--border);
+        }
+
+
+        .empty-icon {
+            width: 68px;
+            height: 68px;
+
+            margin:
+                0 auto 17px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 21px;
+
+            font-size: 30px;
+
+            background:
+                rgba(37, 99, 235, 0.10);
+
+            border:
+                1px solid
+                rgba(59, 130, 246, 0.17);
+        }
+
+
+        .empty h2 {
+            font-size: 20px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .empty p {
+            max-width: 520px;
+
+            margin: auto;
+
+            color: #858c98;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+        }
+
+
+        .empty a {
+            display: inline-flex;
+
+            margin-top: 18px;
+
+            padding:
+                11px 16px;
+
+            border-radius: 20px;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #4f46e5
+                );
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 850px) {
+
+            .stats {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .result-card {
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+
+            .result-main {
+                grid-column:
+                    1 / -1;
+            }
+        }
+
+
+        @media (max-width: 560px) {
+
+            .header {
+                min-height: 68px;
+
+                height: auto;
+
+                padding:
+                    12px 15px;
+            }
+
+
+            .brand-text small {
+                display: none;
+            }
+
+
+            .brand-text strong {
+                font-size: 14px;
+            }
+
+
+            .dashboard-btn {
+                padding:
+                    0 10px;
+
+                font-size: 10px;
+            }
+
+
+            .page {
+                padding:
+                    22px 14px
+                    45px;
+            }
+
+
+            .hero {
+                padding:
+                    28px 22px;
+
+                border-radius: 21px;
+            }
+
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+
+            .stat-card strong {
+                font-size: 24px;
+            }
+
+
+            .result-card {
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .result-main {
+                grid-column:
+                    auto;
+            }
+
+
+            .performance {
+                width: fit-content;
+            }
+        }
+
+    </style>
+
+
+<style id="pentraone-brand-font">
+.pentra-brand-main{font-family:'Berlin Sans FB Demi','Berlin Sans FB','Arial Black',sans-serif;font-weight:600;letter-spacing:.3px;text-transform:uppercase;}
+.pentra-brand-one{font-family:'Bell MT','Times New Roman',serif;font-style:italic;font-weight:400;text-transform:lowercase;margin-left:2px;}
+</style>
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+
+    <div class="brand">
+
+
+        <div class="brand-icon">
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="1.7"
+            >
+
+                <path
+                    d="M4 19V9M10 19V5M16 19v-7M22 19V3">
+                </path>
+
+            </svg>
+
+        </div>
+
+
+        <div class="brand-text">
+
+            <small>
+                <span class="pentra-brand-main">PENTRA</span><span class="pentra-brand-one">one</span> EDUCATION
+            </small>
+
+            <strong>
+                My Progress
+            </strong>
+
+        </div>
+
+
+    </div>
+
+
+    <a
+        href="{% url 'education:student_dashboard' %}"
+        class="dashboard-btn"
+    >
+        Student Dashboard
+    </a>
+
+
+</header>
+
+
+
+<main class="page">
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+
+        <div class="kicker">
+            LEARNING PERFORMANCE
+        </div>
+
+
+        <h1>
+            My Progress
+        </h1>
+
+
+        <p>
+            Track your completed tests and performance.
+            Every successfully submitted test result is
+            saved here automatically.
+        </p>
+
+
+    </section>
+
+
+
+    <!-- STATS -->
+
+    <section class="stats">
+
+
+        <div class="stat-card">
+
+            <small>
+                TESTS COMPLETED
+            </small>
+
+            <strong>
+                {{ tests_completed }}
+            </strong>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <small>
+                AVERAGE SCORE
+            </small>
+
+            <strong>
+
+                {{ average_percentage }}
+
+                <span>
+                    %
+                </span>
+
+            </strong>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <small>
+                BEST SCORE
+            </small>
+
+            <strong>
+
+                {{ best_percentage }}
+
+                <span>
+                    %
+                </span>
+
+            </strong>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <small>
+                LATEST SCORE
+            </small>
+
+            <strong>
+
+                {{ latest_percentage }}
+
+                <span>
+                    %
+                </span>
+
+            </strong>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- RESULT HISTORY TITLE -->
+
+    <div class="section-head">
+
+        <h2>
+            Result History
+        </h2>
+
+        <p>
+            Your completed test results,
+            newest first.
+        </p>
+
+    </div>
+
+
+
+    <!-- RESULTS -->
+
+    {% if progress_rows %}
+
+
+        <section class="results">
+
+
+            {% for row in progress_rows %}
+
+
+                <a
+                    href="{% url 'education:test_result' row.result.id %}"
+                    class="result-link"
+                >
+
+
+                    <article class="result-card">
+
+
+                        <!-- SUBJECT + CHAPTER -->
+
+                        <div class="result-main">
+
+
+                            <h3>
+
+                                {{ row.result.test.chapter.subject.name }}
+
+                                •
+
+                                {{ row.result.test.chapter.name }}
+
+                            </h3>
+
+
+                            <div class="meta">
+
+                                {{ row.result.test.chapter.subject.class_level.name }}
+
+                                •
+
+                                Submitted
+
+                                {{ row.result.submitted_at|date:"d M Y, h:i A" }}
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <!-- MARKS -->
+
+                        <div>
+
+                            <div class="meta">
+                                Marks
+                            </div>
+
+                            <div class="score">
+
+                                {{ row.result.score }}
+
+                                /
+
+                                {{ row.result.total_marks }}
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- PERCENTAGE -->
+
+                        <div>
+
+                            <div class="meta">
+                                Percentage
+                            </div>
+
+                            <div class="percentage">
+                                {{ row.percentage }}%
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- PERFORMANCE -->
+
+                        {% if row.performance == "Excellent" %}
+
+                            <div class="performance excellent">
+                                Excellent
+                            </div>
+
+                        {% elif row.performance == "Good" %}
+
+                            <div class="performance good">
+                                Good
+                            </div>
+
+                        {% elif row.performance == "Keep Improving" %}
+
+                            <div class="performance improving">
+                                Keep Improving
+                            </div>
+
+                        {% else %}
+
+                            <div class="performance practice">
+                                Needs Practice
+                            </div>
+
+                        {% endif %}
+
+
+                    </article>
+
+
+                </a>
+
+
+            {% endfor %}
+
+
+        </section>
+
+
+    {% else %}
+
+
+        <!-- NO RESULTS -->
+
+        <section class="empty">
+
+
+            <div class="empty-icon">
+                📊
+            </div>
+
+
+            <h2>
+                No test results yet
+            </h2>
+
+
+            <p>
+                Once you successfully complete and submit a test,
+                it will automatically disappear from My Tests
+                and its saved result will appear here.
+            </p>
+
+
+            <a href="{% url 'education:student_tests' %}">
+                View My Tests
+            </a>
+
+
+        </section>
+
+
+    {% endif %}
+
+
+</main>
+
+
+</body>
+
+</html>

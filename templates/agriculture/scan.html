@@ -1,0 +1,497 @@
+{% extends 'agriculture/base.html' %}
+{% load static %}
+
+{% block title %}{{ ui.scan.scan_title }} | PENTRAONE{% endblock %}
+
+{% block content %}
+
+<a class="agri-back" href="{% url 'agriculture:home' %}">
+    {{ ui.common.back_agriculture }}
+</a>
+
+<section class="agri-hero fade-up">
+
+    <div class="agri-eyebrow">
+        ✨ {{ ui.home.ai_powered }}
+    </div>
+
+    <h1 class="agri-title">
+        📷 {{ ui.scan.scan_title }}
+    </h1>
+
+    <p class="agri-lead">
+        {{ ui.scan.scan_description }}
+    </p>
+
+</section>
+
+
+{% if message %}
+
+<div class="agri-message fade-up" style="margin-top:18px">
+    {{ message }}
+</div>
+
+{% endif %}
+
+
+{% if answer %}
+
+<section
+    class="agri-scan-card fade-up"
+    style="margin-top:18px"
+>
+
+    <!-- =====================================================
+         AI ANSWER - VOICE READER CONTENT
+         ===================================================== -->
+
+    <div data-voice-content>
+
+        <h2>
+            {{ ui.ai_analysis }}
+        </h2>
+
+        <div class="agri-answer-grid">
+
+            <div>
+
+                {% if uploaded_image_url %}
+
+                <img
+                    class="agri-answer-photo"
+                    src="{{ uploaded_image_url }}"
+                    alt="{{ ui.your_photo }}"
+                >
+
+                {% endif %}
+
+            </div>
+
+
+            <div class="agri-answer">
+
+                {{ answer }}
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         VOICE BUTTON
+         ===================================================== -->
+
+    <div
+        style="
+            display:flex;
+            justify-content:center;
+            margin-top:22px;
+        "
+    >
+
+        <button
+            type="button"
+            class="agri-btn voice-reader-button"
+            data-voice-reader
+            data-voice-target="[data-voice-content]"
+            data-voice-lang="{{ answer_language|default:language }}"
+        >
+            🔊 Listen
+        </button>
+
+    </div>
+
+</section>
+
+{% endif %}
+
+
+<!-- =========================================================
+     SCAN & ASK FORM
+     ========================================================= -->
+
+<section
+    id="scanMainCard"
+    class="agri-scan-card fade-up delay-1"
+    style="margin-top:18px"
+>
+
+    <div class="agri-scan-intro">
+
+        <img
+            class="agri-scan-image"
+            src="{% static 'agriculture/images/scan-ask.jpg' %}"
+            alt="Scan and Ask"
+        >
+
+        <div>
+
+            <h2>
+                {{ ui.scan.scan_title }}
+            </h2>
+
+            <p style="color:var(--agri-muted)">
+                {{ ui.scan_description }}
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <form
+        id="scanForm"
+        method="post"
+        enctype="multipart/form-data"
+    >
+
+        {% csrf_token %}
+
+
+        <!-- =================================================
+             IMAGE UPLOAD
+             ================================================= -->
+
+        <div class="agri-upload agri-scanner">
+
+            <div class="agri-upload-icon">
+                📷
+            </div>
+
+
+            <h2>
+                {{ ui.upload_photo }}
+            </h2>
+
+
+            <p style="color:var(--agri-muted)">
+                Choose a clear image from your device.
+                You can preview it before submitting.
+            </p>
+
+
+            <label
+                for="imageInput"
+                class="agri-file-label"
+            >
+                📁 {{ ui.choose_photo }}
+            </label>
+
+
+            <input
+                id="imageInput"
+                type="file"
+                name="image"
+                accept="image/*"
+                hidden
+            >
+
+
+            <div
+                id="fileName"
+                style="
+                    margin-top:10px;
+                    color:var(--agri-muted);
+                "
+            >
+                {{ ui.no_photo|default:'No photo selected' }}
+            </div>
+
+
+            <img
+                id="preview"
+                class="agri-preview"
+                alt="Selected image preview"
+            >
+
+
+            <div
+                class="agri-grow-loader"
+                aria-live="polite"
+            >
+
+                <span>🌱</span>
+
+                <span class="agri-growing-dot"></span>
+
+                <span class="agri-growing-dot"></span>
+
+                <span class="agri-growing-dot"></span>
+
+                <span>
+                    {{ ui.analyzing|default:"Analyzing your crop..." }}
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             QUESTION
+             ================================================= -->
+
+        <div class="agri-form-group">
+
+            <label for="question">
+                💬 {{ ui.question }}
+            </label>
+
+
+            <textarea
+                id="question"
+                name="question"
+                required
+                placeholder="Example: Mere cotton ke patte pe ye daag kyu aa rahe hain?"
+            >{{ question|default:'' }}</textarea>
+
+        </div>
+
+
+        <!-- =================================================
+             ANSWER LANGUAGE
+             ================================================= -->
+
+        <div class="agri-form-group">
+
+            <label for="language">
+                🌐 {{ ui.answer_language }}
+            </label>
+
+
+            <select
+                id="language"
+                name="language"
+            >
+
+                <option
+                    value="same"
+                    {% if not answer_language or answer_language == 'same' %}selected{% endif %}
+                >
+                    {{ ui.same_question_language }}
+                </option>
+
+
+                <option
+                    value="english"
+                    {% if answer_language == 'english' %}selected{% endif %}
+                >
+                    English
+                </option>
+
+
+                <option
+                    value="hindi"
+                    {% if answer_language == 'hindi' %}selected{% endif %}
+                >
+                    हिन्दी
+                </option>
+
+
+                <option
+                    value="marathi"
+                    {% if answer_language == 'marathi' %}selected{% endif %}
+                >
+                    मराठी
+                </option>
+
+
+                <option
+                    value="gujarati"
+                    {% if answer_language == 'gujarati' %}selected{% endif %}
+                >
+                    ગુજરાતી
+                </option>
+
+
+                <option
+                    value="bengali"
+                    {% if answer_language == 'bengali' %}selected{% endif %}
+                >
+                    বাংলা
+                </option>
+
+
+                <option
+                    value="tamil"
+                    {% if answer_language == 'tamil' %}selected{% endif %}
+                >
+                    தமிழ்
+                </option>
+
+
+                <option
+                    value="telugu"
+                    {% if answer_language == 'telugu' %}selected{% endif %}
+                >
+                    తెలుగు
+                </option>
+
+
+                <option
+                    value="kannada"
+                    {% if answer_language == 'kannada' %}selected{% endif %}
+                >
+                    ಕನ್ನಡ
+                </option>
+
+
+                <option
+                    value="punjabi"
+                    {% if answer_language == 'punjabi' %}selected{% endif %}
+                >
+                    ਪੰਜਾਬੀ
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- =================================================
+             ANALYZE BUTTON
+             ================================================= -->
+
+        <button
+            class="agri-btn"
+            style="
+                width:100%;
+                margin-top:22px;
+            "
+            type="submit"
+        >
+            🔎 {{ ui.analyze_answer }}
+        </button>
+
+
+        <!-- =================================================
+             TIP
+             ================================================= -->
+
+        <div
+            class="agri-message"
+            style="margin-top:16px"
+        >
+
+            💡
+
+            <strong>
+                {{ ui.tip }}:
+            </strong>
+
+            Take a clear, well-lit photo and include
+            the affected crop part.
+
+        </div>
+
+    </form>
+
+</section>
+
+{% endblock %}
+
+
+{% block extra_js %}
+
+<!-- =========================================================
+     VOICE READER
+     ========================================================= -->
+
+<script src="{% static 'agriculture/js/voice_reader.js' %}"></script>
+
+
+<script>
+
+const input = document.getElementById('imageInput');
+
+const name = document.getElementById('fileName');
+
+const preview = document.getElementById('preview');
+
+const form = document.getElementById('scanForm');
+
+const card = document.getElementById('scanMainCard');
+
+
+/* =========================================================
+   IMAGE PREVIEW
+   ========================================================= */
+
+if (input) {
+
+    input.addEventListener('change', function () {
+
+        const file = input.files[0];
+
+
+        if (!file) {
+
+            name.textContent =
+                '{{ ui.no_photo|default:"No photo selected"|escapejs }}';
+
+            preview.style.display = 'none';
+
+            preview.removeAttribute('src');
+
+            return;
+
+        }
+
+
+        name.textContent = file.name;
+
+
+        const reader = new FileReader();
+
+
+        reader.onload = function (event) {
+
+            preview.src = event.target.result;
+
+            preview.style.display = 'block';
+
+        };
+
+
+        reader.readAsDataURL(file);
+
+    });
+
+}
+
+
+/* =========================================================
+   FORM SUBMIT ANIMATION
+   ========================================================= */
+
+if (form) {
+
+    form.addEventListener('submit', function () {
+
+        if (card) {
+
+            card.classList.add('submitting');
+
+        }
+
+
+        const scanner =
+            document.querySelector('.agri-scanner');
+
+
+        if (scanner) {
+
+            scanner.classList.add('scanning');
+
+        }
+
+    });
+
+}
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,1133 @@
+{% load static %}
+
+<nav class="agri-navbar" id="agriNavbar">
+
+    <div class="agri-navbar-inner">
+
+        <!-- BRAND -->
+        <a href="/" class="agri-brand" title="PENTRAONE Dashboard">
+
+            <span class="agri-brand-mark">🌾</span>
+
+            <span class="agri-brand-text">
+                PENTRAONE Agriculture
+            </span>
+
+        </a>
+
+
+        <!-- NAVIGATION -->
+        <div class="agri-nav-links" id="agriNavLinks">
+
+            <!-- PENTRAONE DASHBOARD -->
+            <a href="/" class="agri-nav-item">
+                <span class="nav-icon">🏠</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <!-- FARMER HELP -->
+            <a href="/chatbot/" class="agri-nav-item">
+                <span class="nav-icon">🧑‍🌾</span>
+                <span>Farmer Help</span>
+            </a>
+
+
+            <!-- ABOUT -->
+            <a href="/about/" class="agri-nav-item">
+                <span class="nav-icon">ℹ️</span>
+                <span>About</span>
+            </a>
+
+
+            <!-- LANGUAGE -->
+            <form
+                method="post"
+                action="{% url 'agriculture:set_language' %}"
+                class="agri-language-form"
+                id="agriLanguageForm"
+            >
+
+                {% csrf_token %}
+
+                <input
+                    type="hidden"
+                    name="next"
+                    value="{{ request.get_full_path }}"
+                >
+
+                <input
+                    type="hidden"
+                    name="language"
+                    id="agriLanguageInput"
+                    value="{{ language|default:'en' }}"
+                >
+
+                <div class="agri-language-wrap">
+
+                    <button
+                        type="button"
+                        class="agri-language-button"
+                        id="agriLanguageButton"
+                        aria-expanded="false"
+                    >
+
+                        <span>🌐</span>
+
+                        <span id="agriCurrentLanguage">
+                            English
+                        </span>
+
+                        <span class="lang-chevron">⌄</span>
+
+                    </button>
+
+
+                    <div
+                        class="agri-language-menu"
+                        id="agriLanguageMenu"
+                    >
+
+                        <button type="button" class="lang-option" data-lang="en">
+                            English
+                        </button>
+
+                        <button type="button" class="lang-option" data-lang="hi">
+                            हिन्दी
+                        </button>
+
+                        <button type="button" class="lang-option" data-lang="mr">
+                            मराठी
+                        </button>
+
+                        <button type="button" class="lang-option" data-lang="gu">
+                            ગુજરાતી
+                        </button>
+
+                        <button type="button" class="lang-option" data-lang="bn">
+                            বাংলা
+                        </button>
+
+                        <button type="button" class="lang-option" data-lang="ta">
+                            தமிழ்
+                        </button>
+
+                        <button type="button" class="lang-option" data-lang="te">
+                            తెలుగు
+                        </button>
+
+                        <button type="button" class="lang-option" data-lang="kn">
+                            ಕನ್ನಡ
+                        </button>
+
+                        <button type="button" class="lang-option" data-lang="pa">
+                            ਪੰਜਾਬੀ
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+
+            <!-- =================================================
+                 DAY / NIGHT
+                 NO BACKGROUND
+            ================================================== -->
+
+            <button
+                type="button"
+                class="agri-theme-switch"
+                id="agriThemeToggle"
+                aria-label="Toggle theme"
+                aria-pressed="false"
+            >
+
+                <span class="theme-sun">☀️</span>
+
+                <span class="theme-moon">🌙</span>
+
+            </button>
+
+
+            <!-- ACCOUNT -->
+            <a href="/accounts/" class="agri-nav-item">
+
+                <span class="nav-icon">👤</span>
+
+                <span>Account</span>
+
+            </a>
+
+        </div>
+
+
+        <!-- MOBILE -->
+        <button
+            type="button"
+            class="agri-menu-toggle"
+            id="agriMenuToggle"
+            aria-expanded="false"
+        >
+            ☰
+        </button>
+
+    </div>
+
+</nav>
+
+
+<style>
+
+/* ============================================================
+   NAVBAR
+============================================================ */
+
+.agri-navbar {
+
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+
+    width: 100%;
+
+    padding: 10px 20px;
+
+    background: rgba(255,255,255,.88);
+
+    border-bottom: 1px solid rgba(40,90,48,.12);
+
+    backdrop-filter: blur(16px);
+
+    transition:
+        background .7s ease,
+        border-color .7s ease,
+        box-shadow .7s ease;
+}
+
+
+body.dark .agri-navbar {
+
+    background: rgba(2,5,3,.94);
+
+    border-color: rgba(100,160,110,.08);
+
+    box-shadow:
+        0 8px 30px rgba(0,0,0,.65);
+}
+
+
+/* ============================================================
+   INNER
+============================================================ */
+
+.agri-navbar-inner {
+
+    width: min(1450px,100%);
+
+    min-height: 62px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 18px;
+}
+
+
+/* ============================================================
+   BRAND
+============================================================ */
+
+.agri-brand {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #2f7d32;
+
+    white-space: nowrap;
+
+    transition: transform .25s ease;
+}
+
+
+.agri-brand:hover {
+
+    transform: translateY(-2px);
+}
+
+
+.agri-brand-mark {
+
+    width: 44px;
+    height: 44px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 13px;
+
+    background: rgba(70,140,75,.10);
+
+    font-size: 24px;
+}
+
+
+.agri-brand-text {
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 21px;
+
+    font-weight: 800;
+}
+
+
+body.dark .agri-brand {
+
+    color: #72d47f;
+}
+
+
+/* ============================================================
+   NAV ITEMS
+============================================================ */
+
+.agri-nav-links {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 7px;
+}
+
+
+.agri-nav-item {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    min-height: 42px;
+
+    padding: 9px 12px;
+
+    border-radius: 13px;
+
+    color: #24452a;
+
+    background: rgba(248,251,248,.94);
+
+    border: 1px solid rgba(47,125,50,.13);
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    transition:
+        transform .22s ease,
+        background .45s ease,
+        color .3s ease,
+        border-color .4s ease,
+        box-shadow .3s ease;
+}
+
+
+.agri-nav-item:hover {
+
+    transform: translateY(-2px);
+
+    color: #2f7d32;
+
+    border-color: rgba(47,125,50,.3);
+
+    box-shadow:
+        0 10px 22px rgba(35,80,41,.10);
+}
+
+
+body.dark .agri-nav-item {
+
+    color: #dce9df;
+
+    background: #080d09;
+
+    border-color: #172219;
+}
+
+
+body.dark .agri-nav-item:hover {
+
+    color: #78d784;
+
+    background: #0d160f;
+
+    border-color: #29402e;
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.45);
+}
+
+
+/* ============================================================
+   LANGUAGE
+============================================================ */
+
+.agri-language-form {
+
+    margin: 0;
+}
+
+
+.agri-language-wrap {
+
+    position: relative;
+}
+
+
+.agri-language-button {
+
+    min-height: 42px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 9px 12px;
+
+    border-radius: 13px;
+
+    border: 1px solid rgba(47,125,50,.13);
+
+    background: rgba(248,251,248,.94);
+
+    color: #24452a;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    transition:
+        transform .22s ease,
+        background .45s ease,
+        border-color .4s ease;
+}
+
+
+.agri-language-button:hover {
+
+    transform: translateY(-2px);
+
+    border-color: rgba(47,125,50,.3);
+}
+
+
+body.dark .agri-language-button {
+
+    color: #dce9df;
+
+    background: #080d09;
+
+    border-color: #172219;
+}
+
+
+.lang-chevron {
+
+    transition: transform .3s ease;
+}
+
+
+.agri-language-button.is-open .lang-chevron {
+
+    transform: rotate(180deg);
+}
+
+
+/* ============================================================
+   LANGUAGE MENU
+============================================================ */
+
+.agri-language-menu {
+
+    position: absolute;
+
+    top: calc(100% + 9px);
+
+    right: 0;
+
+    width: 215px;
+
+    padding: 8px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 5px;
+
+    border-radius: 17px;
+
+    background: #ffffff;
+
+    border: 1px solid #dce8de;
+
+    box-shadow:
+        0 20px 45px rgba(20,60,27,.16);
+
+    opacity: 0;
+
+    transform:
+        translateY(-8px)
+        scale(.97);
+
+    pointer-events: none;
+
+    transition:
+        opacity .22s ease,
+        transform .25s ease;
+}
+
+
+body.dark .agri-language-menu {
+
+    background: #070b08;
+
+    border-color: #18241b;
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.65);
+}
+
+
+.agri-language-menu.open {
+
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+
+    pointer-events: auto;
+}
+
+
+.lang-option {
+
+    padding: 9px 8px;
+
+    border: 0;
+
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: #24452a;
+
+    text-align: left;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background .18s ease,
+        transform .18s ease,
+        color .18s ease;
+}
+
+
+.lang-option:hover {
+
+    background: #edf6ee;
+
+    color: #2f7d32;
+
+    transform: translateX(3px);
+}
+
+
+body.dark .lang-option {
+
+    color: #dce9df;
+}
+
+
+body.dark .lang-option:hover {
+
+    background: #101b12;
+
+    color: #78d784;
+}
+
+
+/* ============================================================
+   THEME SWITCH
+   DIRECTLY ON NAVBAR — NO BG
+============================================================ */
+
+.agri-theme-switch {
+
+    position: relative;
+
+    width: 42px;
+    height: 42px;
+
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    flex-shrink: 0;
+}
+
+
+/* SUN */
+
+.theme-sun {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    font-size: 22px;
+
+    transform:
+        translate(-50%,-50%)
+        translateY(0)
+        scale(1);
+
+    opacity: 1;
+
+    filter:
+        drop-shadow(
+            0 2px 5px
+            rgba(245,190,50,.35)
+        );
+
+    transition:
+        transform .9s cubic-bezier(.18,.88,.25,1),
+        opacity .55s ease;
+}
+
+
+/* MOON */
+
+.theme-moon {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    font-size: 21px;
+
+    transform:
+        translate(-50%,-50%)
+        translateY(32px)
+        scale(.55);
+
+    opacity: 0;
+
+    filter:
+        drop-shadow(
+            0 2px 5px
+            rgba(100,150,255,.3)
+        );
+
+    transition:
+        transform .9s cubic-bezier(.18,.88,.25,1),
+        opacity .55s ease;
+}
+
+
+/* DARK = SUN SETS */
+
+body.dark .theme-sun {
+
+    transform:
+        translate(-50%,-50%)
+        translateY(-32px)
+        scale(.55);
+
+    opacity: 0;
+}
+
+
+/* DARK = MOON RISES */
+
+body.dark .theme-moon {
+
+    transform:
+        translate(-50%,-50%)
+        translateY(0)
+        scale(1);
+
+    opacity: 1;
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+.agri-menu-toggle {
+
+    display: none;
+
+    width: 43px;
+    height: 43px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(47,125,50,.13);
+
+    background: rgba(248,251,248,.94);
+
+    color: #24452a;
+
+    font-size: 21px;
+
+    cursor: pointer;
+}
+
+
+body.dark .agri-menu-toggle {
+
+    background: #080d09;
+
+    color: #dce9df;
+
+    border-color: #172219;
+}
+
+
+@media(max-width:900px) {
+
+    .agri-menu-toggle {
+
+        display: block;
+    }
+
+
+    .agri-nav-links {
+
+        position: absolute;
+
+        top: calc(100% + 8px);
+
+        left: 12px;
+        right: 12px;
+
+        display: none;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        padding: 11px;
+
+        border-radius: 19px;
+
+        background: #ffffff;
+
+        border: 1px solid #dce8de;
+
+        box-shadow:
+            0 25px 55px rgba(20,60,27,.18);
+    }
+
+
+    body.dark .agri-nav-links {
+
+        background: #050805;
+
+        border-color: #18241b;
+
+        box-shadow:
+            0 25px 60px rgba(0,0,0,.72);
+    }
+
+
+    .agri-nav-links.open {
+
+        display: flex;
+
+        animation:
+            agriNavDrop .3s ease;
+    }
+
+
+    .agri-nav-item,
+    .agri-language-button {
+
+        width: 100%;
+
+        justify-content: flex-start;
+    }
+
+
+    .agri-language-menu {
+
+        position: static;
+
+        width: 100%;
+
+        margin-top: 6px;
+    }
+
+
+    .agri-theme-switch {
+
+        align-self: flex-start;
+    }
+
+}
+
+
+@keyframes agriNavDrop {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(-8px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+}
+
+</style>
+
+
+<script>
+
+(function () {
+
+    "use strict";
+
+
+    /* =========================================================
+       LANGUAGE
+    ========================================================= */
+
+    const form =
+        document.getElementById(
+            "agriLanguageForm"
+        );
+
+    const input =
+        document.getElementById(
+            "agriLanguageInput"
+        );
+
+    const button =
+        document.getElementById(
+            "agriLanguageButton"
+        );
+
+    const menu =
+        document.getElementById(
+            "agriLanguageMenu"
+        );
+
+    const current =
+        document.getElementById(
+            "agriCurrentLanguage"
+        );
+
+
+    const names = {
+
+        en: "English",
+        hi: "हिन्दी",
+        mr: "मराठी",
+        gu: "ગુજરાતી",
+        bn: "বাংলা",
+        ta: "தமிழ்",
+        te: "తెలుగు",
+        kn: "ಕನ್ನಡ",
+        pa: "ਪੰਜਾਬੀ"
+
+    };
+
+
+    if (input && current) {
+
+        current.textContent =
+            names[input.value] || "English";
+    }
+
+
+    if (button && menu) {
+
+        button.addEventListener(
+            "click",
+            function (event) {
+
+                event.stopPropagation();
+
+                const open =
+                    menu.classList.toggle("open");
+
+                button.classList.toggle(
+                    "is-open",
+                    open
+                );
+
+                button.setAttribute(
+                    "aria-expanded",
+                    open ? "true" : "false"
+                );
+
+            }
+        );
+
+
+        menu
+            .querySelectorAll(".lang-option")
+            .forEach(function (option) {
+
+                option.addEventListener(
+                    "click",
+                    function () {
+
+                        const lang =
+                            this.dataset.lang;
+
+                        input.value = lang;
+
+                        current.textContent =
+                            names[lang];
+
+                        menu.classList.remove(
+                            "open"
+                        );
+
+                        button.classList.remove(
+                            "is-open"
+                        );
+
+                        form.submit();
+
+                    }
+                );
+
+            });
+
+    }
+
+
+    document.addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                menu &&
+                button &&
+                !menu.contains(event.target) &&
+                !button.contains(event.target)
+            ) {
+
+                menu.classList.remove("open");
+
+                button.classList.remove(
+                    "is-open"
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =========================================================
+       THEME
+    ========================================================= */
+
+    const themeButton =
+        document.getElementById(
+            "agriThemeToggle"
+        );
+
+    const THEME_KEY =
+        "pentraone-agriculture-theme";
+
+
+    function applyTheme(theme) {
+
+        const dark =
+            theme === "dark";
+
+        document.body.classList.toggle(
+            "dark",
+            dark
+        );
+
+        document.documentElement.style.colorScheme =
+            dark ? "dark" : "light";
+
+
+        try {
+
+            localStorage.setItem(
+                THEME_KEY,
+                dark ? "dark" : "light"
+            );
+
+            localStorage.setItem(
+                "pentraone-theme",
+                dark ? "dark" : "light"
+            );
+
+        } catch (e) {}
+
+
+        if (themeButton) {
+
+            themeButton.setAttribute(
+                "aria-pressed",
+                dark ? "true" : "false"
+            );
+
+        }
+
+    }
+
+
+    let savedTheme = "light";
+
+
+    try {
+
+        savedTheme =
+            localStorage.getItem(
+                THEME_KEY
+            )
+            ||
+            localStorage.getItem(
+                "pentraone-theme"
+            )
+            ||
+            "light";
+
+    } catch (e) {}
+
+
+    applyTheme(savedTheme);
+
+
+    if (themeButton) {
+
+        themeButton.addEventListener(
+            "click",
+            function () {
+
+                const dark =
+                    document.body.classList.contains(
+                        "dark"
+                    );
+
+                applyTheme(
+                    dark
+                        ? "light"
+                        : "dark"
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =========================================================
+       MOBILE MENU
+    ========================================================= */
+
+    const nav =
+        document.getElementById(
+            "agriNavLinks"
+        );
+
+    const menuButton =
+        document.getElementById(
+            "agriMenuToggle"
+        );
+
+
+    if (nav && menuButton) {
+
+        menuButton.addEventListener(
+            "click",
+            function () {
+
+                const open =
+                    nav.classList.toggle("open");
+
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    open ? "true" : "false"
+                );
+
+            }
+        );
+
+
+        nav.querySelectorAll("a")
+            .forEach(function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        nav.classList.remove(
+                            "open"
+                        );
+
+                    }
+                );
+
+            });
+
+    }
+
+})();
+
+</script>

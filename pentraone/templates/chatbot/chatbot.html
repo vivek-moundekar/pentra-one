@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Udaan AI</title>
+
+<style>
+/* =========================================
+   RESET & BASE
+========================================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --bg-primary: #212121;
+    --bg-sidebar: #171717;
+    --bg-elevated: #2f2f2f;
+    --bg-elevated-hover: #3a3a3a;
+    --bg-input: #2f2f2f;
+    --border-color: #2f2f2f;
+    --border-soft: rgba(255,255,255,0.08);
+    --text-primary: #ececec;
+    --text-secondary: #b4b4b4;
+    --text-tertiary: #8e8ea0;
+    --accent: #10a37f;
+    --accent-hover: #1a7f64;
+    --danger: #ef4444;
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    --mono: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+html, body {
+    height: 100%;
+    overscroll-behavior: none;
+}
+
+body {
+    font-family: var(--font);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    height: 100vh;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    font-size: 15px;
+}
+
+button { font-family: inherit; }
+
+/* Scrollbars */
+* { scrollbar-width: thin; scrollbar-color: #4d4d4f transparent; }
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb { background: #4d4d4f; border-radius: 8px; }
+*::-webkit-scrollbar-thumb:hover { background: #5c5c5e; }
+
+/* =========================================
+   APP SHELL
+========================================= */
+.chat-app { display: flex; height: 100vh; width: 100%; position: relative; }
+
+.sidebar-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 90;
+}
+
+/* =========================================
+   SIDEBAR
+========================================= */
+.sidebar {
+    width: 268px;
+    min-width: 268px;
+    background: var(--bg-sidebar);
+    display: flex;
+    flex-direction: column;
+    padding: 10px 8px;
+    transition: margin-left 0.25s ease, opacity 0.2s ease;
+    z-index: 100;
+}
+
+.sidebar-top {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 4px 12px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    padding: 6px 8px;
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+}
+
+.brand-mark {
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+    background: linear-gradient(135deg, var(--accent), #0d8c6d);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.brand-mark svg { width: 15px; height: 15px; }
+
+.icon-btn {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.15s, color 0.15s;
+}
+.icon-btn:hover { background: #2a2a2a; color: var(--text-primary); }
+.icon-btn svg { width: 18px; height: 18px; }
+
+/* NEW CHAT */
+.new-chat {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border: 1px solid var(--border-soft);
+    background: transparent;
+    color: var(--text-primary);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    transition: background 0.15s;
+    margin-bottom: 6px;
+}
+.new-chat:hover { background: #212121; }
+.new-chat svg { width: 17px; height: 17px; flex-shrink: 0; }
+
+/* SEARCH */
+.sidebar-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    margin-bottom: 14px;
+    border-radius: var(--radius-md);
+    color: var(--text-tertiary);
+    font-size: 13.5px;
+    cursor: default;
+    user-select: none;
+}
+.sidebar-search svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* CHAT LIST */
+.chat-list-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    padding: 6px 12px 6px;
+    letter-spacing: 0.02em;
+}
+
+.chat-list {
+    overflow-y: auto;
+    flex: 1;
+    padding-bottom: 8px;
+}
+
+.chat-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 9px 30px 9px 12px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    margin-bottom: 2px;
+    font-size: 14px;
+    color: #d5d5d5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background 0.15s;
+}
+.chat-item:hover { background: #212121; }
+.chat-item.active { background: #2a2a2a; color: #fff; }
+
+.chat-item-delete {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: var(--text-tertiary);
+    border-radius: 6px;
+    cursor: pointer;
+}
+.chat-item:hover .chat-item-delete { display: flex; }
+.chat-item-delete:hover { background: #3a3a3a; color: #fff; }
+.chat-item-delete svg { width: 14px; height: 14px; }
+
+.chat-list-empty {
+    padding: 14px 12px;
+    color: var(--text-tertiary);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* SIDEBAR BOTTOM */
+.sidebar-bottom {
+    border-top: 1px solid var(--border-soft);
+    padding-top: 8px;
+    margin-top: 6px;
+}
+
+.back-dashboard {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #d5d5d5;
+    padding: 9px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    transition: background 0.15s;
+}
+.back-dashboard svg { width: 17px; height: 17px; flex-shrink: 0; }
+.back-dashboard:hover { background: #212121; }
+
+/* =========================================
+   CHAT AREA
+========================================= */
+.chat-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background: var(--bg-primary);
+    position: relative;
+}
+
+/* HEADER */
+.chat-header {
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    flex-shrink: 0;
+}
+
+.header-left { display: flex; align-items: center; gap: 6px; }
+
+.chat-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.chat-title-badge {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    background: #2a2a2a;
+    padding: 2px 8px;
+    border-radius: 20px;
+    border: 1px solid var(--border-soft);
+}
+
+.header-actions { display: flex; gap: 2px; }
+
+/* =========================================
+   MESSAGES
+========================================= */
+.messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 20px 4px;
+    scroll-behavior: smooth;
+}
+
+.message-row {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 18px 0;
+    display: flex;
+    gap: 16px;
+}
+
+.message-row.user {
+    justify-content: flex-end;
+}
+
+.avatar {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.ai-avatar {
+    background: linear-gradient(135deg, var(--accent), #0d8c6d);
+}
+.ai-avatar svg { width: 16px; height: 16px; color: #fff; }
+
+.message-body {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.message-row.user .message-body {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.message-role {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.message-content {
+    line-height: 1.7;
+    color: var(--text-primary);
+    word-break: break-word;
+    font-size: 15.5px;
+}
+
+.message-row.user .message-content {
+    background: var(--bg-elevated);
+    padding: 10px 16px;
+    border-radius: 20px;
+    max-width: 560px;
+}
+
+.message-content p { margin: 0 0 12px; }
+.message-content p:last-child { margin-bottom: 0; }
+.message-content ul, .message-content ol { margin: 0 0 12px 22px; }
+.message-content li { margin-bottom: 4px; }
+.message-content strong { font-weight: 600; }
+.message-content h1, .message-content h2, .message-content h3 {
+    margin: 16px 0 8px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+.message-content h1 { font-size: 20px; }
+.message-content h2 { font-size: 18px; }
+.message-content h3 { font-size: 16px; }
+
+.message-content code {
+    font-family: var(--mono);
+    background: rgba(255,255,255,0.08);
+    padding: 2px 5px;
+    border-radius: 5px;
+    font-size: 0.88em;
+}
+
+.message-content pre {
+    background: #0d0d0d;
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    overflow-x: auto;
+    margin: 6px 0 14px;
+}
+
+.message-content pre code {
+    background: none;
+    padding: 0;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: #ececec;
+}
+
+.message-actions {
+    display: flex;
+    gap: 2px;
+    margin-top: 8px;
+    opacity: 0;
+    transition: opacity 0.15s;
+}
+
+.message-row:hover .message-actions,
+.message-row.streaming .message-actions { opacity: 1; }
+
+.message-row.user .message-actions { justify-content: flex-end; }
+
+.action-btn {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--text-tertiary);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+.action-btn:hover { background: #2a2a2a; color: var(--text-primary); }
+.action-btn svg { width: 15px; height: 15px; }
+
+/* TYPING INDICATOR */
+.typing-dots {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 0;
+}
+.typing-dots span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--text-tertiary);
+    animation: typingBounce 1.2s infinite ease-in-out;
+}
+.typing-dots span:nth-child(2) { animation-delay: 0.15s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes typingBounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+    30% { transform: translateY(-5px); opacity: 1; }
+}
+
+.streaming-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background: var(--accent);
+    margin-left: 2px;
+    vertical-align: text-bottom;
+    border-radius: 1px;
+    animation: blink 0.85s infinite;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+.error-text { color: #f37373; }
+
+/* =========================================
+   WELCOME
+========================================= */
+.welcome {
+    height: 100%;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px 20px 40px;
+}
+
+.welcome-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--accent), #0d8c6d);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 24px rgba(16,163,127,0.25);
+}
+.welcome-icon svg { width: 30px; height: 30px; color: #fff; }
+
+.welcome h1 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #fff;
+    letter-spacing: -0.02em;
+}
+
+.welcome p {
+    color: var(--text-tertiary);
+    font-size: 15px;
+}
+
+/* SUGGESTIONS */
+.suggestions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 28px;
+    width: 100%;
+    max-width: 620px;
+}
+
+.suggestion {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 13px 14px;
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    background: #181818;
+    color: #ddd;
+    cursor: pointer;
+    text-align: left;
+    font-size: 13.5px;
+    line-height: 1.4;
+    transition: background 0.15s, border-color 0.15s;
+}
+.suggestion:hover { background: #232323; border-color: #4a4a4a; }
+.suggestion-emoji { font-size: 16px; flex-shrink: 0; line-height: 1.2; }
+
+/* =========================================
+   INPUT AREA
+========================================= */
+.input-wrapper {
+    flex-shrink: 0;
+    padding: 6px 20px 18px;
+    background: var(--bg-primary);
+}
+
+.input-box {
+    max-width: 780px;
+    margin: auto;
+    border: 1px solid #4a4a4a;
+    border-radius: 26px;
+    display: flex;
+    align-items: flex-end;
+    background: var(--bg-input);
+    padding: 8px 8px 8px 18px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.28);
+    transition: border-color 0.15s;
+}
+.input-box:focus-within { border-color: #6b6b6b; }
+
+.input-box textarea {
+    flex: 1;
+    border: none;
+    outline: none;
+    resize: none;
+    max-height: 200px;
+    min-height: 26px;
+    padding: 9px 6px;
+    font-size: 15.5px;
+    font-family: inherit;
+    background: transparent;
+    color: #fff;
+    line-height: 1.5;
+}
+.input-box textarea::placeholder { color: var(--text-tertiary); }
+
+.send-btn {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border: none;
+    background: #fff;
+    color: #000;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, opacity 0.15s;
+    margin-bottom: 1px;
+}
+.send-btn svg { width: 17px; height: 17px; }
+.send-btn:hover:not(:disabled) { background: #e6e6e6; }
+.send-btn:disabled { opacity: 0.35; cursor: not-allowed; background: #6f6f6f; color: #ccc; }
+
+.input-footer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-top: 10px;
+    max-width: 780px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+@media (max-width: 760px) {
+
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        margin-left: -280px;
+        box-shadow: 0 0 30px rgba(0,0,0,0.4);
+    }
+
+    .sidebar.open { margin-left: 0; }
+
+    .sidebar-backdrop.open { display: block; }
+
+    .chat-header { padding: 0 10px; }
+
+    .messages { padding: 4px 12px 4px; }
+
+    .message-row { gap: 12px; }
+
+    .message-row.user .message-content { max-width: 100%; }
+
+    .suggestions { grid-template-columns: 1fr; max-width: 100%; }
+
+    .welcome h1 { font-size: 23px; }
+
+    .input-wrapper { padding: 6px 10px 14px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="chat-app">
+
+<div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar()"></div>
+
+<!-- ======================================
+     SIDEBAR
+======================================= -->
+<aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-top">
+        <div class="brand">
+            <span class="brand-mark">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" fill="#fff"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            Udaan AI
+        </div>
+        <button class="icon-btn" onclick="toggleSidebar()" title="Close sidebar" aria-label="Close sidebar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+    </div>
+
+    <button class="new-chat" onclick="newChat()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+        New chat
+    </button>
+
+    <div class="sidebar-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        Search chats
+    </div>
+
+    {% if conversations %}
+    <div class="chat-list-label">Recent</div>
+    {% endif %}
+
+    <div class="chat-list" id="chatList">
+
+        {% for conversation in conversations %}
+        <div class="chat-item" data-id="{{ conversation.id }}" onclick="loadConversation({{ conversation.id }})">
+            <span class="chat-item-text">{{ conversation.title }}</span>
+            <button class="chat-item-delete" title="Delete chat" onclick="event.stopPropagation(); deleteConversation({{ conversation.id }})">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6"/></svg>
+            </button>
+        </div>
+        {% empty %}
+        <div class="chat-list-empty">No conversations yet — start a new chat to begin.</div>
+        {% endfor %}
+
+    </div>
+
+    <div class="sidebar-bottom">
+        <a href="{% url 'dashboard' %}" class="back-dashboard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Back to Dashboard
+        </a>
+    </div>
+
+</aside>
+
+<!-- ======================================
+     CHAT
+======================================= -->
+<main class="chat-area">
+
+    <header class="chat-header">
+        <div class="header-left">
+            <button class="icon-btn" id="menuBtn" onclick="toggleSidebar()" title="Menu" aria-label="Toggle menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+            <div class="chat-title">
+                Udaan AI
+                <span class="chat-title-badge">Beta</span>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <button class="icon-btn" onclick="clearCurrentChat()" title="Delete this chat" aria-label="Delete this chat">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <section class="messages" id="messages">
+
+        <div class="welcome" id="welcome">
+
+            <div class="welcome-icon">
+                <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" fill="#fff"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+
+            <h1>How can I help you?</h1>
+            <p>Ask Udaan AI anything about education, healthcare, agriculture, schemes or skills.</p>
+
+            <div class="suggestions">
+
+                <button class="suggestion" onclick="useSuggestion('What government schemes are available for students?')">
+                    <span class="suggestion-emoji">🎓</span>
+                    <span>Government schemes for students</span>
+                </button>
+
+                <button class="suggestion" onclick="useSuggestion('Explain agriculture in simple words.')">
+                    <span class="suggestion-emoji">🌾</span>
+                    <span>Explain agriculture basics</span>
+                </button>
+
+                <button class="suggestion" onclick="useSuggestion('Give me some useful study tips.')">
+                    <span class="suggestion-emoji">📚</span>
+                    <span>Give me useful study tips</span>
+                </button>
+
+                <button class="suggestion" onclick="useSuggestion('What skills can women learn to earn from home?')">
+                    <span class="suggestion-emoji">👩‍💼</span>
+                    <span>Skills women can learn from home</span>
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- INPUT -->
+    <div class="input-wrapper">
+
+        <div class="input-box">
+            <textarea id="userInput" placeholder="Message Udaan AI..." rows="1"></textarea>
+
+            <button class="send-btn" id="sendButton" onclick="sendMessage()" title="Send" aria-label="Send message" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+            </button>
+        </div>
+
+        <div class="input-footer">Udaan AI can make mistakes. Verify important information.</div>
+
+    </div>
+
+</main>
+
+</div>
+
+<script>
+
+/* =========================================
+   VARIABLES
+========================================= */
+const input = document.getElementById("userInput");
+const messages = document.getElementById("messages");
+const sendButton = document.getElementById("sendButton");
+const sidebar = document.getElementById("sidebar");
+const sidebarBackdrop = document.getElementById("sidebarBackdrop");
+
+let currentConversationId = null;
+
+const WELCOME_HTML = `
+    <div class="welcome" id="welcome">
+        <div class="welcome-icon">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" fill="#fff"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h1>How can I help you?</h1>
+        <p>Ask Udaan AI anything about education, healthcare, agriculture, schemes or skills.</p>
+        <div class="suggestions">
+            <button class="suggestion" onclick="useSuggestion('What government schemes are available for students?')">
+                <span class="suggestion-emoji">🎓</span><span>Government schemes for students</span>
+            </button>
+            <button class="suggestion" onclick="useSuggestion('Explain agriculture in simple words.')">
+                <span class="suggestion-emoji">🌾</span><span>Explain agriculture basics</span>
+            </button>
+            <button class="suggestion" onclick="useSuggestion('Give me some useful study tips.')">
+                <span class="suggestion-emoji">📚</span><span>Give me useful study tips</span>
+            </button>
+            <button class="suggestion" onclick="useSuggestion('What skills can women learn to earn from home?')">
+                <span class="suggestion-emoji">👩‍💼</span><span>Skills women can learn from home</span>
+            </button>
+        </div>
+    </div>
+`;
+
+const AI_AVATAR_SVG = `
+    <div class="avatar ai-avatar">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5z" fill="#fff"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+`;
+
+const COPY_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
+const CHECK_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>`;
+
+/* =========================================
+   CSRF
+========================================= */
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== "") {
+        const cookies = document.cookie.split(";");
+        for (let cookie of cookies) {
+            cookie = cookie.trim();
+            if (cookie.startsWith(name + "=")) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+/* =========================================
+   LIGHTWEIGHT MARKDOWN RENDERING
+========================================= */
+function escapeHtml(str) {
+    return str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+}
+
+function renderMarkdown(raw) {
+    const text = escapeHtml(raw);
+
+    // Extract fenced code blocks first so inner content isn't touched further
+    const codeBlocks = [];
+    let working = text.replace(/```([a-zA-Z0-9_+-]*)\n?([\s\S]*?)```/g, function(match, lang, code) {
+        const idx = codeBlocks.length;
+        codeBlocks.push(code.replace(/\n$/, ""));
+        return "@@CODEBLOCK" + idx + "@@";
+    });
+
+    // Split into blocks by blank lines for paragraph/list handling
+    const lines = working.split("\n");
+    let html = "";
+    let inList = false;
+    let paragraphBuffer = [];
+
+    function flushParagraph() {
+        if (paragraphBuffer.length) {
+            html += "<p>" + paragraphBuffer.join("<br>") + "</p>";
+            paragraphBuffer = [];
+        }
+    }
+
+    function inlineFormat(line) {
+        line = line.replace(/`([^`]+)`/g, "<code>$1</code>");
+        line = line.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+        line = line.replace(/(^|[^*])\*([^*\n]+)\*(?!\*)/g, "$1<em>$2</em>");
+        return line;
+    }
+
+    for (let i = 0; i < lines.length; i++) {
+        let line = lines[i];
+
+        if (/^@@CODEBLOCK\d+@@$/.test(line.trim())) {
+            flushParagraph();
+            if (inList) { html += "</ul>"; inList = false; }
+            const idx = parseInt(line.trim().match(/\d+/)[0], 10);
+            html += "<pre><code>" + codeBlocks[idx] + "</code></pre>";
+            continue;
+        }
+
+        const headingMatch = line.match(/^(#{1,3})\s+(.*)$/);
+        if (headingMatch) {
+            flushParagraph();
+            if (inList) { html += "</ul>"; inList = false; }
+            const level = headingMatch[1].length;
+            html += "<h" + level + ">" + inlineFormat(headingMatch[2]) + "</h" + level + ">";
+            continue;
+        }
+
+        const listMatch = line.match(/^\s*[-*]\s+(.*)$/);
+        if (listMatch) {
+            flushParagraph();
+            if (!inList) { html += "<ul>"; inList = true; }
+            html += "<li>" + inlineFormat(listMatch[1]) + "</li>";
+            continue;
+        }
+
+        if (inList) { html += "</ul>"; inList = false; }
+
+        if (line.trim() === "") {
+            flushParagraph();
+            continue;
+        }
+
+        paragraphBuffer.push(inlineFormat(line));
+    }
+
+    flushParagraph();
+    if (inList) { html += "</ul>"; }
+
+    return html;
+}
+
+/* =========================================
+   SCROLL HELPERS
+========================================= */
+function isNearBottom() {
+    return messages.scrollHeight - messages.scrollTop - messages.clientHeight < 120;
+}
+
+function scrollToBottom(force) {
+    if (force || isNearBottom()) {
+        messages.scrollTop = messages.scrollHeight;
+    }
+}
+
+function removeWelcome() {
+    const welcome = document.getElementById("welcome");
+    if (welcome) welcome.remove();
+}
+
+/* =========================================
+   COPY TO CLIPBOARD
+========================================= */
+function copyMessageText(button, rawText) {
+    navigator.clipboard.writeText(rawText).then(function() {
+        const original = button.innerHTML;
+        button.innerHTML = CHECK_ICON;
+        setTimeout(function() { button.innerHTML = original; }, 1500);
+    }).catch(function() {});
+}
+
+/* =========================================
+   ADD MESSAGE (user or completed assistant)
+========================================= */
+function addMessage(text, role) {
+    removeWelcome();
+
+    const row = document.createElement("div");
+    row.className = "message-row " + (role === "user" ? "user" : "assistant");
+
+    if (role === "user") {
+        row.innerHTML = `
+            <div class="message-body">
+                <div class="message-content"></div>
+                <div class="message-actions">
+                    <button class="action-btn copy-btn" title="Copy">${COPY_ICON}</button>
+                </div>
+            </div>
+        `;
+        row.querySelector(".message-content").textContent = text;
+    } else {
+        row.innerHTML = `
+            ${AI_AVATAR_SVG}
+            <div class="message-body">
+                <div class="message-role">Udaan AI</div>
+                <div class="message-content"></div>
+                <div class="message-actions">
+                    <button class="action-btn copy-btn" title="Copy">${COPY_ICON}</button>
+                </div>
+            </div>
+        `;
+        row.querySelector(".message-content").innerHTML = renderMarkdown(text);
+    }
+
+    row.querySelector(".copy-btn").addEventListener("click", function() {
+        copyMessageText(this, text);
+    });
+
+    messages.appendChild(row);
+    scrollToBottom(true);
+
+    return row;
+}
+
+/* =========================================
+   STREAMING AI MESSAGE
+========================================= */
+function createAIMessage() {
+    removeWelcome();
+
+    const row = document.createElement("div");
+    row.className = "message-row assistant streaming";
+
+    row.innerHTML = `
+        ${AI_AVATAR_SVG}
+        <div class="message-body">
+            <div class="message-role">Udaan AI</div>
+            <div class="message-content">
+                <span class="typing-dots" id="typingDots"><span></span><span></span><span></span></span>
+                <span id="streamText" style="display:none;"></span>
+            </div>
+            <div class="message-actions" id="streamActions" style="display:none;">
+                <button class="action-btn copy-btn" title="Copy">${COPY_ICON}</button>
+            </div>
+        </div>
+    `;
+
+    messages.appendChild(row);
+    scrollToBottom(true);
+
+    return row;
+}
+
+/* =========================================
+   SEND MESSAGE — STREAMING
+========================================= */
+async function sendMessage() {
+    const text = input.value.trim();
+
+    if (!text) { return; }
+
+    addMessage(text, "user");
+
+    input.value = "";
+    input.style.height = "auto";
+    sendButton.disabled = true;
+
+    const aiRow = createAIMessage();
+    const typingDots = aiRow.querySelector("#typingDots");
+    const streamText = aiRow.querySelector("#streamText");
+    const streamActions = aiRow.querySelector("#streamActions");
+    const contentBox = aiRow.querySelector(".message-content");
+
+    let rawFullText = "";
+    let firstChunkReceived = false;
+
+    try {
+        const formData = new FormData();
+        formData.append("message", text);
+
+        if (currentConversationId) {
+            formData.append("conversation_id", currentConversationId);
+        }
+
+        const response = await fetch("{% url 'send_message' %}", {
+            method: "POST",
+            headers: { "X-CSRFToken": getCookie("csrftoken") },
+            body: formData
+        });
+
+        if (!response.ok) {
+            throw new Error("Server error: " + response.status);
+        }
+
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+
+        while (true) {
+            const { value, done } = await reader.read();
+            if (done) { break; }
+
+            const chunk = decoder.decode(value, { stream: true });
+            rawFullText += chunk;
+
+            if (!firstChunkReceived) {
+                firstChunkReceived = true;
+                typingDots.style.display = "none";
+                streamText.style.display = "inline";
+            }
+
+            streamText.innerHTML = renderMarkdown(rawFullText) +
+                '<span class="streaming-cursor"></span>';
+
+            scrollToBottom(false);
+        }
+
+        // Final render without the blinking cursor
+        streamText.innerHTML = renderMarkdown(rawFullText);
+        typingDots.style.display = "none";
+        streamText.style.display = "inline";
+
+        aiRow.classList.remove("streaming");
+        streamActions.style.display = "flex";
+        streamActions.querySelector(".copy-btn").addEventListener("click", function() {
+            copyMessageText(this, rawFullText);
+        });
+
+        if (!currentConversationId) {
+            setTimeout(function() { location.reload(); }, 300);
+        }
+
+    } catch (error) {
+        console.error(error);
+        typingDots.style.display = "none";
+        streamText.style.display = "inline";
+        streamText.innerHTML = '<span class="error-text">⚠️ Unable to connect to Udaan AI. Please try again.</span>';
+    } finally {
+        sendButton.disabled = input.value.trim() === "";
+        input.focus();
+    }
+}
+
+/* =========================================
+   NEW CHAT
+========================================= */
+async function newChat() {
+    try {
+        const response = await fetch("{% url 'new_chat' %}", {
+            method: "POST",
+            headers: { "X-CSRFToken": getCookie("csrftoken") }
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            currentConversationId = data.conversation_id;
+            messages.innerHTML = WELCOME_HTML;
+
+            document.querySelectorAll(".chat-item").forEach(function(item) {
+                item.classList.remove("active");
+            });
+
+            if (window.innerWidth <= 760) { closeSidebarMobile(); }
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+/* =========================================
+   LOAD CONVERSATION
+========================================= */
+async function loadConversation(conversationId) {
+    try {
+        const response = await fetch(
+            "{% url 'chat_history' %}" + "?conversation_id=" + conversationId
+        );
+
+        const data = await response.json();
+
+        if (!data.success) { return; }
+
+        currentConversationId = conversationId;
+        messages.innerHTML = "";
+
+        data.messages.forEach(function(message) {
+            addMessage(message.content, message.role);
+        });
+
+        document.querySelectorAll(".chat-item").forEach(function(item) {
+            item.classList.remove("active");
+        });
+
+        const selected = document.querySelector(`[data-id="${conversationId}"]`);
+        if (selected) { selected.classList.add("active"); }
+
+        if (window.innerWidth <= 760) { closeSidebarMobile(); }
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+/* =========================================
+   CLEAR / DELETE CHAT
+========================================= */
+async function clearCurrentChat() {
+    if (!currentConversationId) { return; }
+    await deleteConversation(currentConversationId);
+}
+
+async function deleteConversation(conversationId) {
+    const formData = new FormData();
+    formData.append("conversation_id", conversationId);
+
+    try {
+        const response = await fetch("{% url 'clear_chat' %}", {
+            method: "POST",
+            headers: { "X-CSRFToken": getCookie("csrftoken") },
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            const item = document.querySelector(`[data-id="${conversationId}"]`);
+            if (item) { item.remove(); }
+
+            if (currentConversationId === conversationId) {
+                currentConversationId = null;
+                messages.innerHTML = WELCOME_HTML;
+            }
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+/* =========================================
+   SUGGESTION
+========================================= */
+function useSuggestion(question) {
+    input.value = question;
+    sendButton.disabled = false;
+    sendMessage();
+}
+
+/* =========================================
+   SIDEBAR
+========================================= */
+function toggleSidebar() {
+    sidebar.classList.toggle("open");
+    sidebarBackdrop.classList.toggle("open");
+}
+
+function closeSidebarMobile() {
+    sidebar.classList.remove("open");
+    sidebarBackdrop.classList.remove("open");
+}
+
+/* =========================================
+   ENTER TO SEND
+========================================= */
+input.addEventListener("keydown", function(event) {
+    if (event.key === "Enter" && !event.shiftKey) {
+        event.preventDefault();
+        if (!sendButton.disabled) { sendMessage(); }
+    }
+});
+
+/* =========================================
+   TEXTAREA AUTO RESIZE + BUTTON STATE
+========================================= */
+input.addEventListener("input", function() {
+    this.style.height = "auto";
+    this.style.height = Math.min(this.scrollHeight, 200) + "px";
+    sendButton.disabled = this.value.trim() === "";
+});
+
+</script>
+
+</body>
+</html>

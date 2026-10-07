@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create AI Test | PentraOne Education</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #07111f;
+            --bg-soft: #0b1728;
+            --panel: rgba(15, 28, 46, 0.92);
+            --panel-2: #101f34;
+            --border: rgba(148, 163, 184, 0.16);
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --blue: #3b82f6;
+            --blue-2: #2563eb;
+            --cyan: #22d3ee;
+            --green: #22c55e;
+            --red: #ef4444;
+            --amber: #f59e0b;
+            --shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(37, 99, 235, 0.17), transparent 32%),
+                radial-gradient(circle at 85% 15%, rgba(34, 211, 238, 0.09), transparent 28%),
+                var(--bg);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(16px);
+            background: rgba(7, 17, 31, 0.82);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .topbar-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            min-height: 72px;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .brand-mark {
+            width: 42px;
+            height: 42px;
+            border-radius: 13px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, var(--blue), var(--cyan));
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.28);
+        }
+
+        .brand small {
+            display: block;
+            color: var(--muted);
+            font-size: 12px;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        .back-btn {
+            padding: 10px 14px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.035);
+            color: #dbeafe;
+            font-size: 14px;
+            font-weight: 700;
+            transition: 0.2s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-1px);
+            border-color: rgba(59, 130, 246, 0.45);
+            background: rgba(59, 130, 246, 0.10);
+        }
+
+        .page {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 38px 24px 70px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.7fr);
+            gap: 22px;
+            align-items: stretch;
+            margin-bottom: 24px;
+        }
+
+        .hero-main,
+        .hero-side,
+        .panel {
+            border: 1px solid var(--border);
+            background: linear-gradient(180deg, rgba(16, 31, 52, 0.96), rgba(10, 23, 40, 0.96));
+            box-shadow: var(--shadow);
+        }
+
+        .hero-main {
+            border-radius: 24px;
+            padding: 34px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-main::after {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            right: -80px;
+            top: -90px;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.13);
+            filter: blur(2px);
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(34, 211, 238, 0.20);
+            background: rgba(34, 211, 238, 0.08);
+            color: #a5f3fc;
+            padding: 7px 11px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            margin: 18px 0 10px;
+            font-size: clamp(30px, 4vw, 48px);
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+        }
+
+        .hero p {
+            margin: 0;
+            max-width: 700px;
+            color: #b8c6d9;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        .hero-side {
+            border-radius: 24px;
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-side .stat {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 13px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-side .stat:last-child {
+            border-bottom: 0;
+        }
+
+        .stat-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 11px;
+            display: grid;
+            place-items: center;
+            flex: 0 0 38px;
+            background: rgba(59, 130, 246, 0.12);
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .stat span {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.45;
+        }
+
+        .alert {
+            margin-bottom: 18px;
+            border-radius: 15px;
+            padding: 14px 16px;
+            border: 1px solid transparent;
+            line-height: 1.55;
+            font-size: 14px;
+        }
+
+        .alert-error {
+            background: rgba(239, 68, 68, 0.09);
+            border-color: rgba(239, 68, 68, 0.24);
+            color: #fecaca;
+        }
+
+        .alert-success {
+            background: rgba(34, 197, 94, 0.09);
+            border-color: rgba(34, 197, 94, 0.24);
+            color: #bbf7d0;
+        }
+
+        .panel {
+            border-radius: 24px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        .panel-header {
+            padding: 24px 28px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .panel-header h2 {
+            margin: 0;
+            font-size: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .panel-header p {
+            margin: 6px 0 0;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .ai-badge {
+            flex: 0 0 auto;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.16), rgba(34, 211, 238, 0.10));
+            border: 1px solid rgba(59, 130, 246, 0.22);
+            color: #bfdbfe;
+            border-radius: 999px;
+            padding: 8px 12px;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .form-body {
+            padding: 28px;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 6px 0 16px;
+            font-weight: 800;
+            color: #e2e8f0;
+        }
+
+        .section-title .step {
+            width: 28px;
+            height: 28px;
+            border-radius: 9px;
+            display: grid;
+            place-items: center;
+            background: rgba(59, 130, 246, 0.15);
+            color: #93c5fd;
+            font-size: 12px;
+        }
+
+        .grid-3,
+        .grid-2 {
+            display: grid;
+            gap: 18px;
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            font-weight: 800;
+            color: #dbeafe;
+        }
+
+        input,
+        select {
+            width: 100%;
+            min-height: 48px;
+            padding: 0 14px;
+            border-radius: 13px;
+            border: 1px solid rgba(148, 163, 184, 0.20);
+            background: #0a1728;
+            color: #f8fafc;
+            font-size: 14px;
+            transition: 0.2s ease;
+        }
+
+        input::placeholder {
+            color: #64748b;
+        }
+
+        select:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: rgba(59, 130, 246, 0.8);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.10);
+        }
+
+        .help {
+            margin-top: 7px;
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 10px 0 26px;
+        }
+
+        .schedule-preview {
+            margin: 4px 0 24px;
+            border-radius: 17px;
+            padding: 18px;
+            background: rgba(59, 130, 246, 0.07);
+            border: 1px solid rgba(59, 130, 246, 0.16);
+        }
+
+        .schedule-preview h3 {
+            margin: 0 0 13px;
+            font-size: 14px;
+            color: #bfdbfe;
+        }
+
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .preview-item {
+            padding: 12px;
+            border-radius: 12px;
+            background: rgba(3, 10, 20, 0.36);
+            border: 1px solid rgba(148, 163, 184, 0.10);
+        }
+
+        .preview-item span {
+            display: block;
+            color: var(--muted);
+            font-size: 11px;
+            margin-bottom: 5px;
+        }
+
+        .preview-item strong {
+            display: block;
+            font-size: 13px;
+            overflow-wrap: anywhere;
+        }
+
+        .generate-btn {
+            width: 100%;
+            border: 0;
+            border-radius: 14px;
+            min-height: 54px;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            color: white;
+            font-size: 15px;
+            font-weight: 900;
+            letter-spacing: 0.01em;
+            background: linear-gradient(135deg, var(--blue-2), #0891b2);
+            box-shadow: 0 14px 30px rgba(37, 99, 235, 0.22);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 18px 38px rgba(37, 99, 235, 0.28);
+        }
+
+        .generate-btn:disabled {
+            opacity: 0.7;
+            cursor: wait;
+            transform: none;
+        }
+
+        .result-wrap {
+            padding: 28px;
+        }
+
+        .success-banner {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            padding: 17px;
+            border: 1px solid rgba(34, 197, 94, 0.24);
+            background: rgba(34, 197, 94, 0.08);
+            border-radius: 16px;
+            margin-bottom: 22px;
+        }
+
+        .success-banner strong {
+            display: block;
+            color: #bbf7d0;
+            margin-bottom: 4px;
+        }
+
+        .success-banner span {
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        .test-meta {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            margin: 18px 0 26px;
+        }
+
+        .meta-card {
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.025);
+            border-radius: 14px;
+            padding: 14px;
+        }
+
+        .meta-card span {
+            display: block;
+            color: var(--muted);
+            font-size: 11px;
+            margin-bottom: 5px;
+        }
+
+        .meta-card strong {
+            font-size: 13px;
+        }
+
+        .questions-title {
+            margin: 0 0 14px;
+            font-size: 18px;
+        }
+
+        .question-card {
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.025);
+            border-radius: 16px;
+            padding: 18px;
+            margin-top: 12px;
+        }
+
+        .question-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 11px;
+        }
+
+        .question-type {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #93c5fd;
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .marks {
+            color: #fcd34d;
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .question-text {
+            font-weight: 750;
+            line-height: 1.6;
+            color: #e5edf8;
+        }
+
+        .options {
+            margin-top: 14px;
+            display: grid;
+            gap: 8px;
+        }
+
+        .option {
+            padding: 10px 12px;
+            border-radius: 11px;
+            background: rgba(148, 163, 184, 0.06);
+            color: #cbd5e1;
+            font-size: 13px;
+        }
+
+        .correct-answer {
+            margin-top: 12px;
+            padding: 10px 12px;
+            border-radius: 11px;
+            background: rgba(34, 197, 94, 0.07);
+            border: 1px solid rgba(34, 197, 94, 0.13);
+            color: #bbf7d0;
+            font-size: 12px;
+        }
+
+        @media (max-width: 900px) {
+            .hero,
+            .grid-3,
+            .preview-grid,
+            .test-meta {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-main {
+                grid-column: 1 / -1;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .topbar-inner,
+            .page {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .brand small {
+                display: none;
+            }
+
+            .hero,
+            .grid-3,
+            .grid-2,
+            .preview-grid,
+            .test-meta {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-main,
+            .hero-side,
+            .panel-header,
+            .form-body,
+            .result-wrap {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .panel-header {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="topbar">
+    <div class="topbar-inner">
+        <div class="brand">
+            <div class="brand-mark">🎓</div>
+            <div>
+                PentraOne Education
+                <small>Teacher Workspace</small>
+            </div>
+        </div>
+
+        <a class="back-btn" href="{% url 'education:teacher_dashboard' %}">
+            ← Teacher Dashboard
+        </a>
+    </div>
+</header>
+
+<main class="page">
+    <section class="hero">
+        <div class="hero-main">
+            <div class="eyebrow">🤖 AI-only test generation</div>
+            <h1>Create smarter tests in minutes.</h1>
+            <p>
+                Select the class, subject and chapter. PentraOne sends the exact academic
+                context to AI, creates the questions automatically, and schedules the
+                test for your students.
+            </p>
+        </div>
+
+        <aside class="hero-side">
+            <div class="stat">
+                <div class="stat-icon">🏫</div>
+                <div>
+                    <strong>All classes supported</strong>
+                    <span>Use any class currently available in your Education database.</span>
+                </div>
+            </div>
+            <div class="stat">
+                <div class="stat-icon">📚</div>
+                <div>
+                    <strong>Subject-aware generation</strong>
+                    <span>Subjects automatically follow the class you choose.</span>
+                </div>
+            </div>
+            <div class="stat">
+                <div class="stat-icon">⏱️</div>
+                <div>
+                    <strong>Automatic scheduling</strong>
+                    <span>Choose start time and duration; PentraOne calculates termination.</span>
+                </div>
+            </div>
+        </aside>
+    </section>
+
+    {% if generation_error %}
+        <div class="alert alert-error">
+            <strong>⚠️ Could not generate the test.</strong><br>
+            {{ generation_error }}
+        </div>
+    {% endif %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success">
+                ✅ {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <section class="panel">
+        <div class="panel-header">
+            <div>
+                <h2>Create AI Test</h2>
+                <p>Complete the steps below. Questions are generated only by AI.</p>
+            </div>
+            <div class="ai-badge">AI GENERATED ONLY</div>
+        </div>
+
+        <form method="post" id="aiTestForm">
+            {% csrf_token %}
+
+            <div class="form-body">
+                <div class="section-title">
+                    <div class="step">1</div>
+                    Academic Selection
+                </div>
+
+                <div class="grid-3">
+                    <div class="form-group">
+                        <label for="class">Class</label>
+                        <select
+                            id="class"
+                            name="class"
+                            required
+                            data-selected="{{ form_values.class_id }}"
+                        >
+                            <option value="">-- Select Class --</option>
+                            {% for class_item in classes %}
+                                <option value="{{ class_item.id }}">
+                                    Class {{ class_item.name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <div class="help">Choose the class for this test.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select
+                            id="subject"
+                            name="subject"
+                            required
+                            disabled
+                            data-selected="{{ form_values.subject_id }}"
+                        >
+                            <option value="">-- Select Subject --</option>
+                            {% for subject in subjects %}
+                                <option
+                                    value="{{ subject.id }}"
+                                    data-class-id="{{ subject.class_level_id }}"
+                                >
+                                    {{ subject.name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <div class="help" id="subjectHelp">Only subjects from the selected class are shown.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="chapter">Chapter</label>
+                        <select
+                            id="chapter"
+                            name="chapter"
+                            required
+                            disabled
+                            data-selected="{{ form_values.chapter_id }}"
+                        >
+                            <option value="">-- Select Chapter --</option>
+                            {% for chapter in chapters %}
+                                <option
+                                    value="{{ chapter.id }}"
+                                    data-subject-id="{{ chapter.subject_id }}"
+                                >
+                                    Chapter {{ chapter.chapter_number }}: {{ chapter.name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                        <div class="help" id="chapterHelp">AI uses this chapter as the exact test topic.</div>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="section-title">
+                    <div class="step">2</div>
+                    Test Details
+                </div>
+
+                <div class="form-group">
+                    <label for="title">Test Title <span style="color:#64748b;font-weight:600;">(optional)</span></label>
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        value="{{ form_values.title }}"
+                        placeholder="Leave blank and AI will create a suitable title"
+                        maxlength="200"
+                    >
+                    <div class="help">If left blank, AI creates a title from the selected chapter.</div>
+                </div>
+
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label for="mcq_count">MCQ Questions</label>
+                        <input
+                            type="number"
+                            id="mcq_count"
+                            name="mcq_count"
+                            value="{{ form_values.mcq_count }}"
+                            min="0"
+                            max="20"
+                            required
+                        >
+                        <div class="help">Maximum 20 MCQs.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descriptive_count">Descriptive Questions</label>
+                        <input
+                            type="number"
+                            id="descriptive_count"
+                            name="descriptive_count"
+                            value="{{ form_values.descriptive_count }}"
+                            min="0"
+                            max="10"
+                            required
+                        >
+                        <div class="help">Maximum 10 descriptive questions.</div>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="section-title">
+                    <div class="step">3</div>
+                    Schedule
+                </div>
+
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label for="test_datetime">📅 Test Start Date & Time</label>
+                        <input
+                            type="datetime-local"
+                            id="test_datetime"
+                            name="test_datetime"
+                            value="{{ form_values.test_datetime }}"
+                            required
+                        >
+                        <div class="help">Students can start only after this time.</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="duration">⏱️ Test Duration</label>
+                        <select id="duration" name="duration" required data-selected="{{ form_values.duration }}">
+                            <option value="10">10 minutes</option>
+                            <option value="15">15 minutes</option>
+                            <option value="20">20 minutes</option>
+                            <option value="30">30 minutes</option>
+                            <option value="45">45 minutes</option>
+                            <option value="60">1 hour</option>
+                            <option value="90">1 hour 30 minutes</option>
+                            <option value="120">2 hours</option>
+                            <option value="180">3 hours</option>
+                        </select>
+                        <div class="help">PentraOne automatically calculates the end time.</div>
+                    </div>
+                </div>
+
+                <div class="schedule-preview">
+                    <h3>Live Test Preview</h3>
+                    <div class="preview-grid">
+                        <div class="preview-item">
+                            <span>Academic Scope</span>
+                            <strong id="previewScope">Not selected</strong>
+                        </div>
+                        <div class="preview-item">
+                            <span>Total Questions</span>
+                            <strong id="previewQuestions">7</strong>
+                        </div>
+                        <div class="preview-item">
+                            <span>Starts</span>
+                            <strong id="previewStart">Select date & time</strong>
+                        </div>
+                        <div class="preview-item">
+                            <span>Ends</span>
+                            <strong id="previewEnd">Calculated automatically</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="generate-btn" id="generateBtn">
+                    <span id="generateIcon">✨</span>
+                    <span id="generateText">Generate & Schedule AI Test</span>
+                </button>
+            </div>
+        </form>
+    </section>
+
+    {% if generated_test %}
+        <section class="panel">
+            <div class="result-wrap">
+                <div class="success-banner">
+                    <div>✅</div>
+                    <div>
+                        <strong>Test created successfully</strong>
+                        <span>The AI-generated test is saved and scheduled for students.</span>
+                    </div>
+                </div>
+
+                <h2 style="margin:0;">{{ generated_test.title }}</h2>
+
+                <div class="test-meta">
+                    <div class="meta-card">
+                        <span>Class</span>
+                        <strong>Class {{ generated_test.chapter.subject.class_level.name }}</strong>
+                    </div>
+                    <div class="meta-card">
+                        <span>Subject</span>
+                        <strong>{{ generated_test.chapter.subject.name }}</strong>
+                    </div>
+                    <div class="meta-card">
+                        <span>Chapter</span>
+                        <strong>{{ generated_test.chapter.name }}</strong>
+                    </div>
+                    <div class="meta-card">
+                        <span>Starts</span>
+                        <strong>{{ generated_test.available_from|date:"d M Y, h:i A" }}</strong>
+                    </div>
+                    <div class="meta-card">
+                        <span>Terminates</span>
+                        <strong>{{ generated_test.available_until|date:"d M Y, h:i A" }}</strong>
+                    </div>
+                    <div class="meta-card">
+                        <span>Questions / Marks</span>
+                        <strong>{{ generated_questions|length }} questions · {{ generated_test.total_marks }} marks</strong>
+                    </div>
+                </div>
+
+                <h3 class="questions-title">Generated Questions</h3>
+
+                {% for question in generated_questions %}
+                    <article class="question-card">
+                        <div class="question-top">
+                            <div class="question-type">
+                                Q{{ forloop.counter }} · {{ question.get_question_type_display }}
+                            </div>
+                            <div class="marks">
+                                {{ question.marks }} mark{% if question.marks != 1 %}s{% endif %}
+                            </div>
+                        </div>
+
+                        <div class="question-text">
+                            {{ question.question_text }}
+                        </div>
+
+                        {% if question.question_type == "mcq" %}
+                            <div class="options">
+                                {% for key, value in question.options.items %}
+                                    <div class="option">
+                                        <strong>{{ key }}.</strong> {{ value }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            <div class="correct-answer">
+                                <strong>Correct answer:</strong> {{ question.correct_answer }}
+                            </div>
+                        {% endif %}
+                    </article>
+                {% endfor %}
+            </div>
+        </section>
+    {% endif %}
+</main>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const classSelect = document.getElementById("class");
+        const subjectSelect = document.getElementById("subject");
+        const chapterSelect = document.getElementById("chapter");
+        const durationSelect = document.getElementById("duration");
+        const dateInput = document.getElementById("test_datetime");
+        const mcqInput = document.getElementById("mcq_count");
+        const descriptiveInput = document.getElementById("descriptive_count");
+        const form = document.getElementById("aiTestForm");
+        const generateBtn = document.getElementById("generateBtn");
+        const generateIcon = document.getElementById("generateIcon");
+        const generateText = document.getElementById("generateText");
+        const subjectHelp = document.getElementById("subjectHelp");
+        const chapterHelp = document.getElementById("chapterHelp");
+
+        const subjectOptions = Array.from(subjectSelect.options).slice(1);
+        const chapterOptions = Array.from(chapterSelect.options).slice(1);
+
+        const savedClass = classSelect.dataset.selected || "";
+        const savedSubject = subjectSelect.dataset.selected || "";
+        const savedChapter = chapterSelect.dataset.selected || "";
+        const savedDuration = durationSelect.dataset.selected || "30";
+
+        function resetSubjectOptions(selectedValue = "") {
+            const classId = classSelect.value;
+
+            subjectSelect.value = "";
+            subjectSelect.disabled = !classId;
+
+            let visibleSubjectCount = 0;
+
+            subjectOptions.forEach(function (option) {
+                const visible = option.dataset.classId === classId;
+                option.hidden = !visible;
+                option.disabled = !visible;
+                if (visible) visibleSubjectCount += 1;
+            });
+
+            if (classId && visibleSubjectCount === 0) {
+                subjectHelp.textContent = "No subjects are added for this class yet. Add the subject first in Django Admin.";
+            } else {
+                subjectHelp.textContent = "Only subjects from the selected class are shown.";
+            }
+
+            if (selectedValue) {
+                const selectedOption = subjectOptions.find(function (option) {
+                    return option.value === selectedValue && !option.disabled;
+                });
+
+                if (selectedOption) {
+                    subjectSelect.value = selectedValue;
+                }
+            }
+        }
+
+        function resetChapterOptions(selectedValue = "") {
+            const subjectId = subjectSelect.value;
+
+            chapterSelect.value = "";
+            chapterSelect.disabled = !subjectId;
+
+            let visibleChapterCount = 0;
+
+            chapterOptions.forEach(function (option) {
+                const visible = option.dataset.subjectId === subjectId;
+                option.hidden = !visible;
+                option.disabled = !visible;
+                if (visible) visibleChapterCount += 1;
+            });
+
+            if (subjectId && visibleChapterCount === 0) {
+                chapterHelp.textContent = "No chapters are added for this subject yet. Add the chapter first in Django Admin.";
+            } else {
+                chapterHelp.textContent = "AI uses this chapter as the exact test topic.";
+            }
+
+            if (selectedValue) {
+                const selectedOption = chapterOptions.find(function (option) {
+                    return option.value === selectedValue && !option.disabled;
+                });
+
+                if (selectedOption) {
+                    chapterSelect.value = selectedValue;
+                }
+            }
+        }
+
+        function selectedText(selectElement) {
+            if (!selectElement.value) {
+                return "";
+            }
+            return selectElement.options[selectElement.selectedIndex].text.trim();
+        }
+
+        function formatDate(date) {
+            if (!(date instanceof Date) || Number.isNaN(date.getTime())) {
+                return "";
+            }
+
+            return date.toLocaleString([], {
+                day: "2-digit",
+                month: "short",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit"
+            });
+        }
+
+        function updatePreview() {
+            const className = selectedText(classSelect);
+            const subjectName = selectedText(subjectSelect);
+            const chapterName = selectedText(chapterSelect);
+
+            let scope = "Not selected";
+            if (className) scope = className;
+            if (className && subjectName) scope = className + " · " + subjectName;
+            if (className && subjectName && chapterName) {
+                scope = className + " · " + subjectName + " · " + chapterName;
+            }
+
+            document.getElementById("previewScope").textContent = scope;
+
+            const mcq = parseInt(mcqInput.value || "0", 10) || 0;
+            const descriptive = parseInt(descriptiveInput.value || "0", 10) || 0;
+            document.getElementById("previewQuestions").textContent = String(mcq + descriptive);
+
+            if (dateInput.value) {
+                const startDate = new Date(dateInput.value);
+                document.getElementById("previewStart").textContent = formatDate(startDate);
+
+                const duration = parseInt(durationSelect.value || "0", 10) || 0;
+                const endDate = new Date(startDate.getTime() + (duration * 60 * 1000));
+                document.getElementById("previewEnd").textContent = formatDate(endDate);
+            } else {
+                document.getElementById("previewStart").textContent = "Select date & time";
+                document.getElementById("previewEnd").textContent = "Calculated automatically";
+            }
+        }
+
+        classSelect.addEventListener("change", function () {
+            resetSubjectOptions();
+            resetChapterOptions();
+            updatePreview();
+        });
+
+        subjectSelect.addEventListener("change", function () {
+            resetChapterOptions();
+            updatePreview();
+        });
+
+        chapterSelect.addEventListener("change", updatePreview);
+        durationSelect.addEventListener("change", updatePreview);
+        dateInput.addEventListener("change", updatePreview);
+        mcqInput.addEventListener("input", updatePreview);
+        descriptiveInput.addEventListener("input", updatePreview);
+
+        // Prevent selecting past times on the browser side.
+        const now = new Date();
+        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+        dateInput.min = now.toISOString().slice(0, 16);
+
+        // Restore previous selections after a backend validation/API error.
+        if (savedClass) {
+            classSelect.value = savedClass;
+        }
+        resetSubjectOptions(savedSubject);
+        resetChapterOptions(savedChapter);
+
+        if (savedDuration) {
+            durationSelect.value = savedDuration;
+        }
+
+        updatePreview();
+
+        form.addEventListener("submit", function () {
+            generateBtn.disabled = true;
+            generateIcon.textContent = "⏳";
+            generateText.textContent = "Generating AI Test...";
+        });
+    });
+</script>
+
+</body>
+</html>

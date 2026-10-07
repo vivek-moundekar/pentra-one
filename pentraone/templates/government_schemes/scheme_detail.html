@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ scheme.name }} | Udaan</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f8fc;
+            color: #26384a;
+        }
+
+        /* ================= HEADER ================= */
+
+        .header {
+            background: linear-gradient(135deg, #eaf6ff, #ffffff);
+            border-bottom: 1px solid #d8e8f5;
+            padding: 30px 6% 35px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::after {
+            content: "";
+            position: absolute;
+            right: -90px;
+            top: -100px;
+            width: 330px;
+            height: 330px;
+            background: #dceeff;
+            border-radius: 50%;
+            opacity: 0.55;
+        }
+
+        .header-content {
+            max-width: 1150px;
+            margin: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .government-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: white;
+            color: #155a91;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: bold;
+            border: 1px solid #d5e7f5;
+            margin-bottom: 15px;
+        }
+
+        .header h1 {
+            margin: 0;
+            color: #124c84;
+            font-size: 38px;
+            line-height: 1.3;
+            max-width: 850px;
+        }
+
+        .header-subtitle {
+            margin-top: 10px;
+            color: #60788e;
+            font-size: 16px;
+        }
+
+        .header-line {
+            margin-top: 22px;
+            height: 4px;
+            width: 100%;
+            background: linear-gradient(
+                to right,
+                #ff9933 33%,
+                white 33%,
+                white 66%,
+                #138808 66%
+            );
+            border-radius: 5px;
+        }
+
+        /* ================= LANGUAGE ================= */
+
+        .language-box {
+            position: absolute;
+            top: 25px;
+            right: 6%;
+            z-index: 10;
+        }
+
+        #google_translate_element {
+            min-width: 150px;
+        }
+
+        #google_translate_element select {
+            padding: 10px 14px;
+            border: 1px solid #d8e5f1;
+            border-radius: 10px;
+            background: white;
+            color: #174f85;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 13px;
+            box-shadow: 0 3px 10px rgba(20, 76, 132, 0.08);
+        }
+
+        /* Hide Google top bar */
+
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+
+        body {
+            top: 0 !important;
+        }
+
+        .goog-logo-link,
+        .goog-te-gadget span {
+            display: none !important;
+        }
+
+        /* ================= CONTAINER ================= */
+
+        .container {
+            width: 92%;
+            max-width: 1150px;
+            margin: 35px auto 60px;
+        }
+
+        /* ================= BACK BUTTON ================= */
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 25px;
+            padding: 10px 15px;
+            background: white;
+            color: #155a91;
+            border-radius: 9px;
+            border: 1px solid #dce9f3;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .back-btn:hover {
+            background: #edf7ff;
+            transform: translateX(-2px);
+        }
+
+        /* ================= SCHEME INTRO ================= */
+
+        .scheme-intro {
+            background: white;
+            border: 1px solid #dce9f3;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 6px 20px rgba(25, 65, 100, 0.07);
+        }
+
+        .intro-top {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .scheme-icon {
+            width: 65px;
+            height: 65px;
+            flex-shrink: 0;
+            background: #eaf5fc;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+
+        .intro-content {
+            flex: 1;
+        }
+
+        .gov-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #eaf6ff;
+            color: #1670ae;
+            border: 1px solid #d3e9f8;
+            padding: 6px 11px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .intro-content h2 {
+            margin: 0 0 10px;
+            color: #124c84;
+            font-size: 28px;
+            line-height: 1.3;
+        }
+
+        .category {
+            display: inline-block;
+            background: #eef6fb;
+            color: #175985;
+            padding: 7px 13px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* ================= SECTION ================= */
+
+        .section {
+            background: white;
+            padding: 27px;
+            margin-bottom: 20px;
+            border-radius: 18px;
+            border: 1px solid #dfeaf3;
+            box-shadow: 0 5px 18px rgba(25, 65, 100, 0.06);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .section-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 11px;
+            background: #eaf5fc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+            flex-shrink: 0;
+        }
+
+        .section h2 {
+            margin: 0;
+            color: #174f85;
+            font-size: 22px;
+        }
+
+        .section p {
+            line-height: 1.8;
+            color: #53697c;
+            font-size: 15px;
+            margin: 0;
+            white-space: pre-line;
+        }
+
+        /* ================= INFORMATION ================= */
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .info-box {
+            background: #f7fbfe;
+            border: 1px solid #e0edf6;
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        .info-box strong {
+            display: block;
+            color: #174f85;
+            font-size: 13px;
+            margin-bottom: 7px;
+        }
+
+        .info-box span {
+            color: #53697c;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        /* ================= APPLY ================= */
+
+        .apply {
+            text-align: center;
+            background: linear-gradient(
+                135deg,
+                #edf7ff,
+                #ffffff
+            );
+            padding: 35px 25px;
+            border-radius: 20px;
+            border: 1px solid #d8eaf7;
+            box-shadow: 0 6px 20px rgba(25, 65, 100, 0.07);
+        }
+
+        .apply-icon {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .apply h2 {
+            margin: 0 0 10px;
+            color: #124c84;
+            font-size: 25px;
+        }
+
+        .apply p {
+            color: #60788e;
+            line-height: 1.6;
+            margin-bottom: 22px;
+        }
+
+        .apply-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 13px 23px;
+            background: #155a91;
+            color: white;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .apply-btn:hover {
+            background: #0e416a;
+            transform: translateY(-2px);
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 800px) {
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .header {
+                padding: 25px 20px 30px;
+            }
+
+            .language-box {
+                position: static;
+                text-align: right;
+                margin-bottom: 25px;
+            }
+
+            .header h1 {
+                font-size: 27px;
+            }
+
+            .header-subtitle {
+                font-size: 14px;
+            }
+
+            .container {
+                width: 94%;
+            }
+
+            .scheme-intro {
+                padding: 22px;
+            }
+
+            .intro-top {
+                flex-direction: column;
+            }
+
+            .intro-content h2 {
+                font-size: 23px;
+            }
+
+            .section {
+                padding: 21px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<div class="header">
+
+    <div class="language-box">
+
+        <!-- GOOGLE TRANSLATE -->
+
+        <div id="google_translate_element"></div>
+
+    </div>
+
+
+    <div class="header-content">
+
+        <div class="government-label">
+            🏛️ Government Information Portal
+        </div>
+
+
+        <h1>
+            {{ scheme.name }}
+        </h1>
+
+
+        <div class="header-subtitle">
+            Government Scheme Information | Udaan
+        </div>
+
+
+        <div class="header-line"></div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<div class="container">
+
+
+    <!-- ================= BACK BUTTON ================= -->
+
+    <a
+        class="back-btn"
+        href="{% url 'scheme_list' %}"
+    >
+
+        ← Back to Government Schemes
+
+    </a>
+
+
+
+    <!-- ================= SCHEME INTRO ================= -->
+
+    <div class="scheme-intro">
+
+        <div class="intro-top">
+
+
+            <div class="scheme-icon">
+
+                {% if scheme.category == "Agriculture" %}
+                    🌾
+
+                {% elif scheme.category == "Education" %}
+                    🎓
+
+                {% elif scheme.category == "Women & Child" %}
+                    👩
+
+                {% elif scheme.category == "Employment" %}
+                    💼
+
+                {% elif scheme.category == "Housing" %}
+                    🏠
+
+                {% elif scheme.category == "Health" %}
+                    🏥
+
+                {% elif scheme.category == "Financial Assistance" %}
+                    💰
+
+                {% else %}
+                    🤝
+
+                {% endif %}
+
+            </div>
+
+
+
+            <div class="intro-content">
+
+
+                <div class="gov-badge">
+                    🏛️ Government Scheme
+                </div>
+
+
+                <h2>
+                    {{ scheme.name }}
+                </h2>
+
+
+                <span class="category">
+                    {{ scheme.category }}
+                </span>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <div class="section">
+
+        <div class="section-header">
+
+            <div class="section-icon">
+                📖
+            </div>
+
+
+            <h2>
+                About the Scheme
+            </h2>
+
+        </div>
+
+
+        <p>
+            {{ scheme.full_description }}
+        </p>
+
+    </div>
+
+
+
+    <!-- ================= BENEFITS ================= -->
+
+    <div class="section">
+
+        <div class="section-header">
+
+            <div class="section-icon">
+                🎁
+            </div>
+
+
+            <h2>
+                Benefits
+            </h2>
+
+        </div>
+
+
+        <p>
+            {{ scheme.benefits }}
+        </p>
+
+    </div>
+
+
+
+    <!-- ================= ELIGIBILITY ================= -->
+
+    <div class="section">
+
+        <div class="section-header">
+
+            <div class="section-icon">
+                ✅
+            </div>
+
+
+            <h2>
+                Eligibility
+            </h2>
+
+        </div>
+
+
+        <p>
+            {{ scheme.eligibility }}
+        </p>
+
+    </div>
+
+
+
+    <!-- ================= DOCUMENTS ================= -->
+
+    <div class="section">
+
+        <div class="section-header">
+
+            <div class="section-icon">
+                📄
+            </div>
+
+
+            <h2>
+                Documents Required
+            </h2>
+
+        </div>
+
+
+        <p>
+            {{ scheme.documents_required }}
+        </p>
+
+    </div>
+
+
+
+    <!-- ================= HOW TO APPLY ================= -->
+
+    <div class="section">
+
+        <div class="section-header">
+
+            <div class="section-icon">
+                📝
+            </div>
+
+
+            <h2>
+                How to Apply
+            </h2>
+
+        </div>
+
+
+        <p>
+            {{ scheme.application_process }}
+        </p>
+
+    </div>
+
+
+
+    <!-- ================= SCHEME INFORMATION ================= -->
+
+    <div class="section">
+
+        <div class="section-header">
+
+            <div class="section-icon">
+                ℹ️
+            </div>
+
+
+            <h2>
+                Scheme Information
+            </h2>
+
+        </div>
+
+
+        <div class="info-grid">
+
+
+            <div class="info-box">
+
+                <strong>
+                    🏢 Implementing Department
+                </strong>
+
+
+                <span>
+                    {{ scheme.implementing_department }}
+                </span>
+
+            </div>
+
+
+
+            <div class="info-box">
+
+                <strong>
+                    📍 State / Coverage
+                </strong>
+
+
+                <span>
+                    {{ scheme.state }}
+                </span>
+
+            </div>
+
+
+
+            {% if scheme.helpline %}
+
+            <div class="info-box">
+
+                <strong>
+                    ☎️ Helpline
+                </strong>
+
+
+                <span>
+                    {{ scheme.helpline }}
+                </span>
+
+            </div>
+
+            {% endif %}
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= OFFICIAL PORTAL ================= -->
+
+    {% if scheme.official_url %}
+
+    <div class="apply">
+
+        <div class="apply-icon">
+            🏛️
+        </div>
+
+
+        <h2>
+            Apply for this Government Scheme
+        </h2>
+
+
+        <p>
+            Visit the official government portal for more information
+            and application.
+        </p>
+
+
+        <a
+            class="apply-btn"
+            href="{{ scheme.official_url }}"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+
+            Apply on Official Portal →
+
+        </a>
+
+    </div>
+
+    {% endif %}
+
+
+</div>
+
+
+
+<!-- ================= GOOGLE TRANSLATE ================= -->
+
+<script>
+
+    function googleTranslateElementInit() {
+
+        new google.translate.TranslateElement(
+            {
+                pageLanguage: 'en',
+
+                includedLanguages: 'en,mr,hi',
+
+                autoDisplay: false
+
+            },
+
+            'google_translate_element'
+        );
+
+    }
+
+</script>
+
+
+<script
+    src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
+
+
+</body>
+
+</html>

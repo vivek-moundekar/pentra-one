@@ -1,0 +1,8 @@
+{% extends 'agriculture/base.html' %}
+{% block title %}{{ ui.crop.crops }} | PENTRAONE{% endblock %}
+{% block content %}
+<section class="agri-hero fade-up"><div class="agri-eyebrow">🌱 {{ ui.crop.crop_guide }}</div><h1 class="agri-title">{{ ui.crop.crops }}</h1><p class="agri-lead">Explore crop-specific information including season, soil, water, sowing, harvesting, common problems and farmer tips.</p></section>
+<div class="agri-section-head fade-up"><div><h2>{{ ui.crop.popular_crops }}</h2><p>Select a crop to open its complete guide.</p></div><input id="cropSearch" class="agri-search" type="search" placeholder="{{ ui.crop.search_crops }}"></div>
+<section class="agri-crop-grid" id="cropList">{% for crop in crops %}<a class="agri-crop-card fade-up" href="{% url 'agriculture:crop_detail' crop.id %}" data-crop-name="{{ crop.name|lower }}"><div class="agri-crop-image">{% if crop.image %}<img src="{{ crop.image.url }}" alt="{{ crop.name }}" loading="lazy">{% else %}<div class="agri-crop-placeholder">🌱</div>{% endif %}</div><div class="agri-crop-body"><h3>{{ crop.name }} →</h3>{% if crop.scientific_name %}<small>{{ crop.scientific_name }}</small>{% endif %}</div></a>{% empty %}<div class="agri-detail-card"><p>{{ ui.common.no_crops }}</p></div>{% endfor %}</section>
+{% endblock %}
+{% block extra_js %}<script>const s=document.getElementById('cropSearch');if(s){const items=document.querySelectorAll('#cropList .agri-crop-card');s.addEventListener('input',()=>{const q=s.value.toLowerCase().trim();items.forEach(i=>i.style.display=!q||i.dataset.cropName.includes(q)?'':'none')})}</script>{% endblock %}

@@ -1,0 +1,2380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Udaan | Dashboard</title>
+
+
+    <style>
+
+        /* =====================================================
+           GLOBAL
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        body {
+            min-height: 100vh;
+
+            background: #f5f7fa;
+
+            color: #222;
+
+            transition:
+                background 0.3s ease,
+                color 0.3s ease;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+            height: 70px;
+
+            background: #ffffff;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 35px;
+
+            box-shadow:
+                0 2px 10px rgba(0, 0, 0, 0.06);
+
+            position: relative;
+
+            z-index: 10;
+
+            transition:
+                background 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+
+        .logo {
+            font-size: 28px;
+
+            font-weight: 700;
+
+            color: #1976d2;
+
+            letter-spacing: 1px;
+        }
+
+
+        .menu-btn {
+            width: 42px;
+
+            height: 42px;
+
+            border: none;
+
+            background: transparent;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            cursor: pointer;
+
+            font-size: 26px;
+
+            color: #444;
+
+            transition: 0.2s;
+        }
+
+
+        .menu-btn:hover {
+            background: #f0f2f5;
+        }
+
+
+        /* =====================================================
+           MAIN CONTENT
+        ===================================================== */
+
+        .main-content {
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 55px 25px;
+        }
+
+
+        .welcome {
+            margin-bottom: 35px;
+        }
+
+
+        .welcome h1 {
+            font-size: 32px;
+
+            margin-bottom: 8px;
+
+            color: #1f2937;
+        }
+
+
+        .welcome p {
+            color: #777;
+
+            font-size: 16px;
+        }
+
+
+        /* =====================================================
+           SECTOR GRID
+        ===================================================== */
+
+        .sector-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 24px;
+        }
+
+
+        /* =====================================================
+           SECTOR CARD
+        ===================================================== */
+
+        .sector-card {
+            position: relative;
+
+            display: flex;
+
+            flex-direction: column;
+
+            min-height: 190px;
+
+            padding: 28px;
+
+            background: #ffffff;
+
+            border: 1px solid #e8edf3;
+
+            border-radius: 18px;
+
+            text-decoration: none;
+
+            color: #222;
+
+            box-shadow:
+                0 4px 16px rgba(0, 0, 0, 0.05);
+
+            overflow: hidden;
+
+            cursor: pointer;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                border-color 0.25s ease,
+                background 0.3s ease;
+        }
+
+
+        .sector-card:hover {
+            transform: translateY(-6px);
+
+            border-color: #d7e5f5;
+
+            box-shadow:
+                0 12px 30px rgba(0, 0, 0, 0.09);
+        }
+
+
+        /* TOP BLUE LINE */
+
+        .sector-card::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 4px;
+
+            background: #1976d2;
+
+            transform: scaleX(0);
+
+            transform-origin: left;
+
+            transition: 0.25s;
+        }
+
+
+        .sector-card:hover::before {
+            transform: scaleX(1);
+        }
+
+
+        /* =====================================================
+           SECTOR ICON
+        ===================================================== */
+
+        .sector-icon {
+            width: 58px;
+
+            height: 58px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin-bottom: 20px;
+
+            background: #f0f6fd;
+
+            border-radius: 14px;
+
+            font-size: 30px;
+
+            transition: 0.25s;
+        }
+
+
+        .sector-card:hover .sector-icon {
+            transform: scale(1.08);
+        }
+
+
+        /* =====================================================
+           SECTOR TITLE
+        ===================================================== */
+
+        .sector-card h3 {
+            font-size: 19px;
+
+            font-weight: 600;
+
+            margin-bottom: 9px;
+
+            color: #1f2937;
+        }
+
+
+        /* =====================================================
+           SECTOR DESCRIPTION
+        ===================================================== */
+
+        .sector-card p {
+            max-width: 90%;
+
+            color: #737b87;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           SECTOR ARROW
+        ===================================================== */
+
+        .sector-card::after {
+            content: "→";
+
+            position: absolute;
+
+            right: 22px;
+
+            bottom: 20px;
+
+            width: 32px;
+
+            height: 32px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #f4f7fa;
+
+            color: #1976d2;
+
+            font-size: 18px;
+
+            opacity: 0;
+
+            transform: translateX(-5px);
+
+            transition: 0.25s;
+        }
+
+
+        .sector-card:hover::after {
+            opacity: 1;
+
+            transform: translateX(0);
+        }
+
+
+        /* =====================================================
+           OVERLAY
+        ===================================================== */
+
+        .overlay {
+            position: fixed;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            background:
+                rgba(0, 0, 0, 0.45);
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition: 0.25s;
+
+            z-index: 90;
+        }
+
+
+        .overlay.active {
+            opacity: 1;
+
+            visibility: visible;
+        }
+
+
+        /* =====================================================
+           SIDE PANEL
+        ===================================================== */
+
+        .side-panel {
+            position: fixed;
+
+            top: 0;
+
+            right: -330px;
+
+            width: 320px;
+
+            height: 100vh;
+
+            background: #ffffff;
+
+            box-shadow:
+                -8px 0 30px rgba(0, 0, 0, 0.15);
+
+            z-index: 100;
+
+            transition:
+                right 0.3s ease;
+
+            padding: 25px;
+
+            overflow-y: auto;
+        }
+
+
+        .side-panel.active {
+            right: 0;
+        }
+
+
+        /* =====================================================
+           PANEL HEADER
+        ===================================================== */
+
+        .panel-header {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 35px;
+        }
+
+
+        .panel-header h2 {
+            font-size: 22px;
+
+            color: #222;
+        }
+
+
+        .close-btn {
+            width: 38px;
+
+            height: 38px;
+
+            border: none;
+
+            background: #f3f4f6;
+
+            border-radius: 50%;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+            color: #555;
+
+            transition: 0.2s;
+        }
+
+
+        .close-btn:hover {
+            background: #e8eaed;
+        }
+
+
+        /* =====================================================
+           PANEL MENU
+        ===================================================== */
+
+        .panel-menu {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 8px;
+        }
+
+
+        .panel-item {
+            width: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 14px 15px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: transparent;
+
+            text-decoration: none;
+
+            color: #333;
+
+            font-size: 15px;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+            text-align: left;
+        }
+
+
+        .panel-item:hover {
+            background: #f3f6fa;
+
+            transform: translateX(3px);
+        }
+
+
+        .panel-icon {
+            width: 30px;
+
+            font-size: 20px;
+
+            text-align: center;
+
+            flex-shrink: 0;
+        }
+
+
+        /* LOGOUT */
+
+        .logout {
+            color: #d32f2f;
+
+            margin-top: 10px;
+        }
+
+
+        .logout:hover {
+            background: #ffebee;
+
+            color: #c62828;
+        }
+
+
+        /* =====================================================
+           POPUP
+        ===================================================== */
+
+        .popup {
+            position: fixed;
+
+            top: 50%;
+
+            left: 50%;
+
+            width: 470px;
+
+            max-width:
+                calc(100% - 35px);
+
+            max-height: 85vh;
+
+            overflow-y: auto;
+
+            padding: 30px;
+
+            background: #ffffff;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.22);
+
+            z-index: 200;
+
+            transform:
+                translate(-50%, -45%)
+                scale(0.95);
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transition:
+                opacity 0.25s ease,
+                transform 0.25s ease,
+                visibility 0.25s ease,
+                background 0.3s ease;
+        }
+
+
+        .popup.active {
+            opacity: 1;
+
+            visibility: visible;
+
+            transform:
+                translate(-50%, -50%)
+                scale(1);
+        }
+
+
+        /* =====================================================
+           POPUP HEADER
+        ===================================================== */
+
+        .popup-header {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 25px;
+        }
+
+
+        .popup-header h2 {
+            font-size: 23px;
+
+            color: #222;
+        }
+
+
+        .popup-close {
+            width: 36px;
+
+            height: 36px;
+
+            border: none;
+
+            background: #f3f4f6;
+
+            border-radius: 50%;
+
+            font-size: 21px;
+
+            color: #555;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .popup-close:hover {
+            background: #e5e7eb;
+        }
+
+
+        /* =====================================================
+           PROFILE
+        ===================================================== */
+
+        .profile-container {
+            text-align: center;
+        }
+
+
+        .profile-photo {
+            width: 100px;
+
+            height: 100px;
+
+            margin:
+                0 auto 18px;
+
+            border-radius: 50%;
+
+            background: #e3f2fd;
+
+            border:
+                3px solid #1976d2;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 45px;
+        }
+
+
+        .profile-name {
+            font-size: 22px;
+
+            font-weight: 600;
+
+            color: #222;
+
+            margin-bottom: 25px;
+        }
+
+
+        .profile-info {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+
+            text-align: left;
+        }
+
+
+        .profile-info-box {
+            padding: 14px 16px;
+
+            background: #f7f9fb;
+
+            border:
+                1px solid #edf0f3;
+
+            border-radius: 10px;
+        }
+
+
+        .profile-info-box small {
+            display: block;
+
+            margin-bottom: 5px;
+
+            color: #888;
+
+            font-size: 12px;
+        }
+
+
+        .profile-info-box span {
+            color: #333;
+
+            font-size: 15px;
+
+            word-break: break-word;
+        }
+
+
+        /* =====================================================
+           SETTINGS
+        ===================================================== */
+
+        .settings-list {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 12px;
+        }
+
+
+        .setting-item {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 15px;
+
+            background: #f8fafc;
+
+            border:
+                1px solid #edf0f3;
+
+            border-radius: 11px;
+
+            transition:
+                background 0.3s ease,
+                border-color 0.3s ease;
+        }
+
+
+        .setting-left {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+
+        .setting-icon {
+            width: 30px;
+
+            font-size: 20px;
+
+            text-align: center;
+        }
+
+
+        .setting-text h4 {
+            font-size: 15px;
+
+            margin-bottom: 4px;
+
+            color: #333;
+        }
+
+
+        .setting-text p {
+            font-size: 12px;
+
+            color: #888;
+        }
+
+
+        /* =====================================================
+           TOGGLE
+        ===================================================== */
+
+        .switch {
+            position: relative;
+
+            display: inline-block;
+
+            width: 44px;
+
+            height: 24px;
+
+            flex-shrink: 0;
+        }
+
+
+        .switch input {
+            opacity: 0;
+
+            width: 0;
+
+            height: 0;
+        }
+
+
+        .slider {
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            right: 0;
+
+            bottom: 0;
+
+            background: #ccc;
+
+            border-radius: 24px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+
+        .slider:before {
+            content: "";
+
+            position: absolute;
+
+            width: 18px;
+
+            height: 18px;
+
+            left: 3px;
+
+            bottom: 3px;
+
+            background: white;
+
+            border-radius: 50%;
+
+            transition: 0.3s;
+        }
+
+
+        .switch input:checked + .slider {
+            background: #1976d2;
+        }
+
+
+        .switch input:checked + .slider:before {
+            transform:
+                translateX(20px);
+        }
+
+
+        /* =====================================================
+           LANGUAGE
+        ===================================================== */
+
+        .language-select {
+            padding: 7px 10px;
+
+            border:
+                1px solid #ddd;
+
+            border-radius: 7px;
+
+            background: white;
+
+            color: #333;
+
+            cursor: pointer;
+
+            outline: none;
+        }
+
+
+        /* =====================================================
+           NOTIFICATIONS
+        ===================================================== */
+
+        .notification-card {
+            padding: 16px;
+
+            margin-bottom: 12px;
+
+            background: #f8fafc;
+
+            border-left:
+                4px solid #1976d2;
+
+            border-radius: 10px;
+        }
+
+
+        .notification-card h4 {
+            font-size: 15px;
+
+            margin-bottom: 7px;
+
+            color: #333;
+        }
+
+
+        .notification-card p {
+            font-size: 13px;
+
+            line-height: 1.5;
+
+            color: #777;
+        }
+
+
+        .notification-time {
+            display: block;
+
+            margin-top: 8px;
+
+            color: #999;
+
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           HELP & SUPPORT
+        ===================================================== */
+
+        .help-box {
+            padding: 17px;
+
+            margin-bottom: 12px;
+
+            background: #f8fafc;
+
+            border:
+                1px solid #edf0f3;
+
+            border-radius: 10px;
+        }
+
+
+        .help-box h4 {
+            font-size: 15px;
+
+            margin-bottom: 7px;
+
+            color: #333;
+        }
+
+
+        .help-box p {
+            font-size: 13px;
+
+            line-height: 1.5;
+
+            color: #777;
+        }
+
+
+        .help-contact {
+            padding: 17px;
+
+            margin-top: 18px;
+
+            background: #e3f2fd;
+
+            border-radius: 10px;
+        }
+
+
+        .help-contact h4 {
+            margin-bottom: 8px;
+
+            color: #1976d2;
+        }
+
+
+        .help-contact p {
+            font-size: 13px;
+
+            color: #555;
+
+            margin-bottom: 5px;
+        }
+
+
+        /* =====================================================
+           DARK THEME
+        ===================================================== */
+
+        body.dark-theme {
+            background: #121212;
+
+            color: #eeeeee;
+        }
+
+
+        /* NAVBAR */
+
+        body.dark-theme .navbar {
+            background: #1e1e1e;
+
+            box-shadow:
+                0 2px 10px
+                rgba(0, 0, 0, 0.4);
+        }
+
+
+        body.dark-theme .logo {
+            color: #64b5f6;
+        }
+
+
+        body.dark-theme .menu-btn {
+            color: #eeeeee;
+        }
+
+
+        body.dark-theme .menu-btn:hover {
+            background: #2a2a2a;
+        }
+
+
+        /* WELCOME */
+
+        body.dark-theme .welcome h1 {
+            color: #eeeeee;
+        }
+
+
+        body.dark-theme .welcome p {
+            color: #aaaaaa;
+        }
+
+
+        /* SECTOR CARDS */
+
+        body.dark-theme .sector-card {
+            background: #1e1e1e;
+
+            border-color: #333;
+
+            box-shadow:
+                0 5px 20px
+                rgba(0, 0, 0, 0.3);
+
+            color: #eeeeee;
+        }
+
+
+        body.dark-theme .sector-card h3 {
+            color: #eeeeee;
+        }
+
+
+        body.dark-theme .sector-card p {
+            color: #aaaaaa;
+        }
+
+
+        body.dark-theme .sector-icon {
+            background: #292929;
+        }
+
+
+        body.dark-theme .sector-card::after {
+            background: #292929;
+
+            color: #64b5f6;
+        }
+
+
+        /* SIDE PANEL */
+
+        body.dark-theme .side-panel {
+            background: #1e1e1e;
+
+            box-shadow:
+                -5px 0 25px
+                rgba(0, 0, 0, 0.5);
+        }
+
+
+        body.dark-theme .panel-header h2 {
+            color: #eeeeee;
+        }
+
+
+        body.dark-theme .close-btn {
+            background: #2a2a2a;
+
+            color: #dddddd;
+        }
+
+
+        body.dark-theme .panel-item {
+            color: #eeeeee;
+        }
+
+
+        body.dark-theme .panel-item:hover {
+            background: #2a2a2a;
+        }
+
+
+        body.dark-theme .logout {
+            color: #ff6b6b;
+        }
+
+
+        body.dark-theme .logout:hover {
+            background: #351d1d;
+        }
+
+
+        /* POPUPS */
+
+        body.dark-theme .popup {
+            background: #1e1e1e;
+
+            color: #eeeeee;
+        }
+
+
+        body.dark-theme .popup-header h2 {
+            color: #eeeeee;
+        }
+
+
+        body.dark-theme .popup-close {
+            background: #2a2a2a;
+
+            color: #dddddd;
+        }
+
+
+        /* SETTINGS */
+
+        body.dark-theme .setting-item {
+            background: #252525;
+
+            border-color: #333;
+        }
+
+
+        body.dark-theme .setting-text h4 {
+            color: #eeeeee;
+        }
+
+
+        body.dark-theme .setting-text p {
+            color: #999999;
+        }
+
+
+        body.dark-theme .language-select {
+            background: #2a2a2a;
+
+            border-color: #444;
+
+            color: #eeeeee;
+        }
+
+
+        /* PROFILE */
+
+        body.dark-theme .profile-name {
+            color: #eeeeee;
+        }
+
+
+        body.dark-theme .profile-info-box {
+            background: #252525;
+
+            border-color: #333;
+        }
+
+
+        body.dark-theme .profile-info-box span {
+            color: #eeeeee;
+        }
+
+
+        body.dark-theme .profile-info-box small {
+            color: #999999;
+        }
+
+
+        body.dark-theme .profile-photo {
+            background: #263238;
+        }
+
+
+        /* NOTIFICATIONS */
+
+        body.dark-theme .notification-card {
+            background: #252525;
+        }
+
+
+        body.dark-theme .notification-card h4 {
+            color: #eeeeee;
+        }
+
+
+        body.dark-theme .notification-card p {
+            color: #aaaaaa;
+        }
+
+
+        /* HELP */
+
+        body.dark-theme .help-box {
+            background: #252525;
+
+            border-color: #333;
+        }
+
+
+        body.dark-theme .help-box h4 {
+            color: #eeeeee;
+        }
+
+
+        body.dark-theme .help-box p {
+            color: #aaaaaa;
+        }
+
+
+        body.dark-theme .help-contact {
+            background: #263238;
+        }
+
+
+        body.dark-theme .help-contact h4 {
+            color: #64b5f6;
+        }
+
+
+        body.dark-theme .help-contact p {
+            color: #cccccc;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .sector-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 550px) {
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+
+            .logo {
+                font-size: 25px;
+            }
+
+
+            .main-content {
+                padding: 35px 18px;
+            }
+
+
+            .welcome h1 {
+                font-size: 27px;
+            }
+
+
+            .welcome p {
+                font-size: 14px;
+            }
+
+
+            .sector-grid {
+                grid-template-columns: 1fr;
+
+                gap: 18px;
+            }
+
+
+            .sector-card {
+                min-height: 175px;
+
+                padding: 24px;
+            }
+
+
+            .side-panel {
+                width: 290px;
+
+                right: -300px;
+            }
+
+
+            .popup {
+                padding: 22px;
+
+                max-height: 88vh;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            UDAAN
+        </div>
+
+
+        <button
+            class="menu-btn"
+            id="menuButton"
+            aria-label="Open menu"
+        >
+            ⋮
+        </button>
+
+    </nav>
+
+
+    <!-- =====================================================
+         DASHBOARD
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <div class="welcome">
+
+            <h1>
+                Welcome to Udaan 👋
+            </h1>
+
+            <p>
+                How can we help you today?
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             FIVE SECTORS
+        ================================================== -->
+
+        <div class="sector-grid">
+
+
+            <!-- EDUCATION -->
+
+            <a
+                href="/education/"
+                class="sector-card"
+            >
+
+                <div class="sector-icon">
+                    📚
+                </div>
+
+                <h3>
+                    Education
+                </h3>
+
+                <p>
+                    Learn, practice and improve
+                    your knowledge.
+                </p>
+
+            </a>
+
+
+            <!-- HEALTHCARE -->
+
+            <a
+                href="/healthcare/"
+                class="sector-card"
+            >
+
+                <div class="sector-icon">
+                    🏥
+                </div>
+
+                <h3>
+                    Healthcare
+                </h3>
+
+                <p>
+                    Find healthcare information
+                    and nearby services.
+                </p>
+
+            </a>
+
+
+            <!-- AGRICULTURE -->
+
+            <a
+                href="/agriculture/"
+                class="sector-card"
+            >
+
+                <div class="sector-icon">
+                    🌾
+                </div>
+
+                <h3>
+                    Agriculture
+                </h3>
+
+                <p>
+                    Get useful information and
+                    modern farming resources.
+                </p>
+
+            </a>
+
+
+            <!-- GOVERNMENT SCHEMES -->
+
+            <a
+                href="/government-schemes/"
+                class="sector-card"
+            >
+
+                <div class="sector-icon">
+                    🏛️
+                </div>
+
+                <h3>
+                    Government Schemes
+                </h3>
+
+                <p>
+                    Discover government schemes
+                    and available benefits.
+                </p>
+
+            </a>
+
+
+            <!-- WOMEN SKILLS -->
+
+            <a
+                href="/women-skills/"
+                class="sector-card"
+            >
+
+                <div class="sector-icon">
+                    👩‍💼
+                </div>
+
+                <h3>
+                    Women Skills
+                </h3>
+
+                <p>
+                    Learn useful skills from
+                    home and explore opportunities.
+                </p>
+
+            </a>
+
+            <!-- CHATBOT -->
+
+           <a href="{% url 'chatbot' %}" class="sector-card">
+
+            <div class="sector-icon">
+        🤖
+            </div>
+
+            <h3>
+            Udaan Chatbot
+            </h3>
+
+            <p>
+                Ask questions and get quick guidance
+                about Udaan services and resources.
+            </p>
+
+        </a>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         OVERLAY
+    ====================================================== -->
+
+    <div
+        class="overlay"
+        id="overlay"
+    ></div>
+
+
+    <!-- =====================================================
+         SIDE PANEL
+    ====================================================== -->
+
+    <aside
+        class="side-panel"
+        id="sidePanel"
+    >
+
+
+        <div class="panel-header">
+
+            <h2>
+                Menu
+            </h2>
+
+
+            <button
+                class="close-btn"
+                id="closeButton"
+                aria-label="Close menu"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="panel-menu">
+
+
+            <!-- PROFILE -->
+
+            <button
+                type="button"
+                class="panel-item"
+                onclick="openPopup('profilePopup')"
+            >
+
+                <span class="panel-icon">
+                    👤
+                </span>
+
+                <span>
+                    Profile
+                </span>
+
+            </button>
+
+
+            <!-- SETTINGS -->
+
+            <button
+                type="button"
+                class="panel-item"
+                onclick="openPopup('settingsPopup')"
+            >
+
+                <span class="panel-icon">
+                    ⚙️
+                </span>
+
+                <span>
+                    Settings
+                </span>
+
+            </button>
+
+
+            <!-- NOTIFICATIONS -->
+
+            <button
+                type="button"
+                class="panel-item"
+                onclick="openPopup('notificationPopup')"
+            >
+
+                <span class="panel-icon">
+                    🔔
+                </span>
+
+                <span>
+                    Notifications
+                </span>
+
+            </button>
+
+
+            <!-- HELP -->
+
+            <button
+                type="button"
+                class="panel-item"
+                onclick="openPopup('helpPopup')"
+            >
+
+                <span class="panel-icon">
+                    ❓
+                </span>
+
+                <span>
+                    Help & Support
+                </span>
+
+            </button>
+
+
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         PROFILE POPUP
+    ====================================================== -->
+
+    <div
+        class="popup"
+        id="profilePopup"
+    >
+
+        <div class="popup-header">
+
+            <h2>
+                My Profile
+            </h2>
+
+            <button
+                class="popup-close"
+                onclick="closePopup('profilePopup')"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="profile-container">
+
+
+            <div class="profile-photo">
+                👤
+            </div>
+
+
+            <div class="profile-name">
+
+                Guest User
+
+            </div>
+
+
+            <div class="profile-info">
+
+
+                <div class="profile-info-box">
+
+                    <small>
+                        Full Name
+                    </small>
+
+                    <span>
+
+                        Guest User
+
+                    </span>
+
+                </div>
+
+
+                <div class="profile-info-box">
+
+                    <small>
+                        Email
+                    </small>
+
+                    <span>
+                        Not required
+                    </span>
+
+                </div>
+
+
+                <div class="profile-info-box">
+
+                    <small>
+                        Mobile Number
+                    </small>
+
+                    <span>
+                        Not added
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         SETTINGS POPUP
+    ====================================================== -->
+
+    <div
+        class="popup"
+        id="settingsPopup"
+    >
+
+        <div class="popup-header">
+
+            <h2>
+                Settings
+            </h2>
+
+            <button
+                class="popup-close"
+                onclick="closePopup('settingsPopup')"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="settings-list">
+
+
+            <!-- NOTIFICATIONS -->
+
+            <div class="setting-item">
+
+                <div class="setting-left">
+
+                    <div class="setting-icon">
+                        🔔
+                    </div>
+
+                    <div class="setting-text">
+
+                        <h4>
+                            Notifications
+                        </h4>
+
+                        <p>
+                            Receive updates and alerts
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        checked
+                    >
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <!-- GOVERNMENT SCHEME UPDATES -->
+
+            <div class="setting-item">
+
+                <div class="setting-left">
+
+                    <div class="setting-icon">
+                        🏛️
+                    </div>
+
+                    <div class="setting-text">
+
+                        <h4>
+                            Scheme Updates
+                        </h4>
+
+                        <p>
+                            Get new government scheme alerts
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        checked
+                    >
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <!-- DARK THEME -->
+
+            <div class="setting-item">
+
+                <div class="setting-left">
+
+                    <div class="setting-icon">
+                        🌙
+                    </div>
+
+                    <div class="setting-text">
+
+                        <h4>
+                            Dark Theme
+                        </h4>
+
+                        <p>
+                            Switch between light and dark mode
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        id="darkThemeToggle"
+                        onchange="toggleDarkTheme()"
+                    >
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+
+            <!-- LANGUAGE -->
+
+            <div class="setting-item">
+
+                <div class="setting-left">
+
+                    <div class="setting-icon">
+                        🌐
+                    </div>
+
+                    <div class="setting-text">
+
+                        <h4>
+                            Language
+                        </h4>
+
+                        <p>
+                            Choose your preferred language
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <select
+                    class="language-select"
+                >
+
+                    <option>
+                        English
+                    </option>
+
+                    <option>
+                        Hindi
+                    </option>
+
+                    <option>
+                        Marathi
+                    </option>
+
+                </select>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         NOTIFICATIONS POPUP
+    ====================================================== -->
+
+    <div
+        class="popup"
+        id="notificationPopup"
+    >
+
+        <div class="popup-header">
+
+            <h2>
+                Notifications
+            </h2>
+
+            <button
+                class="popup-close"
+                onclick="closePopup('notificationPopup')"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="notification-card">
+
+            <h4>
+                🏛️ New Government Scheme
+            </h4>
+
+            <p>
+                A new government scheme may be
+                available for eligible users.
+            </p>
+
+            <span class="notification-time">
+                Recently
+            </span>
+
+        </div>
+
+
+        <div class="notification-card">
+
+            <h4>
+                📢 Important Update
+            </h4>
+
+            <p>
+                Check the Government Schemes
+                section for the latest information.
+            </p>
+
+            <span class="notification-time">
+                Recently
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         HELP & SUPPORT POPUP
+    ====================================================== -->
+
+    <div
+        class="popup"
+        id="helpPopup"
+    >
+
+        <div class="popup-header">
+
+            <h2>
+                Help & Support
+            </h2>
+
+            <button
+                class="popup-close"
+                onclick="closePopup('helpPopup')"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="help-box">
+
+            <h4>
+                ❓ How can I use Udaan?
+            </h4>
+
+            <p>
+                Select any sector from the dashboard
+                to explore the available information
+                and resources.
+            </p>
+
+        </div>
+
+
+        <div class="help-box">
+
+            <h4>
+                📚 Education
+            </h4>
+
+            <p>
+                Open the Education section to find
+                learning resources and educational
+                information.
+            </p>
+
+        </div>
+
+
+        <div class="help-box">
+
+            <h4>
+                🔔 Notifications
+            </h4>
+
+            <p>
+                Notifications will show important
+                updates and government scheme alerts.
+            </p>
+
+        </div>
+
+
+        <div class="help-contact">
+
+            <h4>
+                Need more help?
+            </h4>
+
+            <p>
+                📧 Email: support@udaan.com
+            </p>
+
+            <p>
+                📞 Phone: +91 XXXXX XXXXX
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+
+        /* =================================================
+           ELEMENTS
+        ================================================= */
+
+        const menuButton =
+            document.getElementById("menuButton");
+
+        const closeButton =
+            document.getElementById("closeButton");
+
+        const sidePanel =
+            document.getElementById("sidePanel");
+
+        const overlay =
+            document.getElementById("overlay");
+
+
+        /* =================================================
+           OPEN SIDE PANEL
+        ================================================= */
+
+        function openMenu() {
+
+            sidePanel.classList.add("active");
+
+            overlay.classList.add("active");
+
+        }
+
+
+        /* =================================================
+           CLOSE SIDE PANEL
+        ================================================= */
+
+        function closeMenu() {
+
+            sidePanel.classList.remove("active");
+
+            const activePopup =
+                document.querySelector(".popup.active");
+
+            if (!activePopup) {
+
+                overlay.classList.remove("active");
+
+            }
+
+        }
+
+
+        /* =================================================
+           OPEN POPUP
+        ================================================= */
+
+        function openPopup(popupId) {
+
+            /* Close side panel */
+
+            sidePanel.classList.remove("active");
+
+
+            /* Close all existing popups */
+
+            document
+                .querySelectorAll(".popup")
+                .forEach(function(popup) {
+
+                    popup.classList.remove("active");
+
+                });
+
+
+            /* Open selected popup */
+
+            const popup =
+                document.getElementById(popupId);
+
+            popup.classList.add("active");
+
+
+            /* Show overlay */
+
+            overlay.classList.add("active");
+
+        }
+
+
+        /* =================================================
+           CLOSE POPUP
+        ================================================= */
+
+        function closePopup(popupId) {
+
+            const popup =
+                document.getElementById(popupId);
+
+            popup.classList.remove("active");
+
+            overlay.classList.remove("active");
+
+        }
+
+
+        /* =================================================
+           MENU BUTTON
+        ================================================= */
+
+        menuButton.addEventListener(
+            "click",
+            openMenu
+        );
+
+
+        /* =================================================
+           CLOSE BUTTON
+        ================================================= */
+
+        closeButton.addEventListener(
+            "click",
+            closeMenu
+        );
+
+
+        /* =================================================
+           OVERLAY
+        ================================================= */
+
+        overlay.addEventListener(
+            "click",
+            function() {
+
+                sidePanel.classList.remove(
+                    "active"
+                );
+
+
+                document
+                    .querySelectorAll(".popup")
+                    .forEach(function(popup) {
+
+                        popup.classList.remove(
+                            "active"
+                        );
+
+                    });
+
+
+                overlay.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+        /* =================================================
+           ESC KEY
+        ================================================= */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Escape") {
+
+                    sidePanel.classList.remove(
+                        "active"
+                    );
+
+
+                    document
+                        .querySelectorAll(".popup")
+                        .forEach(function(popup) {
+
+                            popup.classList.remove(
+                                "active"
+                            );
+
+                        });
+
+
+                    overlay.classList.remove(
+                        "active"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /* =================================================
+           DARK THEME
+        ================================================= */
+
+        function toggleDarkTheme() {
+
+            const toggle =
+                document.getElementById(
+                    "darkThemeToggle"
+                );
+
+
+            document.body.classList.toggle(
+                "dark-theme",
+                toggle.checked
+            );
+
+
+            /* Save theme */
+
+            localStorage.setItem(
+                "darkTheme",
+                toggle.checked
+            );
+
+        }
+
+
+        /* =================================================
+           LOAD SAVED THEME
+        ================================================= */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function() {
+
+                const darkTheme =
+                    localStorage.getItem(
+                        "darkTheme"
+                    );
+
+
+                const toggle =
+                    document.getElementById(
+                        "darkThemeToggle"
+                    );
+
+
+                if (darkTheme === "true") {
+
+                    document.body.classList.add(
+                        "dark-theme"
+                    );
+
+
+                    if (toggle) {
+
+                        toggle.checked = true;
+
+                    }
+
+                }
+
+            }
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>

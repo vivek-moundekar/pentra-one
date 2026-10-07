@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Learn {{ chapter.name }} | PentraOne Education
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+
+        /* ==========================================
+           HEADER
+        ========================================== */
+
+        .header {
+            background: #2563eb;
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+
+        .header h2 {
+            margin: 0;
+        }
+
+
+        .header a {
+            color: white;
+            text-decoration: none;
+            background: rgba(255,255,255,0.15);
+            padding: 10px 16px;
+            border-radius: 8px;
+        }
+
+
+        /* ==========================================
+           PAGE
+        ========================================== */
+
+        .container {
+            max-width: 1150px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+
+        .back {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+
+        .back:hover {
+            text-decoration: underline;
+        }
+
+
+        /* ==========================================
+           CHAPTER INFO
+        ========================================== */
+
+        .chapter-info {
+            background: white;
+            padding: 30px;
+            margin-top: 20px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+        }
+
+
+        .subject {
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+
+        .chapter-info h1 {
+            margin: 0 0 10px;
+            font-size: 32px;
+        }
+
+
+        .chapter-info p {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+
+        /* ==========================================
+           LESSON SECTION
+        ========================================== */
+
+        .lessons-section {
+            margin-top: 35px;
+        }
+
+
+        .section-header {
+            margin-bottom: 20px;
+        }
+
+
+        .section-header h2 {
+            margin: 0 0 8px;
+            font-size: 25px;
+        }
+
+
+        .section-header p {
+            margin: 0;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+
+
+        .lesson-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+
+        /* ==========================================
+           LESSON CARD
+        ========================================== */
+
+        .lesson-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            transition: 0.2s;
+        }
+
+
+        .lesson-card:hover {
+            transform: translateY(-4px);
+        }
+
+
+        .video-wrap {
+            background: #000;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .lesson-video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+            background: #000;
+        }
+
+
+        .video-placeholder {
+            width: 100%;
+            min-height: 210px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e5e7eb;
+            font-size: 55px;
+        }
+
+
+        .lesson-content {
+            padding: 20px;
+        }
+
+
+        .lesson-number {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 5px 9px;
+            border-radius: 7px;
+            background: #eff6ff;
+            color: #1d4ed8;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+
+        .lesson-title {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+
+        .description {
+            color: #6b7280;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+
+        .lesson-btn {
+            display: inline-block;
+            padding: 10px 16px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+
+        .lesson-btn:hover {
+            background: #1d4ed8;
+        }
+
+
+        /* ==========================================
+           EMPTY STATE
+        ========================================== */
+
+        .message {
+            background: white;
+            padding: 45px 30px;
+            text-align: center;
+            border-radius: 16px;
+            color: #6b7280;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
+
+
+        .message-icon {
+            font-size: 48px;
+            margin-bottom: 14px;
+        }
+
+
+        .message h3 {
+            color: #1f2937;
+            margin: 0 0 10px;
+        }
+
+
+        .message p {
+            margin: 0;
+            line-height: 1.7;
+        }
+
+
+        /* ==========================================
+           MOBILE
+        ========================================== */
+
+        @media (max-width: 700px) {
+
+            .header {
+                padding: 18px 20px;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+
+            .header h2 {
+                font-size: 18px;
+            }
+
+
+            .header a {
+                text-align: center;
+            }
+
+
+            .container {
+                padding: 15px;
+                margin-top: 20px;
+            }
+
+
+            .chapter-info {
+                padding: 22px;
+            }
+
+
+            .chapter-info h1 {
+                font-size: 25px;
+            }
+
+
+            .lesson-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="header">
+
+    <h2>
+        📚 PentraOne Education
+    </h2>
+
+    <a href="{% url 'education:logout' %}">
+        ← Back to PentraOne
+    </a>
+
+</div>
+
+
+<div class="container">
+
+
+    <a
+        href="{% url 'education:chapter_detail' chapter.id %}"
+        class="back"
+    >
+        ← Back to Chapter
+    </a>
+
+
+    <div class="chapter-info">
+
+        <div class="subject">
+
+            {{ chapter.subject.class_level.name }}
+            •
+            {{ chapter.subject.name }}
+
+        </div>
+
+
+        <h1>
+            Chapter {{ chapter.chapter_number }}:
+            {{ chapter.name }}
+        </h1>
+
+
+        <p>
+            Learn this chapter using lessons uploaded by your teacher.
+        </p>
+
+    </div>
+
+
+    <div class="lessons-section">
+
+
+        <div class="section-header">
+
+            <h2>
+                🎓 Chapter Lessons
+            </h2>
+
+            <p>
+                Watch the learning videos provided by your teacher.
+            </p>
+
+        </div>
+
+
+        {% if lessons %}
+
+
+            <div class="lesson-grid">
+
+
+                {% for lesson in lessons %}
+
+
+                    <div class="lesson-card">
+
+
+                        {% if lesson.video %}
+
+                            <div class="video-wrap">
+
+                                <video
+                                    class="lesson-video"
+                                    controls
+                                    preload="metadata"
+                                    playsinline
+                                >
+
+                                    <source
+                                        src="{{ lesson.video.url }}"
+                                        type="video/mp4"
+                                    >
+
+                                    Your browser does not support
+                                    video playback.
+
+                                </video>
+
+                            </div>
+
+                        {% else %}
+
+                            <div class="video-placeholder">
+                                🎬
+                            </div>
+
+                        {% endif %}
+
+
+                        <div class="lesson-content">
+
+
+                            <div class="lesson-number">
+                                Lesson {{ lesson.lesson_number }}
+                            </div>
+
+
+                            <div class="lesson-title">
+                                {{ lesson.title }}
+                            </div>
+
+
+                            {% if lesson.description %}
+
+                                <div class="description">
+                                    {{ lesson.description }}
+                                </div>
+
+                            {% endif %}
+
+
+                            <a
+                                href="{% url 'education:lesson_detail' lesson.id %}"
+                                class="lesson-btn"
+                            >
+                                ▶ Open Lesson
+                            </a>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                {% endfor %}
+
+
+            </div>
+
+
+        {% else %}
+
+
+            <div class="message">
+
+                <div class="message-icon">
+                    📚
+                </div>
+
+                <h3>
+                    No lessons uploaded yet
+                </h3>
+
+                <p>
+                    Your teacher has not uploaded a learning
+                    video for this chapter yet.
+                </p>
+
+            </div>
+
+
+        {% endif %}
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>

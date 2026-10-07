@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Udaan | Sign Up</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #e8f5e9, #e3f2fd);
+        }
+
+        .signup-container {
+            width: 420px;
+            max-width: 90%;
+            background: white;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 38px;
+            font-weight: bold;
+            color: #1f4e79;
+            margin-bottom: 5px;
+        }
+
+        .tagline {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 26px;
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #1f4e79;
+        }
+
+        .signup-button {
+            width: 100%;
+            padding: 13px;
+            background: #1f4e79;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+
+        .signup-button:hover {
+            background: #163b5c;
+        }
+
+        .login-link {
+            display: inline-block;
+            margin-top: 22px;
+            color: #1f4e79;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .login-link:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            margin-top: 25px;
+            color: #999;
+            font-size: 12px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="signup-container">
+
+        <div class="logo">
+            UDAAN
+        </div>
+
+        <div class="tagline">
+            Empowering Rural Communities
+        </div>
+
+        <h1>
+            Create Your Account
+        </h1>
+
+        <p class="description">
+            Join Udaan and access opportunities and essential services.
+        </p>
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <div class="form-group">
+
+                <label for="name">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Create a password"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="confirm_password">
+                    Confirm Password
+                </label>
+
+                <input
+                    type="password"
+                    id="confirm_password"
+                    name="confirm_password"
+                    placeholder="Confirm your password"
+                    required
+                >
+
+            </div>
+
+            <button type="submit" class="signup-button">
+                Create Account
+            </button>
+
+        </form>
+
+        <a href="/login/" class="login-link">
+            Already have an account? Sign In
+        </a>
+
+        <div class="footer">
+            © 2026 Udaan — Empowering Rural Communities
+        </div>
+
+    </div>
+
+</body>
+
+</html>
