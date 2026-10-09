@@ -1,5 +1,5 @@
 """
-WSGI config for udaan project.
+WSGI config for Pentra One project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

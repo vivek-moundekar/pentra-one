@@ -145,9 +145,7 @@ MIDDLEWARE = [
 # URL / TEMPLATES / WSGI
 # ============================================================
 
-# IMPORTANT:
-# Your original file says this is the UDAAN Django project.
-# Therefore the internal Django project package is assumed to be "udaan".
+# Django project configuration package: pentraone.
 ROOT_URLCONF = "pentraone.urls"
 
 TEMPLATES = [
