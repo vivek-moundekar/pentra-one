@@ -1,11 +1,10 @@
 """
 Django settings for UDAAN / Pentra One project.
-Cleaned for local development and Render deployment.
+Configured for local development and Vercel / Render deployment.
 """
 
 from pathlib import Path
 from decouple import config
-from django.utils.translation import gettext_lazy as _
 from dotenv import load_dotenv
 import os
 
@@ -145,7 +144,6 @@ MIDDLEWARE = [
 # URL / TEMPLATES / WSGI
 # ============================================================
 
-# Django project configuration package: pentraone.
 ROOT_URLCONF = "pentraone.urls"
 
 TEMPLATES = [
@@ -220,15 +218,15 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = "en"
 
 LANGUAGES = [
-    ("en", _("English")),
-    ("hi", _("हिन्दी")),
-    ("mr", _("मराठी")),
-    ("gu", _("ગુજરાતી")),
-    ("bn", _("বাংলা")),
-    ("ta", _("தமிழ்")),
-    ("te", _("తెలుగు")),
-    ("kn", _("ಕನ್ನಡ")),
-    ("pa", _("ਪੰਜਾਬੀ")),
+    ("en", "English"),
+    ("hi", "हिन्दी"),
+    ("mr", "मराठी"),
+    ("gu", "ગુજરાતી"),
+    ("bn", "বাংলা"),
+    ("ta", "தமிழ்"),
+    ("te", "తెలుగు"),
+    ("kn", "ಕನ್ನಡ"),
+    ("pa", "ਪੰਜਾਬੀ"),
 ]
 
 LOCALE_PATHS = [
